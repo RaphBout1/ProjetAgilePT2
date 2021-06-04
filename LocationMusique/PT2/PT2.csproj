@@ -64,12 +64,6 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminUS6.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminUS7.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
