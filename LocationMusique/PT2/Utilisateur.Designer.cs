@@ -29,12 +29,31 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.listBoxConsultEmprunt = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
+            // 
+            // listBoxConsultEmprunt
+            // 
+            this.listBoxConsultEmprunt.FormattingEnabled = true;
+            this.listBoxConsultEmprunt.Location = new System.Drawing.Point(13, 13);
+            this.listBoxConsultEmprunt.Name = "listBoxConsultEmprunt";
+            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(120, 95);
+            this.listBoxConsultEmprunt.TabIndex = 0;
+            // 
+            // Utilisateur
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBoxConsultEmprunt);
+            this.Name = "Utilisateur";
             this.Text = "Utilisateur";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox listBoxConsultEmprunt;
     }
 }

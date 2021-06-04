@@ -55,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbonnéUS2.cs" />
+    <Compile Include="AbonnéUS2.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ABONNÉS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
@@ -118,6 +120,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Utilisateur.resx">
+      <DependentUpon>Utilisateur.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="LienBD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LienBD.Designer.cs</LastGenOutput>
