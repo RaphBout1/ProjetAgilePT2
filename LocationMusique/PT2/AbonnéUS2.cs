@@ -12,7 +12,7 @@ namespace PT2
 {
     public partial class Utilisateur : Form
     {
-        private ABONNÉS utilisateur;
+        //private ABONNÉS utilisateur;
         private void ActualiseListeEmprunté()
         {
             if (utilisateur != null)
