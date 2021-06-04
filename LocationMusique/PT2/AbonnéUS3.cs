@@ -12,7 +12,7 @@ namespace PT2
 {
     public partial class Utilisateur : Form
     {
-        private ABONNÉS utilisateur;
+//        private ABONNÉS utilisateur;
         public void ProlongerEmprunt(int codeAlbum)
         {
             foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
@@ -27,7 +27,7 @@ namespace PT2
                         MessageBox.Show("L'emprunt de l'album " + a.TITRE_ALBUM + " a bien été renouvelé.");
                     }
                 }
-                if (e.DATE_RETOUR_ATTENDUE.CompareTo(e.DATE_EMPRUNT.AddDays(a.GENRES.DÉLAI)) == 1)
+                if (e.DATE_EMPRUNT.AddMonths(1).AddDays(a.GENRES.DÉLAI).CompareTo(e.DATE_RETOUR_ATTENDUE.AddMonths(1)) == -1)
                 {
 
                 }

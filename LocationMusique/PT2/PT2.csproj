@@ -73,6 +73,9 @@
     <Compile Include="AbonnéUS3.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AdminUS6.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AdminUS7.cs">
       <SubType>Form</SubType>
     </Compile>
