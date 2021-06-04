@@ -11,7 +11,7 @@ namespace PT2
         public bool enRetard()
         {
             bool test = false;
-            if(DATE_RETOUR > DATE_RETOUR_ATTENDUE.AddDays(10))
+            if(DATE_RETOUR==null && DateTime.UtcNow > DATE_RETOUR_ATTENDUE.AddDays(10))
             {
                 test = true;
             }
