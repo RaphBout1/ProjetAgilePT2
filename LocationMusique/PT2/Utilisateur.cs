@@ -16,6 +16,7 @@ namespace PT2
         public Utilisateur()
         {
             InitializeComponent();
+            ActualiseListeEmprunté();
         }
     }
 }

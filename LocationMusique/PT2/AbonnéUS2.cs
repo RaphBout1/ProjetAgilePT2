@@ -15,10 +15,13 @@ namespace PT2
         private ABONNÉS utilisateur;
         private void ActualiseListeEmprunté()
         {
-            foreach(EMPRUNTER e in utilisateur.EMPRUNTER)
+            if (utilisateur != null)
             {
-                ALBUMS a = e.ALBUMS;
-                listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM+"   "+a.GENRES.LIBELLÉ_GENRE);
+                foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
+                {
+                    ALBUMS a = e.ALBUMS;
+                    listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM + "   " + a.GENRES.LIBELLÉ_GENRE);
+                }
             }
         }
     }
