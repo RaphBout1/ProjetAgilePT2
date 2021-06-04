@@ -27,6 +27,10 @@ namespace PT2
                         MessageBox.Show("L'emprunt de l'album " + a.TITRE_ALBUM + " a bien été renouvelé.");
                     }
                 }
+                if (e.DATE_RETOUR_ATTENDUE.CompareTo(e.DATE_EMPRUNT.AddDays(a.GENRES.DÉLAI)) == 1)
+                {
+
+                }
             }
             
         }
