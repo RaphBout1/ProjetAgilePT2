@@ -18,12 +18,13 @@ namespace PT2
             foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
             {
                 ALBUMS a = e.ALBUMS;
-                if (a.CODE_ALBUM == codeAlbum)
+                if (a.CODE_ALBUM == codeAlbum || codeAlbum == 9999)
                 {
                     if (!e.dejaRenouvelé && e.DATE_RETOUR == null)
                     {
                         e.dejaRenouvelé = true;
                         e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                        MessageBox.Show("L'emprunt de l'album " + a.TITRE_ALBUM + " a bien été renouvelé.");
                     }
                 }
             }
@@ -32,7 +33,7 @@ namespace PT2
 
         public void ProlongerTousEmprunts()
         {
-
+                ProlongerEmprunt(9999);
         }
     }
 }
