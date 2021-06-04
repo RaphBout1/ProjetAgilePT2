@@ -104,6 +104,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RajoutVinyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RajoutVinyle.Designer.cs">
+      <DependentUpon>RajoutVinyle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RajoutVinyle.resx">
+      <DependentUpon>RajoutVinyle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilisateur.resx">
       <DependentUpon>Utilisateur.cs</DependentUpon>
     </EmbeddedResource>
