@@ -13,6 +13,7 @@ namespace PT2
     public partial class Admin : Form
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
+        private ABONNÉS utilisateurCourant;
         public Admin()
         {
             InitializeComponent();
@@ -35,6 +36,26 @@ namespace PT2
                 }
             }
             return enretard10;
+        }
+
+        private void LivreEmprunteProlongé()
+        {
+            if (utilisateurCourant != null)
+            {
+                var lesLivresEmpruntes =
+                    from m in musiqueSQL.EMPRUNTER
+                    select m;
+
+                foreach (EMPRUNTER m in lesLivresEmpruntes)
+                {
+
+                    if (m.dejaRenouvelé)
+                    {
+                        listBox1.Items.Add(m);
+                    }
+
+                }
+            }
         }
     }
 }

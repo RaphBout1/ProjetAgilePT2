@@ -9,5 +9,10 @@ namespace PT2
     public partial class EMPRUNTER
     {
         public bool dejaRenouvelé = false;
+
+        public String toString()
+        {
+            return ALBUMS.TITRE_ALBUM;
+        } 
     }
 }

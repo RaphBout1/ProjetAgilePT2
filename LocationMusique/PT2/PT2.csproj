@@ -84,7 +84,6 @@
     </Compile>
     <Compile Include="EmprunterUS3.cs" />
     <Compile Include="EmprunterUS5.cs" />
-    <Compile Include="EmpruntProlonge-US4.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
