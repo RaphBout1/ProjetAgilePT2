@@ -55,12 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbonnéUS10.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbonnéUS2.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ABONNÉS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
@@ -69,9 +63,6 @@
     </Compile>
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbonnéUS3.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminUS6.cs">
       <SubType>Form</SubType>
