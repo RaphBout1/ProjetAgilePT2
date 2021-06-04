@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbonneUS1.cs" />
     <Compile Include="AbonnéUS2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,7 @@
     <Compile Include="GENRES.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="InformationsInvalidesException.cs" />
     <Compile Include="LienBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
