@@ -13,7 +13,7 @@ namespace PT2
             foreach(EMPRUNTER e in this.EMPRUNTER)
             {
                 ALBUMS a = e.ALBUMS;
-                //listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM+"       "+a.GENRES.LIBELLÉ_GENRE);
+                //listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM+"   "+a.GENRES.LIBELLÉ_GENRE);
             }
         }
     }
