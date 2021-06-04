@@ -42,16 +42,12 @@ namespace PT2
                 ALBUMS a = e.ALBUMS;
                 if (a.CODE_ALBUM == codeAlbum || codeAlbum == 9999)
                 {
-                    if (!e.dejaRenouvelé && e.DATE_RETOUR == null)
+                    if (e.DATE_EMPRUNT.AddMonths(1).AddDays(a.GENRES.DÉLAI).CompareTo(e.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0 && e.DATE_RETOUR == null)
                     {
                         e.dejaRenouvelé = true;
                         e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
                         MessageBox.Show("L'emprunt de l'album " + a.TITRE_ALBUM + " a bien été renouvelé.");
                     }
-                }
-                if (e.DATE_EMPRUNT.AddMonths(1).AddDays(a.GENRES.DÉLAI).CompareTo(e.DATE_RETOUR_ATTENDUE.AddMonths(1)) == -1)
-                {
-
                 }
             }
 
