@@ -58,6 +58,9 @@
     <Compile Include="ABONNÉS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="AbonnéUS3.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
@@ -67,6 +70,7 @@
     <Compile Include="EMPRUNTER.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmprunterUS3.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
