@@ -31,6 +31,8 @@ namespace PT2
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.listeAbonnésInactifs = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox1
@@ -50,11 +52,30 @@ namespace PT2
             this.label1.TabIndex = 1;
             this.label1.Text = "En retard de +10 jours";
             // 
+            // listeAbonnésInactifs
+            // 
+            this.listeAbonnésInactifs.FormattingEnabled = true;
+            this.listeAbonnésInactifs.Location = new System.Drawing.Point(32, 265);
+            this.listeAbonnésInactifs.Name = "listeAbonnésInactifs";
+            this.listeAbonnésInactifs.Size = new System.Drawing.Size(302, 160);
+            this.listeAbonnésInactifs.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 239);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Abonnés purgeables";
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listeAbonnésInactifs);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
             this.Name = "Admin";
@@ -69,5 +90,7 @@ namespace PT2
 
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listeAbonnésInactifs;
+        private System.Windows.Forms.Label label2;
     }
 }
