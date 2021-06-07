@@ -13,13 +13,14 @@ namespace PT2
     public partial class Admin : Form
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
-        private ABONNÉS utilisateurCourant;
+        
         private HashSet<ABONNÉS> abonnésPurgeables = new HashSet<ABONNÉS>();
         HashSet<ALBUMS> lesPlusEmprunté = new HashSet<ALBUMS>();
         public Admin()
         {
             InitializeComponent();
             enRetard();
+            LivreEmprunteProlongé();
         }
 
         private void Admin_Load(object sender, EventArgs e)
@@ -46,21 +47,20 @@ namespace PT2
 
         private void LivreEmprunteProlongé()
         {
-            if (utilisateurCourant != null)
-            {
-                var lesLivresEmpruntes =
+             var lesLivresEmpruntes =
                     from m in musiqueSQL.EMPRUNTER
                     select m;
 
                 foreach (EMPRUNTER m in lesLivresEmpruntes)
                 {
-                    if (m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) < 0 && m.DATE_RETOUR == null) //à vérifier
+                    if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
                     {
-                        listBox1.Items.Add(m);
+                        listBox2.Items.Add(m);
                     }
 
                 }
-            }
+            
+            Refresh();
         }
 
         public void DixPlusVue()
