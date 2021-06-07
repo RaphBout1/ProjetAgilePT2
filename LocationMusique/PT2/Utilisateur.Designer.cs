@@ -39,7 +39,7 @@ namespace PT2
             this.listBoxConsultEmprunt.FormattingEnabled = true;
             this.listBoxConsultEmprunt.Location = new System.Drawing.Point(13, 13);
             this.listBoxConsultEmprunt.Name = "listBoxConsultEmprunt";
-            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(120, 95);
+            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(174, 134);
             this.listBoxConsultEmprunt.TabIndex = 0;
             // 
             // nom
