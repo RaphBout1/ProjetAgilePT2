@@ -41,35 +41,24 @@ namespace PT2
             Refresh();
         }
 
-        public void ProlongerEmprunt(int codeAlbum)
+        public void ProlongerEmprunt(EMPRUNTER em)
         {
-            foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
+            if (em != null && em.DATE_RETOUR == null)
             {
-                ALBUMS a = e.ALBUMS;
-                if (a.CODE_ALBUM == codeAlbum || codeAlbum == 9999)
+                if (em.DATE_EMPRUNT.AddDays(em.ALBUMS.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
                 {
-                    if (e.DATE_EMPRUNT.AddDays(a.GENRES.DÉLAI).CompareTo(e.DATE_RETOUR_ATTENDUE) > 0 && e.DATE_RETOUR == null)
-                    {
-                        var query = from l in musiqueSQL.EMPRUNTER where l.CODE_ALBUM == a.CODE_ALBUM select l;
-                        EMPRUNTER x = query.First();
-                        x.DATE_RETOUR_ATTENDUE = x.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                        e.dejaRenouvelé = true;
-                        e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                        MessageBox.Show("L'emprunt de l'album " + a.TITRE_ALBUM + " a bien été renouvelé.");
-                        musiqueSQL.SaveChanges();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Emprunt déjà prolongé !");
-                    }
+                    em.DATE_RETOUR_ATTENDUE = em.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                    musiqueSQL.SaveChanges();
+                }
+                else
+                {
+                    throw new ProlongementEmpruntException("Emprunt déjà prolongé!");
                 }
             }
-
-        }
-
-        public void ProlongerTousEmprunts()
-        {
-            ProlongerEmprunt(9999);
+            else
+            {
+                throw new ProlongementEmpruntException("Emprunt introuvable ou déjà rendu.");
+            }
         }
 
         #region Recommandation
@@ -93,7 +82,7 @@ namespace PT2
                     listeGenreEmprunte.Add(e.ALBUMS.GENRES, 1);
                 }
             }
-            
+
         }
 
         private void ListageRecommandeAlbum()
@@ -122,15 +111,9 @@ namespace PT2
 
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            EMPRUNTER a = (EMPRUNTER)listBoxConsultEmprunt.SelectedItem;
-            ProlongerEmprunt(a.CODE_ALBUM);
-        }
-
         private void listBoxConsultEmprunt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBoxConsultEmprunt.SelectedItem != null)
+            if (listBoxConsultEmprunt.SelectedItem != null)
             {
                 prolonger1Button.Enabled = true;
             }
@@ -143,7 +126,32 @@ namespace PT2
 
         private void prolongerTousButton_Click(object sender, EventArgs e)
         {
+            foreach (EMPRUNTER em in utilisateur.EMPRUNTER)
+            {
+                try
+                {
+                    ProlongerEmprunt(em);
+                }
+                catch (Exception ex)
+                {
 
+                }
+            }
+            MessageBox.Show("Tous vos emprunts prolongeables ont été prolongés d'un mois.");
+        }
+
+        private void prolonger1Button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EMPRUNTER emprunt = (EMPRUNTER)listBoxConsultEmprunt.SelectedItem;
+                ProlongerEmprunt(emprunt);
+                MessageBox.Show("L'emprunt de l'album " + emprunt.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

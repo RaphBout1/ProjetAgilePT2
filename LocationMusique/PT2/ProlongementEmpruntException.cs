@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace PT2
 {
-    class InformationsInvalidesException : Exception
+    class ProlongementEmpruntException : Exception
     {
         string message;
-        public InformationsInvalidesException(string message) : base(message)
+        public ProlongementEmpruntException(string message) : base(message)
         {
             this.message = message;
         }
