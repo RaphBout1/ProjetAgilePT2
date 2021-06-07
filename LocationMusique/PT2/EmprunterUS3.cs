@@ -13,6 +13,6 @@ namespace PT2
         public String toString()
         {
             return ALBUMS.TITRE_ALBUM;
-        } 
+        }
     }
 }
