@@ -9,37 +9,27 @@ using System.Windows.Forms;
 
 namespace PT2
 {
-    
+
     public partial class Admin
     {
-        HashSet<ALBUMS> albumPasEmprunter1 = new HashSet<ALBUMS>();
-        private  void albumPasEmprunter()
-        {
-            var emprunt = from e in musiqueSQL.EMPRUNTER select e;
-            foreach(EMPRUNTER e in emprunt)
-            {
-                if(e.DATE_EMPRUNT.CompareTo(DateTime.UtcNow.AddYears(-1)) <= 0)
-                {
-                    if (!albumPasEmprunter1.Contains(e.ALBUMS))
-                    {
-                        albumPasEmprunter1.Add(e.ALBUMS);
-                    }
-                }
-            }
-        }
 
-        private  void listeAlbumPasEmprunte()
+        private HashSet<ALBUMS> albumPasEmpruntesDepuis1An()
         {
-            albumPasEmprunter();
-            if (albumPasEmprunter1 != null)
+            HashSet<ALBUMS> albumPasEmprunter1An = new HashSet<ALBUMS>();
+            Dictionary<int, List<EMPRUNTER>> emprunts = (Dictionary<int, List<EMPRUNTER>>)(from e in musiqueSQL.EMPRUNTER group e by e.CODE_ALBUM into newGroup select newGroup);
+            Dictionary<int, DateTime> dates = new Dictionary<int, DateTime>();
+            foreach (var kv in emprunts)
             {
-                string s = "";
-                for (int i = 0; i < albumPasEmprunter1.Count; i++)
-                {
-                    s = s + albumPasEmprunter1.ElementAt(i).ToString() + "   ";
-                }
-                MessageBox.Show(s);
+                dates[kv.Key] = kv.Value.Max(d => d.DATE_EMPRUNT);
             }
+            foreach (var kv in dates)
+            {
+                if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.Value) < 0)
+                {
+                    albumPasEmprunter1An.Add((from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == kv.Key select a).First());
+                }
+            }
+            return albumPasEmprunter1An;
         }
     }
 }
