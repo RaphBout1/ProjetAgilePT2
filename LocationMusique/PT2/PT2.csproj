@@ -84,6 +84,7 @@
     <Compile Include="GENRES.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="ImplémenteAbonnée.cs" />
     <Compile Include="LienBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
