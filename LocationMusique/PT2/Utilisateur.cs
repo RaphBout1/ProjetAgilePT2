@@ -145,5 +145,10 @@ namespace PT2
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            new UtilisateurUSEmprunt(utilisateur).ShowDialog();
+        }
     }
 }

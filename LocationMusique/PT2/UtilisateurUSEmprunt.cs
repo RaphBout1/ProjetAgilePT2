@@ -15,10 +15,13 @@ namespace PT2
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         Dictionary<string, ALBUMS> listeAlbumEmpruntable = new Dictionary<string, ALBUMS>();
         ALBUMS albumAEmprunter;
-        public UtilisateurUSEmprunt()
+        ABONNÉS utilisateur;
+        public UtilisateurUSEmprunt(ABONNÉS utilisateur)
         {
+
             InitializeComponent();
             initComboBoxEmprunt();
+            this.utilisateur = utilisateur;
         }
 
         public void initComboBoxEmprunt()
@@ -32,7 +35,7 @@ namespace PT2
                 {
                     if (e.DATE_RETOUR == null) { enEmprunt = true; }
                 }
-                if (enEmprunt) 
+                if (!enEmprunt) 
                 {
                     listeAlbumEmpruntable.Add(a.TITRE_ALBUM,a);
                     comboBoxTitreAlbumAEmprunter.Items.Add(a.TITRE_ALBUM);
@@ -67,12 +70,12 @@ namespace PT2
         private void boutonEmprunterAlbumPrecis_Click(object sender, EventArgs e)
         {
             EMPRUNTER nouvelEmprunt = new EMPRUNTER();
-            //nouvelEmprunt.CODE_ABONNÉ= utilisateur.CODE_ABONNÉ;
+            nouvelEmprunt.CODE_ABONNÉ= utilisateur.CODE_ABONNÉ;
             nouvelEmprunt.CODE_ALBUM = albumAEmprunter.CODE_ALBUM;
             nouvelEmprunt.DATE_EMPRUNT = DateTime.UtcNow;
             nouvelEmprunt.DATE_RETOUR_ATTENDUE = nouvelEmprunt.DATE_EMPRUNT.AddDays(albumAEmprunter.GENRES.DÉLAI);
             musiqueSQL.EMPRUNTER.Add(nouvelEmprunt);
-            //musiqueSQL.SaveChanges(nouvelEmprunt);
+            musiqueSQL.SaveChanges();
         }
     }
 }
