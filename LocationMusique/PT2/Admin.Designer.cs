@@ -29,19 +29,19 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listeRetard = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listeAbonnésInactifs = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listeRetard
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(32, 32);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 0;
+            this.listeRetard.FormattingEnabled = true;
+            this.listeRetard.Location = new System.Drawing.Point(32, 32);
+            this.listeRetard.Name = "listeRetard";
+            this.listeRetard.Size = new System.Drawing.Size(206, 95);
+            this.listeRetard.TabIndex = 0;
             // 
             // label1
             // 
@@ -57,7 +57,7 @@ namespace PT2
             this.listeAbonnésInactifs.FormattingEnabled = true;
             this.listeAbonnésInactifs.Location = new System.Drawing.Point(32, 265);
             this.listeAbonnésInactifs.Name = "listeAbonnésInactifs";
-            this.listeAbonnésInactifs.Size = new System.Drawing.Size(302, 160);
+            this.listeAbonnésInactifs.Size = new System.Drawing.Size(273, 160);
             this.listeAbonnésInactifs.TabIndex = 2;
             // 
             // label2
@@ -77,7 +77,7 @@ namespace PT2
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listeAbonnésInactifs);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listeRetard);
             this.Name = "Admin";
             this.Text = "Admin";
             this.Load += new System.EventHandler(this.Admin_Load);
@@ -88,7 +88,7 @@ namespace PT2
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listeRetard;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listeAbonnésInactifs;
         private System.Windows.Forms.Label label2;

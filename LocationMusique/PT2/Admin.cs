@@ -37,7 +37,7 @@ namespace PT2
                 if (e.enRetard())
                 {
                     enretard10.Add(e.ABONNÉS);
-                    listBox1.Items.Add(e.ABONNÉS);
+                    listeRetard.Items.Add(e.ABONNÉS.NOM_ABONNÉ.ToString() + " " + e.ABONNÉS.PRÉNOM_ABONNÉ.ToString());
                     
                 }
             }
@@ -57,7 +57,7 @@ namespace PT2
                 {
                     if (m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) < 0 && m.DATE_RETOUR == null) //à vérifier
                     {
-                        listBox1.Items.Add(m);
+                        listeRetard.Items.Add(m.ABONNÉS.NOM_ABONNÉ.ToString() + " " + m.ABONNÉS.PRÉNOM_ABONNÉ.ToString());
                     }
 
                 }
