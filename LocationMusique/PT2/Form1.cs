@@ -27,5 +27,10 @@ namespace PT2
             if (utilisateur.ShowDialog() == System.Windows.Forms.DialogResult.OK) { 
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new Inscription().ShowDialog();
+        }
     }
 }
