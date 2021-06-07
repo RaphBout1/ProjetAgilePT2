@@ -55,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbonneUS1.cs" />
     <Compile Include="AbonnéUS2.cs">
       <SubType>Form</SubType>
     </Compile>

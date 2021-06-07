@@ -39,6 +39,7 @@ namespace PT2
             this.prenom = new System.Windows.Forms.Label();
             this.pays = new System.Windows.Forms.Label();
             this.paysText = new System.Windows.Forms.TextBox();
+            this.submit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginText
@@ -121,11 +122,22 @@ namespace PT2
             this.paysText.Size = new System.Drawing.Size(100, 20);
             this.paysText.TabIndex = 9;
             // 
+            // submit
+            // 
+            this.submit.Location = new System.Drawing.Point(651, 359);
+            this.submit.Name = "submit";
+            this.submit.Size = new System.Drawing.Size(75, 23);
+            this.submit.TabIndex = 10;
+            this.submit.Text = "submit";
+            this.submit.UseVisualStyleBackColor = true;
+            this.submit.Click += new System.EventHandler(this.submit_Click);
+            // 
             // Inscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.submit);
             this.Controls.Add(this.paysText);
             this.Controls.Add(this.pays);
             this.Controls.Add(this.prenom);
@@ -155,5 +167,6 @@ namespace PT2
         private System.Windows.Forms.Label prenom;
         private System.Windows.Forms.Label pays;
         private System.Windows.Forms.TextBox paysText;
+        private System.Windows.Forms.Button submit;
     }
 }
