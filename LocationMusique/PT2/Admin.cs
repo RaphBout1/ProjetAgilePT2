@@ -121,5 +121,11 @@ namespace PT2
                 }
             }
         }
+
+        private void purgebutton_Click(object sender, EventArgs e)
+        {
+            ABONNÉS a = (ABONNÉS)listBox3.SelectedItem;
+            purgerAbonné(a.CODE_ABONNÉ);
+        }
     }
 }
