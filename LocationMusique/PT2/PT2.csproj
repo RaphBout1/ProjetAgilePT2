@@ -124,6 +124,12 @@
     <Compile Include="Utilisateur.Designer.cs">
       <DependentUpon>Utilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="UtilisateurUSEmprunt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UtilisateurUSEmprunt.Designer.cs">
+      <DependentUpon>UtilisateurUSEmprunt.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utilisateur.resx">
       <DependentUpon>Utilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UtilisateurUSEmprunt.resx">
+      <DependentUpon>UtilisateurUSEmprunt.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="LienBD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

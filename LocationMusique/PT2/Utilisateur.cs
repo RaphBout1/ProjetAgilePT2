@@ -132,12 +132,12 @@ namespace PT2
         {
             if(listBoxConsultEmprunt.SelectedItem != null)
             {
-                button1.Enabled = true;
+                boutonEmprunter.Enabled = true;
             }
 
             else
             {
-                button1.Enabled = false;
+                boutonEmprunter.Enabled = false;
             }
         }
     }
