@@ -21,6 +21,8 @@ namespace PT2
             InitializeComponent();
             enRetard();
             LivreEmprunteProlongé();
+            abonnésAPurger();
+
         }
 
         private void Admin_Load(object sender, EventArgs e)
@@ -89,31 +91,22 @@ namespace PT2
 
         private void abonnésAPurger()
         {
+            DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var abonnés = from e in musiqueSQL.EMPRUNTER
                           join alb in musiqueSQL.ALBUMS on e.CODE_ALBUM equals alb.CODE_ALBUM
                           join abo in musiqueSQL.ABONNÉS on e.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          where e.DATE_EMPRUNT.CompareTo(DateTime.UtcNow.AddYears(-1)) <= 0
+                          where e.DATE_EMPRUNT.CompareTo(dateactuelle) <= 0
                           select abo;
             foreach (ABONNÉS a in abonnés)
             {
                 if (!abonnésPurgeables.Contains(a))
                     abonnésPurgeables.Add(a);
+                listBox3.Items.Add(a);
             }
+            Refresh();
         }
 
-        private void listeAbonnésPurgeables()
-        {
-            abonnésAPurger();
-            if (abonnésPurgeables != null)
-            {
-                string s = "";
-                for (int i = 0; i < abonnésPurgeables.Count; i++)
-                {
-                    s = s + abonnésPurgeables.ElementAt(i) + "   ";
-                }
-                MessageBox.Show(s);
-            }
-        }
+       
 
         private void purgerAbonné(int codeAbonné)
         {
