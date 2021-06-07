@@ -12,6 +12,7 @@ namespace PT2
 {
     public partial class Form1 : Form
     {
+        MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +20,10 @@ namespace PT2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Utilisateur utilisateur = new Utilisateur();
+            ABONNÉS robert;
+            var listabo = from l in musiqueSQL.ABONNÉS where l.LOGIN_ABONNÉ == "Robert_DLC" select l;
+            robert = listabo.First();
+            Utilisateur utilisateur = new Utilisateur(robert);
             if (utilisateur.ShowDialog() == System.Windows.Forms.DialogResult.OK) { 
             }
         }

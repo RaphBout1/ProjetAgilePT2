@@ -21,6 +21,8 @@ namespace PT2
         {
             InitializeComponent();
             utilisateur = uti;
+            nom.Text = uti.NOM_ABONNÉ;
+            prenom.Text = uti.PRÉNOM_ABONNÉ;
             ActualiseListeEmprunté();
         }
 
@@ -34,6 +36,7 @@ namespace PT2
                     listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM + "   " + a.GENRES.LIBELLÉ_GENRE);
                 }
             }
+            Refresh();
         }
 
         public void ProlongerEmprunt(int codeAlbum)
