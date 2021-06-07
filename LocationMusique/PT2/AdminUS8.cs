@@ -13,6 +13,9 @@ namespace PT2
     public partial class Admin
     {
 
+        /**
+         * retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an
+         */
         private HashSet<ALBUMS> albumPasEmpruntesDepuis1An()
         {
             HashSet<ALBUMS> albumPasEmprunter1An = new HashSet<ALBUMS>();
