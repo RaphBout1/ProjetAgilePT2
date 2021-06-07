@@ -33,8 +33,8 @@ namespace PT2
             this.nom = new System.Windows.Forms.Label();
             this.prenom = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.boutonEmprunter = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.prolonger1Button = new System.Windows.Forms.Button();
+            this.prolongerTousButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
@@ -74,32 +74,34 @@ namespace PT2
             this.listBox1.Size = new System.Drawing.Size(174, 134);
             this.listBox1.TabIndex = 3;
             // 
-            // button1
+            // prolonger1Button
             // 
-            this.boutonEmprunter.Location = new System.Drawing.Point(13, 219);
-            this.boutonEmprunter.Name = "button1";
-            this.boutonEmprunter.Size = new System.Drawing.Size(105, 55);
-            this.boutonEmprunter.TabIndex = 4;
-            this.boutonEmprunter.Text = "Prolonger l\'emprunt";
-            this.boutonEmprunter.UseVisualStyleBackColor = true;
-            this.boutonEmprunter.Click += new System.EventHandler(this.button1_Click);
+            this.prolonger1Button.Enabled = false;
+            this.prolonger1Button.Location = new System.Drawing.Point(13, 219);
+            this.prolonger1Button.Name = "prolonger1Button";
+            this.prolonger1Button.Size = new System.Drawing.Size(105, 55);
+            this.prolonger1Button.TabIndex = 4;
+            this.prolonger1Button.Text = "Prolonger l\'emprunt";
+            this.prolonger1Button.UseVisualStyleBackColor = true;
+            this.prolonger1Button.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // prolongerTousButton
             // 
-            this.button2.Location = new System.Drawing.Point(219, 219);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 55);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Prolonger TOUS les emprunts";
-            this.button2.UseVisualStyleBackColor = true;
+            this.prolongerTousButton.Location = new System.Drawing.Point(219, 219);
+            this.prolongerTousButton.Name = "prolongerTousButton";
+            this.prolongerTousButton.Size = new System.Drawing.Size(105, 55);
+            this.prolongerTousButton.TabIndex = 5;
+            this.prolongerTousButton.Text = "Prolonger TOUS les emprunts";
+            this.prolongerTousButton.UseVisualStyleBackColor = true;
+            this.prolongerTousButton.Click += new System.EventHandler(this.prolongerTousButton_Click);
             // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.boutonEmprunter);
+            this.Controls.Add(this.prolongerTousButton);
+            this.Controls.Add(this.prolonger1Button);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
@@ -117,7 +119,7 @@ namespace PT2
         private System.Windows.Forms.Label nom;
         private System.Windows.Forms.Label prenom;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button boutonEmprunter;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button prolonger1Button;
+        private System.Windows.Forms.Button prolongerTousButton;
     }
 }

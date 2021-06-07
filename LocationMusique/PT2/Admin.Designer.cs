@@ -31,6 +31,10 @@ namespace PT2
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.listeAbonnésInactifs = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -38,9 +42,10 @@ namespace PT2
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
             this.listBox1.Location = new System.Drawing.Point(32, 32);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.Size = new System.Drawing.Size(179, 95);
             this.listBox1.TabIndex = 0;
             // 
             // label1
@@ -69,6 +74,41 @@ namespace PT2
             this.label2.TabIndex = 3;
             this.label2.Text = "Abonnés purgeables";
             // 
+            // listBox2
+            // 
+            this.listBox2.HorizontalScrollbar = true;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(319, 32);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(179, 95);
+            this.listBox2.TabIndex = 2;
+            // label2
+            // 
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(316, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Emprunts prolongés";
+            // 
+            // 
+            // listBox3
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Location = new System.Drawing.Point(572, 32);
+            this.listBox3.Size = new System.Drawing.Size(171, 95);
+            this.listBox3.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(569, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Abonnés à purger";
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,6 +116,10 @@ namespace PT2
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listeAbonnésInactifs);
+            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
             this.Name = "Admin";
@@ -92,5 +136,9 @@ namespace PT2
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listeAbonnésInactifs;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbonneExtend.cs" />
     <Compile Include="ABONNÉS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>

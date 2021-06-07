@@ -48,7 +48,7 @@ namespace PT2
                 ALBUMS a = e.ALBUMS;
                 if (a.CODE_ALBUM == codeAlbum || codeAlbum == 9999)
                 {
-                    if (e.DATE_EMPRUNT.AddMonths(1).AddDays(a.GENRES.DÉLAI).CompareTo(e.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0 && e.DATE_RETOUR == null)
+                    if (e.DATE_EMPRUNT.AddDays(a.GENRES.DÉLAI).CompareTo(e.DATE_RETOUR_ATTENDUE) > 0 && e.DATE_RETOUR == null)
                     {
                         var query = from l in musiqueSQL.EMPRUNTER where l.CODE_ALBUM == a.CODE_ALBUM select l;
                         EMPRUNTER x = query.First();
@@ -132,13 +132,18 @@ namespace PT2
         {
             if(listBoxConsultEmprunt.SelectedItem != null)
             {
-                boutonEmprunter.Enabled = true;
+                prolonger1Button.Enabled = true;
             }
 
             else
             {
-                boutonEmprunter.Enabled = false;
+                prolonger1Button.Enabled = false;
             }
+        }
+
+        private void prolongerTousButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

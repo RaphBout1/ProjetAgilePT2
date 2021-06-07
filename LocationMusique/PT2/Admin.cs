@@ -13,14 +13,16 @@ namespace PT2
     public partial class Admin : Form
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
-        private ABONNÉS utilisateurCourant;
+        
         private HashSet<ABONNÉS> abonnésPurgeables = new HashSet<ABONNÉS>();
         HashSet<ALBUMS> lesPlusEmprunté = new HashSet<ALBUMS>();
         public Admin()
         {
             InitializeComponent();
             enRetard();
-            listeAbonnésPurgeables();
+            LivreEmprunteProlongé();
+            abonnésAPurger();
+
         }
 
         private void Admin_Load(object sender, EventArgs e)
@@ -47,21 +49,20 @@ namespace PT2
 
         private void LivreEmprunteProlongé()
         {
-            if (utilisateurCourant != null)
-            {
-                var lesLivresEmpruntes =
+             var lesLivresEmpruntes =
                     from m in musiqueSQL.EMPRUNTER
                     select m;
 
                 foreach (EMPRUNTER m in lesLivresEmpruntes)
                 {
-                    if (m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) < 0 && m.DATE_RETOUR == null) //à vérifier
+                    if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
                     {
-                        listBox1.Items.Add(m);
+                        listBox2.Items.Add(m);
                     }
 
                 }
-            }
+            
+            Refresh();
         }
 
         public void DixPlusVue()
@@ -90,33 +91,22 @@ namespace PT2
 
         private void abonnésAPurger()
         {
-            DateTime date = DateTime.UtcNow.AddYears(-1);
+            DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var abonnés = from e in musiqueSQL.EMPRUNTER
                           join alb in musiqueSQL.ALBUMS on e.CODE_ALBUM equals alb.CODE_ALBUM
                           join abo in musiqueSQL.ABONNÉS on e.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          where e.DATE_EMPRUNT < date
+                          where e.DATE_EMPRUNT.CompareTo(dateactuelle) <= 0
                           select abo;
-            if (abonnés != null) { 
-                foreach (ABONNÉS a in abonnés)
-                 {
-                    if (!abonnésPurgeables.Contains(a))
-                        abonnésPurgeables.Add(a);
-                }
+            foreach (ABONNÉS a in abonnés)
+                if (!abonnésPurgeables.Contains(a))
+            {
+                    abonnésPurgeables.Add(a);
+                listBox3.Items.Add(a);
             }
+            Refresh();
         }
 
-        private void listeAbonnésPurgeables()
-        {
-            listeAbonnésInactifs.Items.Clear();
-            abonnésAPurger();
-            if (abonnésPurgeables != null)
-            {
-                foreach (ABONNÉS a in abonnésPurgeables)
-                {
-                    listeAbonnésInactifs.Items.Add(a.NOM_ABONNÉ.ToString() + " " + a.PRÉNOM_ABONNÉ.ToString() + " " + a.CODE_ABONNÉ.ToString());
-                }
-            }
-        }
+       
 
         private void purgerAbonné(int codeAbonné)
         {
