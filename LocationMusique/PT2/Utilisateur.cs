@@ -24,7 +24,7 @@ namespace PT2
             utilisateur = uti;
             nom.Text = uti.NOM_ABONNÉ;
             prenom.Text = uti.PRÉNOM_ABONNÉ;
-            //Recommandation();
+            Recommandation();
             ActualiseListeEmprunté();
         }
 
@@ -103,7 +103,9 @@ namespace PT2
             {
                 foreach (ALBUMS a in gi.Key.ALBUMS)
                 {
-                    listeAlbum.Add(a.EMPRUNTER.Count + (1000 * gi.Value), a);
+                    int cle = (100 * a.EMPRUNTER.Count) + (1000 * gi.Value);
+                    while (listeAlbum.ContainsKey(cle)) { cle++; }
+                    listeAlbum.Add(cle, a);
                 }
             }
             foreach (KeyValuePair<int, ALBUMS> ia in listeAlbum.OrderBy(importance => importance.Key))
