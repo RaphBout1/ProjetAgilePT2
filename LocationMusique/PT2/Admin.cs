@@ -19,6 +19,7 @@ namespace PT2
         public Admin()
         {
             InitializeComponent();
+            enRetard();
         }
 
         private void Admin_Load(object sender, EventArgs e)
@@ -35,8 +36,11 @@ namespace PT2
                 if (e.enRetard())
                 {
                     enretard10.Add(e.ABONNÉS);
+                    listBox1.Items.Add(e.ABONNÉS);
+                    
                 }
             }
+            Refresh();
             return enretard10;
         }
 

@@ -14,6 +14,7 @@ namespace PT2
     {
 
         private ABONNÉS utilisateur;
+        MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         Dictionary<GENRES, int> listeGenreEmprunte = new Dictionary<GENRES, int>();
         List<ALBUMS> listeAlbumsRecommande = new List<ALBUMS>();
 
@@ -23,6 +24,7 @@ namespace PT2
             utilisateur = uti;
             nom.Text = uti.NOM_ABONNÉ;
             prenom.Text = uti.PRÉNOM_ABONNÉ;
+            Recommandation();
             ActualiseListeEmprunté();
         }
 
@@ -33,7 +35,7 @@ namespace PT2
                 foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
                 {
                     ALBUMS a = e.ALBUMS;
-                    listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM + "   " + a.GENRES.LIBELLÉ_GENRE);
+                    listBoxConsultEmprunt.Items.Add(e);
                 }
             }
             Refresh();
@@ -48,9 +50,17 @@ namespace PT2
                 {
                     if (e.DATE_EMPRUNT.AddMonths(1).AddDays(a.GENRES.DÉLAI).CompareTo(e.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0 && e.DATE_RETOUR == null)
                     {
+                        var query = from l in musiqueSQL.EMPRUNTER where l.CODE_ALBUM == a.CODE_ALBUM select l;
+                        EMPRUNTER x = query.First();
+                        x.DATE_RETOUR_ATTENDUE = x.DATE_RETOUR_ATTENDUE.AddMonths(1);
                         e.dejaRenouvelé = true;
                         e.DATE_RETOUR_ATTENDUE = e.DATE_RETOUR_ATTENDUE.AddMonths(1);
                         MessageBox.Show("L'emprunt de l'album " + a.TITRE_ALBUM + " a bien été renouvelé.");
+                        musiqueSQL.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Emprunt déjà prolongé !");
                     }
                 }
             }
@@ -83,6 +93,7 @@ namespace PT2
                     listeGenreEmprunte.Add(e.ALBUMS.GENRES, 1);
                 }
             }
+            
         }
 
         private void ListageRecommandeAlbum()
@@ -92,15 +103,42 @@ namespace PT2
             {
                 foreach (ALBUMS a in gi.Key.ALBUMS)
                 {
-                    listeAlbum.Add(a.EMPRUNTER.Count + (1000 * gi.Value), a);
+                    int cle = (100 * a.EMPRUNTER.Count) + (1000 * gi.Value);
+                    while (listeAlbum.ContainsKey(cle)) { cle++; }
+                    listeAlbum.Add(cle, a);
                 }
             }
             foreach (KeyValuePair<int, ALBUMS> ia in listeAlbum.OrderBy(importance => importance.Key))
             {
                 listeAlbumsRecommande.Add(ia.Value);
             }
+            foreach (ALBUMS b in listeAlbumsRecommande)
+            {
+                listBox1.Items.Add(b.TITRE_ALBUM);
+                Refresh();
+            }
         }
         #endregion
+
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EMPRUNTER a = (EMPRUNTER)listBoxConsultEmprunt.SelectedItem;
+            ProlongerEmprunt(a.CODE_ALBUM);
+        }
+
+        private void listBoxConsultEmprunt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxConsultEmprunt.SelectedItem != null)
+            {
+                button1.Enabled = true;
+            }
+
+            else
+            {
+                button1.Enabled = false;
+            }
+        }
     }
 }
