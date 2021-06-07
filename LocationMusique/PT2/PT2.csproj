@@ -70,6 +70,7 @@
     <Compile Include="EDITEURS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="EditeurUS1_ND.cs" />
     <Compile Include="EMPRUNTER.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
@@ -84,6 +85,7 @@
     <Compile Include="GENRES.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="GenreUS1_ND.cs" />
     <Compile Include="InformationsInvalidesException.cs" />
     <Compile Include="Inscription.cs">
       <SubType>Form</SubType>
