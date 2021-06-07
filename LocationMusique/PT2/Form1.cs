@@ -16,5 +16,12 @@ namespace PT2
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilisateur utilisateur = new Utilisateur();
+            if (utilisateur.ShowDialog() == System.Windows.Forms.DialogResult.OK) { 
+            }
+        }
     }
 }

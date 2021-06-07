@@ -17,9 +17,10 @@ namespace PT2
         Dictionary<GENRES, int> listeGenreEmprunte = new Dictionary<GENRES, int>();
         List<ALBUMS> listeAlbumsRecommande = new List<ALBUMS>();
 
-        public Utilisateur()
+        public Utilisateur(ABONNÉS uti)
         {
             InitializeComponent();
+            utilisateur = uti;
             ActualiseListeEmprunté();
         }
 
