@@ -20,6 +20,7 @@ namespace PT2
         {
             InitializeComponent();
             enRetard();
+            listeAbonnésPurgeables();
         }
 
         private void Admin_Load(object sender, EventArgs e)
@@ -89,29 +90,31 @@ namespace PT2
 
         private void abonnésAPurger()
         {
+            DateTime date = DateTime.UtcNow.AddYears(-1);
             var abonnés = from e in musiqueSQL.EMPRUNTER
                           join alb in musiqueSQL.ALBUMS on e.CODE_ALBUM equals alb.CODE_ALBUM
                           join abo in musiqueSQL.ABONNÉS on e.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          where e.DATE_EMPRUNT.CompareTo(DateTime.UtcNow.AddYears(-1)) <= 0
+                          where e.DATE_EMPRUNT < date
                           select abo;
-            foreach (ABONNÉS a in abonnés)
-            {
-                if (!abonnésPurgeables.Contains(a))
-                    abonnésPurgeables.Add(a);
+            if (abonnés != null) { 
+                foreach (ABONNÉS a in abonnés)
+                 {
+                    if (!abonnésPurgeables.Contains(a))
+                        abonnésPurgeables.Add(a);
+                }
             }
         }
 
         private void listeAbonnésPurgeables()
         {
+            listeAbonnésInactifs.Items.Clear();
             abonnésAPurger();
             if (abonnésPurgeables != null)
             {
-                string s = "";
-                for (int i = 0; i < abonnésPurgeables.Count; i++)
+                foreach (ABONNÉS a in abonnésPurgeables)
                 {
-                    s = s + abonnésPurgeables.ElementAt(i) + "   ";
+                    listeAbonnésInactifs.Items.Add(a.NOM_ABONNÉ.ToString() + " " + a.PRÉNOM_ABONNÉ.ToString() + " " + a.CODE_ABONNÉ.ToString());
                 }
-                MessageBox.Show(s);
             }
         }
 
@@ -122,7 +125,9 @@ namespace PT2
             {
                 if (a.CODE_ABONNÉ == codeAbonné)
                 {
-                    musiqueSQL.ABONNÉS.Remove(a);
+                    var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == a.CODE_ABONNÉ select l;
+                    ABONNÉS x = query.First();
+                    musiqueSQL.ABONNÉS.Remove(x);
                 }
             }
         }
