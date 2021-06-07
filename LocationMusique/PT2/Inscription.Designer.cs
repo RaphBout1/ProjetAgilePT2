@@ -33,7 +33,7 @@ namespace PT2
             this.login = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.Label();
             this.passwordText = new System.Windows.Forms.TextBox();
-            this.nomButton = new System.Windows.Forms.TextBox();
+            this.nomText = new System.Windows.Forms.TextBox();
             this.prenomText = new System.Windows.Forms.TextBox();
             this.nom = new System.Windows.Forms.Label();
             this.prenom = new System.Windows.Forms.Label();
@@ -75,12 +75,12 @@ namespace PT2
             this.passwordText.Size = new System.Drawing.Size(100, 20);
             this.passwordText.TabIndex = 3;
             // 
-            // nomButton
+            // nomText
             // 
-            this.nomButton.Location = new System.Drawing.Point(396, 192);
-            this.nomButton.Name = "nomButton";
-            this.nomButton.Size = new System.Drawing.Size(100, 20);
-            this.nomButton.TabIndex = 4;
+            this.nomText.Location = new System.Drawing.Point(396, 192);
+            this.nomText.Name = "nomText";
+            this.nomText.Size = new System.Drawing.Size(100, 20);
+            this.nomText.TabIndex = 4;
             // 
             // prenomText
             // 
@@ -125,7 +125,7 @@ namespace PT2
             // 
             // submit
             // 
-            this.submit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.submit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.submit.Location = new System.Drawing.Point(651, 359);
             this.submit.Name = "submit";
             this.submit.Size = new System.Drawing.Size(75, 23);
@@ -156,7 +156,7 @@ namespace PT2
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
             this.Controls.Add(this.prenomText);
-            this.Controls.Add(this.nomButton);
+            this.Controls.Add(this.nomText);
             this.Controls.Add(this.passwordText);
             this.Controls.Add(this.password);
             this.Controls.Add(this.login);
@@ -174,7 +174,7 @@ namespace PT2
         private System.Windows.Forms.Label login;
         private System.Windows.Forms.Label password;
         private System.Windows.Forms.TextBox passwordText;
-        private System.Windows.Forms.TextBox nomButton;
+        private System.Windows.Forms.TextBox nomText;
         private System.Windows.Forms.TextBox prenomText;
         private System.Windows.Forms.Label nom;
         private System.Windows.Forms.Label prenom;
