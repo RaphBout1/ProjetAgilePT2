@@ -6,12 +6,12 @@
 //     Les modifications manuelles apportées à ce fichier sont remplacées si le code est régénéré.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace PT2
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
     
     public partial class MusiquePT2_DEntities : DbContext
     {
