@@ -34,11 +34,11 @@ namespace PT2
             this.password = new System.Windows.Forms.Label();
             this.passwordText = new System.Windows.Forms.TextBox();
             this.nomButton = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.prenomText = new System.Windows.Forms.TextBox();
+            this.nom = new System.Windows.Forms.Label();
+            this.prenom = new System.Windows.Forms.Label();
+            this.pays = new System.Windows.Forms.Label();
+            this.paysText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // loginText
@@ -80,57 +80,57 @@ namespace PT2
             this.nomButton.Size = new System.Drawing.Size(100, 20);
             this.nomButton.TabIndex = 4;
             // 
-            // textBox4
+            // prenomText
             // 
-            this.textBox4.Location = new System.Drawing.Point(396, 247);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 5;
+            this.prenomText.Location = new System.Drawing.Point(396, 247);
+            this.prenomText.Name = "prenomText";
+            this.prenomText.Size = new System.Drawing.Size(100, 20);
+            this.prenomText.TabIndex = 5;
             // 
-            // label3
+            // nom
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(143, 192);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "label3";
+            this.nom.AutoSize = true;
+            this.nom.Location = new System.Drawing.Point(143, 192);
+            this.nom.Name = "nom";
+            this.nom.Size = new System.Drawing.Size(27, 13);
+            this.nom.TabIndex = 6;
+            this.nom.Text = "nom";
             // 
-            // label4
+            // prenom
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(143, 247);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "label4";
+            this.prenom.AutoSize = true;
+            this.prenom.Location = new System.Drawing.Point(143, 247);
+            this.prenom.Name = "prenom";
+            this.prenom.Size = new System.Drawing.Size(42, 13);
+            this.prenom.TabIndex = 7;
+            this.prenom.Text = "prenom";
             // 
-            // label5
+            // pays
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(143, 306);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "label5";
+            this.pays.AutoSize = true;
+            this.pays.Location = new System.Drawing.Point(143, 306);
+            this.pays.Name = "pays";
+            this.pays.Size = new System.Drawing.Size(29, 13);
+            this.pays.TabIndex = 8;
+            this.pays.Text = "pays";
             // 
-            // textBox5
+            // paysText
             // 
-            this.textBox5.Location = new System.Drawing.Point(396, 306);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 9;
+            this.paysText.Location = new System.Drawing.Point(396, 306);
+            this.paysText.Name = "paysText";
+            this.paysText.Size = new System.Drawing.Size(100, 20);
+            this.paysText.TabIndex = 9;
             // 
             // Inscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.paysText);
+            this.Controls.Add(this.pays);
+            this.Controls.Add(this.prenom);
+            this.Controls.Add(this.nom);
+            this.Controls.Add(this.prenomText);
             this.Controls.Add(this.nomButton);
             this.Controls.Add(this.passwordText);
             this.Controls.Add(this.password);
@@ -150,10 +150,10 @@ namespace PT2
         private System.Windows.Forms.Label password;
         private System.Windows.Forms.TextBox passwordText;
         private System.Windows.Forms.TextBox nomButton;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox prenomText;
+        private System.Windows.Forms.Label nom;
+        private System.Windows.Forms.Label prenom;
+        private System.Windows.Forms.Label pays;
+        private System.Windows.Forms.TextBox paysText;
     }
 }
