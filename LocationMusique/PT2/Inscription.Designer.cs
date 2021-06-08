@@ -31,92 +31,53 @@ namespace PT2
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inscription));
             this.loginText = new System.Windows.Forms.TextBox();
-            this.login = new System.Windows.Forms.Label();
-            this.password = new System.Windows.Forms.Label();
             this.passwordText = new System.Windows.Forms.TextBox();
             this.nomText = new System.Windows.Forms.TextBox();
             this.prenomText = new System.Windows.Forms.TextBox();
-            this.nom = new System.Windows.Forms.Label();
-            this.prenom = new System.Windows.Forms.Label();
-            this.pays = new System.Windows.Forms.Label();
             this.submit = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.paysComboBox = new System.Windows.Forms.ComboBox();
             this.suiteButton = new System.Windows.Forms.Button();
+            this.nomPrenomPaysImage = new System.Windows.Forms.PictureBox();
+            this.loginmdpImage = new System.Windows.Forms.PictureBox();
+            this.retour = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.nomPrenomPaysImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginmdpImage)).BeginInit();
             this.SuspendLayout();
             // 
             // loginText
             // 
-            this.loginText.Location = new System.Drawing.Point(396, 87);
+            this.loginText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginText.Location = new System.Drawing.Point(1093, 96);
             this.loginText.Name = "loginText";
-            this.loginText.Size = new System.Drawing.Size(100, 20);
+            this.loginText.Size = new System.Drawing.Size(408, 35);
             this.loginText.TabIndex = 0;
-            // 
-            // login
-            // 
-            this.login.AutoSize = true;
-            this.login.Location = new System.Drawing.Point(140, 87);
-            this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(29, 13);
-            this.login.TabIndex = 1;
-            this.login.Text = "login";
-            // 
-            // password
-            // 
-            this.password.AutoSize = true;
-            this.password.Location = new System.Drawing.Point(143, 147);
-            this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(52, 13);
-            this.password.TabIndex = 2;
-            this.password.Text = "password";
             // 
             // passwordText
             // 
-            this.passwordText.Location = new System.Drawing.Point(396, 139);
+            this.passwordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordText.Location = new System.Drawing.Point(1093, 240);
             this.passwordText.Name = "passwordText";
-            this.passwordText.Size = new System.Drawing.Size(100, 20);
+            this.passwordText.PasswordChar = '*';
+            this.passwordText.Size = new System.Drawing.Size(408, 35);
             this.passwordText.TabIndex = 3;
+            this.passwordText.UseSystemPasswordChar = true;
             // 
             // nomText
             // 
-            this.nomText.Location = new System.Drawing.Point(1115, 123);
+            this.nomText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomText.Location = new System.Drawing.Point(1029, 75);
             this.nomText.Name = "nomText";
-            this.nomText.Size = new System.Drawing.Size(100, 20);
+            this.nomText.Size = new System.Drawing.Size(472, 35);
             this.nomText.TabIndex = 4;
             // 
             // prenomText
             // 
-            this.prenomText.Location = new System.Drawing.Point(1115, 192);
+            this.prenomText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prenomText.Location = new System.Drawing.Point(1029, 161);
             this.prenomText.Name = "prenomText";
-            this.prenomText.Size = new System.Drawing.Size(100, 20);
+            this.prenomText.Size = new System.Drawing.Size(472, 35);
             this.prenomText.TabIndex = 5;
-            // 
-            // nom
-            // 
-            this.nom.AutoSize = true;
-            this.nom.Location = new System.Drawing.Point(1073, 123);
-            this.nom.Name = "nom";
-            this.nom.Size = new System.Drawing.Size(27, 13);
-            this.nom.TabIndex = 6;
-            this.nom.Text = "nom";
-            // 
-            // prenom
-            // 
-            this.prenom.AutoSize = true;
-            this.prenom.Location = new System.Drawing.Point(1058, 192);
-            this.prenom.Name = "prenom";
-            this.prenom.Size = new System.Drawing.Size(42, 13);
-            this.prenom.TabIndex = 7;
-            this.prenom.Text = "prenom";
-            // 
-            // pays
-            // 
-            this.pays.AutoSize = true;
-            this.pays.Location = new System.Drawing.Point(143, 306);
-            this.pays.Name = "pays";
-            this.pays.Size = new System.Drawing.Size(29, 13);
-            this.pays.TabIndex = 8;
-            this.pays.Text = "pays";
             // 
             // submit
             // 
@@ -126,6 +87,7 @@ namespace PT2
             this.submit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.submit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.submit.FlatAppearance.BorderSize = 0;
+            this.submit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submit.Location = new System.Drawing.Point(1029, 754);
             this.submit.Name = "submit";
@@ -142,6 +104,7 @@ namespace PT2
             this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Location = new System.Drawing.Point(143, 754);
             this.cancelButton.Name = "cancelButton";
@@ -152,10 +115,11 @@ namespace PT2
             // 
             // paysComboBox
             // 
+            this.paysComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paysComboBox.FormattingEnabled = true;
-            this.paysComboBox.Location = new System.Drawing.Point(396, 303);
+            this.paysComboBox.Location = new System.Drawing.Point(1029, 252);
             this.paysComboBox.Name = "paysComboBox";
-            this.paysComboBox.Size = new System.Drawing.Size(100, 21);
+            this.paysComboBox.Size = new System.Drawing.Size(472, 37);
             this.paysComboBox.TabIndex = 12;
             // 
             // suiteButton
@@ -165,13 +129,51 @@ namespace PT2
             this.suiteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.suiteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.suiteButton.FlatAppearance.BorderSize = 0;
+            this.suiteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.suiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.suiteButton.Location = new System.Drawing.Point(1029, 673);
+            this.suiteButton.Location = new System.Drawing.Point(1051, 754);
             this.suiteButton.Name = "suiteButton";
-            this.suiteButton.Size = new System.Drawing.Size(373, 75);
+            this.suiteButton.Size = new System.Drawing.Size(374, 80);
             this.suiteButton.TabIndex = 13;
             this.suiteButton.Text = " ";
             this.suiteButton.UseVisualStyleBackColor = false;
+            this.suiteButton.Click += new System.EventHandler(this.suiteButton_Click);
+            // 
+            // nomPrenomPaysImage
+            // 
+            this.nomPrenomPaysImage.BackColor = System.Drawing.Color.Transparent;
+            this.nomPrenomPaysImage.Image = ((System.Drawing.Image)(resources.GetObject("nomPrenomPaysImage.Image")));
+            this.nomPrenomPaysImage.Location = new System.Drawing.Point(838, 35);
+            this.nomPrenomPaysImage.Name = "nomPrenomPaysImage";
+            this.nomPrenomPaysImage.Size = new System.Drawing.Size(214, 284);
+            this.nomPrenomPaysImage.TabIndex = 14;
+            this.nomPrenomPaysImage.TabStop = false;
+            // 
+            // loginmdpImage
+            // 
+            this.loginmdpImage.BackColor = System.Drawing.Color.Transparent;
+            this.loginmdpImage.Image = ((System.Drawing.Image)(resources.GetObject("loginmdpImage.Image")));
+            this.loginmdpImage.Location = new System.Drawing.Point(828, -3);
+            this.loginmdpImage.Name = "loginmdpImage";
+            this.loginmdpImage.Size = new System.Drawing.Size(280, 356);
+            this.loginmdpImage.TabIndex = 15;
+            this.loginmdpImage.TabStop = false;
+            // 
+            // retour
+            // 
+            this.retour.BackColor = System.Drawing.Color.Transparent;
+            this.retour.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("retour.BackgroundImage")));
+            this.retour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.retour.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.retour.FlatAppearance.BorderSize = 0;
+            this.retour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.retour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.retour.Location = new System.Drawing.Point(143, 753);
+            this.retour.Name = "retour";
+            this.retour.Size = new System.Drawing.Size(411, 83);
+            this.retour.TabIndex = 16;
+            this.retour.UseVisualStyleBackColor = false;
+            this.retour.Click += new System.EventHandler(this.retour_Click);
             // 
             // Inscription
             // 
@@ -181,21 +183,22 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.retour);
+            this.Controls.Add(this.passwordText);
+            this.Controls.Add(this.loginText);
+            this.Controls.Add(this.loginmdpImage);
             this.Controls.Add(this.suiteButton);
             this.Controls.Add(this.paysComboBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submit);
-            this.Controls.Add(this.pays);
-            this.Controls.Add(this.prenom);
-            this.Controls.Add(this.nom);
             this.Controls.Add(this.prenomText);
             this.Controls.Add(this.nomText);
-            this.Controls.Add(this.passwordText);
-            this.Controls.Add(this.password);
-            this.Controls.Add(this.login);
-            this.Controls.Add(this.loginText);
+            this.Controls.Add(this.nomPrenomPaysImage);
+            this.DoubleBuffered = true;
             this.Name = "Inscription";
             this.Text = "Inscription";
+            ((System.ComponentModel.ISupportInitialize)(this.nomPrenomPaysImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginmdpImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,17 +207,15 @@ namespace PT2
         #endregion
 
         private System.Windows.Forms.TextBox loginText;
-        private System.Windows.Forms.Label login;
-        private System.Windows.Forms.Label password;
         private System.Windows.Forms.TextBox passwordText;
         private System.Windows.Forms.TextBox nomText;
         private System.Windows.Forms.TextBox prenomText;
-        private System.Windows.Forms.Label nom;
-        private System.Windows.Forms.Label prenom;
-        private System.Windows.Forms.Label pays;
         private System.Windows.Forms.Button submit;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ComboBox paysComboBox;
         private System.Windows.Forms.Button suiteButton;
+        private System.Windows.Forms.PictureBox nomPrenomPaysImage;
+        private System.Windows.Forms.PictureBox loginmdpImage;
+        private System.Windows.Forms.Button retour;
     }
 }
