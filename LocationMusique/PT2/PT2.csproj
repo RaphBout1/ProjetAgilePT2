@@ -117,6 +117,7 @@
     <Compile Include="PAYS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="PaysExtend.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProlongementEmpruntException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -38,9 +38,9 @@ namespace PT2
             this.nom = new System.Windows.Forms.Label();
             this.prenom = new System.Windows.Forms.Label();
             this.pays = new System.Windows.Forms.Label();
-            this.paysText = new System.Windows.Forms.TextBox();
             this.submit = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.paysComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // loginText
@@ -116,13 +116,6 @@ namespace PT2
             this.pays.TabIndex = 8;
             this.pays.Text = "pays";
             // 
-            // paysText
-            // 
-            this.paysText.Location = new System.Drawing.Point(396, 306);
-            this.paysText.Name = "paysText";
-            this.paysText.Size = new System.Drawing.Size(100, 20);
-            this.paysText.TabIndex = 9;
-            // 
             // submit
             // 
             this.submit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -144,14 +137,22 @@ namespace PT2
             this.cancelButton.Text = "cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // paysComboBox
+            // 
+            this.paysComboBox.FormattingEnabled = true;
+            this.paysComboBox.Location = new System.Drawing.Point(396, 303);
+            this.paysComboBox.Name = "paysComboBox";
+            this.paysComboBox.Size = new System.Drawing.Size(100, 21);
+            this.paysComboBox.TabIndex = 12;
+            // 
             // Inscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.paysComboBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submit);
-            this.Controls.Add(this.paysText);
             this.Controls.Add(this.pays);
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
@@ -179,8 +180,8 @@ namespace PT2
         private System.Windows.Forms.Label nom;
         private System.Windows.Forms.Label prenom;
         private System.Windows.Forms.Label pays;
-        private System.Windows.Forms.TextBox paysText;
         private System.Windows.Forms.Button submit;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.ComboBox paysComboBox;
     }
 }
