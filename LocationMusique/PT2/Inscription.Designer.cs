@@ -42,7 +42,7 @@ namespace PT2
             this.submit = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.paysComboBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.suiteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginText
@@ -124,6 +124,7 @@ namespace PT2
             this.submit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("submit.BackgroundImage")));
             this.submit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.submit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.submit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.submit.FlatAppearance.BorderSize = 0;
             this.submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submit.Location = new System.Drawing.Point(1029, 754);
@@ -157,16 +158,20 @@ namespace PT2
             this.paysComboBox.Size = new System.Drawing.Size(100, 21);
             this.paysComboBox.TabIndex = 12;
             // 
-            // button1
+            // suiteButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.Location = new System.Drawing.Point(1029, 673);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(373, 75);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.suiteButton.BackColor = System.Drawing.Color.Transparent;
+            this.suiteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("suiteButton.BackgroundImage")));
+            this.suiteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.suiteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suiteButton.FlatAppearance.BorderSize = 0;
+            this.suiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.suiteButton.Location = new System.Drawing.Point(1029, 673);
+            this.suiteButton.Name = "suiteButton";
+            this.suiteButton.Size = new System.Drawing.Size(373, 75);
+            this.suiteButton.TabIndex = 13;
+            this.suiteButton.Text = " ";
+            this.suiteButton.UseVisualStyleBackColor = false;
             // 
             // Inscription
             // 
@@ -176,7 +181,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.suiteButton);
             this.Controls.Add(this.paysComboBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submit);
@@ -210,6 +215,6 @@ namespace PT2
         private System.Windows.Forms.Button submit;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ComboBox paysComboBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button suiteButton;
     }
 }
