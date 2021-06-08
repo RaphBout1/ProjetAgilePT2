@@ -71,7 +71,7 @@ namespace PT2
             EMPRUNTER nouvelEmprunt = new EMPRUNTER();
             nouvelEmprunt.CODE_ABONNÉ= utilisateur.CODE_ABONNÉ;
             nouvelEmprunt.CODE_ALBUM = albumAEmprunter.CODE_ALBUM;
-            nouvelEmprunt.DATE_EMPRUNT = DateTime.UtcNow;
+            nouvelEmprunt.DATE_EMPRUNT = monthCalendarClassique.SelectionStart;
             nouvelEmprunt.DATE_RETOUR_ATTENDUE = nouvelEmprunt.DATE_EMPRUNT.AddDays(albumAEmprunter.GENRES.DÉLAI);
             musiqueSQL.EMPRUNTER.Add(nouvelEmprunt);
             musiqueSQL.SaveChanges();

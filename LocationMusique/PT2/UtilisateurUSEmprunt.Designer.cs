@@ -34,6 +34,7 @@ namespace PT2
             this.nUDNumeroAlbumAEmprunter = new System.Windows.Forms.NumericUpDown();
             this.comboBoxTitreAlbumAEmprunter = new System.Windows.Forms.ComboBox();
             this.boutonEmprunterAlbumPrecis = new System.Windows.Forms.Button();
+            this.monthCalendarClassique = new System.Windows.Forms.MonthCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.nUDNumeroAlbumAEmprunter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,11 +83,18 @@ namespace PT2
             this.boutonEmprunterAlbumPrecis.UseVisualStyleBackColor = true;
             this.boutonEmprunterAlbumPrecis.Click += new System.EventHandler(this.boutonEmprunterAlbumPrecis_Click);
             // 
+            // monthCalendarClassique
+            // 
+            this.monthCalendarClassique.Location = new System.Drawing.Point(18, 106);
+            this.monthCalendarClassique.Name = "monthCalendarClassique";
+            this.monthCalendarClassique.TabIndex = 5;
+            // 
             // UtilisateurUSEmprunt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.monthCalendarClassique);
             this.Controls.Add(this.boutonEmprunterAlbumPrecis);
             this.Controls.Add(this.comboBoxTitreAlbumAEmprunter);
             this.Controls.Add(this.nUDNumeroAlbumAEmprunter);
@@ -107,5 +115,6 @@ namespace PT2
         private System.Windows.Forms.NumericUpDown nUDNumeroAlbumAEmprunter;
         private System.Windows.Forms.ComboBox comboBoxTitreAlbumAEmprunter;
         private System.Windows.Forms.Button boutonEmprunterAlbumPrecis;
+        private System.Windows.Forms.MonthCalendar monthCalendarClassique;
     }
 }
