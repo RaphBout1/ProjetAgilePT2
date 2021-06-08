@@ -27,12 +27,12 @@ namespace PT2
             }
         }
 
-        MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
+        public static MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
 
         /**
          * crée un nouvel abonné dans la base si les informations données sont valides
          */
-        public void abonner(string nom, string prenom, string pays, string login, string password)
+        public static void abonner(string nom, string prenom, string pays, string login, string password)
         {
             if (nom.Length < 1 || prenom.Length < 1)
             {
