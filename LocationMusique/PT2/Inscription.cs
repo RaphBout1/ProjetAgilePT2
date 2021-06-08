@@ -15,9 +15,20 @@ namespace PT2
         public Inscription()
         {
             InitializeComponent();
+            chargerPays();
+        }
+
+        public void chargerPays()
+        {
+            var pays = from p in musiqueSQL.PAYS orderby p.NOM_PAYS select p;
+            foreach (var p in pays)
+            {
+                paysComboBox.Items.Add(p.ToString().Trim());
+            }
         }
 
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
+
         /**
          * crée un nouvel abonné dans la base si les informations données sont valides
          */
@@ -62,7 +73,7 @@ namespace PT2
 
         private void submit_Click(object sender, EventArgs e)
         {
-            abonner(nomText.Text, prenomText.Text, paysText.Text, loginText.Text, passwordText.Text);
+            abonner(nomText.Text, prenomText.Text, paysComboBox.Text, loginText.Text, passwordText.Text);
         }
     }
 }

@@ -18,7 +18,6 @@ namespace PT2
         ABONNÉS utilisateur;
         public UtilisateurUSEmprunt(ABONNÉS utilisateur)
         {
-
             InitializeComponent();
             initComboBoxEmprunt();
             this.utilisateur = utilisateur;
