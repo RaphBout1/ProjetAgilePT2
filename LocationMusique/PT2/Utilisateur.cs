@@ -31,7 +31,7 @@ namespace PT2
         /**
          * Actualise l'affichage des emprunts
          */
-        private void ActualiseListeEmprunté()
+        public void ActualiseListeEmprunté()
         {
             if (utilisateur != null)
             {
@@ -42,7 +42,7 @@ namespace PT2
                               select em;
                 foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
                 {
-                    if (!utilisateur.EMPRUNTER.Contains(e))
+                    if (!utilisateur.EMPRUNTER.Equals(e))
                     {
                         utilisateur.EMPRUNTER.Add(e);
                     }
