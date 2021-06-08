@@ -18,6 +18,45 @@ namespace PT2Test
         EMPRUNTER empruntTest3;
         List<EMPRUNTER> resultatAttendu = new List<EMPRUNTER>();
         Utilisateur utilisateur;
+        #region init Sans Implémenter base
+        private void initTotal()
+        {
+            var abonne = from a in TestSQL.ABONNÉS
+                         where a.LOGIN_ABONNÉ == "Test"
+                            && a.NOM_ABONNÉ == "Test"
+                            && a.PRÉNOM_ABONNÉ == "Test"
+                         select a;
+            foreach (ABONNÉS a in abonne)
+            {
+                abonneTest = a;
+            }
+            utilisateur = new Utilisateur(abonneTest);
+            var emprunt = from e in TestSQL.EMPRUNTER
+                          where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
+                             && e.CODE_ALBUM == 500
+                          select e;
+            foreach (EMPRUNTER e in emprunt)
+            {
+                empruntTest = e;
+            }
+            emprunt = from e in TestSQL.EMPRUNTER
+                      where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
+                         && e.CODE_ALBUM == 480
+                      select e;
+            foreach (EMPRUNTER e in emprunt)
+            {
+                empruntTest2 = e;
+            }
+            emprunt = from e in TestSQL.EMPRUNTER
+                      where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
+                         && e.CODE_ALBUM == 514
+                      select e;
+            foreach (EMPRUNTER e in emprunt)
+            {
+                empruntTest3 = e;
+            }
+        }
+        #endregion
 
         #region initialisation des attribut
         /// <summary>
@@ -108,9 +147,9 @@ namespace PT2Test
         [TestMethod]
         public void TestActualiseListeEmprunté()
         {
-            //nettoyageBase();
-            initAboTest();
-            initEmprunt();
+            //initAboTest();
+            //initEmprunt();
+            initTotal();
             utilisateur.ActualiseListeEmprunté();
             int empruntATrouver = 3;
             Assert.AreEqual(empruntATrouver, abonneTest.EMPRUNTER.Count());
