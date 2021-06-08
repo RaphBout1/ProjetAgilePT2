@@ -28,6 +28,9 @@ namespace PT2
             ActualiseListeEmprunté();
         }
 
+        /**
+         * Actualise l'affichage des emprunts
+         */
         private void ActualiseListeEmprunté()
         {
             if (utilisateur != null)
@@ -35,12 +38,15 @@ namespace PT2
                 listBoxConsultEmprunt.Items.Clear();
                 foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
                 {
-                    listBoxConsultEmprunt.Items.Add(e);
+                    listBoxConsultEmprunt.Items.Add((from em in musiqueSQL.EMPRUNTER where em.CODE_ABONNÉ == e.CODE_ABONNÉ && em.CODE_ALBUM == e.CODE_ALBUM select em).First());
                 }
             }
             Refresh();
         }
 
+        /**
+         * Tente de prolonger l'emprunt passé en paramètre
+         */
         public void ProlongerEmprunt(EMPRUNTER em)
         {
             EMPRUNTER emDb = (from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == em.CODE_ABONNÉ && e.CODE_ALBUM == em.CODE_ALBUM select e).FirstOrDefault();
@@ -108,7 +114,7 @@ namespace PT2
             }
             foreach (ALBUMS b in listeAlbumsRecommande)
             {
-                listBox1.Items.Add(b.TITRE_ALBUM);
+                recommandationsListBox.Items.Add(b.TITRE_ALBUM);
                 Refresh();
             }
         }
@@ -116,19 +122,24 @@ namespace PT2
 
         #endregion
 
+        /**
+         * Gère l'activation du bouton pour prolonger un emprunt (après sélection d'un item dans la listbox)
+         */
         private void listBoxConsultEmprunt_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxConsultEmprunt.SelectedItem != null)
             {
                 prolonger1Button.Enabled = true;
             }
-
             else
             {
                 prolonger1Button.Enabled = false;
             }
         }
 
+        /**
+         * Appelle les fonctions nécessaires au prolongement de tous les emprunts
+         */
         private void prolongerTousButton_Click(object sender, EventArgs e)
         {
             foreach (EMPRUNTER em in utilisateur.EMPRUNTER)
@@ -137,7 +148,7 @@ namespace PT2
                 {
                     ProlongerEmprunt(em);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -146,6 +157,9 @@ namespace PT2
             MessageBox.Show("Tous vos emprunts prolongeables ont été prolongés d'un mois.");
         }
 
+        /**
+         * Appelle les fonctions nécessaires au prolongement d'un certain emprunt
+         */
         private void prolonger1Button_Click(object sender, EventArgs e)
         {
             try
