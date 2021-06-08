@@ -40,28 +40,41 @@ namespace PT2
             // 
             // pseudo
             // 
-            this.pseudo.Location = new System.Drawing.Point(31, 88);
+            this.pseudo.BackColor = System.Drawing.Color.Lavender;
+            this.pseudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pseudo.Location = new System.Drawing.Point(405, 256);
+            this.pseudo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pseudo.Name = "pseudo";
-            this.pseudo.Size = new System.Drawing.Size(100, 20);
+            this.pseudo.Size = new System.Drawing.Size(737, 41);
             this.pseudo.TabIndex = 1;
             // 
             // mdp
             // 
-            this.mdp.Location = new System.Drawing.Point(31, 136);
+            this.mdp.BackColor = System.Drawing.Color.Lavender;
+            this.mdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mdp.Location = new System.Drawing.Point(405, 386);
+            this.mdp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mdp.Name = "mdp";
             this.mdp.PasswordChar = '*';
-            this.mdp.Size = new System.Drawing.Size(100, 20);
+            this.mdp.Size = new System.Drawing.Size(737, 41);
             this.mdp.TabIndex = 2;
             this.mdp.UseSystemPasswordChar = true;
             // 
             // connectbutton
             // 
-            this.connectbutton.Location = new System.Drawing.Point(31, 182);
+            this.connectbutton.BackColor = System.Drawing.Color.Transparent;
+            this.connectbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("connectbutton.BackgroundImage")));
+            this.connectbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.connectbutton.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.connectbutton.FlatAppearance.BorderSize = 0;
+            this.connectbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connectbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectbutton.Location = new System.Drawing.Point(717, 768);
+            this.connectbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.connectbutton.Name = "connectbutton";
-            this.connectbutton.Size = new System.Drawing.Size(75, 23);
+            this.connectbutton.Size = new System.Drawing.Size(543, 96);
             this.connectbutton.TabIndex = 3;
-            this.connectbutton.Text = "Connexion";
-            this.connectbutton.UseVisualStyleBackColor = true;
+            this.connectbutton.UseVisualStyleBackColor = false;
             // 
             // InscriptionButton
             // 
@@ -70,10 +83,11 @@ namespace PT2
             this.InscriptionButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.InscriptionButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.InscriptionButton.FlatAppearance.BorderSize = 0;
-            this.InscriptionButton.Location = new System.Drawing.Point(755, 872);
-            this.InscriptionButton.Margin = new System.Windows.Forms.Padding(4);
+            this.InscriptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InscriptionButton.Location = new System.Drawing.Point(753, 882);
+            this.InscriptionButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.InscriptionButton.Name = "InscriptionButton";
-            this.InscriptionButton.Size = new System.Drawing.Size(375, 51);
+            this.InscriptionButton.Size = new System.Drawing.Size(473, 48);
             this.InscriptionButton.TabIndex = 4;
             this.InscriptionButton.Text = " ";
             this.InscriptionButton.UseVisualStyleBackColor = false;
@@ -81,10 +95,10 @@ namespace PT2
             // 
             // UtilisateurButton
             // 
-            this.UtilisateurButton.Location = new System.Drawing.Point(697, 693);
-            this.UtilisateurButton.Margin = new System.Windows.Forms.Padding(4);
+            this.UtilisateurButton.Location = new System.Drawing.Point(1108, 710);
+            this.UtilisateurButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.UtilisateurButton.Name = "UtilisateurButton";
-            this.UtilisateurButton.Size = new System.Drawing.Size(100, 28);
+            this.UtilisateurButton.Size = new System.Drawing.Size(133, 34);
             this.UtilisateurButton.TabIndex = 5;
             this.UtilisateurButton.Text = "Utilisateur";
             this.UtilisateurButton.UseVisualStyleBackColor = true;
@@ -92,10 +106,10 @@ namespace PT2
             // 
             // AdminButton
             // 
-            this.AdminButton.Location = new System.Drawing.Point(1107, 706);
-            this.AdminButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AdminButton.Location = new System.Drawing.Point(717, 710);
+            this.AdminButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.AdminButton.Name = "AdminButton";
-            this.AdminButton.Size = new System.Drawing.Size(100, 28);
+            this.AdminButton.Size = new System.Drawing.Size(133, 34);
             this.AdminButton.TabIndex = 6;
             this.AdminButton.Text = "Admin";
             this.AdminButton.UseVisualStyleBackColor = true;
@@ -103,7 +117,7 @@ namespace PT2
             // 
             // Connexion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -114,7 +128,8 @@ namespace PT2
             this.Controls.Add(this.connectbutton);
             this.Controls.Add(this.mdp);
             this.Controls.Add(this.pseudo);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "Connexion";
             this.Text = "Discothèque";
             this.ResumeLayout(false);
