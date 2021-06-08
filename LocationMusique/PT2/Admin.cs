@@ -111,15 +111,14 @@ namespace PT2
         private void purgerAbonné(int codeAbonné)
         {
             abonnésAPurger();
-            foreach (ABONNÉS a in abonnésPurgeables)
-            {
-                if (a.CODE_ABONNÉ == codeAbonné)
-                {
-                    var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == a.CODE_ABONNÉ select l;
+            
+                
+                    var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l;
                     ABONNÉS x = query.First();
                     musiqueSQL.ABONNÉS.Remove(x);
-                }
-            }
+                    musiqueSQL.SaveChanges();
+                
+            
         }
 
         private void purgebutton_Click(object sender, EventArgs e)
