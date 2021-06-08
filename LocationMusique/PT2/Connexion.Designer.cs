@@ -29,6 +29,7 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Connexion));
             this.pseudo = new System.Windows.Forms.TextBox();
             this.mdp = new System.Windows.Forms.TextBox();
             this.connectbutton = new System.Windows.Forms.Button();
@@ -76,7 +77,7 @@ namespace PT2
             this.InscriptionButton.TabIndex = 4;
             this.InscriptionButton.Text = " ";
             this.InscriptionButton.UseVisualStyleBackColor = false;
-            this.InscriptionButton.Click += new System.EventHandler(this.button1_Click);
+            this.InscriptionButton.Click += new System.EventHandler(this.InscriptionButton_Click);
             // 
             // UtilisateurButton
             // 
@@ -87,7 +88,7 @@ namespace PT2
             this.UtilisateurButton.TabIndex = 5;
             this.UtilisateurButton.Text = "Utilisateur";
             this.UtilisateurButton.UseVisualStyleBackColor = true;
-            this.UtilisateurButton.Click += new System.EventHandler(this.button2_Click);
+            this.UtilisateurButton.Click += new System.EventHandler(this.UtilisateurButton_Click);
             // 
             // AdminButton
             // 
@@ -98,7 +99,7 @@ namespace PT2
             this.AdminButton.TabIndex = 6;
             this.AdminButton.Text = "Admin";
             this.AdminButton.UseVisualStyleBackColor = true;
-            this.AdminButton.Click += new System.EventHandler(this.button3_Click);
+            this.AdminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
             // Connexion
             // 
