@@ -13,9 +13,9 @@ namespace PT2
     public partial class Admin : Form
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
-        
+
         private HashSet<ABONNÉS> abonnésPurgeables = new HashSet<ABONNÉS>();
-        HashSet<ALBUMS> lesPlusEmprunté = new HashSet<ALBUMS>();
+
         public Admin()
         {
             InitializeComponent();
@@ -34,13 +34,13 @@ namespace PT2
         {
             List<ABONNÉS> enretard10 = new List<ABONNÉS>();
             var listemprunt = from l in musiqueSQL.EMPRUNTER select l;
-            foreach(EMPRUNTER e in listemprunt)
+            foreach (EMPRUNTER e in listemprunt)
             {
                 if (e.enRetard())
                 {
                     enretard10.Add(e.ABONNÉS);
                     listBox1.Items.Add(e.ABONNÉS);
-                    
+
                 }
             }
             Refresh();
@@ -49,44 +49,84 @@ namespace PT2
 
         private void LivreEmprunteProlongé()
         {
-             var lesLivresEmpruntes =
-                    from m in musiqueSQL.EMPRUNTER
-                    select m;
+            var lesLivresEmpruntes =
+                   from m in musiqueSQL.EMPRUNTER
+                   select m;
 
-                foreach (EMPRUNTER m in lesLivresEmpruntes)
+            foreach (EMPRUNTER m in lesLivresEmpruntes)
+            {
+                if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
                 {
-                    if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
-                    {
-                        listBox2.Items.Add(m);
-                    }
-
+                    listBox2.Items.Add(m);
                 }
-            
+
+            }
+
             Refresh();
         }
 
-        public void DixPlusVue()
+
+        /// <summary>
+        /// Méthode permettant renvoyant une liste d'album
+        /// Cette dernière contient les 10 albums les plus empruntés de la base
+        /// </summary>
+        /// <returns> une List<ALBUMS> ne contenant que les 10 albums les plus vues</returns>
+        public List<ALBUMS> DixPlusVue()
         {
-            lesPlusEmprunté.Clear();
+            List<ALBUMS> lesDixPlusEmprunte = new List<ALBUMS>();
+            lesDixPlusEmprunte.Clear();
             var lesAlbums = from a in musiqueSQL.ALBUMS select a;
             foreach (ALBUMS a in lesAlbums)
             {
-                if (lesPlusEmprunté.Count() <= 10)
+                int compteurBoucle;
+                bool placeTrouver = false;
+                //Rempli la liste en comparant à partir du plus vue
+                //Permet de remplir la liste quand elle n'est pas pleine (inférieur à 10)
+                if (lesDixPlusEmprunte.Count() < 10)
                 {
-                    lesPlusEmprunté.Add(a);
+                    compteurBoucle = 0;
+                    while (!placeTrouver && compteurBoucle < 10)
+                    {
+                        if (lesDixPlusEmprunte[compteurBoucle] == null) { lesDixPlusEmprunte[compteurBoucle] = a; }
+                        else if (lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() <= a.EMPRUNTER.Count())
+                        {
+                            placeTrouver = true;
+                            DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle);
+                        }
+                    }
                 }
+                //Remplie la liste en comparant à partir du moins vue
                 else
                 {
-                    foreach (ALBUMS pe in lesPlusEmprunté)
+                    compteurBoucle = 9;
+                    while (!placeTrouver && compteurBoucle > 0)
                     {
-                        if (a.EMPRUNTER.Count > pe.EMPRUNTER.Count)
+                        if (!(lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() < a.EMPRUNTER.Count()))
                         {
-                            lesPlusEmprunté.Remove(pe);
-                            lesPlusEmprunté.Add(a);
+                            placeTrouver = true;
+                            if (compteurBoucle != 9) { DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle - 1); }
                         }
                     }
                 }
             }
+            return lesDixPlusEmprunte;
+        }
+        /// <summary>
+        /// Permet d'effectuer un décalage droite dans une List<ALBUMS>
+        /// en indiquant l'objet à placer après décalage et son index
+        /// </summary>
+        /// <param name="la"> la liste devant subir le décalage</param>
+        /// <param name="a"> l'album a placé dans la liste</param>
+        /// <param name="index"> l'index où doit être placé le nouveaux albums</param>
+        private static void DecaleDroiteAlbum(List<ALBUMS> la, ALBUMS a, int index)
+        {
+
+            for (int compteurInverse = 11; compteurInverse > index; compteurInverse--)
+            {
+                la[compteurInverse] = la[compteurInverse - 1];
+            }
+            la[index] = a;
+            la.Remove(la[11]);
         }
 
         private void abonnésAPurger()
@@ -99,14 +139,14 @@ namespace PT2
                           select abo;
             foreach (ABONNÉS a in abonnés)
                 if (!abonnésPurgeables.Contains(a))
-            {
+                {
                     abonnésPurgeables.Add(a);
-                listBox3.Items.Add(a);
-            }
+                    listBox3.Items.Add(a);
+                }
             Refresh();
         }
 
-       
+
 
         private void purgerAbonné(int codeAbonné)
         {

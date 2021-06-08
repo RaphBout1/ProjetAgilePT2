@@ -60,6 +60,7 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="US5.cs" />
+    <Compile Include="US7.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
