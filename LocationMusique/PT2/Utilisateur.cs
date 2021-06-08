@@ -31,7 +31,7 @@ namespace PT2
         /**
          * Actualise l'affichage des emprunts
          */
-        private void ActualiseListeEmprunté()
+        public void ActualiseListeEmprunté()
         {
             if (utilisateur != null)
             {
@@ -40,7 +40,8 @@ namespace PT2
                               where ab.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
                               join em in musiqueSQL.EMPRUNTER on ab.CODE_ABONNÉ equals em.CODE_ABONNÉ
                               select em;
-                foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
+                
+                foreach (EMPRUNTER e in emprunt)
                 {
                     if (!utilisateur.EMPRUNTER.Contains(e))
                     {
