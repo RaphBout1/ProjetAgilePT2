@@ -73,8 +73,20 @@ namespace PT2
 
         }
 
+
+
         public void creerEmprunt(int CODEABO, int CODEALB, DateTime DATEMPR, DateTime DATERTR)
         {
+            var listempruntabo = from b in musiqueSQL.ABONNÉS where b.CODE_ABONNÉ == CODEABO select b.EMPRUNTER;
+            foreach (EMPRUNTER e in listempruntabo.First())
+            {
+                if (e.CODE_ALBUM == CODEALB)
+                {
+                    musiqueSQL.EMPRUNTER.Remove(e);
+                    musiqueSQL.SaveChanges();
+                    break;
+                }
+            }
             EMPRUNTER nouvelEmprunt = new EMPRUNTER();
             nouvelEmprunt.CODE_ABONNÉ = CODEABO;
             nouvelEmprunt.CODE_ALBUM = CODEALB;
