@@ -136,7 +136,7 @@ namespace PT2
             var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ABONNÉ into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
             foreach (var kv in dates)
             {
-                if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) < 0)
+                if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) > 0)
                 {
                     ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
                     abonnésPurgeables.Add(aPurger);
@@ -151,14 +151,10 @@ namespace PT2
         private void purgerAbonné(int codeAbonné)
         {
             abonnésAPurger();
-            
-                
-                    var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l;
-                    ABONNÉS x = query.First();
-                    musiqueSQL.ABONNÉS.Remove(x);
-                    musiqueSQL.SaveChanges();
-                
-            
+            var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l;
+            ABONNÉS x = query.First();
+            musiqueSQL.ABONNÉS.Remove(x);
+            musiqueSQL.SaveChanges();
         }
 
         private void purgebutton_Click(object sender, EventArgs e)
