@@ -21,5 +21,12 @@ namespace PT2
             }
             return test;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is EMPRUNTER eMPRUNTER &&
+                   CODE_ABONNÉ == eMPRUNTER.CODE_ABONNÉ &&
+                   CODE_ALBUM == eMPRUNTER.CODE_ALBUM;
+        }
     }
 }
