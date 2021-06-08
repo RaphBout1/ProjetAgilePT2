@@ -18,7 +18,12 @@ namespace PT2Test
         EMPRUNTER empruntTest3;
         List<EMPRUNTER> resultatAttendu = new List<EMPRUNTER>();
         Utilisateur utilisateur;
+
+
         #region init Sans Implémenter base
+        /// <summary>
+        /// Initialise les attribut en cherchant les éléments directement dans la base
+        /// </summary>
         private void initTotal()
         {
             var abonne = from a in TestSQL.ABONNÉS
@@ -60,7 +65,8 @@ namespace PT2Test
 
         #region initialisation des attribut
         /// <summary>
-        /// Initialise un abonné test
+        /// Initialise un abonné et l'implente dans la base de donnée
+        /// A utiliser si l'abonné test a été supprimé
         /// </summary>
         private void initAboTest()
         {
@@ -84,7 +90,8 @@ namespace PT2Test
             utilisateur = new Utilisateur(abonneTest);
         }
         /// <summary>
-        /// Initialise trois emprunt
+        /// Initialise trois emprunts de la part de l'abonné test
+        /// A utiliser si les emprunts ont été supprimé
         /// </summary>
         private void initEmprunt()
         {
@@ -158,7 +165,9 @@ namespace PT2Test
         #endregion
 
         #region nettoyage de la base
-
+        /// <summary>
+        /// Permet de nettoyer la base
+        /// </summary>
         private void nettoyageBase()
         {
             if (TestSQL.EMPRUNTER.Equals(empruntTest)) 
