@@ -29,6 +29,7 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inscription));
             this.loginText = new System.Windows.Forms.TextBox();
             this.login = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@ namespace PT2
             this.submit = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.paysComboBox = new System.Windows.Forms.ComboBox();
+            this.suiteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginText
@@ -77,14 +79,14 @@ namespace PT2
             // 
             // nomText
             // 
-            this.nomText.Location = new System.Drawing.Point(396, 192);
+            this.nomText.Location = new System.Drawing.Point(1115, 123);
             this.nomText.Name = "nomText";
             this.nomText.Size = new System.Drawing.Size(100, 20);
             this.nomText.TabIndex = 4;
             // 
             // prenomText
             // 
-            this.prenomText.Location = new System.Drawing.Point(396, 247);
+            this.prenomText.Location = new System.Drawing.Point(1115, 192);
             this.prenomText.Name = "prenomText";
             this.prenomText.Size = new System.Drawing.Size(100, 20);
             this.prenomText.TabIndex = 5;
@@ -92,7 +94,7 @@ namespace PT2
             // nom
             // 
             this.nom.AutoSize = true;
-            this.nom.Location = new System.Drawing.Point(143, 192);
+            this.nom.Location = new System.Drawing.Point(1073, 123);
             this.nom.Name = "nom";
             this.nom.Size = new System.Drawing.Size(27, 13);
             this.nom.TabIndex = 6;
@@ -101,7 +103,7 @@ namespace PT2
             // prenom
             // 
             this.prenom.AutoSize = true;
-            this.prenom.Location = new System.Drawing.Point(143, 247);
+            this.prenom.Location = new System.Drawing.Point(1058, 192);
             this.prenom.Name = "prenom";
             this.prenom.Size = new System.Drawing.Size(42, 13);
             this.prenom.TabIndex = 7;
@@ -118,23 +120,35 @@ namespace PT2
             // 
             // submit
             // 
-            this.submit.Location = new System.Drawing.Point(651, 359);
+            this.submit.BackColor = System.Drawing.Color.Transparent;
+            this.submit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("submit.BackgroundImage")));
+            this.submit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.submit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.submit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.submit.FlatAppearance.BorderSize = 0;
+            this.submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.submit.Location = new System.Drawing.Point(1029, 754);
             this.submit.Name = "submit";
-            this.submit.Size = new System.Drawing.Size(75, 23);
+            this.submit.Size = new System.Drawing.Size(414, 80);
             this.submit.TabIndex = 10;
-            this.submit.Text = "submit";
-            this.submit.UseVisualStyleBackColor = true;
+            this.submit.Text = " ";
+            this.submit.UseVisualStyleBackColor = false;
             this.submit.Click += new System.EventHandler(this.submit_Click);
             // 
             // cancelButton
             // 
+            this.cancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.cancelButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cancelButton.BackgroundImage")));
+            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(525, 359);
+            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Location = new System.Drawing.Point(143, 754);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(412, 76);
             this.cancelButton.TabIndex = 11;
-            this.cancelButton.Text = "cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Text = " ";
+            this.cancelButton.UseVisualStyleBackColor = false;
             // 
             // paysComboBox
             // 
@@ -144,12 +158,30 @@ namespace PT2
             this.paysComboBox.Size = new System.Drawing.Size(100, 21);
             this.paysComboBox.TabIndex = 12;
             // 
+            // suiteButton
+            // 
+            this.suiteButton.BackColor = System.Drawing.Color.Transparent;
+            this.suiteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("suiteButton.BackgroundImage")));
+            this.suiteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.suiteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suiteButton.FlatAppearance.BorderSize = 0;
+            this.suiteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.suiteButton.Location = new System.Drawing.Point(1029, 673);
+            this.suiteButton.Name = "suiteButton";
+            this.suiteButton.Size = new System.Drawing.Size(373, 75);
+            this.suiteButton.TabIndex = 13;
+            this.suiteButton.Text = " ";
+            this.suiteButton.UseVisualStyleBackColor = false;
+            // 
             // Inscription
             // 
             this.AcceptButton = this.submit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.suiteButton);
             this.Controls.Add(this.paysComboBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submit);
@@ -183,5 +215,6 @@ namespace PT2
         private System.Windows.Forms.Button submit;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ComboBox paysComboBox;
+        private System.Windows.Forms.Button suiteButton;
     }
 }
