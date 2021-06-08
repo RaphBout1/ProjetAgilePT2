@@ -131,18 +131,18 @@ namespace PT2
 
         private void abonnésAPurger()
         {
+            abonnésPurgeables.Clear();
             DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
-            var abonnés = from e in musiqueSQL.EMPRUNTER
-                          join alb in musiqueSQL.ALBUMS on e.CODE_ALBUM equals alb.CODE_ALBUM
-                          join abo in musiqueSQL.ABONNÉS on e.CODE_ABONNÉ equals abo.CODE_ABONNÉ
-                          where e.DATE_EMPRUNT.CompareTo(dateactuelle) <= 0
-                          select abo;
-            foreach (ABONNÉS a in abonnés)
-                if (!abonnésPurgeables.Contains(a))
+            var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ABONNÉ into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
+            foreach (var kv in dates)
+            {
+                if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) < 0)
                 {
-                    abonnésPurgeables.Add(a);
-                    listBox3.Items.Add(a);
+                    ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
+                    abonnésPurgeables.Add(aPurger);
+                    listBox3.Items.Add(aPurger);
                 }
+            }
             Refresh();
         }
 
