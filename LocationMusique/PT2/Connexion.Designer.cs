@@ -1,7 +1,7 @@
 ﻿
 namespace PT2
 {
-    partial class Form1
+    partial class Connexion
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -33,9 +33,9 @@ namespace PT2
             this.pseudo = new System.Windows.Forms.TextBox();
             this.mdp = new System.Windows.Forms.TextBox();
             this.connectbutton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.InscriptionButton = new System.Windows.Forms.Button();
+            this.UtilisateurButton = new System.Windows.Forms.Button();
+            this.AdminButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -73,49 +73,49 @@ namespace PT2
             this.connectbutton.Text = "Connexion";
             this.connectbutton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // InscriptionButton
             // 
-            this.button1.Location = new System.Drawing.Point(31, 290);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Inscription";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.InscriptionButton.Location = new System.Drawing.Point(31, 290);
+            this.InscriptionButton.Name = "InscriptionButton";
+            this.InscriptionButton.Size = new System.Drawing.Size(75, 23);
+            this.InscriptionButton.TabIndex = 4;
+            this.InscriptionButton.Text = "Inscription";
+            this.InscriptionButton.UseVisualStyleBackColor = true;
+            this.InscriptionButton.Click += new System.EventHandler(this.InscriptionButton_Click);
             // 
-            // button2
+            // UtilisateurButton
             // 
-            this.button2.Location = new System.Drawing.Point(197, 290);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Utilisateur";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.UtilisateurButton.Location = new System.Drawing.Point(197, 290);
+            this.UtilisateurButton.Name = "UtilisateurButton";
+            this.UtilisateurButton.Size = new System.Drawing.Size(75, 23);
+            this.UtilisateurButton.TabIndex = 5;
+            this.UtilisateurButton.Text = "Utilisateur";
+            this.UtilisateurButton.UseVisualStyleBackColor = true;
+            this.UtilisateurButton.Click += new System.EventHandler(this.UtilisateurButton_Click);
             // 
-            // button3
+            // AdminButton
             // 
-            this.button3.Location = new System.Drawing.Point(383, 290);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Admin";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.AdminButton.Location = new System.Drawing.Point(383, 290);
+            this.AdminButton.Name = "AdminButton";
+            this.AdminButton.Size = new System.Drawing.Size(75, 23);
+            this.AdminButton.TabIndex = 6;
+            this.AdminButton.Text = "Admin";
+            this.AdminButton.UseVisualStyleBackColor = true;
+            this.AdminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
-            // Form1
+            // Connexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AdminButton);
+            this.Controls.Add(this.UtilisateurButton);
+            this.Controls.Add(this.InscriptionButton);
             this.Controls.Add(this.connectbutton);
             this.Controls.Add(this.mdp);
             this.Controls.Add(this.pseudo);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "Connexion";
             this.Text = "Discothèque";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,9 +128,9 @@ namespace PT2
         private System.Windows.Forms.TextBox pseudo;
         private System.Windows.Forms.TextBox mdp;
         private System.Windows.Forms.Button connectbutton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button InscriptionButton;
+        private System.Windows.Forms.Button UtilisateurButton;
+        private System.Windows.Forms.Button AdminButton;
     }
 }
 
