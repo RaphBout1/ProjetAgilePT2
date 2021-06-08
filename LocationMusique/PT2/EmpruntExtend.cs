@@ -8,7 +8,6 @@ namespace PT2
 {
     public partial class EMPRUNTER
     {
-        public bool dejaRenouvelé = true;
         public override String ToString()
         {
             return ALBUMS.TITRE_ALBUM + " " + DATE_RETOUR_ATTENDUE.ToString();

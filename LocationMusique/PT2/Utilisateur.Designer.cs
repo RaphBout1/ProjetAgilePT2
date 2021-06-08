@@ -84,7 +84,7 @@ namespace PT2
             this.prolonger1Button.TabIndex = 4;
             this.prolonger1Button.Text = "Prolonger l\'emprunt";
             this.prolonger1Button.UseVisualStyleBackColor = true;
-            this.prolonger1Button.Click += new System.EventHandler(this.button1_Click);
+            this.prolonger1Button.Click += new System.EventHandler(this.prolonger1Button_Click);
             // 
             // prolongerTousButton
             // 
