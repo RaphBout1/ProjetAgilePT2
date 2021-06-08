@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace PT2
+
 {
     public partial class Connexion : Form
     {
@@ -16,13 +17,14 @@ namespace PT2
         public Connexion()
         {
             InitializeComponent();
-        }
 
+        }
+            
         private void InscriptionButton_Click(object sender, EventArgs e)
         {
             new Inscription().ShowDialog();
-        }
 
+        }
         private void UtilisateurButton_Click(object sender, EventArgs e)
         {
             ABONNÉS robert = (from l in musiqueSQL.ABONNÉS where l.LOGIN_ABONNÉ == "Robert_DLC" select l).First();
@@ -34,7 +36,8 @@ namespace PT2
 
         private void adminButton_Click(object sender, EventArgs e)
         {
-            new Admin().ShowDialog();
+                       new Admin().ShowDialog();
         }
+ 
     }
 }
