@@ -108,7 +108,7 @@ namespace PT2
 
        
 
-        private void purgerAbonné(int codeAbonné)
+        public void purgerAbonné(int codeAbonné)
         {
             abonnésAPurger();
             foreach (ABONNÉS a in abonnésPurgeables)
