@@ -9,7 +9,7 @@ using PT2;
 namespace PT2Test
 {
     [TestClass]
-    class US5
+    public class US5
     {
 
         [TestMethod]
