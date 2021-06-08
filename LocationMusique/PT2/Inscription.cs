@@ -16,6 +16,12 @@ namespace PT2
         {
             InitializeComponent();
             chargerPays();
+            passwordText.Visible = false;
+            loginText.Visible = false;
+            loginmdpImage.Visible = false;
+            submit.Visible = false;
+            retour.Visible = false;
+
         }
 
         public void chargerPays()
@@ -77,6 +83,42 @@ namespace PT2
             {
                 MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
             }
+        }
+
+        private void suiteButton_Click(object sender, EventArgs e)
+        {
+            nomPrenomPaysImage.Visible = false;
+            paysComboBox.Visible = false;
+            prenomText.Visible = false;
+            nomText.Visible = false;
+            passwordText.Visible = true;
+            loginText.Visible = true;
+            loginmdpImage.Visible = true;
+            suiteButton.Visible = false;
+            submit.Visible = true;
+            retour.Visible = true;
+            cancelButton.Visible = false;
+
+        }
+
+        private void retour_Click(object sender, EventArgs e)
+        {
+            nomPrenomPaysImage.Visible = true;
+            paysComboBox.Visible = true;
+            prenomText.Visible = true;
+            nomText.Visible = true;
+            passwordText.Visible = false;
+            loginText.Visible = false;
+            loginmdpImage.Visible = false;
+            suiteButton.Visible = true;
+            submit.Visible = false;
+            retour.Visible = false;
+            cancelButton.Visible = true;
+            passwordText.Visible = false;
+            loginText.Visible = false;
+            loginmdpImage.Visible = false;
+            submit.Visible = false;
+            retour.Visible = false;
         }
     }
 }
