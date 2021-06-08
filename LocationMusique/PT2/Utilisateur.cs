@@ -36,9 +36,17 @@ namespace PT2
             if (utilisateur != null)
             {
                 listBoxConsultEmprunt.Items.Clear();
+                var emprunt = from ab in musiqueSQL.ABONNÉS
+                              where ab.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
+                              join em in musiqueSQL.EMPRUNTER on ab.CODE_ABONNÉ equals em.CODE_ABONNÉ
+                              select em;
                 foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
                 {
-                    listBoxConsultEmprunt.Items.Add((from em in musiqueSQL.EMPRUNTER where em.CODE_ABONNÉ == e.CODE_ABONNÉ && em.CODE_ALBUM == e.CODE_ALBUM select em).First());
+                    if (!utilisateur.EMPRUNTER.Contains(e))
+                    {
+                        utilisateur.EMPRUNTER.Add(e);
+                    }
+                    listBoxConsultEmprunt.Items.Add(e);
                 }
             }
             Refresh();
@@ -72,6 +80,9 @@ namespace PT2
         }
 
         #region Recommandation
+        /// <summary>
+        /// Initialise le listage des recommandations
+        /// </summary>
         private void Recommandation()
         {
             listeGenreEmprunte.Clear();
@@ -80,6 +91,9 @@ namespace PT2
         }
 
         #region Calcule Recommandation
+        /// <summary>
+        /// Etabli un ordre de grandeur par genre de musique consulté
+        /// </summary>
         private void ListerGenreEmprunte()
         {
             foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
@@ -95,7 +109,9 @@ namespace PT2
             }
 
         }
-
+        /// <summary>
+        /// Obtient la liste des albums recommandé, classé par ordre de priorité
+        /// </summary>
         private void ListageRecommandeAlbum()
         {
             Dictionary<int, ALBUMS> listeAlbum = new Dictionary<int, ALBUMS>();
@@ -115,8 +131,8 @@ namespace PT2
             foreach (ALBUMS b in listeAlbumsRecommande)
             {
                 recommandationsListBox.Items.Add(b.TITRE_ALBUM);
-                Refresh();
             }
+            Refresh();
         }
         #endregion
 
