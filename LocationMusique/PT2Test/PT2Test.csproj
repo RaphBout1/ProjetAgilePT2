@@ -64,6 +64,7 @@
     <Compile Include="US3.cs" />
     <Compile Include="US6.cs" />
     <Compile Include="US5.cs" />
+    <Compile Include="US7.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
