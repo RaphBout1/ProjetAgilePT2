@@ -37,16 +37,17 @@ namespace PT2Test
                     if(l.DATE_RETOUR == null && DateTime.Today.CompareTo(l.DATE_RETOUR_ATTENDUE.AddDays(10)) > 0)
                     {
                         enretardfixe.Add(i);
-                        break;
+                        
                     }
                 }
             }
             foreach(ABONNÉS i in enretardfixe)
             {
                 Assert.IsTrue(enretardtest.Contains(i));
+                Console.WriteLine(i);
             }
         }
-
+        [TestMethod]
         public void TestAboPasEnRetard()
         {
 
@@ -62,10 +63,13 @@ namespace PT2Test
                     if (l.DATE_RETOUR == null && DateTime.Today.CompareTo(l.DATE_RETOUR_ATTENDUE.AddDays(10)) > 0)
                     {
                         enretardfixe.Add(i);
-                        break;
+                        
                     }
                 }
             }
+            int Nombredabopasenretard = Abo1.Count() - enretardtest.Count();
+            int Nombredabopasenretardtheo = Abo1.Count() - enretardfixe.Count();
+            Assert.AreEqual(Nombredabopasenretardtheo, Nombredabopasenretard);
         }
     }
 }
