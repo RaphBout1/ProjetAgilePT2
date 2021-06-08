@@ -19,7 +19,7 @@ namespace PT2Test
             MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
             List<ABONNÉS> enretardtest = a.enRetard();
             var Abo1 = from l in musiqueSQL.ABONNÉS select l;
-            Assert.IsTrue(enretardtest.Contains(Abo1.First()));
+            Assert.IsTrue(Abo1.Contains(enretardtest[0]));
 
         }
         [TestMethod]
