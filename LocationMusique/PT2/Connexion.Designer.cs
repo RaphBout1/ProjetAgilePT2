@@ -33,9 +33,9 @@ namespace PT2
             this.pseudo = new System.Windows.Forms.TextBox();
             this.mdp = new System.Windows.Forms.TextBox();
             this.connectbutton = new System.Windows.Forms.Button();
-            this.butonInscription = new System.Windows.Forms.Button();
-            this.buttonUtilisateur = new System.Windows.Forms.Button();
-            this.buttonAdmin = new System.Windows.Forms.Button();
+            this.InscriptionButton = new System.Windows.Forms.Button();
+            this.UtilisateurButton = new System.Windows.Forms.Button();
+            this.AdminButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pseudo
@@ -76,59 +76,59 @@ namespace PT2
             this.connectbutton.Text = " ";
             this.connectbutton.UseVisualStyleBackColor = false;
             // 
-            // butonInscription
+            // InscriptionButton
             // 
-            this.butonInscription.BackColor = System.Drawing.Color.Transparent;
-            this.butonInscription.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butonInscription.BackgroundImage")));
-            this.butonInscription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.butonInscription.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.butonInscription.FlatAppearance.BorderSize = 0;
-            this.butonInscription.Location = new System.Drawing.Point(755, 872);
-            this.butonInscription.Margin = new System.Windows.Forms.Padding(4);
-            this.butonInscription.Name = "butonInscription";
-            this.butonInscription.Size = new System.Drawing.Size(375, 51);
-            this.butonInscription.TabIndex = 4;
-            this.butonInscription.Text = " ";
-            this.butonInscription.UseVisualStyleBackColor = false;
-            this.butonInscription.Click += new System.EventHandler(this.button1_Click);
+            this.InscriptionButton.BackColor = System.Drawing.Color.Transparent;
+            this.InscriptionButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("InscriptionButton.BackgroundImage")));
+            this.InscriptionButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.InscriptionButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.InscriptionButton.FlatAppearance.BorderSize = 0;
+            this.InscriptionButton.Location = new System.Drawing.Point(755, 872);
+            this.InscriptionButton.Margin = new System.Windows.Forms.Padding(4);
+            this.InscriptionButton.Name = "InscriptionButton";
+            this.InscriptionButton.Size = new System.Drawing.Size(375, 51);
+            this.InscriptionButton.TabIndex = 4;
+            this.InscriptionButton.Text = " ";
+            this.InscriptionButton.UseVisualStyleBackColor = false;
+            this.InscriptionButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonUtilisateur
+            // UtilisateurButton
             // 
-            this.buttonUtilisateur.Location = new System.Drawing.Point(73, 533);
-            this.buttonUtilisateur.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonUtilisateur.Name = "buttonUtilisateur";
-            this.buttonUtilisateur.Size = new System.Drawing.Size(100, 28);
-            this.buttonUtilisateur.TabIndex = 5;
-            this.buttonUtilisateur.Text = "Utilisateur";
-            this.buttonUtilisateur.UseVisualStyleBackColor = true;
-            this.buttonUtilisateur.Click += new System.EventHandler(this.button2_Click);
+            this.UtilisateurButton.Location = new System.Drawing.Point(697, 693);
+            this.UtilisateurButton.Margin = new System.Windows.Forms.Padding(4);
+            this.UtilisateurButton.Name = "UtilisateurButton";
+            this.UtilisateurButton.Size = new System.Drawing.Size(100, 28);
+            this.UtilisateurButton.TabIndex = 5;
+            this.UtilisateurButton.Text = "Utilisateur";
+            this.UtilisateurButton.UseVisualStyleBackColor = true;
+            this.UtilisateurButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // buttonAdmin
+            // AdminButton
             // 
-            this.buttonAdmin.Location = new System.Drawing.Point(481, 555);
-            this.buttonAdmin.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonAdmin.Name = "buttonAdmin";
-            this.buttonAdmin.Size = new System.Drawing.Size(100, 28);
-            this.buttonAdmin.TabIndex = 6;
-            this.buttonAdmin.Text = "Admin";
-            this.buttonAdmin.UseVisualStyleBackColor = true;
-            this.buttonAdmin.Click += new System.EventHandler(this.button3_Click);
+            this.AdminButton.Location = new System.Drawing.Point(1107, 706);
+            this.AdminButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AdminButton.Name = "AdminButton";
+            this.AdminButton.Size = new System.Drawing.Size(100, 28);
+            this.AdminButton.TabIndex = 6;
+            this.AdminButton.Text = "Admin";
+            this.AdminButton.UseVisualStyleBackColor = true;
+            this.AdminButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // Form1
+            // Connexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1982, 1078);
-            this.Controls.Add(this.buttonAdmin);
-            this.Controls.Add(this.buttonUtilisateur);
-            this.Controls.Add(this.butonInscription);
+            this.Controls.Add(this.AdminButton);
+            this.Controls.Add(this.UtilisateurButton);
+            this.Controls.Add(this.InscriptionButton);
             this.Controls.Add(this.connectbutton);
             this.Controls.Add(this.mdp);
             this.Controls.Add(this.pseudo);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "Connexion";
             this.Text = "Discothèque";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,9 +139,9 @@ namespace PT2
         private System.Windows.Forms.TextBox pseudo;
         private System.Windows.Forms.TextBox mdp;
         private System.Windows.Forms.Button connectbutton;
-        private System.Windows.Forms.Button butonInscription;
-        private System.Windows.Forms.Button buttonUtilisateur;
-        private System.Windows.Forms.Button buttonAdmin;
+        private System.Windows.Forms.Button InscriptionButton;
+        private System.Windows.Forms.Button UtilisateurButton;
+        private System.Windows.Forms.Button AdminButton;
     }
 }
 
