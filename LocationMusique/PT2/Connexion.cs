@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace PT2
 {
-    public partial class Form1 : Form
+    public partial class Connexion : Form
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
-        public Form1()
+        public Connexion()
         {
             InitializeComponent();
         }

@@ -1,7 +1,7 @@
 ﻿
 namespace PT2
 {
-    partial class Form1
+    partial class Connexion
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -29,7 +29,7 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Connexion));
             this.pseudo = new System.Windows.Forms.TextBox();
             this.mdp = new System.Windows.Forms.TextBox();
             this.connectbutton = new System.Windows.Forms.Button();
