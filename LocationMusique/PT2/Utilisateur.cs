@@ -32,9 +32,9 @@ namespace PT2
         {
             if (utilisateur != null)
             {
+                listBoxConsultEmprunt.Items.Clear();
                 foreach (EMPRUNTER e in utilisateur.EMPRUNTER)
                 {
-                    ALBUMS a = e.ALBUMS;
                     listBoxConsultEmprunt.Items.Add(e);
                 }
             }
@@ -43,11 +43,15 @@ namespace PT2
 
         public void ProlongerEmprunt(EMPRUNTER em)
         {
-            if (em != null && em.DATE_RETOUR == null)
+            EMPRUNTER emDb = (from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == em.CODE_ABONNÉ && e.CODE_ALBUM == em.CODE_ALBUM select e).FirstOrDefault();
+            if (emDb != null && emDb.DATE_RETOUR == null)
             {
-                if (em.DATE_EMPRUNT.AddDays(em.ALBUMS.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
+                if (emDb.DATE_EMPRUNT.AddDays(emDb.ALBUMS.GENRES.DÉLAI).CompareTo(emDb.DATE_RETOUR_ATTENDUE) == 0 && emDb.DATE_RETOUR == null)
                 {
-                    em.DATE_RETOUR_ATTENDUE = em.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                    musiqueSQL.EMPRUNTER.Remove(emDb);
+                    musiqueSQL.SaveChanges();
+                    emDb.DATE_RETOUR_ATTENDUE = emDb.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                    musiqueSQL.EMPRUNTER.Add(emDb);
                     musiqueSQL.SaveChanges();
                 }
                 else
@@ -68,6 +72,7 @@ namespace PT2
             ListerGenreEmprunte();
             ListageRecommandeAlbum();
         }
+
         #region Calcule Recommandation
         private void ListerGenreEmprunte()
         {
@@ -137,6 +142,7 @@ namespace PT2
 
                 }
             }
+            ActualiseListeEmprunté();
             MessageBox.Show("Tous vos emprunts prolongeables ont été prolongés d'un mois.");
         }
 
@@ -146,6 +152,7 @@ namespace PT2
             {
                 EMPRUNTER emprunt = (EMPRUNTER)listBoxConsultEmprunt.SelectedItem;
                 ProlongerEmprunt(emprunt);
+                ActualiseListeEmprunté();
                 MessageBox.Show("L'emprunt de l'album " + emprunt.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
             }
             catch (Exception ex)
