@@ -32,7 +32,7 @@ namespace PT2
             this.listBoxConsultEmprunt = new System.Windows.Forms.ListBox();
             this.nom = new System.Windows.Forms.Label();
             this.prenom = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.recommandationsListBox = new System.Windows.Forms.ListBox();
             this.prolonger1Button = new System.Windows.Forms.Button();
             this.prolongerTousButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -66,14 +66,14 @@ namespace PT2
             this.prenom.TabIndex = 2;
             this.prenom.Text = "prenom";
             // 
-            // listBox1
+            // recommandationsListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(391, 13);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(174, 134);
-            this.listBox1.TabIndex = 3;
+            this.recommandationsListBox.FormattingEnabled = true;
+            this.recommandationsListBox.HorizontalScrollbar = true;
+            this.recommandationsListBox.Location = new System.Drawing.Point(391, 13);
+            this.recommandationsListBox.Name = "recommandationsListBox";
+            this.recommandationsListBox.Size = new System.Drawing.Size(174, 134);
+            this.recommandationsListBox.TabIndex = 3;
             // 
             // prolonger1Button
             // 
@@ -114,7 +114,7 @@ namespace PT2
             this.Controls.Add(this.button1);
             this.Controls.Add(this.prolongerTousButton);
             this.Controls.Add(this.prolonger1Button);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.recommandationsListBox);
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
             this.Controls.Add(this.listBoxConsultEmprunt);
@@ -130,7 +130,7 @@ namespace PT2
         private System.Windows.Forms.ListBox listBoxConsultEmprunt;
         private System.Windows.Forms.Label nom;
         private System.Windows.Forms.Label prenom;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox recommandationsListBox;
         private System.Windows.Forms.Button prolonger1Button;
         private System.Windows.Forms.Button prolongerTousButton;
         private System.Windows.Forms.Button button1;
