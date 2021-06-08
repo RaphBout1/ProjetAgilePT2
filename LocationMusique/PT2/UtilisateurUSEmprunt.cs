@@ -68,11 +68,18 @@ namespace PT2
 
         private void boutonEmprunterAlbumPrecis_Click(object sender, EventArgs e)
         {
+            creerEmprunt(utilisateur.CODE_ABONNÉ, albumAEmprunter.CODE_ALBUM, monthCalendarClassique.SelectionStart, monthCalendarClassique.SelectionStart.AddDays(albumAEmprunter.GENRES.DÉLAI));
+           
+
+        }
+
+        public void creerEmprunt(int CODEABO, int CODEALB, DateTime DATEMPR, DateTime DATERTR)
+        {
             EMPRUNTER nouvelEmprunt = new EMPRUNTER();
-            nouvelEmprunt.CODE_ABONNÉ= utilisateur.CODE_ABONNÉ;
-            nouvelEmprunt.CODE_ALBUM = albumAEmprunter.CODE_ALBUM;
-            nouvelEmprunt.DATE_EMPRUNT = monthCalendarClassique.SelectionStart;
-            nouvelEmprunt.DATE_RETOUR_ATTENDUE = nouvelEmprunt.DATE_EMPRUNT.AddDays(albumAEmprunter.GENRES.DÉLAI);
+            nouvelEmprunt.CODE_ABONNÉ = CODEABO;
+            nouvelEmprunt.CODE_ALBUM = CODEALB;
+            nouvelEmprunt.DATE_EMPRUNT = DATEMPR;
+            nouvelEmprunt.DATE_RETOUR_ATTENDUE = DATERTR;
             musiqueSQL.EMPRUNTER.Add(nouvelEmprunt);
             musiqueSQL.SaveChanges();
         }
