@@ -140,7 +140,7 @@ namespace PT2
                 {
                     ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
                     abonnésPurgeables.Add(aPurger);
-                    listBox3.Items.Add(aPurger);
+                    listBox3.Items.Remove(aPurger);
                 }
             }
             Refresh();
@@ -161,6 +161,12 @@ namespace PT2
         {
             ABONNÉS a = (ABONNÉS)listBox3.SelectedItem;
             purgerAbonné(a.CODE_ABONNÉ);
+            purgebutton.Enabled = false;
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            purgebutton.Enabled = true;
         }
     }
 }

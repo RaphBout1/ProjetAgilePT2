@@ -82,6 +82,7 @@ namespace PT2
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(171, 95);
             this.listBox3.TabIndex = 4;
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -101,6 +102,7 @@ namespace PT2
             // 
             // purgebutton
             // 
+            this.purgebutton.Enabled = false;
             this.purgebutton.Location = new System.Drawing.Point(572, 158);
             this.purgebutton.Name = "purgebutton";
             this.purgebutton.Size = new System.Drawing.Size(75, 23);
