@@ -13,7 +13,7 @@ namespace PT2Test
     {
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestSiAboSelectEstDansLaBase()
         {
             Admin a = new Admin();
             MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
@@ -21,6 +21,30 @@ namespace PT2Test
             var Abo1 = from l in musiqueSQL.ABONNÉS select l;
             Assert.IsTrue(enretardtest.Contains(Abo1.First()));
 
+        }
+        [TestMethod]
+        public void TestAboVraimentEnRetard()
+        {
+            Admin a = new Admin();
+            MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
+            List<ABONNÉS> enretardtest = a.enRetard();
+            var Abo1 = from l in musiqueSQL.ABONNÉS select l;
+            List<ABONNÉS> enretardfixe = new List<ABONNÉS>();
+            foreach(ABONNÉS i in Abo1)
+            {
+                foreach(EMPRUNTER l in i.EMPRUNTER)
+                {
+                    if(l.DATE_RETOUR == null && DateTime.Today.CompareTo(l.DATE_RETOUR_ATTENDUE.AddDays(10)) > 0)
+                    {
+                        enretardfixe.Add(i);
+                        break;
+                    }
+                }
+            }
+            foreach(ABONNÉS i in enretardfixe)
+            {
+                Assert.IsTrue(enretardtest.Contains(i));
+            }
         }
     }
 }
