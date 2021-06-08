@@ -43,7 +43,7 @@ namespace PT2
                 
                 foreach (EMPRUNTER e in emprunt)
                 {
-                    if (!utilisateur.EMPRUNTER.Contains(e))
+                    if (!utilisateur.EMPRUNTER.Equals(e))
                     {
                         utilisateur.EMPRUNTER.Add(e);
                     }
