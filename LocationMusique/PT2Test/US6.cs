@@ -14,6 +14,7 @@ namespace PT2Test
         [TestMethod]
         public void AbonnéBienPurgé()
         {
+            Inscription.abonner("purgeman", "purge", "France", "purge", "purge");
             Admin a = new Admin();
             MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
 
