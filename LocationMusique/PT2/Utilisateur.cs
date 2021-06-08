@@ -61,7 +61,7 @@ namespace PT2
             EMPRUNTER emDb = (from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == em.CODE_ABONNÉ && e.CODE_ALBUM == em.CODE_ALBUM select e).FirstOrDefault();
             if (emDb != null && emDb.DATE_RETOUR == null)
             {
-                if (emDb.DATE_EMPRUNT.AddDays(emDb.ALBUMS.GENRES.DÉLAI).CompareTo(emDb.DATE_RETOUR_ATTENDUE) == 0 && emDb.DATE_RETOUR == null)
+                if (empruntProlongeable(emDb, emDb.ALBUMS))
                 {
                     musiqueSQL.EMPRUNTER.Remove(emDb);
                     musiqueSQL.SaveChanges();
@@ -78,6 +78,17 @@ namespace PT2
             {
                 throw new ProlongementEmpruntException("Emprunt introuvable ou déjà rendu.");
             }
+        }
+
+        /*
+         * Renvoie true si l'emprunt de l'album sélectionné n'a jamais été prolongé.
+         */
+        public bool empruntProlongeable(EMPRUNTER em, ALBUMS al)
+        {
+            if (em.DATE_EMPRUNT.AddDays(al.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
+            {
+                return true;
+            } return false;
         }
 
         #region Recommandation
