@@ -118,7 +118,6 @@ namespace PT2
             // 
             // submit
             // 
-            this.submit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.submit.Location = new System.Drawing.Point(651, 359);
             this.submit.Name = "submit";
             this.submit.Size = new System.Drawing.Size(75, 23);
@@ -147,6 +146,7 @@ namespace PT2
             // 
             // Inscription
             // 
+            this.AcceptButton = this.submit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
