@@ -36,14 +36,11 @@ namespace PT2
             if (utilisateur != null)
             {
                 listBoxConsultEmprunt.Items.Clear();
-                var emprunt = from ab in musiqueSQL.ABONNÉS
-                              where ab.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
-                              join em in musiqueSQL.EMPRUNTER on ab.CODE_ABONNÉ equals em.CODE_ABONNÉ
+                var emprunt = from em in musiqueSQL.EMPRUNTER
+                              where em.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
                               select em;
-                
                 foreach (EMPRUNTER e in emprunt)
                 {
-                    
                     listBoxConsultEmprunt.Items.Add(e);
                 }
             }
