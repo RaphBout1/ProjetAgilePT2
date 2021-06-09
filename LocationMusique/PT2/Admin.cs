@@ -236,7 +236,9 @@ namespace PT2
                 listBoxAbonnés.Items.Add(a.NOM_ABONNÉ + a.PRÉNOM_ABONNÉ);
             }
         }
-
+        /// <summary>
+        /// Vide et remplit la listeboxglobale avec les 10 albums les plus populaires
+        /// </summary>
         private void remplir10pluspopulaires()
         {
             listBoxGlobale.Items.Clear();
@@ -245,10 +247,28 @@ namespace PT2
                 listBoxGlobale.Items.Add(i);
             }
         }
+        /// <summary>
+        /// Vide et remplit la listeboxglobale avec les 10 albums les plus populaires
+        /// </summary>
+        private void remplir10moinspopulaires()
+        {
+            listBoxGlobale.Items.Clear();
+            foreach (ALBUMS i in albumPasEmpruntesDepuis1An())
+            {
+                listBoxGlobale.Items.Add(i);
+            }
+        }
 
         private void Pluspopulairebutton_Click(object sender, EventArgs e)
         {
             remplir10pluspopulaires();
+            Refresh();
+        }
+
+        private void moinsPopulaireButton_Click(object sender, EventArgs e)
+        {
+            remplir10moinspopulaires();
+            Refresh();
         }
     }
 }

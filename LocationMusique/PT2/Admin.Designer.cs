@@ -199,6 +199,7 @@ namespace PT2
             this.moinsPopulaireButton.TabIndex = 15;
             this.moinsPopulaireButton.Text = "Les moins populaires";
             this.moinsPopulaireButton.UseVisualStyleBackColor = true;
+            this.moinsPopulaireButton.Click += new System.EventHandler(this.moinsPopulaireButton_Click);
             // 
             // Admin
             // 
