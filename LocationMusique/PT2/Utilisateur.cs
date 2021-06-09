@@ -23,8 +23,8 @@ namespace PT2
             utilisateur = uti;
             nom.Text = uti.NOM_ABONNÉ;
             prenom.Text = uti.PRÉNOM_ABONNÉ;
-            Recommandation();
-            ActualiseListeEmprunté();
+            prolonger1Button.Visible = false;
+            prolongerTousButton.Visible = false;
         }
 
         /**
@@ -129,7 +129,7 @@ namespace PT2
             var albums = (from a in musiqueSQL.ALBUMS where a.CODE_GENRE == albumsDuGenre.CODE_GENRE orderby a.EMPRUNTER.Count() select a).Take(nombreAlbumsAAfficher);
             foreach (ALBUMS a in albums)
             {
-                recommandationsListBox.Items.Add(a.TITRE_ALBUM);
+                listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM);
             }
             Refresh();
         }
@@ -203,6 +203,22 @@ namespace PT2
         private void MAJButton_Click(object sender, EventArgs e)
         {
             ActualiseListeEmprunté();
+        }
+
+        private void afficherEmprunts_Click(object sender, EventArgs e)
+        {
+            listBoxConsultEmprunt.Items.Clear();
+            prolonger1Button.Visible = true;
+            prolongerTousButton.Visible = true;
+            ActualiseListeEmprunté();
+        }
+
+        private void afficherRecommandations_Click(object sender, EventArgs e)
+        {
+            listBoxConsultEmprunt.Items.Clear();
+            prolonger1Button.Visible = false;
+            prolongerTousButton.Visible = false;
+            Recommandation();
         }
     }
 }
