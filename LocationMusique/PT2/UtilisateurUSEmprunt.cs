@@ -33,11 +33,11 @@ namespace PT2
         #region initialisation de la page
         public void InitialisationGlobaleDeVariable()
         {
-            caseY.Add(27, 182);
-            caseY.Add(190, 345);
-            caseY.Add(354, 509);
-            caseY.Add(516, 671);
-            caseY.Add(679, 834);
+            caseY.Add(110, 265);
+            caseY.Add(272, 428);
+            caseY.Add(436, 591);
+            caseY.Add(600, 755);
+            caseY.Add(760, 920);
             nmbAlbum = (from a in musiqueSQL.ALBUMS
                         select a).Count();
         }
@@ -227,12 +227,16 @@ namespace PT2
                     }
                 }
             }
-            InfoGenre.Text = MousePosition.Y.ToString();
         }
 
         private void AfficheAlbumActuelle()
         {
             InfoTitre.Text = albumAEmprunter.TITRE_ALBUM;
+            InfoAnnee.Text = albumAEmprunter.ANNÉE_ALBUM.ToString();
+            InfoEditeur.Text = albumAEmprunter.EDITEURS.NOM_EDITEUR;
+            InfoGenre.Text = albumAEmprunter.GENRES.LIBELLÉ_GENRE;
+            InfoPrix.Text = albumAEmprunter.PRIX_ALBUM.ToString();
+
         }
     }
 }

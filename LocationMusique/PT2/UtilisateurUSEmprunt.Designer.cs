@@ -149,6 +149,7 @@ namespace PT2
             // Titre2
             // 
             this.Titre2.AutoSize = true;
+            this.Titre2.BackColor = System.Drawing.Color.Transparent;
             this.Titre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre2.Location = new System.Drawing.Point(234, 213);
             this.Titre2.Name = "Titre2";
@@ -160,6 +161,7 @@ namespace PT2
             // Titre3
             // 
             this.Titre3.AutoSize = true;
+            this.Titre3.BackColor = System.Drawing.Color.Transparent;
             this.Titre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre3.Location = new System.Drawing.Point(234, 385);
             this.Titre3.Name = "Titre3";
@@ -171,6 +173,7 @@ namespace PT2
             // Titre4
             // 
             this.Titre4.AutoSize = true;
+            this.Titre4.BackColor = System.Drawing.Color.Transparent;
             this.Titre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre4.Location = new System.Drawing.Point(234, 552);
             this.Titre4.Name = "Titre4";
@@ -182,6 +185,7 @@ namespace PT2
             // Titre5
             // 
             this.Titre5.AutoSize = true;
+            this.Titre5.BackColor = System.Drawing.Color.Transparent;
             this.Titre5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre5.Location = new System.Drawing.Point(234, 706);
             this.Titre5.Name = "Titre5";
@@ -206,6 +210,7 @@ namespace PT2
             // Genre2
             // 
             this.Genre2.AutoSize = true;
+            this.Genre2.BackColor = System.Drawing.Color.Transparent;
             this.Genre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Genre2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.Genre2.Location = new System.Drawing.Point(234, 272);
@@ -218,6 +223,7 @@ namespace PT2
             // Genre3
             // 
             this.Genre3.AutoSize = true;
+            this.Genre3.BackColor = System.Drawing.Color.Transparent;
             this.Genre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Genre3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.Genre3.Location = new System.Drawing.Point(234, 442);
@@ -230,6 +236,7 @@ namespace PT2
             // Genre4
             // 
             this.Genre4.AutoSize = true;
+            this.Genre4.BackColor = System.Drawing.Color.Transparent;
             this.Genre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Genre4.ForeColor = System.Drawing.SystemColors.Highlight;
             this.Genre4.Location = new System.Drawing.Point(234, 607);
@@ -242,6 +249,7 @@ namespace PT2
             // Genre5
             // 
             this.Genre5.AutoSize = true;
+            this.Genre5.BackColor = System.Drawing.Color.Transparent;
             this.Genre5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Genre5.ForeColor = System.Drawing.SystemColors.Highlight;
             this.Genre5.Location = new System.Drawing.Point(234, 764);
@@ -263,7 +271,7 @@ namespace PT2
             // 
             this.InfoTitre.AutoSize = true;
             this.InfoTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoTitre.Location = new System.Drawing.Point(921, 53);
+            this.InfoTitre.Location = new System.Drawing.Point(853, 53);
             this.InfoTitre.Name = "InfoTitre";
             this.InfoTitre.Size = new System.Drawing.Size(79, 29);
             this.InfoTitre.TabIndex = 23;
