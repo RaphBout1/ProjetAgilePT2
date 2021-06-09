@@ -48,11 +48,19 @@ namespace PT2
         private void rendreButton_Click(object sender, EventArgs e)
         {
             EMPRUNTER m = (EMPRUNTER) listBoxEmpruntEnCours.SelectedItem;
+            rendreEmprunt(m);
+            listBoxEmpruntEnCours.Items.Remove(m);
+            Refresh();
+        }
+        /// <summary>
+        /// Méthode qui rend un emprunt
+        /// </summary>
+        /// <param name="m">L'emprunt en question</param>
+        public void rendreEmprunt(EMPRUNTER m)
+        {
             var bonEmprunt = from l in musiqueSQL.EMPRUNTER where l.CODE_ABONNÉ == m.CODE_ABONNÉ && l.CODE_ALBUM == m.CODE_ALBUM select l;
             bonEmprunt.First().DATE_RETOUR = DateTime.UtcNow;
             musiqueSQL.SaveChanges();
-            listBoxEmpruntEnCours.Items.Remove(m);
-            Refresh();
         }
     }
 }
