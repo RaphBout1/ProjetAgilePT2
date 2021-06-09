@@ -31,8 +31,9 @@ namespace PT2
         /**
          * Actualise l'affichage des emprunts
          */
-        public void ActualiseListeEmprunté()
+        public List<EMPRUNTER> ActualiseListeEmprunté()
         {
+            List<EMPRUNTER> listePourTest = new List<EMPRUNTER>();
             if (utilisateur != null)
             {
                 listBoxConsultEmprunt.Items.Clear();
@@ -40,14 +41,15 @@ namespace PT2
                               where ab.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
                               join em in musiqueSQL.EMPRUNTER on ab.CODE_ABONNÉ equals em.CODE_ABONNÉ
                               select em;
-                
                 foreach (EMPRUNTER e in emprunt)
                 {
-                    
+                    listePourTest.Add(e);
                     listBoxConsultEmprunt.Items.Add(e);
                 }
             }
+            
             Refresh();
+            return listePourTest;
         }
 
         /**
