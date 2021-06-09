@@ -72,6 +72,7 @@
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>
     <Compile Include="AlbumUS8.cs" />
+    <Compile Include="databaseException.cs" />
     <Compile Include="EDITEURS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
     </Compile>

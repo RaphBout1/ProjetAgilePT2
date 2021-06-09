@@ -25,10 +25,6 @@ namespace PT2
             LivreEmprunteProlongé();
             abonnésAPurger();
             albumsUS8 = albumPasEmpruntesDepuis1An();
-            foreach(ALBUMS al in albumsUS8)
-            {
-                listBoxUS8.Items.Add(al.CODE_ALBUM);
-            }
         }
 
         private void Admin_Load(object sender, EventArgs e)
@@ -127,7 +123,7 @@ namespace PT2
                         compteurBoucle--;
                     }
                 }
-                        
+
             }
             return lesDixPlusEmprunte;
         }
@@ -177,11 +173,36 @@ namespace PT2
 
         public void purgerAbonné(int codeAbonné)
         {
-            var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l;
-            ABONNÉS x = query.First();
-            musiqueSQL.ABONNÉS.Remove(x);
-            musiqueSQL.SaveChanges();
-            abonnésAPurger();
+            ABONNÉS aPurger = (from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l).First();
+            if (aPurger != null)
+            {
+                musiqueSQL.ABONNÉS.Remove(aPurger);
+                musiqueSQL.SaveChanges();
+            }
+            else
+            {
+                throw new databaseException("Cet abonné n'existe pas dans la base.");
+            }
+
+        }
+
+        private void purgebutton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ABONNÉS a = (ABONNÉS)listBox3.SelectedItem;
+                purgerAbonné(a.CODE_ABONNÉ);
+                purgebutton.Enabled = false;
+                abonnésAPurger();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
+            }
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            purgebutton.Enabled = true;
         }
 
         /**
@@ -200,18 +221,6 @@ namespace PT2
                 }
             }
             return albumPasEmprunter1An;
-        }
-
-        private void purgebutton_Click(object sender, EventArgs e)
-        {
-            ABONNÉS a = (ABONNÉS)listBox3.SelectedItem;
-            purgerAbonné(a.CODE_ABONNÉ);
-            purgebutton.Enabled = false;
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            purgebutton.Enabled = true;
         }
     }
 }
