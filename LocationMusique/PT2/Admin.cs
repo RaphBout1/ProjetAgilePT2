@@ -15,7 +15,8 @@ namespace PT2
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
 
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
-        private bool purgeModeOn = false;
+        private bool purgeModeOn = true;
+         private bool listeabonneVisible = true;
 
         public Admin()
         {
@@ -195,7 +196,7 @@ namespace PT2
         {
             try
             {
-                ABONNÉS a = (ABONNÉS)listBox3.SelectedItem;
+                ABONNÉS a = (ABONNÉS)listBoxGlobale.SelectedItem;
                 purgerAbonné(a.CODE_ABONNÉ);
                 purgebutton.Enabled = false;
                 abonnésAPurger();
@@ -307,6 +308,14 @@ namespace PT2
             LivreEmprunteProlongé();
             purgeModeOn = false;
             purgebutton.Enabled = false;
+            Refresh();
+        }
+
+        private void listeAbonnés_Click(object sender, EventArgs e)
+        {
+            listeabonneVisible = !listeabonneVisible;
+            listBoxAbonnés.Visible = listeabonneVisible;
+            label4.Visible = listeabonneVisible;
             Refresh();
         }
     }
