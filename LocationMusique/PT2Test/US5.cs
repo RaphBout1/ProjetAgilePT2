@@ -12,16 +12,9 @@ namespace PT2Test
     public class US5
     {
 
-        [TestMethod]
-        public void TestSiAboSelectEstDansLaBase()
-        {
-            Admin a = new Admin();
-            MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
-            List<ABONNÉS> enretardtest = a.enRetard();
-            var Abo1 = from l in musiqueSQL.ABONNÉS select l;
-            Assert.IsTrue(Abo1.Contains(enretardtest[0]));
-
-        }
+        /// <summary>
+        /// Test par une méthode sûre que la liste d'abo en retard est bien la bonne
+        /// </summary>
         [TestMethod]
         public void TestAboVraimentEnRetard()
         {
@@ -47,6 +40,9 @@ namespace PT2Test
                 Console.WriteLine(i);
             }
         }
+        /// <summary>
+        /// Test si la liste renvoyer par le programme de membres en retards et la liste de la base des membres en retards contiennent le même nombre d'élements.
+        /// </summary>
         [TestMethod]
         public void TestAboPasEnRetard()
         {

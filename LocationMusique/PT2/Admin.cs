@@ -31,7 +31,10 @@ namespace PT2
         {
 
         }
-
+        /// <summary>
+        /// Renvoie une liste d'abonnée ayant un emprunt non rendu en retard de 10 jours sur la date de rendue attendue.
+        /// </summary>
+        /// <returns>La Liste en question.</returns>
         public List<ABONNÉS> enRetard()
         {
             List<ABONNÉS> enretard10 = new List<ABONNÉS>();

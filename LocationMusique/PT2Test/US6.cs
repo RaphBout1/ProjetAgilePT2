@@ -11,6 +11,9 @@ namespace PT2Test
     [TestClass]
     public class US6
     {
+        /// <summary>
+        /// Créer un abonné, lui ajoute un emprunt datant d'un an puis le purge pour tester cette opération
+        /// </summary>
         [TestMethod]
         public void AbonnéBienPurgé()
         {
