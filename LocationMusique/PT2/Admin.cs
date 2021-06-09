@@ -15,6 +15,7 @@ namespace PT2
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
 
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
+        private bool purgeModeOn = false;
 
         public Admin()
         {
@@ -154,7 +155,7 @@ namespace PT2
         /// </summary>
         private void abonnésAPurger()
         {
-            listBox3.Items.Clear();
+            listBoxGlobale.Items.Clear();
             DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ABONNÉ into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
             foreach (var kv in dates)
@@ -162,7 +163,7 @@ namespace PT2
                 if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) > 0)
                 {
                     ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
-                    listBox3.Items.Add(aPurger);
+                    listBoxGlobale.Items.Add(aPurger);
                 }
             }
             Refresh();
@@ -262,13 +263,33 @@ namespace PT2
         private void Pluspopulairebutton_Click(object sender, EventArgs e)
         {
             remplir10pluspopulaires();
+            purgeModeOn = false;
             Refresh();
+            purgebutton.Enabled = false;
         }
 
         private void moinsPopulaireButton_Click(object sender, EventArgs e)
         {
             remplir10moinspopulaires();
+            purgeModeOn = false;
             Refresh();
+            purgebutton.Enabled = false;
+        }
+
+        private void purgerModeButton_Click(object sender, EventArgs e)
+        {
+            abonnésAPurger();
+            purgeModeOn = true;
+            Refresh();
+            
+        }
+
+        private void listBoxGlobale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (purgeModeOn)
+            {
+                purgebutton.Enabled = true;
+            }
         }
     }
 }

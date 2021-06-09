@@ -144,6 +144,7 @@ namespace PT2
             this.listBoxGlobale.Name = "listBoxGlobale";
             this.listBoxGlobale.Size = new System.Drawing.Size(267, 160);
             this.listBoxGlobale.TabIndex = 9;
+            this.listBoxGlobale.SelectedIndexChanged += new System.EventHandler(this.listBoxGlobale_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -181,6 +182,7 @@ namespace PT2
             this.purgerModeButton.TabIndex = 13;
             this.purgerModeButton.Text = "Purger";
             this.purgerModeButton.UseVisualStyleBackColor = true;
+            this.purgerModeButton.Click += new System.EventHandler(this.purgerModeButton_Click);
             // 
             // prolongesButton
             // 
