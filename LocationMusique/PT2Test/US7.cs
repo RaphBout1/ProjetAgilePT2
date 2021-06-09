@@ -69,17 +69,17 @@ namespace PT2Test
         
         private void EmpruntMassifAlbum()
         {
-            InitListeAbonneTest();
-            //InitAbonneEmprunteur();
+            InitAbonneEmprunteur();
             for(int nmbEmprunt=74; nmbEmprunt>-1; nmbEmprunt--)
             {
                 #region 1er emprunt
                 EMPRUNTER emprunt1 = new EMPRUNTER();
                 emprunt1.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
                 emprunt1.CODE_ALBUM = listeAlbums[0].CODE_ALBUM;
-                emprunt1.DATE_EMPRUNT = DateTime.UtcNow.AddYears(nmbEmprunt);
+                emprunt1.DATE_EMPRUNT = DateTime.UtcNow.AddDays(nmbEmprunt);
                 emprunt1.DATE_RETOUR_ATTENDUE = emprunt1.DATE_EMPRUNT.AddDays(listeAlbums[0].GENRES.DÉLAI);
-                emprunt1.DATE_RETOUR = emprunt1.DATE_RETOUR_ATTENDUE;
+                emprunt1.DATE_RETOUR = emprunt1.DATE_EMPRUNT;
+                TestSQL.EMPRUNTER.Add(emprunt1);
                 #endregion
                 #region 2nd emprunt
                 if (nmbEmprunt < 60)
@@ -87,9 +87,10 @@ namespace PT2Test
                     EMPRUNTER emprunt2 = new EMPRUNTER();
                     emprunt2.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
                     emprunt2.CODE_ALBUM = listeAlbums[1].CODE_ALBUM;
-                    emprunt2.DATE_EMPRUNT = DateTime.UtcNow.AddYears(nmbEmprunt);
+                    emprunt2.DATE_EMPRUNT = DateTime.UtcNow.AddDays(nmbEmprunt);
                     emprunt2.DATE_RETOUR_ATTENDUE = emprunt2.DATE_EMPRUNT.AddDays(listeAlbums[1].GENRES.DÉLAI);
-                    emprunt2.DATE_RETOUR = emprunt2.DATE_RETOUR_ATTENDUE;
+                    emprunt2.DATE_RETOUR = emprunt2.DATE_EMPRUNT;
+                    TestSQL.EMPRUNTER.Add(emprunt2);
                 }
                 #endregion
                 #region 3eme emprunt
@@ -98,9 +99,10 @@ namespace PT2Test
                     EMPRUNTER emprunt3 = new EMPRUNTER();
                     emprunt3.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
                     emprunt3.CODE_ALBUM = listeAlbums[2].CODE_ALBUM;
-                    emprunt3.DATE_EMPRUNT = DateTime.UtcNow.AddYears(nmbEmprunt);
+                    emprunt3.DATE_EMPRUNT = DateTime.UtcNow.AddDays(nmbEmprunt);
                     emprunt3.DATE_RETOUR_ATTENDUE = emprunt3.DATE_EMPRUNT.AddDays(listeAlbums[2].GENRES.DÉLAI);
-                    emprunt3.DATE_RETOUR = emprunt3.DATE_RETOUR_ATTENDUE;
+                    emprunt3.DATE_RETOUR = emprunt3.DATE_EMPRUNT;
+                    TestSQL.EMPRUNTER.Add(emprunt3);
                 }
                 #endregion
                 #region 4eme emprunt
@@ -109,9 +111,10 @@ namespace PT2Test
                     EMPRUNTER emprunt4 = new EMPRUNTER();
                     emprunt4.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
                     emprunt4.CODE_ALBUM = listeAlbums[3].CODE_ALBUM;
-                    emprunt4.DATE_EMPRUNT = DateTime.UtcNow.AddYears(nmbEmprunt);
+                    emprunt4.DATE_EMPRUNT = DateTime.UtcNow.AddDays(nmbEmprunt);
                     emprunt4.DATE_RETOUR_ATTENDUE = emprunt4.DATE_EMPRUNT.AddDays(listeAlbums[3].GENRES.DÉLAI);
-                    emprunt4.DATE_RETOUR = emprunt4.DATE_RETOUR_ATTENDUE;
+                    emprunt4.DATE_RETOUR = emprunt4.DATE_EMPRUNT;
+                    TestSQL.EMPRUNTER.Add(emprunt4);
                 }
                 #endregion
                 #region 5eme emprunt
@@ -120,11 +123,13 @@ namespace PT2Test
                     EMPRUNTER emprunt5 = new EMPRUNTER();
                     emprunt5.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
                     emprunt5.CODE_ALBUM = listeAlbums[4].CODE_ALBUM;
-                    emprunt5.DATE_EMPRUNT = DateTime.UtcNow.AddYears(nmbEmprunt);
+                    emprunt5.DATE_EMPRUNT = DateTime.UtcNow.AddDays(nmbEmprunt);
                     emprunt5.DATE_RETOUR_ATTENDUE = emprunt5.DATE_EMPRUNT.AddDays(listeAlbums[4].GENRES.DÉLAI);
-                    emprunt5.DATE_RETOUR = emprunt5.DATE_RETOUR_ATTENDUE;
+                    emprunt5.DATE_RETOUR = emprunt5.DATE_EMPRUNT;
+                    TestSQL.EMPRUNTER.Add(emprunt5);
                 }
                 #endregion
+                TestSQL.SaveChanges();
             }
         }
         #endregion
@@ -134,7 +139,8 @@ namespace PT2Test
         public void test10PlusEmprunte()
         {
             InitAlbum();
-            EmpruntMassifAlbum();
+            InitListeAbonneTest();
+            //EmpruntMassifAlbum();
             Admin admin = new Admin();
             List<ALBUMS> listeATester = admin.DixPlusVue();
             Assert.AreEqual(listeAlbums[0], listeATester[0]);
