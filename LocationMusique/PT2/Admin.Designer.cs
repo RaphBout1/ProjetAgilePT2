@@ -69,6 +69,7 @@ namespace PT2
             this.listBoxAbonnés.Name = "listBoxAbonnés";
             this.listBoxAbonnés.Size = new System.Drawing.Size(223, 147);
             this.listBoxAbonnés.TabIndex = 7;
+            this.listBoxAbonnés.Visible = false;
             // 
             // label4
             // 
@@ -78,6 +79,7 @@ namespace PT2
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Liste des abonnés";
+            this.label4.Visible = false;
             // 
             // listBoxGlobale
             // 
