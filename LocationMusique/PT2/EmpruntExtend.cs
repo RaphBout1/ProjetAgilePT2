@@ -28,5 +28,13 @@ namespace PT2
                    CODE_ABONNÉ == eMPRUNTER.CODE_ABONNÉ &&
                    CODE_ALBUM == eMPRUNTER.CODE_ALBUM;
         }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -953772378;
+            hashCode = hashCode * -1521134295 + CODE_ABONNÉ.GetHashCode();
+            hashCode = hashCode * -1521134295 + CODE_ALBUM.GetHashCode();
+            return hashCode;
+        }
     }
 }
