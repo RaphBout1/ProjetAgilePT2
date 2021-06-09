@@ -36,6 +36,19 @@ namespace PT2Test
         #endregion
         #region initialise un emprunt massif d'album
         /// <summary>
+        /// Permet de récupérer les 75 abonnées test
+        /// </summary>
+        private void InitListeAbonneTest()
+        {
+            var abonne = from a in TestSQL.ABONNÉS
+                         where a.NOM_ABONNÉ.Contains("Test | ")
+                         select a;
+            foreach (ABONNÉS a in abonne)
+            {
+                listeAbonneTest.Add(a);
+            }
+        }
+        /// <summary>
         /// Initialise 75 abonné dans la base de donnée
         /// </summary>
         private void InitAbonneEmprunteur()
@@ -51,19 +64,14 @@ namespace PT2Test
                 TestSQL.ABONNÉS.Add(abo);
             }
             TestSQL.SaveChanges();
-            var abonne = from a in TestSQL.ABONNÉS
-                      where a.NOM_ABONNÉ.Contains("Test | ")
-                      select a;
-            foreach(ABONNÉS a in abonne)
-            {
-                listeAbonneTest.Add(a);
-            }
+            InitListeAbonneTest();
         }
         
         private void EmpruntMassifAlbum()
         {
-            InitAbonneEmprunteur();
-            for(int nmbEmprunt=75; nmbEmprunt>0; nmbEmprunt--)
+            InitListeAbonneTest();
+            //InitAbonneEmprunteur();
+            for(int nmbEmprunt=74; nmbEmprunt>-1; nmbEmprunt--)
             {
                 #region 1er emprunt
                 EMPRUNTER emprunt1 = new EMPRUNTER();
@@ -85,7 +93,7 @@ namespace PT2Test
                 }
                 #endregion
                 #region 3eme emprunt
-                if (nmbEmprunt < 60)
+                if (nmbEmprunt < 50)
                 {
                     EMPRUNTER emprunt3 = new EMPRUNTER();
                     emprunt3.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
@@ -96,7 +104,7 @@ namespace PT2Test
                 }
                 #endregion
                 #region 4eme emprunt
-                if (nmbEmprunt < 60)
+                if (nmbEmprunt < 40)
                 {
                     EMPRUNTER emprunt4 = new EMPRUNTER();
                     emprunt4.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
@@ -107,7 +115,7 @@ namespace PT2Test
                 }
                 #endregion
                 #region 5eme emprunt
-                if (nmbEmprunt < 60)
+                if (nmbEmprunt < 30)
                 {
                     EMPRUNTER emprunt5 = new EMPRUNTER();
                     emprunt5.CODE_ABONNÉ = listeAbonneTest[nmbEmprunt].CODE_ABONNÉ;
@@ -127,6 +135,14 @@ namespace PT2Test
         {
             InitAlbum();
             EmpruntMassifAlbum();
+            Admin admin = new Admin();
+            List<ALBUMS> listeATester = admin.DixPlusVue();
+            Assert.AreEqual(listeAlbums[0], listeATester[0]);
+            Assert.AreEqual(listeAlbums[1], listeATester[1]);
+            Assert.AreEqual(listeAlbums[2], listeATester[2]);
+            Assert.AreEqual(listeAlbums[3], listeATester[3]);
+            Assert.AreEqual(listeAlbums[4], listeATester[4]);
+
         }
 
         #endregion
