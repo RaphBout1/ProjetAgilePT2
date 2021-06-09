@@ -29,6 +29,7 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.label2 = new System.Windows.Forms.Label();
             this.purgebutton = new System.Windows.Forms.Button();
             this.listBoxAbonnés = new System.Windows.Forms.ListBox();
@@ -64,7 +65,7 @@ namespace PT2
             // listBoxAbonnés
             // 
             this.listBoxAbonnés.FormattingEnabled = true;
-            this.listBoxAbonnés.Location = new System.Drawing.Point(35, 294);
+            this.listBoxAbonnés.Location = new System.Drawing.Point(1099, 260);
             this.listBoxAbonnés.Name = "listBoxAbonnés";
             this.listBoxAbonnés.Size = new System.Drawing.Size(223, 147);
             this.listBoxAbonnés.TabIndex = 7;
@@ -72,7 +73,7 @@ namespace PT2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 275);
+            this.label4.Location = new System.Drawing.Point(1096, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 8;
@@ -81,16 +82,16 @@ namespace PT2
             // listBoxGlobale
             // 
             this.listBoxGlobale.FormattingEnabled = true;
-            this.listBoxGlobale.Location = new System.Drawing.Point(462, 275);
+            this.listBoxGlobale.Location = new System.Drawing.Point(586, 290);
             this.listBoxGlobale.Name = "listBoxGlobale";
-            this.listBoxGlobale.Size = new System.Drawing.Size(267, 160);
+            this.listBoxGlobale.Size = new System.Drawing.Size(316, 277);
             this.listBoxGlobale.TabIndex = 9;
             this.listBoxGlobale.SelectedIndexChanged += new System.EventHandler(this.listBoxGlobale_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(459, 245);
+            this.label5.Location = new System.Drawing.Point(599, 244);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 10;
@@ -98,7 +99,7 @@ namespace PT2
             // 
             // enRetardButton
             // 
-            this.enRetardButton.Location = new System.Drawing.Point(58, 158);
+            this.enRetardButton.Location = new System.Drawing.Point(207, 684);
             this.enRetardButton.Name = "enRetardButton";
             this.enRetardButton.Size = new System.Drawing.Size(75, 23);
             this.enRetardButton.TabIndex = 11;
@@ -108,7 +109,7 @@ namespace PT2
             // 
             // Pluspopulairebutton
             // 
-            this.Pluspopulairebutton.Location = new System.Drawing.Point(166, 203);
+            this.Pluspopulairebutton.Location = new System.Drawing.Point(155, 203);
             this.Pluspopulairebutton.Name = "Pluspopulairebutton";
             this.Pluspopulairebutton.Size = new System.Drawing.Size(127, 23);
             this.Pluspopulairebutton.TabIndex = 12;
@@ -118,7 +119,7 @@ namespace PT2
             // 
             // purgerModeButton
             // 
-            this.purgerModeButton.Location = new System.Drawing.Point(166, 158);
+            this.purgerModeButton.Location = new System.Drawing.Point(207, 635);
             this.purgerModeButton.Name = "purgerModeButton";
             this.purgerModeButton.Size = new System.Drawing.Size(75, 23);
             this.purgerModeButton.TabIndex = 13;
@@ -128,7 +129,7 @@ namespace PT2
             // 
             // prolongesButton
             // 
-            this.prolongesButton.Location = new System.Drawing.Point(58, 203);
+            this.prolongesButton.Location = new System.Drawing.Point(166, 147);
             this.prolongesButton.Name = "prolongesButton";
             this.prolongesButton.Size = new System.Drawing.Size(75, 23);
             this.prolongesButton.TabIndex = 14;
@@ -138,7 +139,7 @@ namespace PT2
             // 
             // moinsPopulaireButton
             // 
-            this.moinsPopulaireButton.Location = new System.Drawing.Point(319, 203);
+            this.moinsPopulaireButton.Location = new System.Drawing.Point(155, 260);
             this.moinsPopulaireButton.Name = "moinsPopulaireButton";
             this.moinsPopulaireButton.Size = new System.Drawing.Size(127, 23);
             this.moinsPopulaireButton.TabIndex = 15;
@@ -148,7 +149,7 @@ namespace PT2
             // 
             // listeAbonnés
             // 
-            this.listeAbonnés.Location = new System.Drawing.Point(309, 158);
+            this.listeAbonnés.Location = new System.Drawing.Point(189, 590);
             this.listeAbonnés.Name = "listeAbonnés";
             this.listeAbonnés.Size = new System.Drawing.Size(127, 23);
             this.listeAbonnés.TabIndex = 16;
@@ -160,7 +161,9 @@ namespace PT2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.listeAbonnés);
             this.Controls.Add(this.moinsPopulaireButton);
             this.Controls.Add(this.prolongesButton);
@@ -172,6 +175,7 @@ namespace PT2
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listBoxAbonnés);
             this.Controls.Add(this.purgebutton);
+            this.DoubleBuffered = true;
             this.Name = "Admin";
             this.Text = "Admin";
             this.ResumeLayout(false);

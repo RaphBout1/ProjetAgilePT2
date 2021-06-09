@@ -16,7 +16,7 @@ namespace PT2
 
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
-         private bool listeabonneVisible = true;
+         private bool listeabonneVisible = false;
 
         public Admin()
         {
