@@ -16,7 +16,6 @@ namespace PT2Test
         EMPRUNTER empruntTest;
         EMPRUNTER empruntTest2;
         EMPRUNTER empruntTest3;
-        List<EMPRUNTER> resultatAttendu = new List<EMPRUNTER>();
         Utilisateur utilisateur;
 
 
@@ -141,10 +140,6 @@ namespace PT2Test
             {
                 empruntTest3 = e;
             }
-
-            resultatAttendu.Add(empruntTest);
-            resultatAttendu.Add(empruntTest2);
-            resultatAttendu.Add(empruntTest3);
             TestSQL.SaveChanges();
         }
         #endregion
@@ -156,11 +151,12 @@ namespace PT2Test
         [TestMethod]
         public void TestActualiseListeEmprunté()
         {
-            initTotal();
-            //initAboTest();
-            initEmprunt();            int empruntATrouver = 3;
+            //initTotal();
+            initAboTest();
+            initEmprunt();            
+            int empruntATrouver = 3;
             Assert.AreEqual(empruntATrouver, utilisateur.ActualiseListeEmprunté().Count);
-            nettoyageBase();
+            //nettoyageBase();
         }
         #endregion
 

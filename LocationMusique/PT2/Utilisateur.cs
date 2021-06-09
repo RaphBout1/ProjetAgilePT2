@@ -124,7 +124,7 @@ namespace PT2
         /// </summary>
         private void ListageRecommandeAlbum()
         {
-            var albumsDuGenre = listeGenreEmprunte.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+/*            var albumsDuGenre = listeGenreEmprunte.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
             int nombreAlbumsAAfficher = Math.Min(10, albumsDuGenre.ALBUMS.Count());
             var albums = (from a in musiqueSQL.ALBUMS where a.CODE_GENRE == albumsDuGenre.CODE_GENRE orderby a.EMPRUNTER.Count() select a).Take(nombreAlbumsAAfficher);
             foreach (ALBUMS a in albums)
@@ -132,6 +132,7 @@ namespace PT2
                 recommandationsListBox.Items.Add(a.TITRE_ALBUM);
             }
             Refresh();
+*/
         }
         #endregion
 
