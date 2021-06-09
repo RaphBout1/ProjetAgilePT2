@@ -15,14 +15,20 @@ namespace PT2
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
 
         private HashSet<ABONNÉS> abonnésPurgeables = new HashSet<ABONNÉS>();
+        private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
 
         public Admin()
         {
             InitializeComponent();
+
             enRetard();
             LivreEmprunteProlongé();
             abonnésAPurger();
-
+            albumsUS8 = albumPasEmpruntesDepuis1An();
+            foreach(ALBUMS al in albumsUS8)
+            {
+                listBoxUS8.Items.Add(al.CODE_ALBUM);
+            }
         }
 
         private void Admin_Load(object sender, EventArgs e)
@@ -169,8 +175,6 @@ namespace PT2
             Refresh();
         }
 
-
-
         public void purgerAbonné(int codeAbonné)
         {
             var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l;
@@ -178,6 +182,24 @@ namespace PT2
             musiqueSQL.ABONNÉS.Remove(x);
             musiqueSQL.SaveChanges();
             abonnésAPurger();
+        }
+
+        /**
+         * retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an
+         */
+        public HashSet<ALBUMS> albumPasEmpruntesDepuis1An()
+        {
+            HashSet<ALBUMS> albumPasEmprunter1An = new HashSet<ALBUMS>();
+            DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
+            var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ALBUM into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
+            foreach (var kv in dates)
+            {
+                if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) > 0)
+                {
+                    albumPasEmprunter1An.Add((from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == kv.Key select a).First());
+                }
+            }
+            return albumPasEmprunter1An;
         }
 
         private void purgebutton_Click(object sender, EventArgs e)
