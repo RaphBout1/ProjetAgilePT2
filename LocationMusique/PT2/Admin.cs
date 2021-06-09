@@ -176,6 +176,7 @@ namespace PT2
             ABONNÉS aPurger = (from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l).First();
             if (aPurger != null)
             {
+                (from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == aPurger.CODE_ABONNÉ select e).ToList().ForEach(e => musiqueSQL.EMPRUNTER.Remove(e));
                 musiqueSQL.ABONNÉS.Remove(aPurger);
                 musiqueSQL.SaveChanges();
             }
