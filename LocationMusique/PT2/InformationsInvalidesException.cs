@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace PT2
 {
+    /// <summary>
+    /// Lancée lorsque les informations passées dans un formulaire ne sont pas valides
+    /// </summary>
     public class InformationsInvalidesException : Exception
     {
         string message;
