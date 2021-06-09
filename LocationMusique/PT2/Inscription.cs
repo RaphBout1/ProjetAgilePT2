@@ -81,6 +81,10 @@ namespace PT2
         {
             try
             {
+                if (loginText.Text.ToLower().Contains("test"))
+                {
+                    throw new InformationsInvalidesException("L'identifiant ne doit pas contenir le mot \"test\"");
+                }
                 abonner(nomText.Text, prenomText.Text, paysComboBox.Text, loginText.Text, passwordText.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 Close();
