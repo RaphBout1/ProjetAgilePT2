@@ -235,17 +235,5 @@ namespace PT2
                 listBoxAbonnés.Items.Add(a.NOM_ABONNÉ + a.PRÉNOM_ABONNÉ);
             }
         }
-
-        private void purgebutton_Click(object sender, EventArgs e)
-        {
-            ABONNÉS a = (ABONNÉS)listBox3.SelectedItem;
-            purgerAbonné(a.CODE_ABONNÉ);
-            purgebutton.Enabled = false;
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            purgebutton.Enabled = true;
-        }
     }
 }
