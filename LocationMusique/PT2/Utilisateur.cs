@@ -16,7 +16,6 @@ namespace PT2
         private ABONNÉS utilisateur;
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         Dictionary<GENRES, int> listeGenreEmprunte = new Dictionary<GENRES, int>();
-        List<ALBUMS> listeAlbumsRecommande = new List<ALBUMS>();
 
         public Utilisateur(ABONNÉS uti)
         {
@@ -82,7 +81,8 @@ namespace PT2
             if (em.DATE_EMPRUNT.AddDays(al.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
             {
                 return true;
-            } return false;
+            }
+            return false;
         }
 
         #region Recommandation
@@ -120,23 +120,12 @@ namespace PT2
         /// </summary>
         private void ListageRecommandeAlbum()
         {
-            Dictionary<int, ALBUMS> listeAlbum = new Dictionary<int, ALBUMS>();
-            foreach (KeyValuePair<GENRES, int> gi in listeGenreEmprunte)
+            var albumsDuGenre = listeGenreEmprunte.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+            int nombreAlbumsAAfficher = Math.Min(10, albumsDuGenre.ALBUMS.Count());
+            var albums = (from a in musiqueSQL.ALBUMS where a.CODE_GENRE == albumsDuGenre.CODE_GENRE orderby a.EMPRUNTER.Count() select a).Take(nombreAlbumsAAfficher);
+            foreach (ALBUMS a in albums)
             {
-                foreach (ALBUMS a in gi.Key.ALBUMS)
-                {
-                    int cle = (100 * a.EMPRUNTER.Count) + (1000 * gi.Value);
-                    while (listeAlbum.ContainsKey(cle)) { cle++; }
-                    listeAlbum.Add(cle, a);
-                }
-            }
-            foreach (KeyValuePair<int, ALBUMS> ia in listeAlbum.OrderBy(importance => importance.Key))
-            {
-                listeAlbumsRecommande.Add(ia.Value);
-            }
-            foreach (ALBUMS b in listeAlbumsRecommande)
-            {
-                recommandationsListBox.Items.Add(b.TITRE_ALBUM);
+                recommandationsListBox.Items.Add(a.TITRE_ALBUM);
             }
             Refresh();
         }
