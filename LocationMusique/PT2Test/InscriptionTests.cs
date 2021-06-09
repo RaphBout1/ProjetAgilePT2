@@ -16,6 +16,9 @@ namespace PT2Test
         private string testLogin = "test";
         [TestMethod]
 
+        /**
+         * Test si une inscription dans la base de donnée d'un abonné qui n'existe pas encore dans cette base et avec des attributs valides fonctionne
+         */
         public void TestInscriptionLambda()
         {
             var aDb = (from ab in musiqueSQL.ABONNÉS where ab.LOGIN_ABONNÉ == testLogin select ab).FirstOrDefault();
@@ -32,6 +35,9 @@ namespace PT2Test
             Assert.IsFalse(aDb == null);
         }
 
+        /**
+         * Vérifie qu'une inscription à partir d'un login déjà existant retourne une exception
+         */
         [TestMethod]
         [ExpectedException(typeof(InformationsInvalidesException))]
         public void TestInscriptionMemeLogin()
@@ -46,6 +52,9 @@ namespace PT2Test
             musiqueSQL.SaveChanges();
         }
 
+        /**
+         * Vérifie qu'une inscription avec un nom vide retourne une exception
+         */
         [TestMethod]
         [ExpectedException(typeof(InformationsInvalidesException))]
         public void TestInscriptionNomVide()
@@ -60,6 +69,9 @@ namespace PT2Test
             musiqueSQL.SaveChanges();
         }
 
+        /**
+         * Vérifie qu'une inscription avec un prenom vide retourne une exception
+         */
         [TestMethod]
         [ExpectedException(typeof(InformationsInvalidesException))]
         public void TestInscriptionPrenomVide()
@@ -74,6 +86,9 @@ namespace PT2Test
             musiqueSQL.SaveChanges();
         }
 
+        /**
+         * Vérifie qu'une inscription avec un pays que la base de donnée ne connait pas retourne une exception
+         */
         [TestMethod]
         [ExpectedException(typeof(InformationsInvalidesException))]
         public void TestInscriptionPaysInvalide()
