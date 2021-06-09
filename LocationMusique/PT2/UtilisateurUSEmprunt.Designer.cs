@@ -56,6 +56,8 @@ namespace PT2
             this.InfoGenre = new System.Windows.Forms.Label();
             this.boutonSuivant = new System.Windows.Forms.Button();
             this.boutonRetour = new System.Windows.Forms.Button();
+            this.InfoNumero = new System.Windows.Forms.Label();
+            this.CoordY = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pochette1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette3)).BeginInit();
@@ -281,7 +283,7 @@ namespace PT2
             // 
             this.InfoEditeur.AutoSize = true;
             this.InfoEditeur.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoEditeur.Location = new System.Drawing.Point(921, 112);
+            this.InfoEditeur.Location = new System.Drawing.Point(853, 100);
             this.InfoEditeur.Name = "InfoEditeur";
             this.InfoEditeur.Size = new System.Drawing.Size(79, 29);
             this.InfoEditeur.TabIndex = 24;
@@ -291,7 +293,7 @@ namespace PT2
             // 
             this.InfoAnnee.AutoSize = true;
             this.InfoAnnee.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoAnnee.Location = new System.Drawing.Point(921, 172);
+            this.InfoAnnee.Location = new System.Drawing.Point(931, 190);
             this.InfoAnnee.Name = "InfoAnnee";
             this.InfoAnnee.Size = new System.Drawing.Size(79, 29);
             this.InfoAnnee.TabIndex = 25;
@@ -301,7 +303,7 @@ namespace PT2
             // 
             this.InfoPrix.AutoSize = true;
             this.InfoPrix.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoPrix.Location = new System.Drawing.Point(921, 244);
+            this.InfoPrix.Location = new System.Drawing.Point(931, 244);
             this.InfoPrix.Name = "InfoPrix";
             this.InfoPrix.Size = new System.Drawing.Size(79, 29);
             this.InfoPrix.TabIndex = 26;
@@ -311,7 +313,7 @@ namespace PT2
             // 
             this.InfoGenre.AutoSize = true;
             this.InfoGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoGenre.Location = new System.Drawing.Point(921, 316);
+            this.InfoGenre.Location = new System.Drawing.Point(853, 139);
             this.InfoGenre.Name = "InfoGenre";
             this.InfoGenre.Size = new System.Drawing.Size(79, 29);
             this.InfoGenre.TabIndex = 27;
@@ -339,6 +341,26 @@ namespace PT2
             this.boutonRetour.UseVisualStyleBackColor = false;
             this.boutonRetour.Click += new System.EventHandler(this.boutonRetour_Click);
             // 
+            // InfoNumero
+            // 
+            this.InfoNumero.AutoSize = true;
+            this.InfoNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoNumero.Location = new System.Drawing.Point(853, 9);
+            this.InfoNumero.Name = "InfoNumero";
+            this.InfoNumero.Size = new System.Drawing.Size(79, 29);
+            this.InfoNumero.TabIndex = 30;
+            this.InfoNumero.Text = "label3";
+            // 
+            // CoordY
+            // 
+            this.CoordY.AutoSize = true;
+            this.CoordY.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CoordY.Location = new System.Drawing.Point(768, 9);
+            this.CoordY.Name = "CoordY";
+            this.CoordY.Size = new System.Drawing.Size(79, 29);
+            this.CoordY.TabIndex = 31;
+            this.CoordY.Text = "label3";
+            // 
             // UtilisateurUSEmprunt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +368,8 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.CoordY);
+            this.Controls.Add(this.InfoNumero);
             this.Controls.Add(this.boutonRetour);
             this.Controls.Add(this.boutonSuivant);
             this.Controls.Add(this.InfoGenre);
@@ -414,5 +438,7 @@ namespace PT2
         private System.Windows.Forms.Label InfoGenre;
         private System.Windows.Forms.Button boutonSuivant;
         private System.Windows.Forms.Button boutonRetour;
+        private System.Windows.Forms.Label InfoNumero;
+        private System.Windows.Forms.Label CoordY;
     }
 }

@@ -27,27 +27,28 @@ namespace PT2
             compteurAlbum = 0;
             page = 0;
             InitialisationGlobaleDeVariable();
-            ImplementeAlbumsEmpruntable();
+            ImplementeAlbumsEmpruntable(5);
             this.utilisateur = utilisateur;
         }
         #region initialisation de la page
         public void InitialisationGlobaleDeVariable()
         {
-            caseY.Add(110, 265);
-            caseY.Add(272, 428);
-            caseY.Add(436, 591);
-            caseY.Add(600, 755);
-            caseY.Add(760, 920);
+            caseY.Add(57, 212);
+            caseY.Add(220, 375);
+            caseY.Add(384, 539);
+            caseY.Add(546, 701);
+            caseY.Add(709, 864);
             nmbAlbum = (from a in musiqueSQL.ALBUMS
                         select a).Count();
         }
-        public void ImplementeAlbumsEmpruntable()
+        public void ImplementeAlbumsEmpruntable(int ensemble)
         {
 
             var album = from a in musiqueSQL.ALBUMS
-                        where a.CODE_ALBUM < compteurAlbum + 5
+                        where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 6
                         select a;
 
+            Console.WriteLine("Nouvel liste : ");
             foreach (ALBUMS a in album)
             {
                 bool enEmprunt = false;
@@ -57,11 +58,27 @@ namespace PT2
                 }
                 if (!enEmprunt)
                 {
-                    listeAlbumsEmpruntable.Add(compteurAlbum, a);
-                    compteurAlbum++;
+                    bool dejaContenu = false;
+                    int compteurInverse = compteurAlbum;
+                    Console.WriteLine(" A examiner : " + a.CODE_ALBUM);
+                    while (!dejaContenu && compteurInverse > compteurAlbum - 5 && compteurInverse > 0)
+                    {
+                        if (listeAlbumsEmpruntable.ContainsKey(compteurInverse))
+                        {
+                            Console.WriteLine("     Originale : "+listeAlbumsEmpruntable[compteurInverse].CODE_ALBUM);
+                            if (listeAlbumsEmpruntable[compteurInverse].Equals(a)) { dejaContenu = true; }
+                        }
+                        compteurInverse--;
+                    }
+                    if (!dejaContenu)
+                    {
+                        listeAlbumsEmpruntable.Add(compteurAlbum, a);
+                        compteurAlbum++;
+                    }
+                    
                 }
             }
-            AffectationCinqAlbum();
+            AffectationCinqAlbum(ensemble);
             AfficheAlbum();
         }
         #endregion
@@ -110,16 +127,16 @@ namespace PT2
         private void boutonSuivant_Click(object sender, EventArgs e)
         {
             page++;
-            AffectationCinqAlbum();
+            AffectationCinqAlbum(5);
             AfficheAlbum();
         }
         private void boutonRetour_Click(object sender, EventArgs e)
         {
             page--;
-            AffectationCinqAlbum();
+            AffectationCinqAlbum(5);
             AfficheAlbum();
         }
-        private void AffectationCinqAlbum()
+        private void AffectationCinqAlbum(int ensemble)
         {
             listeAlbumsVisualiser.Clear();
             for (int index = 0; index < 5; index++)
@@ -132,7 +149,8 @@ namespace PT2
                     }
                     else
                     {
-                        ImplementeAlbumsEmpruntable();
+                        ensemble += 5;
+                        ImplementeAlbumsEmpruntable(ensemble);
                     }
                 }
             }
@@ -209,7 +227,8 @@ namespace PT2
 
         private void UtilisateurUSEmprunt_MouseDown(object sender, MouseEventArgs e)
         {
-            if(MousePosition.X>=42 && MousePosition.X <= 740)
+            Point souris = new Point(MousePosition.X - this.Location.X, MousePosition.Y - this.Location.Y);
+            if(souris.X>=42 && souris.X <= 740)
             {
                 int compteurCase = 0;
                 bool trouveAlbum = false;
@@ -217,7 +236,7 @@ namespace PT2
                 {
                     if (!trouveAlbum)
                     {
-                        if (MousePosition.Y >= ivv.Key && MousePosition.Y <= ivv.Value)
+                        if (souris.Y >= ivv.Key && souris.Y <= ivv.Value)
                         {
                             albumAEmprunter = listeAlbumsVisualiser[compteurCase];
                             
@@ -227,15 +246,17 @@ namespace PT2
                     }
                 }
             }
+            CoordY.Text = souris.Y.ToString();
         }
 
         private void AfficheAlbumActuelle()
         {
+            InfoNumero.Text = "N° : "+albumAEmprunter.CODE_ALBUM.ToString();
             InfoTitre.Text = albumAEmprunter.TITRE_ALBUM;
-            InfoAnnee.Text = albumAEmprunter.ANNÉE_ALBUM.ToString();
-            InfoEditeur.Text = albumAEmprunter.EDITEURS.NOM_EDITEUR;
-            InfoGenre.Text = albumAEmprunter.GENRES.LIBELLÉ_GENRE;
-            InfoPrix.Text = albumAEmprunter.PRIX_ALBUM.ToString();
+            InfoAnnee.Text = "Année : "+albumAEmprunter.ANNÉE_ALBUM.ToString();
+            InfoEditeur.Text = "Editeur : "+albumAEmprunter.EDITEURS.NOM_EDITEUR;
+            InfoGenre.Text = "Genre : "+albumAEmprunter.GENRES.LIBELLÉ_GENRE;
+            InfoPrix.Text = "Prix : "+albumAEmprunter.PRIX_ALBUM.ToString()+" €";
 
         }
     }
