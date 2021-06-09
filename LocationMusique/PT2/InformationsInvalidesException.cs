@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace PT2
 {
-    class InformationsInvalidesException : Exception
+    public class InformationsInvalidesException : Exception
     {
         string message;
         public InformationsInvalidesException(string message) : base(message)
