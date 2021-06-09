@@ -149,7 +149,7 @@ namespace PT2
 
 
 
-        private void purgerAbonné(int codeAbonné)
+        public void purgerAbonné(int codeAbonné)
         {
             var query = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l;
             ABONNÉS x = query.First();

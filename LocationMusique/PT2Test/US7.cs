@@ -12,7 +12,7 @@ namespace PT2Test
     public class US7
     {
         [TestMethod]
-        public void ()
+        public void a ()
         {
 
         }
