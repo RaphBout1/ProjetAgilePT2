@@ -38,6 +38,34 @@ namespace PT2
         {
                        new Admin().ShowDialog();
         }
- 
+
+        private void connectbutton_Click(object sender, EventArgs e)
+        {
+            ConnexionProcess();
+        }
+
+        private void ConnexionProcess()
+        {
+            String loginAbo = pseudo.Text;
+            string mdpAbo = mdp.Text;
+            var Abo = (from l in musiqueSQL.ABONNÉS where l.LOGIN_ABONNÉ.Equals(loginAbo) && l.PASSWORD_ABONNÉ.Equals(mdpAbo) select l);
+            if(Abo.Count() > 0)
+            {                ABONNÉS aboconnecte = Abo.First();
+                if (loginAbo.Equals("admin")){
+                    new Admin().ShowDialog();
+                }
+                else
+                {
+                    new Utilisateur(aboconnecte).ShowDialog();
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Pseudo ou Mot de passe incorrect");
+            }
+            pseudo.Clear();
+            mdp.Clear();
+        }
     }
 }
