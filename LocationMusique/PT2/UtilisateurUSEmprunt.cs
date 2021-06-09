@@ -34,6 +34,7 @@ namespace PT2
         #region initialisation de la page
         public void InitialisationGlobaleDeVariable()
         {
+            labelPage.Text = "Page : " + page.ToString();
             caseY.Add(57, 212);
             caseY.Add(220, 375);
             caseY.Add(384, 539);
@@ -158,6 +159,7 @@ namespace PT2
         }
         private void AfficheAlbum()
         {
+            labelPage.Text = "Page : " + page.ToString();
             for (int index = 0; index < 5; index++)
             {
                 switch (index)
@@ -251,6 +253,7 @@ namespace PT2
 
         private void AfficheAlbumActuelle()
         {
+            boutonEmprunterAlbumPrecis.Visible = true;
             InfoNumero.Text = "N° : "+albumAEmprunter.CODE_ALBUM.ToString();
             InfoTitre.Text = albumAEmprunter.TITRE_ALBUM;
             InfoAnnee.Text = "Année : "+albumAEmprunter.ANNÉE_ALBUM.ToString();

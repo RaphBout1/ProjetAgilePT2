@@ -56,6 +56,7 @@ namespace PT2
             this.boutonSuivant = new System.Windows.Forms.Button();
             this.boutonRetour = new System.Windows.Forms.Button();
             this.InfoNumero = new System.Windows.Forms.Label();
+            this.labelPage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pochette1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette3)).BeginInit();
@@ -66,12 +67,18 @@ namespace PT2
             // 
             // boutonEmprunterAlbumPrecis
             // 
-            this.boutonEmprunterAlbumPrecis.Location = new System.Drawing.Point(1292, 785);
+            this.boutonEmprunterAlbumPrecis.BackColor = System.Drawing.Color.Transparent;
+            this.boutonEmprunterAlbumPrecis.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("boutonEmprunterAlbumPrecis.BackgroundImage")));
+            this.boutonEmprunterAlbumPrecis.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.boutonEmprunterAlbumPrecis.FlatAppearance.BorderSize = 0;
+            this.boutonEmprunterAlbumPrecis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.boutonEmprunterAlbumPrecis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.boutonEmprunterAlbumPrecis.Location = new System.Drawing.Point(1165, 764);
             this.boutonEmprunterAlbumPrecis.Name = "boutonEmprunterAlbumPrecis";
-            this.boutonEmprunterAlbumPrecis.Size = new System.Drawing.Size(75, 23);
+            this.boutonEmprunterAlbumPrecis.Size = new System.Drawing.Size(315, 70);
             this.boutonEmprunterAlbumPrecis.TabIndex = 4;
-            this.boutonEmprunterAlbumPrecis.Text = "Emprunter";
-            this.boutonEmprunterAlbumPrecis.UseVisualStyleBackColor = true;
+            this.boutonEmprunterAlbumPrecis.UseVisualStyleBackColor = false;
+            this.boutonEmprunterAlbumPrecis.Visible = false;
             this.boutonEmprunterAlbumPrecis.Click += new System.EventHandler(this.boutonEmprunterAlbumPrecis_Click);
             // 
             // monthCalendarClassique
@@ -313,7 +320,7 @@ namespace PT2
             this.InfoGenre.AutoSize = true;
             this.InfoGenre.BackColor = System.Drawing.Color.Transparent;
             this.InfoGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoGenre.Location = new System.Drawing.Point(853, 139);
+            this.InfoGenre.Location = new System.Drawing.Point(871, 138);
             this.InfoGenre.Name = "InfoGenre";
             this.InfoGenre.Size = new System.Drawing.Size(19, 29);
             this.InfoGenre.TabIndex = 27;
@@ -352,6 +359,16 @@ namespace PT2
             this.InfoNumero.TabIndex = 30;
             this.InfoNumero.Text = " ";
             // 
+            // labelPage
+            // 
+            this.labelPage.AutoSize = true;
+            this.labelPage.BackColor = System.Drawing.Color.Transparent;
+            this.labelPage.Location = new System.Drawing.Point(855, 428);
+            this.labelPage.Name = "labelPage";
+            this.labelPage.Size = new System.Drawing.Size(35, 13);
+            this.labelPage.TabIndex = 31;
+            this.labelPage.Text = "label1";
+            // 
             // UtilisateurUSEmprunt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +376,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.labelPage);
             this.Controls.Add(this.InfoNumero);
             this.Controls.Add(this.boutonRetour);
             this.Controls.Add(this.boutonSuivant);
@@ -427,5 +445,6 @@ namespace PT2
         private System.Windows.Forms.Button boutonSuivant;
         private System.Windows.Forms.Button boutonRetour;
         private System.Windows.Forms.Label InfoNumero;
+        private System.Windows.Forms.Label labelPage;
     }
 }
