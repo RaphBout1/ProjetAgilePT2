@@ -12,8 +12,7 @@ namespace PT2
         public override bool Equals(object obj)
         {
             return obj is ALBUMS aLBUMS &&
-                   CODE_ALBUM == aLBUMS.CODE_ALBUM &&
-                   TITRE_ALBUM == aLBUMS.TITRE_ALBUM;
+                   CODE_ALBUM == aLBUMS.CODE_ALBUM;
         }
 
         public override string ToString()
@@ -35,6 +34,11 @@ namespace PT2
                     nmbEmpruntEnUnAn++;
                 }
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return 1186937416 + CODE_ALBUM.GetHashCode();
         }
     }
 }
