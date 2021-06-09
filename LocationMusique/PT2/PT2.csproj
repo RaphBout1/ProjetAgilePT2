@@ -46,6 +46,7 @@
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,9 +67,6 @@
     </Compile>
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminUS8.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>

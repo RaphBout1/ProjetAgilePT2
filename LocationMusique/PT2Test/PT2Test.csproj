@@ -61,6 +61,7 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="US2.cs" />
+    <Compile Include="US8.cs" />
     <Compile Include="US3.cs" />
     <Compile Include="US6.cs" />
     <Compile Include="US5.cs" />
