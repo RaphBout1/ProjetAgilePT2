@@ -146,7 +146,6 @@ namespace PT2
             this.Controls.Add(this.listBox1);
             this.Name = "Admin";
             this.Text = "Admin";
-            this.Load += new System.EventHandler(this.Admin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -14,7 +14,6 @@ namespace PT2
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
 
-        private HashSet<ABONNÉS> abonnésPurgeables = new HashSet<ABONNÉS>();
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
 
         public Admin()
@@ -25,11 +24,6 @@ namespace PT2
             abonnésAPurger();
             listerAbonnés();
             albumsUS8 = albumPasEmpruntesDepuis1An();
-        }
-
-        private void Admin_Load(object sender, EventArgs e)
-        {
-
         }
         /// <summary>
         /// Renvoie une liste d'abonnée ayant un emprunt non rendu en retard de 10 jours sur la date de rendue attendue.
@@ -66,7 +60,6 @@ namespace PT2
                 }
 
             }
-
             Refresh();
         }
 
@@ -156,10 +149,12 @@ namespace PT2
             la.Remove(la[finDecalage]);
         }
 
+        /// <summary>
+        /// liste dans une listBox les abonnés purgeables
+        /// </summary>
         private void abonnésAPurger()
         {
             listBox3.Items.Clear();
-            abonnésPurgeables.Clear();
             DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ABONNÉ into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
             foreach (var kv in dates)
@@ -167,13 +162,16 @@ namespace PT2
                 if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) > 0)
                 {
                     ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
-                    abonnésPurgeables.Add(aPurger);
                     listBox3.Items.Add(aPurger);
                 }
             }
             Refresh();
         }
 
+        /// <summary>
+        /// Purge de la base de donnée l'abonné correspondant à ce code abonné ainsi que tous ses emprunts
+        /// </summary>
+        /// <param name="codeAbonné"></param> le CODE_ABONNE dans la base de l'abonné à purger
         public void purgerAbonné(int codeAbonné)
         {
             ABONNÉS aPurger = (from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == codeAbonné select l).First();
