@@ -67,6 +67,9 @@ namespace PT2Test
             InitListeAbonneTest();
         }
         
+        /// <summary>
+        /// Emprunte massivement 5 album avec 75 abonnés teste
+        /// </summary>
         private void EmpruntMassifAlbum()
         {
             InitAbonneEmprunteur();
@@ -135,6 +138,9 @@ namespace PT2Test
         #endregion
 
         #region Test de fonctionnalité
+        /// <summary>
+        /// Teste la fonctionnabilité de l'US7
+        /// </summary>
         [TestMethod]
         public void test10PlusEmprunte()
         {

@@ -21,6 +21,10 @@ namespace PT2
             return this.TITRE_ALBUM;
         }
 
+        /// <summary>
+        /// Calcule le nombre d'emprunt effectué dans l'année courante 
+        /// (ne comptabilise pas si l'emprunt est en cours ou non)
+        /// </summary>
         public void EmpruntAnnee()
         {
             nmbEmpruntEnUnAn = 0;
