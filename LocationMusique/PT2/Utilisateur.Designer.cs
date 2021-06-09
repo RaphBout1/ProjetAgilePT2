@@ -29,31 +29,33 @@ namespace PT2
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Utilisateur));
             this.listBoxConsultEmprunt = new System.Windows.Forms.ListBox();
             this.nom = new System.Windows.Forms.Label();
             this.prenom = new System.Windows.Forms.Label();
-            this.recommandationsListBox = new System.Windows.Forms.ListBox();
             this.prolonger1Button = new System.Windows.Forms.Button();
             this.prolongerTousButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.rendreButton = new System.Windows.Forms.Button();
             this.MAJButton = new System.Windows.Forms.Button();
+            this.afficherEmprunts = new System.Windows.Forms.Button();
+            this.afficherRecommandations = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
             // 
             this.listBoxConsultEmprunt.FormattingEnabled = true;
             this.listBoxConsultEmprunt.HorizontalScrollbar = true;
-            this.listBoxConsultEmprunt.Location = new System.Drawing.Point(13, 13);
+            this.listBoxConsultEmprunt.Location = new System.Drawing.Point(782, 118);
             this.listBoxConsultEmprunt.Name = "listBoxConsultEmprunt";
-            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(311, 134);
+            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(374, 342);
             this.listBoxConsultEmprunt.TabIndex = 0;
             this.listBoxConsultEmprunt.SelectedIndexChanged += new System.EventHandler(this.listBoxConsultEmprunt_SelectedIndexChanged);
             // 
             // nom
             // 
             this.nom.AutoSize = true;
-            this.nom.Location = new System.Drawing.Point(726, 13);
+            this.nom.Location = new System.Drawing.Point(78, 25);
             this.nom.Name = "nom";
             this.nom.Size = new System.Drawing.Size(27, 13);
             this.nom.TabIndex = 1;
@@ -62,25 +64,16 @@ namespace PT2
             // prenom
             // 
             this.prenom.AutoSize = true;
-            this.prenom.Location = new System.Drawing.Point(726, 60);
+            this.prenom.Location = new System.Drawing.Point(78, 74);
             this.prenom.Name = "prenom";
             this.prenom.Size = new System.Drawing.Size(42, 13);
             this.prenom.TabIndex = 2;
             this.prenom.Text = "prenom";
             // 
-            // recommandationsListBox
-            // 
-            this.recommandationsListBox.FormattingEnabled = true;
-            this.recommandationsListBox.HorizontalScrollbar = true;
-            this.recommandationsListBox.Location = new System.Drawing.Point(391, 13);
-            this.recommandationsListBox.Name = "recommandationsListBox";
-            this.recommandationsListBox.Size = new System.Drawing.Size(174, 134);
-            this.recommandationsListBox.TabIndex = 3;
-            // 
             // prolonger1Button
             // 
             this.prolonger1Button.Enabled = false;
-            this.prolonger1Button.Location = new System.Drawing.Point(13, 219);
+            this.prolonger1Button.Location = new System.Drawing.Point(1051, 568);
             this.prolonger1Button.Name = "prolonger1Button";
             this.prolonger1Button.Size = new System.Drawing.Size(105, 55);
             this.prolonger1Button.TabIndex = 4;
@@ -90,7 +83,7 @@ namespace PT2
             // 
             // prolongerTousButton
             // 
-            this.prolongerTousButton.Location = new System.Drawing.Point(219, 219);
+            this.prolongerTousButton.Location = new System.Drawing.Point(782, 568);
             this.prolongerTousButton.Name = "prolongerTousButton";
             this.prolongerTousButton.Size = new System.Drawing.Size(105, 55);
             this.prolongerTousButton.TabIndex = 5;
@@ -100,9 +93,9 @@ namespace PT2
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(42, 338);
+            this.button1.Location = new System.Drawing.Point(172, 144);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 41);
             this.button1.TabIndex = 6;
             this.button1.Text = "Emprunter";
             this.button1.UseVisualStyleBackColor = true;
@@ -110,9 +103,9 @@ namespace PT2
             // 
             // rendreButton
             // 
-            this.rendreButton.Location = new System.Drawing.Point(335, 338);
+            this.rendreButton.Location = new System.Drawing.Point(172, 648);
             this.rendreButton.Name = "rendreButton";
-            this.rendreButton.Size = new System.Drawing.Size(75, 23);
+            this.rendreButton.Size = new System.Drawing.Size(95, 57);
             this.rendreButton.TabIndex = 7;
             this.rendreButton.Text = "Rendre";
             this.rendreButton.UseVisualStyleBackColor = true;
@@ -120,7 +113,7 @@ namespace PT2
             // 
             // MAJButton
             // 
-            this.MAJButton.Location = new System.Drawing.Point(675, 269);
+            this.MAJButton.Location = new System.Drawing.Point(12, 430);
             this.MAJButton.Name = "MAJButton";
             this.MAJButton.Size = new System.Drawing.Size(75, 23);
             this.MAJButton.TabIndex = 8;
@@ -128,20 +121,44 @@ namespace PT2
             this.MAJButton.UseVisualStyleBackColor = true;
             this.MAJButton.Click += new System.EventHandler(this.MAJButton_Click);
             // 
+            // afficherEmprunts
+            // 
+            this.afficherEmprunts.Location = new System.Drawing.Point(308, 331);
+            this.afficherEmprunts.Name = "afficherEmprunts";
+            this.afficherEmprunts.Size = new System.Drawing.Size(126, 53);
+            this.afficherEmprunts.TabIndex = 9;
+            this.afficherEmprunts.Text = "Mes emprunts";
+            this.afficherEmprunts.UseVisualStyleBackColor = true;
+            this.afficherEmprunts.Click += new System.EventHandler(this.afficherEmprunts_Click);
+            // 
+            // afficherRecommandations
+            // 
+            this.afficherRecommandations.Location = new System.Drawing.Point(308, 487);
+            this.afficherRecommandations.Name = "afficherRecommandations";
+            this.afficherRecommandations.Size = new System.Drawing.Size(126, 53);
+            this.afficherRecommandations.TabIndex = 10;
+            this.afficherRecommandations.Text = "Recommandations";
+            this.afficherRecommandations.UseVisualStyleBackColor = true;
+            this.afficherRecommandations.Click += new System.EventHandler(this.afficherRecommandations_Click);
+            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.afficherRecommandations);
+            this.Controls.Add(this.afficherEmprunts);
             this.Controls.Add(this.MAJButton);
             this.Controls.Add(this.rendreButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.prolongerTousButton);
             this.Controls.Add(this.prolonger1Button);
-            this.Controls.Add(this.recommandationsListBox);
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
             this.Controls.Add(this.listBoxConsultEmprunt);
+            this.DoubleBuffered = true;
             this.Name = "Utilisateur";
             this.Text = "Utilisateur";
             this.ResumeLayout(false);
@@ -154,11 +171,12 @@ namespace PT2
         private System.Windows.Forms.ListBox listBoxConsultEmprunt;
         private System.Windows.Forms.Label nom;
         private System.Windows.Forms.Label prenom;
-        private System.Windows.Forms.ListBox recommandationsListBox;
         private System.Windows.Forms.Button prolonger1Button;
         private System.Windows.Forms.Button prolongerTousButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button rendreButton;
         private System.Windows.Forms.Button MAJButton;
+        private System.Windows.Forms.Button afficherEmprunts;
+        private System.Windows.Forms.Button afficherRecommandations;
     }
 }
