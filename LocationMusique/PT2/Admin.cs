@@ -236,5 +236,19 @@ namespace PT2
                 listBoxAbonnés.Items.Add(a.NOM_ABONNÉ + a.PRÉNOM_ABONNÉ);
             }
         }
+
+        private void remplir10pluspopulaires()
+        {
+            listBoxGlobale.Items.Clear();
+            foreach(ALBUMS i in DixPlusVue())
+            {
+                listBoxGlobale.Items.Add(i);
+            }
+        }
+
+        private void Pluspopulairebutton_Click(object sender, EventArgs e)
+        {
+            remplir10pluspopulaires();
+        }
     }
 }

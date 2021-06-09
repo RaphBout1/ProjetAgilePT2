@@ -39,6 +39,13 @@ namespace PT2
             this.purgebutton = new System.Windows.Forms.Button();
             this.listBoxAbonnés = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.listBoxGlobale = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.enRetardButton = new System.Windows.Forms.Button();
+            this.Pluspopulairebutton = new System.Windows.Forms.Button();
+            this.purgerModeButton = new System.Windows.Forms.Button();
+            this.prolongesButton = new System.Windows.Forms.Button();
+            this.moinsPopulaireButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -130,11 +137,81 @@ namespace PT2
             this.label4.TabIndex = 8;
             this.label4.Text = "Liste des abonnés";
             // 
+            // listBoxGlobale
+            // 
+            this.listBoxGlobale.FormattingEnabled = true;
+            this.listBoxGlobale.Location = new System.Drawing.Point(462, 275);
+            this.listBoxGlobale.Name = "listBoxGlobale";
+            this.listBoxGlobale.Size = new System.Drawing.Size(267, 160);
+            this.listBoxGlobale.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(459, 245);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "listBoxglobale";
+            // 
+            // enRetardButton
+            // 
+            this.enRetardButton.Location = new System.Drawing.Point(58, 158);
+            this.enRetardButton.Name = "enRetardButton";
+            this.enRetardButton.Size = new System.Drawing.Size(75, 23);
+            this.enRetardButton.TabIndex = 11;
+            this.enRetardButton.Text = "En Retard";
+            this.enRetardButton.UseVisualStyleBackColor = true;
+            // 
+            // Pluspopulairebutton
+            // 
+            this.Pluspopulairebutton.Location = new System.Drawing.Point(166, 203);
+            this.Pluspopulairebutton.Name = "Pluspopulairebutton";
+            this.Pluspopulairebutton.Size = new System.Drawing.Size(127, 23);
+            this.Pluspopulairebutton.TabIndex = 12;
+            this.Pluspopulairebutton.Text = "Les plus populaires";
+            this.Pluspopulairebutton.UseVisualStyleBackColor = true;
+            this.Pluspopulairebutton.Click += new System.EventHandler(this.Pluspopulairebutton_Click);
+            // 
+            // purgerModeButton
+            // 
+            this.purgerModeButton.Location = new System.Drawing.Point(166, 158);
+            this.purgerModeButton.Name = "purgerModeButton";
+            this.purgerModeButton.Size = new System.Drawing.Size(75, 23);
+            this.purgerModeButton.TabIndex = 13;
+            this.purgerModeButton.Text = "Purger";
+            this.purgerModeButton.UseVisualStyleBackColor = true;
+            // 
+            // prolongesButton
+            // 
+            this.prolongesButton.Location = new System.Drawing.Point(58, 203);
+            this.prolongesButton.Name = "prolongesButton";
+            this.prolongesButton.Size = new System.Drawing.Size(75, 23);
+            this.prolongesButton.TabIndex = 14;
+            this.prolongesButton.Text = "Prolonges";
+            this.prolongesButton.UseVisualStyleBackColor = true;
+            // 
+            // moinsPopulaireButton
+            // 
+            this.moinsPopulaireButton.Location = new System.Drawing.Point(319, 203);
+            this.moinsPopulaireButton.Name = "moinsPopulaireButton";
+            this.moinsPopulaireButton.Size = new System.Drawing.Size(127, 23);
+            this.moinsPopulaireButton.TabIndex = 15;
+            this.moinsPopulaireButton.Text = "Les moins populaires";
+            this.moinsPopulaireButton.UseVisualStyleBackColor = true;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.moinsPopulaireButton);
+            this.Controls.Add(this.prolongesButton);
+            this.Controls.Add(this.purgerModeButton);
+            this.Controls.Add(this.Pluspopulairebutton);
+            this.Controls.Add(this.enRetardButton);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.listBoxGlobale);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listBoxAbonnés);
             this.Controls.Add(this.purgebutton);
@@ -163,5 +240,12 @@ namespace PT2
         private System.Windows.Forms.Button purgebutton;
         private System.Windows.Forms.ListBox listBoxAbonnés;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox listBoxGlobale;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button enRetardButton;
+        private System.Windows.Forms.Button Pluspopulairebutton;
+        private System.Windows.Forms.Button purgerModeButton;
+        private System.Windows.Forms.Button prolongesButton;
+        private System.Windows.Forms.Button moinsPopulaireButton;
     }
 }
