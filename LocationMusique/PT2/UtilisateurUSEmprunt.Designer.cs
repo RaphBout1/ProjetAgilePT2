@@ -30,7 +30,6 @@ namespace PT2
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UtilisateurUSEmprunt));
-            this.comboBoxTitreAlbumAEmprunter = new System.Windows.Forms.ComboBox();
             this.boutonEmprunterAlbumPrecis = new System.Windows.Forms.Button();
             this.monthCalendarClassique = new System.Windows.Forms.MonthCalendar();
             this.pochette1 = new System.Windows.Forms.PictureBox();
@@ -56,6 +55,7 @@ namespace PT2
             this.InfoGenre = new System.Windows.Forms.Label();
             this.boutonSuivant = new System.Windows.Forms.Button();
             this.boutonRetour = new System.Windows.Forms.Button();
+            this.InfoNumero = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pochette1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette3)).BeginInit();
@@ -63,15 +63,6 @@ namespace PT2
             ((System.ComponentModel.ISupportInitialize)(this.pochette5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // comboBoxTitreAlbumAEmprunter
-            // 
-            this.comboBoxTitreAlbumAEmprunter.FormattingEnabled = true;
-            this.comboBoxTitreAlbumAEmprunter.Location = new System.Drawing.Point(1328, 540);
-            this.comboBoxTitreAlbumAEmprunter.Name = "comboBoxTitreAlbumAEmprunter";
-            this.comboBoxTitreAlbumAEmprunter.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxTitreAlbumAEmprunter.TabIndex = 3;
-            this.comboBoxTitreAlbumAEmprunter.SelectedIndexChanged += new System.EventHandler(this.comboBoxTitreAlbumAEmprunter_SelectedIndexChanged);
             // 
             // boutonEmprunterAlbumPrecis
             // 
@@ -91,6 +82,7 @@ namespace PT2
             // 
             // pochette1
             // 
+            this.pochette1.BackColor = System.Drawing.Color.Transparent;
             this.pochette1.Location = new System.Drawing.Point(42, 27);
             this.pochette1.Name = "pochette1";
             this.pochette1.Size = new System.Drawing.Size(161, 155);
@@ -100,6 +92,7 @@ namespace PT2
             // 
             // pochette2
             // 
+            this.pochette2.BackColor = System.Drawing.Color.Transparent;
             this.pochette2.Location = new System.Drawing.Point(42, 190);
             this.pochette2.Name = "pochette2";
             this.pochette2.Size = new System.Drawing.Size(161, 155);
@@ -109,6 +102,7 @@ namespace PT2
             // 
             // pochette3
             // 
+            this.pochette3.BackColor = System.Drawing.Color.Transparent;
             this.pochette3.Location = new System.Drawing.Point(42, 354);
             this.pochette3.Name = "pochette3";
             this.pochette3.Size = new System.Drawing.Size(161, 155);
@@ -118,6 +112,7 @@ namespace PT2
             // 
             // pochette4
             // 
+            this.pochette4.BackColor = System.Drawing.Color.Transparent;
             this.pochette4.Location = new System.Drawing.Point(42, 516);
             this.pochette4.Name = "pochette4";
             this.pochette4.Size = new System.Drawing.Size(161, 155);
@@ -127,6 +122,7 @@ namespace PT2
             // 
             // pochette5
             // 
+            this.pochette5.BackColor = System.Drawing.Color.Transparent;
             this.pochette5.Location = new System.Drawing.Point(40, 679);
             this.pochette5.Name = "pochette5";
             this.pochette5.Size = new System.Drawing.Size(161, 155);
@@ -138,10 +134,10 @@ namespace PT2
             // 
             this.Titre1.AutoSize = true;
             this.Titre1.BackColor = System.Drawing.Color.Transparent;
-            this.Titre1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre1.Location = new System.Drawing.Point(234, 53);
             this.Titre1.Name = "Titre1";
-            this.Titre1.Size = new System.Drawing.Size(79, 29);
+            this.Titre1.Size = new System.Drawing.Size(70, 25);
             this.Titre1.TabIndex = 12;
             this.Titre1.Text = "label3";
             this.Titre1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);
@@ -150,10 +146,10 @@ namespace PT2
             // 
             this.Titre2.AutoSize = true;
             this.Titre2.BackColor = System.Drawing.Color.Transparent;
-            this.Titre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre2.Location = new System.Drawing.Point(234, 213);
             this.Titre2.Name = "Titre2";
-            this.Titre2.Size = new System.Drawing.Size(79, 29);
+            this.Titre2.Size = new System.Drawing.Size(70, 25);
             this.Titre2.TabIndex = 13;
             this.Titre2.Text = "label4";
             this.Titre2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);
@@ -162,10 +158,10 @@ namespace PT2
             // 
             this.Titre3.AutoSize = true;
             this.Titre3.BackColor = System.Drawing.Color.Transparent;
-            this.Titre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre3.Location = new System.Drawing.Point(234, 385);
             this.Titre3.Name = "Titre3";
-            this.Titre3.Size = new System.Drawing.Size(79, 29);
+            this.Titre3.Size = new System.Drawing.Size(70, 25);
             this.Titre3.TabIndex = 14;
             this.Titre3.Text = "label5";
             this.Titre3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);
@@ -174,10 +170,10 @@ namespace PT2
             // 
             this.Titre4.AutoSize = true;
             this.Titre4.BackColor = System.Drawing.Color.Transparent;
-            this.Titre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre4.Location = new System.Drawing.Point(234, 552);
             this.Titre4.Name = "Titre4";
-            this.Titre4.Size = new System.Drawing.Size(79, 29);
+            this.Titre4.Size = new System.Drawing.Size(70, 25);
             this.Titre4.TabIndex = 15;
             this.Titre4.Text = "label6";
             this.Titre4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);
@@ -186,10 +182,10 @@ namespace PT2
             // 
             this.Titre5.AutoSize = true;
             this.Titre5.BackColor = System.Drawing.Color.Transparent;
-            this.Titre5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre5.Location = new System.Drawing.Point(234, 706);
             this.Titre5.Name = "Titre5";
-            this.Titre5.Size = new System.Drawing.Size(79, 29);
+            this.Titre5.Size = new System.Drawing.Size(70, 25);
             this.Titre5.TabIndex = 16;
             this.Titre5.Text = "label7";
             this.Titre5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);
@@ -261,66 +257,72 @@ namespace PT2
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(1305, 27);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(1292, 27);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(256, 256);
+            this.pictureBox1.Size = new System.Drawing.Size(266, 260);
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
             // InfoTitre
             // 
             this.InfoTitre.AutoSize = true;
-            this.InfoTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoTitre.Location = new System.Drawing.Point(853, 53);
+            this.InfoTitre.BackColor = System.Drawing.Color.Transparent;
+            this.InfoTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoTitre.Location = new System.Drawing.Point(799, 53);
             this.InfoTitre.Name = "InfoTitre";
-            this.InfoTitre.Size = new System.Drawing.Size(79, 29);
+            this.InfoTitre.Size = new System.Drawing.Size(18, 25);
             this.InfoTitre.TabIndex = 23;
-            this.InfoTitre.Text = "label3";
+            this.InfoTitre.Text = " ";
             // 
             // InfoEditeur
             // 
             this.InfoEditeur.AutoSize = true;
+            this.InfoEditeur.BackColor = System.Drawing.Color.Transparent;
             this.InfoEditeur.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoEditeur.Location = new System.Drawing.Point(921, 112);
+            this.InfoEditeur.Location = new System.Drawing.Point(853, 100);
             this.InfoEditeur.Name = "InfoEditeur";
-            this.InfoEditeur.Size = new System.Drawing.Size(79, 29);
+            this.InfoEditeur.Size = new System.Drawing.Size(19, 29);
             this.InfoEditeur.TabIndex = 24;
-            this.InfoEditeur.Text = "label3";
+            this.InfoEditeur.Text = " ";
             // 
             // InfoAnnee
             // 
             this.InfoAnnee.AutoSize = true;
+            this.InfoAnnee.BackColor = System.Drawing.Color.Transparent;
             this.InfoAnnee.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoAnnee.Location = new System.Drawing.Point(921, 172);
+            this.InfoAnnee.Location = new System.Drawing.Point(901, 190);
             this.InfoAnnee.Name = "InfoAnnee";
-            this.InfoAnnee.Size = new System.Drawing.Size(79, 29);
+            this.InfoAnnee.Size = new System.Drawing.Size(19, 29);
             this.InfoAnnee.TabIndex = 25;
-            this.InfoAnnee.Text = "label3";
+            this.InfoAnnee.Text = " ";
             // 
             // InfoPrix
             // 
             this.InfoPrix.AutoSize = true;
+            this.InfoPrix.BackColor = System.Drawing.Color.Transparent;
             this.InfoPrix.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoPrix.Location = new System.Drawing.Point(921, 244);
+            this.InfoPrix.Location = new System.Drawing.Point(931, 244);
             this.InfoPrix.Name = "InfoPrix";
-            this.InfoPrix.Size = new System.Drawing.Size(79, 29);
+            this.InfoPrix.Size = new System.Drawing.Size(19, 29);
             this.InfoPrix.TabIndex = 26;
-            this.InfoPrix.Text = "label3";
+            this.InfoPrix.Text = " ";
             // 
             // InfoGenre
             // 
             this.InfoGenre.AutoSize = true;
+            this.InfoGenre.BackColor = System.Drawing.Color.Transparent;
             this.InfoGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoGenre.Location = new System.Drawing.Point(921, 316);
+            this.InfoGenre.Location = new System.Drawing.Point(853, 139);
             this.InfoGenre.Name = "InfoGenre";
-            this.InfoGenre.Size = new System.Drawing.Size(79, 29);
+            this.InfoGenre.Size = new System.Drawing.Size(19, 29);
             this.InfoGenre.TabIndex = 27;
-            this.InfoGenre.Text = "label3";
+            this.InfoGenre.Text = " ";
             // 
             // boutonSuivant
             // 
             this.boutonSuivant.BackColor = System.Drawing.Color.Transparent;
-            this.boutonSuivant.Location = new System.Drawing.Point(743, 370);
+            this.boutonSuivant.Location = new System.Drawing.Point(845, 354);
             this.boutonSuivant.Name = "boutonSuivant";
             this.boutonSuivant.Size = new System.Drawing.Size(75, 23);
             this.boutonSuivant.TabIndex = 28;
@@ -331,13 +333,24 @@ namespace PT2
             // boutonRetour
             // 
             this.boutonRetour.BackColor = System.Drawing.Color.Transparent;
-            this.boutonRetour.Location = new System.Drawing.Point(743, 470);
+            this.boutonRetour.Location = new System.Drawing.Point(845, 495);
             this.boutonRetour.Name = "boutonRetour";
             this.boutonRetour.Size = new System.Drawing.Size(75, 23);
             this.boutonRetour.TabIndex = 29;
             this.boutonRetour.Text = "Retour";
             this.boutonRetour.UseVisualStyleBackColor = false;
             this.boutonRetour.Click += new System.EventHandler(this.boutonRetour_Click);
+            // 
+            // InfoNumero
+            // 
+            this.InfoNumero.AutoSize = true;
+            this.InfoNumero.BackColor = System.Drawing.Color.Transparent;
+            this.InfoNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InfoNumero.Location = new System.Drawing.Point(794, 9);
+            this.InfoNumero.Name = "InfoNumero";
+            this.InfoNumero.Size = new System.Drawing.Size(19, 29);
+            this.InfoNumero.TabIndex = 30;
+            this.InfoNumero.Text = " ";
             // 
             // UtilisateurUSEmprunt
             // 
@@ -346,6 +359,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.InfoNumero);
             this.Controls.Add(this.boutonRetour);
             this.Controls.Add(this.boutonSuivant);
             this.Controls.Add(this.InfoGenre);
@@ -371,7 +385,6 @@ namespace PT2
             this.Controls.Add(this.pochette1);
             this.Controls.Add(this.monthCalendarClassique);
             this.Controls.Add(this.boutonEmprunterAlbumPrecis);
-            this.Controls.Add(this.comboBoxTitreAlbumAEmprunter);
             this.DoubleBuffered = true;
             this.Name = "UtilisateurUSEmprunt";
             this.Text = "UtilisateurUSEmprunt";
@@ -388,7 +401,6 @@ namespace PT2
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBoxTitreAlbumAEmprunter;
         private System.Windows.Forms.Button boutonEmprunterAlbumPrecis;
         private System.Windows.Forms.MonthCalendar monthCalendarClassique;
         private System.Windows.Forms.PictureBox pochette1;
@@ -414,5 +426,6 @@ namespace PT2
         private System.Windows.Forms.Label InfoGenre;
         private System.Windows.Forms.Button boutonSuivant;
         private System.Windows.Forms.Button boutonRetour;
+        private System.Windows.Forms.Label InfoNumero;
     }
 }
