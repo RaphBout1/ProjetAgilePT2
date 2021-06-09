@@ -37,6 +37,8 @@ namespace PT2
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.purgebutton = new System.Windows.Forms.Button();
+            this.listBoxAbonnés = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox1
@@ -111,11 +113,30 @@ namespace PT2
             this.purgebutton.UseVisualStyleBackColor = true;
             this.purgebutton.Click += new System.EventHandler(this.purgebutton_Click);
             // 
+            // listBoxAbonnés
+            // 
+            this.listBoxAbonnés.FormattingEnabled = true;
+            this.listBoxAbonnés.Location = new System.Drawing.Point(35, 294);
+            this.listBoxAbonnés.Name = "listBoxAbonnés";
+            this.listBoxAbonnés.Size = new System.Drawing.Size(223, 147);
+            this.listBoxAbonnés.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 275);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Liste des abonnés";
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listBoxAbonnés);
             this.Controls.Add(this.purgebutton);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.label3);
@@ -141,5 +162,7 @@ namespace PT2
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button purgebutton;
+        private System.Windows.Forms.ListBox listBoxAbonnés;
+        private System.Windows.Forms.Label label4;
     }
 }
