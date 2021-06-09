@@ -46,8 +46,10 @@ namespace PT2
             return enretard10;
         }
 
-        private void LivreEmprunteProlongé()
+        private List<EMPRUNTER> LivreEmprunteProlongé()
         {
+            List<EMPRUNTER> empruntsProlongés = new List<EMPRUNTER>();
+            empruntsProlongés.Clear();
             var lesLivresEmpruntes =
                    from m in musiqueSQL.EMPRUNTER
                    select m;
@@ -57,10 +59,12 @@ namespace PT2
                 if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
                 {
                     listBox2.Items.Add(m);
+                    empruntsProlongés.Add(m);
                 }
 
             }
             Refresh();
+            return empruntsProlongés;
         }
 
 
