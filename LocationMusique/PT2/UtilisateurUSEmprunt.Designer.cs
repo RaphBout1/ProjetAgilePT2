@@ -56,7 +56,6 @@ namespace PT2
             this.boutonSuivant = new System.Windows.Forms.Button();
             this.boutonRetour = new System.Windows.Forms.Button();
             this.InfoNumero = new System.Windows.Forms.Label();
-            this.CoordY = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pochette1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette3)).BeginInit();
@@ -353,16 +352,6 @@ namespace PT2
             this.InfoNumero.TabIndex = 30;
             this.InfoNumero.Text = " ";
             // 
-            // CoordY
-            // 
-            this.CoordY.AutoSize = true;
-            this.CoordY.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CoordY.Location = new System.Drawing.Point(709, 9);
-            this.CoordY.Name = "CoordY";
-            this.CoordY.Size = new System.Drawing.Size(79, 29);
-            this.CoordY.TabIndex = 31;
-            this.CoordY.Text = "label3";
-            // 
             // UtilisateurUSEmprunt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,7 +359,6 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.CoordY);
             this.Controls.Add(this.InfoNumero);
             this.Controls.Add(this.boutonRetour);
             this.Controls.Add(this.boutonSuivant);
@@ -439,6 +427,5 @@ namespace PT2
         private System.Windows.Forms.Button boutonSuivant;
         private System.Windows.Forms.Button boutonRetour;
         private System.Windows.Forms.Label InfoNumero;
-        private System.Windows.Forms.Label CoordY;
     }
 }
