@@ -21,7 +21,6 @@ namespace PT2
             loginmdpImage.Visible = false;
             submit.Visible = false;
             retour.Visible = false;
-
         }
 
         public void chargerPays()
@@ -67,8 +66,6 @@ namespace PT2
             {
                 throw new InformationsInvalidesException("Pays inexistant.");
             }
-
-
         }
 
         private void submit_Click(object sender, EventArgs e)

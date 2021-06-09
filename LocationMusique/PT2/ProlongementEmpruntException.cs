@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PT2
 {
-    class ProlongementEmpruntException : Exception
+    public class ProlongementEmpruntException : Exception
     {
         string message;
         public ProlongementEmpruntException(string message) : base(message)
