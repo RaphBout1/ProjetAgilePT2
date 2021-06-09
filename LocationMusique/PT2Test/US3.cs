@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +22,9 @@ namespace PT2Test
 
         public void resetEmprunt()
         {
-            abonné = (from a in musiqueSQL.ABONNÉS where a.CODE_ABONNÉ == 2 select a).FirstOrDefault();
+            abonné = (from a in musiqueSQL.ABONNÉS where a.CODE_ABONNÉ == 6 select a).FirstOrDefault();
             user = new Utilisateur(abonné);
-            
+
             album1 = (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == 1 select a).FirstOrDefault();
             album2 = (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == 2 select a).FirstOrDefault();
 
@@ -35,7 +34,7 @@ namespace PT2Test
             emprunt1.DATE_EMPRUNT = DateTime.Parse("8/6/2021 8:30:15 AM");
             emprunt1.DATE_RETOUR_ATTENDUE = emprunt1.DATE_EMPRUNT.AddDays(album1.GENRES.DÉLAI);
             emprunt1.DATE_RETOUR = null;
-            
+
             emprunt2 = new EMPRUNTER();
             emprunt2.CODE_ABONNÉ = 1;
             emprunt2.ALBUMS = album2;
