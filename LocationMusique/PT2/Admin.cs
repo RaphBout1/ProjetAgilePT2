@@ -75,45 +75,53 @@ namespace PT2
         {
             List<ALBUMS> lesDixPlusEmprunte = new List<ALBUMS>();
             lesDixPlusEmprunte.Clear();
-            var lesAlbums = from a in musiqueSQL.ALBUMS select a;
+            var lesAlbums = from a in musiqueSQL.ALBUMS
+                            select a;
             foreach (ALBUMS a in lesAlbums)
             {
-                int compteurBoucle;
-                bool placeTrouver = false;
-                //Rempli la liste en comparant à partir du plus vue
-                //Permet de remplir la liste quand elle n'est pas pleine (inférieur à 10)
-                if (lesDixPlusEmprunte.Count() < 10)
+                a.EmpruntAnnee();
+                if (a.nmbEmpruntEnUnAn > 0)
                 {
-                    compteurBoucle = 0;
-                    while (!placeTrouver && compteurBoucle < 10)
+                    int compteurBoucle;
+                    bool placeTrouver = false;
+                    //Rempli la liste en comparant à partir du plus vue
+                    //Permet de remplir la liste quand elle n'est pas pleine (inférieur à 10)
+                    if (lesDixPlusEmprunte.Count() < 10)
                     {
-                        if (lesDixPlusEmprunte.Count() <= compteurBoucle)
+                        compteurBoucle = 0;
+                        while (!placeTrouver && compteurBoucle < 10)
                         {
-                            lesDixPlusEmprunte.Add(a);
-                            placeTrouver = true;
-                        }
-                        else if (lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() <= a.EMPRUNTER.Count())
-                        {
-                            placeTrouver = true;
-                            DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, lesDixPlusEmprunte.Count());
+                            if (lesDixPlusEmprunte.Count() <= compteurBoucle)
+                            {
+                                lesDixPlusEmprunte.Add(a);
+                                placeTrouver = true;
+                            }
+                            else if (lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() <= a.EMPRUNTER.Count())
+                            {
+                                placeTrouver = true;
+                                DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, lesDixPlusEmprunte.Count());
+                            }
+                            compteurBoucle++;
                         }
                         compteurBoucle++;
                     }
-                }
-                //Remplie la liste en comparant à partir du moins vue
-                else
-                {
-                    compteurBoucle = 9;
-                    while (!placeTrouver && compteurBoucle > 0)
+                    //Remplie la liste en comparant à partir du moins vue
+                    else
                     {
-                        if (!(lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() < a.EMPRUNTER.Count()))
+                        compteurBoucle = 9;
+                        while (!placeTrouver && compteurBoucle > 0)
                         {
-                            placeTrouver = true;
-                            if (compteurBoucle != 9) { DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, 10); }
+                            if (!(lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() < a.EMPRUNTER.Count()))
+                            {
+                                placeTrouver = true;
+                                if (compteurBoucle != 9) { DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, 10); }
+                            }
+                            compteurBoucle--;
                         }
                         compteurBoucle--;
                     }
                 }
+                        
             }
             return lesDixPlusEmprunte;
         }
