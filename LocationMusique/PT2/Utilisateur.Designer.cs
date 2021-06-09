@@ -36,6 +36,7 @@ namespace PT2
             this.prolonger1Button = new System.Windows.Forms.Button();
             this.prolongerTousButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.rendreButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
@@ -106,11 +107,22 @@ namespace PT2
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // rendreButton
+            // 
+            this.rendreButton.Location = new System.Drawing.Point(335, 338);
+            this.rendreButton.Name = "rendreButton";
+            this.rendreButton.Size = new System.Drawing.Size(75, 23);
+            this.rendreButton.TabIndex = 7;
+            this.rendreButton.Text = "Rendre";
+            this.rendreButton.UseVisualStyleBackColor = true;
+            this.rendreButton.Click += new System.EventHandler(this.rendreButton_Click);
+            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rendreButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.prolongerTousButton);
             this.Controls.Add(this.prolonger1Button);
@@ -134,5 +146,6 @@ namespace PT2
         private System.Windows.Forms.Button prolonger1Button;
         private System.Windows.Forms.Button prolongerTousButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button rendreButton;
     }
 }

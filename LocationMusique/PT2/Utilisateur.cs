@@ -43,10 +43,7 @@ namespace PT2
                 
                 foreach (EMPRUNTER e in emprunt)
                 {
-                    if (!utilisateur.EMPRUNTER.Equals(e))
-                    {
-                        utilisateur.EMPRUNTER.Add(e);
-                    }
+                    
                     listBoxConsultEmprunt.Items.Add(e);
                 }
             }
@@ -206,6 +203,11 @@ namespace PT2
         private void button1_Click_1(object sender, EventArgs e)
         {
             new UtilisateurUSEmprunt(utilisateur).ShowDialog();
+        }
+
+        private void rendreButton_Click(object sender, EventArgs e)
+        {
+            new US14Rendre(utilisateur).ShowDialog();
         }
     }
 }

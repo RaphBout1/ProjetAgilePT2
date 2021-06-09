@@ -127,6 +127,12 @@
     <Compile Include="RajoutVinyle.Designer.cs">
       <DependentUpon>RajoutVinyle.cs</DependentUpon>
     </Compile>
+    <Compile Include="US14Rendre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="US14Rendre.Designer.cs">
+      <DependentUpon>US14Rendre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </Compile>
     <EmbeddedResource Include="RajoutVinyle.resx">
       <DependentUpon>RajoutVinyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="US14Rendre.resx">
+      <DependentUpon>US14Rendre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilisateur.resx">
       <DependentUpon>Utilisateur.cs</DependentUpon>
