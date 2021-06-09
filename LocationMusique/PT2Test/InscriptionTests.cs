@@ -13,7 +13,7 @@ namespace PT2Test
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         Admin admin = new Admin();
-        private string testLogin = "test";
+        private string testLogin = "testInscription";
         [TestMethod]
 
         /**
