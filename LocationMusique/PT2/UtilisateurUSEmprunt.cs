@@ -29,6 +29,7 @@ namespace PT2
             InitialisationGlobaleDeVariable();
             ImplementeAlbumsEmpruntable(5);
             this.utilisateur = utilisateur;
+            monthCalendarClassique.Visible = false;// a enlever pour test
         }
         #region initialisation de la page
         public void InitialisationGlobaleDeVariable()
@@ -84,11 +85,11 @@ namespace PT2
         #endregion
 
         #region interraction
-        private void comboBoxTitreAlbumAEmprunter_SelectedIndexChanged(object sender, EventArgs e)
+       /* private void comboBoxTitreAlbumAEmprunter_SelectedIndexChanged(object sender, EventArgs e)
         {
             albumAEmprunter = (ALBUMS)comboBoxTitreAlbumAEmprunter.SelectedItem;
 
-        }
+        }*/
 
         private void boutonEmprunterAlbumPrecis_Click(object sender, EventArgs e)
         {
@@ -259,5 +260,7 @@ namespace PT2
             InfoPrix.Text = "Prix : "+albumAEmprunter.PRIX_ALBUM.ToString()+" €";
 
         }
+
+
     }
 }
