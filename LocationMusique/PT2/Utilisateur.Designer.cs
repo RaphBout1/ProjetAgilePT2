@@ -37,6 +37,7 @@ namespace PT2
             this.prolongerTousButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.rendreButton = new System.Windows.Forms.Button();
+            this.MAJButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
@@ -117,11 +118,22 @@ namespace PT2
             this.rendreButton.UseVisualStyleBackColor = true;
             this.rendreButton.Click += new System.EventHandler(this.rendreButton_Click);
             // 
+            // MAJButton
+            // 
+            this.MAJButton.Location = new System.Drawing.Point(675, 269);
+            this.MAJButton.Name = "MAJButton";
+            this.MAJButton.Size = new System.Drawing.Size(75, 23);
+            this.MAJButton.TabIndex = 8;
+            this.MAJButton.Text = "Mise à jour";
+            this.MAJButton.UseVisualStyleBackColor = true;
+            this.MAJButton.Click += new System.EventHandler(this.MAJButton_Click);
+            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MAJButton);
             this.Controls.Add(this.rendreButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.prolongerTousButton);
@@ -147,5 +159,6 @@ namespace PT2
         private System.Windows.Forms.Button prolongerTousButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button rendreButton;
+        private System.Windows.Forms.Button MAJButton;
     }
 }

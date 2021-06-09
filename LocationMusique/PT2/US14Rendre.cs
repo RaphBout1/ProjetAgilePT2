@@ -28,7 +28,8 @@ namespace PT2
         /// </summary>
         private void remplirEmpruntsBox()
         {
-            foreach(EMPRUNTER i in abo.EMPRUNTER)
+            var empruntactuels = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == abo.CODE_ABONNÉ select l.EMPRUNTER;
+            foreach (EMPRUNTER i in empruntactuels.First()) 
             {
                 if(i.DATE_RETOUR == null)
                 {

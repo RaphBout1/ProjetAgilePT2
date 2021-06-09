@@ -59,6 +59,11 @@ namespace PT2
             // nUDNumeroAlbumAEmprunter
             // 
             this.nUDNumeroAlbumAEmprunter.Location = new System.Drawing.Point(52, 10);
+            this.nUDNumeroAlbumAEmprunter.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.nUDNumeroAlbumAEmprunter.Name = "nUDNumeroAlbumAEmprunter";
             this.nUDNumeroAlbumAEmprunter.Size = new System.Drawing.Size(52, 20);
             this.nUDNumeroAlbumAEmprunter.TabIndex = 2;

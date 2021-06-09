@@ -209,5 +209,10 @@ namespace PT2
         {
             new US14Rendre(utilisateur).ShowDialog();
         }
+
+        private void MAJButton_Click(object sender, EventArgs e)
+        {
+            ActualiseListeEmprunté();
+        }
     }
 }
