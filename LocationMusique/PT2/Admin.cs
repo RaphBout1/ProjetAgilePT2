@@ -46,7 +46,10 @@ namespace PT2
             return enretard10;
         }
 
-        private List<EMPRUNTER> LivreEmprunteProlongé()
+        /*
+         * Détermine les albums qui ne sont pas empruntés depuis plus d'un an.
+         */
+        public List<EMPRUNTER> LivreEmprunteProlongé()
         {
             List<EMPRUNTER> empruntsProlongés = new List<EMPRUNTER>();
             empruntsProlongés.Clear();

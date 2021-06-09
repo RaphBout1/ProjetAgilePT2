@@ -28,14 +28,16 @@ namespace PT2Test
         
 
         /*
-         * Test de l'US4, si un emprunt n'a jamais été prolongé, on rajoute 1 mois à la date de retour attendue, si oui, ne fait rien.
+         * Test de l'US4, test 2 emprunts, l'un prologé et l'autre non
          */
         public void initTest()
         {
 
-            emprunter1.creerEmprunt(abonné1.CODE_ABONNÉ, album1.CODE_ALBUM, DateTime.Parse("10/6/2019 8:30:15 AM"), DateTime.Parse("11/6/2019 8:30:15 AM"));
-            emprunter2.creerEmprunt(abonné2.CODE_ABONNÉ, album2.CODE_ALBUM, DateTime.Parse("10/6/2019 8:30:15 AM"), DateTime.Parse("11/6/2019 8:30:15 AM"));
-  
+            emprunter1.creerEmprunt(abonné1.CODE_ABONNÉ, album1.CODE_ALBUM, DateTime.Parse("10/6/2019 8:30:15 AM"), DateTime.Parse("10/6/2019 8:30:15 AM").AddMonths(1).AddDays(album1.GENRES.DÉLAI));
+            emprunter2.creerEmprunt(abonné2.CODE_ABONNÉ, album2.CODE_ALBUM, DateTime.Parse("10/6/2019 8:30:15 AM"), DateTime.Parse("10/6/2019 8:30:15 AM").AddDays(album2.GENRES.DÉLAI));
+            emprunt1 = (from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == abonné1.CODE_ABONNÉ && e.CODE_ALBUM == album1.CODE_ALBUM select e).First();
+            emprunt2 = (from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == abonné2.CODE_ABONNÉ && e.CODE_ALBUM == album2.CODE_ALBUM select e).First();
+
         }
 
         [TestMethod]
@@ -43,9 +45,10 @@ namespace PT2Test
         {
             initaliserVariables();
             initTest();
-            HashSet<ALBUMS> albumPasEmprunter1An = user.albumPasEmpruntesDepuis1An();
+            List<EMPRUNTER> albumPasEmprunter1An = user.LivreEmprunteProlongé();
             musiqueSQL.SaveChanges();
-            Assert.IsTrue(albumPasEmprunter1An.Contains(album1));
+            Assert.IsTrue(albumPasEmprunter1An.Contains(emprunt1));
+            Assert.IsFalse(albumPasEmprunter1An.Contains(emprunt2));
 
         }
 
@@ -57,8 +60,8 @@ namespace PT2Test
             emprunter1 = new UtilisateurUSEmprunt(abonné1);
             emprunter2 = new UtilisateurUSEmprunt(abonné2);
 
-            album1 = (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == 700 select a).FirstOrDefault();
-            album2 = (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == 701 select a).FirstOrDefault();
+            album1 = (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == 702 select a).FirstOrDefault();
+            album2 = (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == 703 select a).FirstOrDefault();
         }
     }
 }
