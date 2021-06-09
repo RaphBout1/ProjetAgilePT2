@@ -253,6 +253,7 @@ namespace PT2
 
         private void AfficheAlbumActuelle()
         {
+            boutonEmprunterAlbumPrecis.Visible = true;
             InfoNumero.Text = "N° : "+albumAEmprunter.CODE_ALBUM.ToString();
             InfoTitre.Text = albumAEmprunter.TITRE_ALBUM;
             InfoAnnee.Text = "Année : "+albumAEmprunter.ANNÉE_ALBUM.ToString();
