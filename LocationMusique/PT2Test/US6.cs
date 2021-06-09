@@ -16,7 +16,7 @@ namespace PT2Test
         {
             MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
             Admin a = new Admin();
-            a.purgerAbonné(285);
+            //a.purgerAbonné(285);
             Inscription.abonner("purgeman","purge","France","purge4","purge2");
             ABONNÉS uti = (from b in musiqueSQL.ABONNÉS where b.LOGIN_ABONNÉ == "purge4" select b).First();
             UtilisateurUSEmprunt u = new UtilisateurUSEmprunt(uti);
@@ -25,8 +25,8 @@ namespace PT2Test
             EMPRUNTER emprunt = (from g in musiqueSQL.EMPRUNTER where g.CODE_ABONNÉ == uti.CODE_ABONNÉ select g).First();
             musiqueSQL.SaveChanges();
             rendre.rendreEmprunt(emprunt);
-                musiqueSQL.EMPRUNTER.Remove(emprunt);
-            musiqueSQL.SaveChanges();
+                //musiqueSQL.EMPRUNTER.Remove(emprunt);
+            //musiqueSQL.SaveChanges();
             a.purgerAbonné(uti.CODE_ABONNÉ);
             
             var verifempruntsuprr = from j in musiqueSQL.EMPRUNTER where j.CODE_ABONNÉ == uti.CODE_ABONNÉ && j.CODE_ALBUM == 65 select j;
