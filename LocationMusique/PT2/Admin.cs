@@ -87,12 +87,17 @@ namespace PT2
                     compteurBoucle = 0;
                     while (!placeTrouver && compteurBoucle < 10)
                     {
-                        if (lesDixPlusEmprunte[compteurBoucle] == null) { lesDixPlusEmprunte[compteurBoucle] = a; }
+                        if (lesDixPlusEmprunte.Count() <= compteurBoucle)
+                        {
+                            lesDixPlusEmprunte.Add(a);
+                            placeTrouver = true;
+                        }
                         else if (lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() <= a.EMPRUNTER.Count())
                         {
                             placeTrouver = true;
-                            DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle);
+                            DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, lesDixPlusEmprunte.Count());
                         }
+                        compteurBoucle++;
                     }
                 }
                 //Remplie la liste en comparant à partir du moins vue
@@ -104,8 +109,9 @@ namespace PT2
                         if (!(lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() < a.EMPRUNTER.Count()))
                         {
                             placeTrouver = true;
-                            if (compteurBoucle != 9) { DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle - 1); }
+                            if (compteurBoucle != 9) { DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, 10); }
                         }
+                        compteurBoucle--;
                     }
                 }
             }
@@ -118,15 +124,23 @@ namespace PT2
         /// <param name="la"> la liste devant subir le décalage</param>
         /// <param name="a"> l'album a placé dans la liste</param>
         /// <param name="index"> l'index où doit être placé le nouveaux albums</param>
-        private static void DecaleDroiteAlbum(List<ALBUMS> la, ALBUMS a, int index)
+        /// <paramref name="finDecalage"> l'index où délimitant la fin du tableau voulu
+        private static void DecaleDroiteAlbum(List<ALBUMS> la, ALBUMS a, int index, int finDecalage)
         {
-
-            for (int compteurInverse = 11; compteurInverse > index; compteurInverse--)
+            for (int compteurInverse = finDecalage; compteurInverse > index; compteurInverse--)
             {
-                la[compteurInverse] = la[compteurInverse - 1];
+                if (compteurInverse == finDecalage)
+                {
+                    la.Add(la[compteurInverse - 1]);
+                }
+                else
+                {
+                    la[compteurInverse] = la[compteurInverse - 1];
+                }
+
             }
             la[index] = a;
-            la.Remove(la[11]);
+            la.Remove(la[finDecalage]);
         }
 
         private void abonnésAPurger()
