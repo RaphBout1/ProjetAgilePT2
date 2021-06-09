@@ -28,7 +28,8 @@ namespace PT2
         /// </summary>
         private void remplirEmpruntsBox()
         {
-            foreach(EMPRUNTER i in abo.EMPRUNTER)
+            var empruntactuels = from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == abo.CODE_ABONNÉ select l.EMPRUNTER;
+            foreach (EMPRUNTER i in empruntactuels.First()) 
             {
                 if(i.DATE_RETOUR == null)
                 {
@@ -50,7 +51,8 @@ namespace PT2
             var bonEmprunt = from l in musiqueSQL.EMPRUNTER where l.CODE_ABONNÉ == m.CODE_ABONNÉ && l.CODE_ALBUM == m.CODE_ALBUM select l;
             bonEmprunt.First().DATE_RETOUR = DateTime.UtcNow;
             musiqueSQL.SaveChanges();
-
+            listBoxEmpruntEnCours.Items.Remove(m);
+            Refresh();
         }
     }
 }

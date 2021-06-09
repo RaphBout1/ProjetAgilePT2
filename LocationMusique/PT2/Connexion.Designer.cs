@@ -72,6 +72,7 @@ namespace PT2
             this.connectbutton.Size = new System.Drawing.Size(407, 78);
             this.connectbutton.TabIndex = 3;
             this.connectbutton.UseVisualStyleBackColor = false;
+            this.connectbutton.Click += new System.EventHandler(this.connectbutton_Click);
             // 
             // InscriptionButton
             // 
@@ -82,7 +83,7 @@ namespace PT2
             this.InscriptionButton.FlatAppearance.BorderSize = 0;
             this.InscriptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InscriptionButton.Location = new System.Drawing.Point(565, 717);
-            this.InscriptionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InscriptionButton.Margin = new System.Windows.Forms.Padding(4);
             this.InscriptionButton.Name = "InscriptionButton";
             this.InscriptionButton.Size = new System.Drawing.Size(355, 39);
             this.InscriptionButton.TabIndex = 4;
@@ -93,7 +94,7 @@ namespace PT2
             // UtilisateurButton
             // 
             this.UtilisateurButton.Location = new System.Drawing.Point(831, 577);
-            this.UtilisateurButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UtilisateurButton.Margin = new System.Windows.Forms.Padding(4);
             this.UtilisateurButton.Name = "UtilisateurButton";
             this.UtilisateurButton.Size = new System.Drawing.Size(100, 28);
             this.UtilisateurButton.TabIndex = 5;
@@ -104,7 +105,7 @@ namespace PT2
             // AdminButton
             // 
             this.AdminButton.Location = new System.Drawing.Point(538, 577);
-            this.AdminButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdminButton.Margin = new System.Windows.Forms.Padding(4);
             this.AdminButton.Name = "AdminButton";
             this.AdminButton.Size = new System.Drawing.Size(100, 28);
             this.AdminButton.TabIndex = 6;
@@ -127,7 +128,7 @@ namespace PT2
             this.Controls.Add(this.pseudo);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Connexion";
             this.Text = "Discothèque";
             this.ResumeLayout(false);

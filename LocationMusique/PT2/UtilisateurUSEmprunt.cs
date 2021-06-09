@@ -21,6 +21,7 @@ namespace PT2
             InitializeComponent();
             initComboBoxEmprunt();
             this.utilisateur = utilisateur;
+            
         }
 
         public void initComboBoxEmprunt()
