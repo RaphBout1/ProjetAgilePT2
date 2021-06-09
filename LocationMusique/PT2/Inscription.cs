@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace PT2
 {
+    /// <summary>
+    /// Gère l'inscription dans la base de donnée en tant qu'abonné des utilisateur
+    /// </summary>
     public partial class Inscription : Form
     {
         public Inscription()
@@ -23,6 +26,9 @@ namespace PT2
             retour.Visible = false;
         }
 
+        /// <summary>
+        /// Ajoute tous les pays contenus dans la base de donnée par ordre alphabétique à paysComboBox
+        /// </summary>
         public void chargerPays()
         {
             var pays = from p in musiqueSQL.PAYS orderby p.NOM_PAYS select p;
@@ -35,7 +41,7 @@ namespace PT2
         static MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
 
         /**
-         * crée un nouvel abonné dans la base si les informations données sont valides
+         * Crée un nouvel abonné dans la base si les informations données sont valides
          */
         public static void abonner(string nom, string prenom, string pays, string login, string password)
         {
@@ -68,6 +74,9 @@ namespace PT2
             }
         }
 
+        /**
+         * Lance la création d'un nouvel abonné à partir des informations du formulaire
+         */
         private void submit_Click(object sender, EventArgs e)
         {
             try
