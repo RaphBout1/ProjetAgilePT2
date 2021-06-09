@@ -32,6 +32,7 @@ namespace PT2
         /// <returns>La Liste en question.</returns>
         public List<ABONNÉS> enRetard()
         {
+            listBoxGlobale.Items.Clear();
             List<ABONNÉS> enretard10 = new List<ABONNÉS>();
             var listemprunt = from l in musiqueSQL.EMPRUNTER select l;
             foreach (EMPRUNTER e in listemprunt)
@@ -39,7 +40,7 @@ namespace PT2
                 if (e.enRetard())
                 {
                     enretard10.Add(e.ABONNÉS);
-                    listBox1.Items.Add(e.ABONNÉS);
+                    listBoxGlobale.Items.Add(e.ABONNÉS);
 
                 }
             }
@@ -49,6 +50,7 @@ namespace PT2
 
         private void LivreEmprunteProlongé()
         {
+            listBoxGlobale.Items.Clear();
             var lesLivresEmpruntes =
                    from m in musiqueSQL.EMPRUNTER
                    select m;
@@ -57,7 +59,7 @@ namespace PT2
             {
                 if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
                 {
-                    listBox2.Items.Add(m);
+                    listBoxGlobale.Items.Add(m);
                 }
 
             }
@@ -290,6 +292,22 @@ namespace PT2
             {
                 purgebutton.Enabled = true;
             }
+        }
+
+        private void enRetardButton_Click(object sender, EventArgs e)
+        {
+            enRetard();
+            purgeModeOn = false;
+            purgebutton.Enabled = false;
+            Refresh();
+        }
+
+        private void prolongesButton_Click(object sender, EventArgs e)
+        {
+            LivreEmprunteProlongé();
+            purgeModeOn = false;
+            purgebutton.Enabled = false;
+            Refresh();
         }
     }
 }

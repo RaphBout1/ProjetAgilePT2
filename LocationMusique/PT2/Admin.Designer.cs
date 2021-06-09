@@ -163,6 +163,7 @@ namespace PT2
             this.enRetardButton.TabIndex = 11;
             this.enRetardButton.Text = "En Retard";
             this.enRetardButton.UseVisualStyleBackColor = true;
+            this.enRetardButton.Click += new System.EventHandler(this.enRetardButton_Click);
             // 
             // Pluspopulairebutton
             // 
@@ -192,6 +193,7 @@ namespace PT2
             this.prolongesButton.TabIndex = 14;
             this.prolongesButton.Text = "Prolonges";
             this.prolongesButton.UseVisualStyleBackColor = true;
+            this.prolongesButton.Click += new System.EventHandler(this.prolongesButton_Click);
             // 
             // moinsPopulaireButton
             // 
