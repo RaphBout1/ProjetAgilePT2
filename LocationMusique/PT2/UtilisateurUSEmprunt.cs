@@ -247,7 +247,6 @@ namespace PT2
                     }
                 }
             }
-            CoordY.Text = souris.Y.ToString();
         }
 
         private void AfficheAlbumActuelle()
