@@ -42,6 +42,7 @@ namespace PT2
             this.prolongesButton = new System.Windows.Forms.Button();
             this.moinsPopulaireButton = new System.Windows.Forms.Button();
             this.listeAbonnés = new System.Windows.Forms.Button();
+            this.buttonChangerMdp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -67,9 +68,10 @@ namespace PT2
             this.listBoxAbonnés.FormattingEnabled = true;
             this.listBoxAbonnés.Location = new System.Drawing.Point(1099, 260);
             this.listBoxAbonnés.Name = "listBoxAbonnés";
-            this.listBoxAbonnés.Size = new System.Drawing.Size(223, 147);
+            this.listBoxAbonnés.Size = new System.Drawing.Size(328, 147);
             this.listBoxAbonnés.TabIndex = 7;
             this.listBoxAbonnés.Visible = false;
+            this.listBoxAbonnés.SelectedIndexChanged += new System.EventHandler(this.listBoxAbonnés_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -159,6 +161,16 @@ namespace PT2
             this.listeAbonnés.UseVisualStyleBackColor = true;
             this.listeAbonnés.Click += new System.EventHandler(this.listeAbonnés_Click);
             // 
+            // buttonChangerMdp
+            // 
+            this.buttonChangerMdp.Location = new System.Drawing.Point(1099, 469);
+            this.buttonChangerMdp.Name = "buttonChangerMdp";
+            this.buttonChangerMdp.Size = new System.Drawing.Size(98, 23);
+            this.buttonChangerMdp.TabIndex = 17;
+            this.buttonChangerMdp.Text = "changer mdp";
+            this.buttonChangerMdp.UseVisualStyleBackColor = true;
+            this.buttonChangerMdp.Click += new System.EventHandler(this.buttonChangerMdp_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,6 +178,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.buttonChangerMdp);
             this.Controls.Add(this.listeAbonnés);
             this.Controls.Add(this.moinsPopulaireButton);
             this.Controls.Add(this.prolongesButton);
@@ -198,5 +211,6 @@ namespace PT2
         private System.Windows.Forms.Button prolongesButton;
         private System.Windows.Forms.Button moinsPopulaireButton;
         private System.Windows.Forms.Button listeAbonnés;
+        private System.Windows.Forms.Button buttonChangerMdp;
     }
 }

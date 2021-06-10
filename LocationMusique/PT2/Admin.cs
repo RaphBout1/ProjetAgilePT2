@@ -237,9 +237,32 @@ namespace PT2
             var abonnés = from a in musiqueSQL.ABONNÉS orderby a.NOM_ABONNÉ select a;
             foreach(ABONNÉS a in abonnés)
             {
-                listBoxAbonnés.Items.Add(a.NOM_ABONNÉ + a.PRÉNOM_ABONNÉ);
+                listBoxAbonnés.Items.Add(a);
             }
         }
+
+        private void changerMdp()
+        {
+            try
+            {
+                ABONNÉS a = (ABONNÉS)listBoxAbonnés.SelectedItem;
+                ABONNÉS abo = (from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == a.CODE_ABONNÉ select l).First();
+                AdminChangerMdp changementMdp = new AdminChangerMdp();
+                if (changementMdp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    musiqueSQL.ABONNÉS.Remove(abo);
+                    musiqueSQL.SaveChanges();
+                    abo.PASSWORD_ABONNÉ = changementMdp.nouveauMdp; //à crypter
+                    musiqueSQL.ABONNÉS.Add(abo);
+                    musiqueSQL.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
+            }
+        }
+
         /// <summary>
         /// Vide et remplit la listeboxglobale avec les 10 albums les plus populaires
         /// </summary>
@@ -317,6 +340,16 @@ namespace PT2
             listBoxAbonnés.Visible = listeabonneVisible;
             label4.Visible = listeabonneVisible;
             Refresh();
+        }
+
+        private void buttonChangerMdp_Click(object sender, EventArgs e)
+        {
+            changerMdp();
+        }
+
+        private void listBoxAbonnés_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonChangerMdp.Enabled = true;
         }
     }
 }
