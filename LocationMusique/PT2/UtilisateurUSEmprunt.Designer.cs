@@ -420,6 +420,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.rechercherButton);
             this.Controls.Add(this.rechercheBox);
             this.Controls.Add(this.annuler);
@@ -432,7 +433,6 @@ namespace PT2
             this.Controls.Add(this.InfoAnnee);
             this.Controls.Add(this.InfoEditeur);
             this.Controls.Add(this.InfoTitre);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Genre5);
             this.Controls.Add(this.Genre4);
             this.Controls.Add(this.Genre3);
