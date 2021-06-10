@@ -40,6 +40,9 @@ namespace PT2
             this.MAJButton = new System.Windows.Forms.Button();
             this.afficherEmprunts = new System.Windows.Forms.Button();
             this.afficherRecommandations = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.retard = new System.Windows.Forms.Button();
+            this.enCours = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
@@ -107,21 +110,27 @@ namespace PT2
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(70, 118);
+            this.button1.Location = new System.Drawing.Point(12, 80);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(273, 62);
+            this.button1.Size = new System.Drawing.Size(319, 60);
             this.button1.TabIndex = 6;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // rendreButton
             // 
-            this.rendreButton.Location = new System.Drawing.Point(172, 648);
+            this.rendreButton.BackColor = System.Drawing.Color.Transparent;
+            this.rendreButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rendreButton.BackgroundImage")));
+            this.rendreButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rendreButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rendreButton.FlatAppearance.BorderSize = 0;
+            this.rendreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.rendreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rendreButton.Location = new System.Drawing.Point(154, 410);
             this.rendreButton.Name = "rendreButton";
-            this.rendreButton.Size = new System.Drawing.Size(95, 57);
+            this.rendreButton.Size = new System.Drawing.Size(351, 89);
             this.rendreButton.TabIndex = 7;
-            this.rendreButton.Text = "Rendre";
-            this.rendreButton.UseVisualStyleBackColor = true;
+            this.rendreButton.UseVisualStyleBackColor = false;
             this.rendreButton.Click += new System.EventHandler(this.rendreButton_Click);
             // 
             // MAJButton
@@ -141,22 +150,71 @@ namespace PT2
             this.afficherEmprunts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.afficherEmprunts.FlatAppearance.BorderSize = 0;
             this.afficherEmprunts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.afficherEmprunts.Location = new System.Drawing.Point(142, 212);
+            this.afficherEmprunts.Location = new System.Drawing.Point(86, 184);
             this.afficherEmprunts.Name = "afficherEmprunts";
-            this.afficherEmprunts.Size = new System.Drawing.Size(283, 62);
+            this.afficherEmprunts.Size = new System.Drawing.Size(311, 62);
             this.afficherEmprunts.TabIndex = 9;
             this.afficherEmprunts.UseVisualStyleBackColor = false;
             this.afficherEmprunts.Click += new System.EventHandler(this.afficherEmprunts_Click);
             // 
             // afficherRecommandations
             // 
-            this.afficherRecommandations.Location = new System.Drawing.Point(308, 487);
+            this.afficherRecommandations.BackColor = System.Drawing.Color.Transparent;
+            this.afficherRecommandations.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("afficherRecommandations.BackgroundImage")));
+            this.afficherRecommandations.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.afficherRecommandations.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.afficherRecommandations.FlatAppearance.BorderSize = 0;
+            this.afficherRecommandations.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.afficherRecommandations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.afficherRecommandations.Location = new System.Drawing.Point(164, 301);
             this.afficherRecommandations.Name = "afficherRecommandations";
-            this.afficherRecommandations.Size = new System.Drawing.Size(126, 53);
+            this.afficherRecommandations.Size = new System.Drawing.Size(341, 83);
             this.afficherRecommandations.TabIndex = 10;
-            this.afficherRecommandations.Text = "Recommandations";
-            this.afficherRecommandations.UseVisualStyleBackColor = true;
+            this.afficherRecommandations.UseVisualStyleBackColor = false;
             this.afficherRecommandations.Click += new System.EventHandler(this.afficherRecommandations_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(-15, 765);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(346, 70);
+            this.button2.TabIndex = 11;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // retard
+            // 
+            this.retard.BackColor = System.Drawing.Color.Transparent;
+            this.retard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("retard.BackgroundImage")));
+            this.retard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.retard.FlatAppearance.BorderSize = 0;
+            this.retard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.retard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.retard.Location = new System.Drawing.Point(12, 646);
+            this.retard.Name = "retard";
+            this.retard.Size = new System.Drawing.Size(439, 91);
+            this.retard.TabIndex = 12;
+            this.retard.UseVisualStyleBackColor = false;
+            // 
+            // enCours
+            // 
+            this.enCours.BackColor = System.Drawing.Color.Transparent;
+            this.enCours.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("enCours.BackgroundImage")));
+            this.enCours.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.enCours.FlatAppearance.BorderSize = 0;
+            this.enCours.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.enCours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enCours.Location = new System.Drawing.Point(75, 532);
+            this.enCours.Name = "enCours";
+            this.enCours.Size = new System.Drawing.Size(430, 91);
+            this.enCours.TabIndex = 13;
+            this.enCours.UseVisualStyleBackColor = false;
             // 
             // Utilisateur
             // 
@@ -165,6 +223,9 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.enCours);
+            this.Controls.Add(this.retard);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.afficherRecommandations);
             this.Controls.Add(this.afficherEmprunts);
             this.Controls.Add(this.MAJButton);
@@ -195,5 +256,8 @@ namespace PT2
         private System.Windows.Forms.Button MAJButton;
         private System.Windows.Forms.Button afficherEmprunts;
         private System.Windows.Forms.Button afficherRecommandations;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button retard;
+        private System.Windows.Forms.Button enCours;
     }
 }
