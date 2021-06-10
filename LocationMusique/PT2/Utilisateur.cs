@@ -313,7 +313,6 @@ namespace PT2
             prolongerTousButton.Visible = true;
             actualiserListeEnRetard();
         }
-
         #region ListView
         #region initialiser
         private void InitialiserListView()
@@ -379,8 +378,8 @@ namespace PT2
         private void listViewConsultation_SelectedIndexChanged(object sender, EventArgs e)
         {
             int compteurIndexSelectionne = 0;
-            string titreAlbum = "" ;
-            foreach(ListViewItem lvi in listViewConsultation.SelectedItems)
+            string titreAlbum = "";
+            foreach (ListViewItem lvi in listViewConsultation.SelectedItems)
             {
                 compteurIndexSelectionne++;
                 titreAlbum = lvi.SubItems.ToString();
