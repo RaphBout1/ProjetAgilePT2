@@ -43,6 +43,7 @@ namespace PT2
             this.listeAbonnés = new System.Windows.Forms.Button();
             this.buttonChangerMdp = new System.Windows.Forms.Button();
             this.quitter = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -219,6 +220,15 @@ namespace PT2
             this.quitter.Text = " ";
             this.quitter.UseVisualStyleBackColor = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1119, 201);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "label1";
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +236,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.quitter);
             this.Controls.Add(this.buttonChangerMdp);
             this.Controls.Add(this.listeAbonnés);
@@ -260,5 +271,6 @@ namespace PT2
         private System.Windows.Forms.Button listeAbonnés;
         private System.Windows.Forms.Button buttonChangerMdp;
         private System.Windows.Forms.Button quitter;
+        private System.Windows.Forms.Label label4;
     }
 }
