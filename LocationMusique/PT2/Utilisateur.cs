@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,12 @@ namespace PT2
         private ABONNÉS utilisateur;
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         Dictionary<GENRES, int> listeGenreEmprunte = new Dictionary<GENRES, int>();
+        EMPRUNTER empruntCourant = new EMPRUNTER();
 
         public Utilisateur(ABONNÉS uti)
         {
             InitializeComponent();
+            InitialiserListView();
             utilisateur = uti;
             nom.Text = uti.NOM_ABONNÉ;
             prenom.Text = uti.PRÉNOM_ABONNÉ;
@@ -182,12 +185,11 @@ namespace PT2
         {
             try
             {
-                EMPRUNTER emprunt = (EMPRUNTER)listBoxConsultEmprunt.SelectedItem;
-                ProlongerEmprunt(emprunt);
+                ProlongerEmprunt(empruntCourant);
                 ActualiseListeEmprunté();
                 prolonger1Button.Visible = false;
                 prolongerTousButton.Visible = false;
-                MessageBox.Show("L'emprunt de l'album " + emprunt.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
+                MessageBox.Show("L'emprunt de l'album " + empruntCourant.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
             }
             catch (Exception ex)
             {
@@ -256,6 +258,9 @@ namespace PT2
         /// </summary>
         private void actualiserListeEnRetard()
         {
+            PlacerNouvelleInfo(empruntEnRetard());
+
+
             listBoxConsultEmprunt.Items.Clear();
             foreach(EMPRUNTER i in empruntEnRetard())
             {
@@ -266,6 +271,9 @@ namespace PT2
 
         private void actualiserListeEnCours()
         {
+            PlacerNouvelleInfo(empruntEnCours());
+
+
             listBoxConsultEmprunt.Items.Clear();
             foreach (EMPRUNTER i in empruntEnCours())
             {
@@ -273,6 +281,8 @@ namespace PT2
             }
             Refresh();
         }
+
+
         /// <summary>
         /// Fourni une liste des emprunts de l'utilisateurs qui sont en cours
         /// </summary>
@@ -302,6 +312,88 @@ namespace PT2
             prolonger1Button.Visible = true;
             prolongerTousButton.Visible = true;
             actualiserListeEnRetard();
+        }
+
+        #region ListView
+        #region initialiser
+        private void InitialiserListView()
+        {
+            listViewConsultation.View = View.Details;
+            listViewConsultation.GridLines = true;
+            listViewConsultation.Columns.Add("Titre", -2, HorizontalAlignment.Left);
+            listViewConsultation.Columns.Add("Date d'emprunt", -2, HorizontalAlignment.Center);
+            listViewConsultation.Columns.Add("Date retour", -2, HorizontalAlignment.Center);
+        }
+        #endregion
+
+        #region attibué info
+        private void PlacerNouvelleInfo(List<EMPRUNTER> le)
+        {
+            listViewConsultation.Items.Clear();
+            
+            ImageList imageListSmall = new ImageList();
+            int compteurEmpruntTemp = 0;
+            foreach(EMPRUNTER e in le)
+            {
+                ListViewItem item = new ListViewItem(e.ALBUMS.TITRE_ALBUM, compteurEmpruntTemp);
+                item.SubItems.Add(e.DATE_EMPRUNT.ToString());
+                if (e.DATE_RETOUR != null)
+                {
+                    item.SubItems.Add("Retourné le : " + e.DATE_RETOUR.ToString());
+                }
+                else
+                {
+                    item.SubItems.Add("A retourner pour le : " + e.DATE_RETOUR_ATTENDUE.ToString());
+                }
+                if (e.ALBUMS.POCHETTE != null)
+                {
+                    imageListSmall.Images.Add(ConstructionImageDepuisByte(e.ALBUMS.POCHETTE));
+                }
+                else
+                {
+                    imageListSmall.Images.Add(Image.FromFile(Path.GetFullPath("..\\..\\Image\\ParDéfaut")));
+                }
+                listViewConsultation.Items.Add(item);
+                compteurEmpruntTemp++;
+            }
+            listViewConsultation.SmallImageList = imageListSmall;
+            listViewConsultation.AutoResizeColumn(0,
+            ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewConsultation.AutoResizeColumn(1,
+            ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewConsultation.AutoResizeColumn(2,
+            ColumnHeaderAutoResizeStyle.ColumnContent);
+        }
+        #endregion
+        #endregion
+
+        #region Importer Image
+        public Image ConstructionImageDepuisByte(byte[] tabByte)
+        {
+            MemoryStream ms = new MemoryStream(tabByte);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+        #endregion
+
+        private void listViewConsultation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int compteurIndexSelectionne = 0;
+            string titreAlbum = "" ;
+            foreach(ListViewItem lvi in listViewConsultation.SelectedItems)
+            {
+                compteurIndexSelectionne++;
+                titreAlbum = lvi.SubItems.ToString();
+            }
+            if (compteurIndexSelectionne == 1)
+            {
+                foreach (EMPRUNTER emp in utilisateur.EMPRUNTER)
+                {
+                    if (emp.ALBUMS.TITRE_ALBUM == titreAlbum) { empruntCourant = emp; }
+                }
+                if (empruntCourant != null) { prolonger1Button.Enabled = true; }
+                else { prolonger1Button.Enabled = false; }
+            }
         }
     }
 }

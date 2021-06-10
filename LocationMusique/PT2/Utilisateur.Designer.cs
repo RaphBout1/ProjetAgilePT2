@@ -43,6 +43,7 @@ namespace PT2
             this.button2 = new System.Windows.Forms.Button();
             this.retard = new System.Windows.Forms.Button();
             this.enCours = new System.Windows.Forms.Button();
+            this.listViewConsultation = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
@@ -56,7 +57,7 @@ namespace PT2
             this.listBoxConsultEmprunt.ItemHeight = 20;
             this.listBoxConsultEmprunt.Location = new System.Drawing.Point(645, 68);
             this.listBoxConsultEmprunt.Name = "listBoxConsultEmprunt";
-            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(884, 600);
+            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(223, 40);
             this.listBoxConsultEmprunt.TabIndex = 0;
             this.listBoxConsultEmprunt.SelectedIndexChanged += new System.EventHandler(this.listBoxConsultEmprunt_SelectedIndexChanged);
             // 
@@ -144,7 +145,7 @@ namespace PT2
             this.rendreButton.FlatAppearance.BorderSize = 0;
             this.rendreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.rendreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rendreButton.Location = new System.Drawing.Point(354, 68);
+            this.rendreButton.Location = new System.Drawing.Point(288, 12);
             this.rendreButton.Name = "rendreButton";
             this.rendreButton.Size = new System.Drawing.Size(351, 89);
             this.rendreButton.TabIndex = 7;
@@ -238,6 +239,16 @@ namespace PT2
             this.enCours.UseVisualStyleBackColor = false;
             this.enCours.Click += new System.EventHandler(this.enCours_Click);
             // 
+            // listViewConsultation
+            // 
+            this.listViewConsultation.HideSelection = false;
+            this.listViewConsultation.Location = new System.Drawing.Point(645, 114);
+            this.listViewConsultation.Name = "listViewConsultation";
+            this.listViewConsultation.Size = new System.Drawing.Size(839, 533);
+            this.listViewConsultation.TabIndex = 14;
+            this.listViewConsultation.UseCompatibleStateImageBehavior = false;
+            this.listViewConsultation.SelectedIndexChanged += new System.EventHandler(this.listViewConsultation_SelectedIndexChanged);
+            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +256,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.listViewConsultation);
             this.Controls.Add(this.enCours);
             this.Controls.Add(this.retard);
             this.Controls.Add(this.button2);
@@ -281,5 +293,6 @@ namespace PT2
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button retard;
         private System.Windows.Forms.Button enCours;
+        private System.Windows.Forms.ListView listViewConsultation;
     }
 }
