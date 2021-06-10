@@ -57,6 +57,7 @@ namespace PT2
             this.boutonRetour = new System.Windows.Forms.Button();
             this.InfoNumero = new System.Windows.Forms.Label();
             this.labelPage = new System.Windows.Forms.Label();
+            this.annuler = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pochette1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette3)).BeginInit();
@@ -83,7 +84,7 @@ namespace PT2
             // 
             // monthCalendarClassique
             // 
-            this.monthCalendarClassique.Location = new System.Drawing.Point(1222, 573);
+            this.monthCalendarClassique.Location = new System.Drawing.Point(1353, 474);
             this.monthCalendarClassique.Name = "monthCalendarClassique";
             this.monthCalendarClassique.TabIndex = 5;
             // 
@@ -329,22 +330,31 @@ namespace PT2
             // boutonSuivant
             // 
             this.boutonSuivant.BackColor = System.Drawing.Color.Transparent;
-            this.boutonSuivant.Location = new System.Drawing.Point(845, 354);
+            this.boutonSuivant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("boutonSuivant.BackgroundImage")));
+            this.boutonSuivant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.boutonSuivant.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.boutonSuivant.FlatAppearance.BorderSize = 0;
+            this.boutonSuivant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.boutonSuivant.Location = new System.Drawing.Point(827, 308);
             this.boutonSuivant.Name = "boutonSuivant";
-            this.boutonSuivant.Size = new System.Drawing.Size(75, 23);
+            this.boutonSuivant.Size = new System.Drawing.Size(93, 87);
             this.boutonSuivant.TabIndex = 28;
-            this.boutonSuivant.Text = "Suivant";
             this.boutonSuivant.UseVisualStyleBackColor = false;
             this.boutonSuivant.Click += new System.EventHandler(this.boutonSuivant_Click);
             // 
             // boutonRetour
             // 
             this.boutonRetour.BackColor = System.Drawing.Color.Transparent;
-            this.boutonRetour.Location = new System.Drawing.Point(845, 495);
+            this.boutonRetour.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("boutonRetour.BackgroundImage")));
+            this.boutonRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.boutonRetour.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.boutonRetour.FlatAppearance.BorderSize = 0;
+            this.boutonRetour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.boutonRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.boutonRetour.Location = new System.Drawing.Point(827, 473);
             this.boutonRetour.Name = "boutonRetour";
-            this.boutonRetour.Size = new System.Drawing.Size(75, 23);
+            this.boutonRetour.Size = new System.Drawing.Size(93, 92);
             this.boutonRetour.TabIndex = 29;
-            this.boutonRetour.Text = "Retour";
             this.boutonRetour.UseVisualStyleBackColor = false;
             this.boutonRetour.Click += new System.EventHandler(this.boutonRetour_Click);
             // 
@@ -369,6 +379,21 @@ namespace PT2
             this.labelPage.TabIndex = 31;
             this.labelPage.Text = "label1";
             // 
+            // annuler
+            // 
+            this.annuler.BackColor = System.Drawing.Color.Transparent;
+            this.annuler.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("annuler.BackgroundImage")));
+            this.annuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.annuler.FlatAppearance.BorderSize = 0;
+            this.annuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.annuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.annuler.Location = new System.Drawing.Point(1207, 695);
+            this.annuler.Name = "annuler";
+            this.annuler.Size = new System.Drawing.Size(229, 52);
+            this.annuler.TabIndex = 32;
+            this.annuler.UseVisualStyleBackColor = false;
+            this.annuler.Click += new System.EventHandler(this.annuler_Click);
+            // 
             // UtilisateurUSEmprunt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,6 +401,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.annuler);
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.InfoNumero);
             this.Controls.Add(this.boutonRetour);
@@ -446,5 +472,6 @@ namespace PT2
         private System.Windows.Forms.Button boutonRetour;
         private System.Windows.Forms.Label InfoNumero;
         private System.Windows.Forms.Label labelPage;
+        private System.Windows.Forms.Button annuler;
     }
 }
