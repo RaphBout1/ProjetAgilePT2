@@ -264,6 +264,21 @@ namespace PT2
         }
 
         /// <summary>
+        /// Affiche le nombre d'album emprunte par titre d'album 
+        /// </summary>
+        /// <param album></param> 
+        private int nombreEmprunt(ALBUMS album)
+        {
+            DateTime date = DateTime.UtcNow.AddYears(-1);
+            var q = (from e in musiqueSQL.EMPRUNTER
+                     join a in musiqueSQL.ALBUMS on e.CODE_ALBUM equals a.CODE_ALBUM
+                     where e.DATE_EMPRUNT > date && e.CODE_ALBUM == album.CODE_ALBUM
+                     select e.DATE_EMPRUNT);
+            int i = q.Count();
+            return i;
+        }
+
+        /// <summary>
         /// Vide et remplit la listeboxglobale avec les 10 albums les plus populaires
         /// </summary>
         private void remplir10pluspopulaires()
@@ -271,7 +286,7 @@ namespace PT2
             listBoxGlobale.Items.Clear();
             foreach(ALBUMS i in DixPlusVue())
             {
-                listBoxGlobale.Items.Add(i);
+                listBoxGlobale.Items.Add(i.ToString() + nombreEmprunt(i));
             }
         }
         /// <summary>
