@@ -224,5 +224,23 @@ namespace PT2
             prolongerTousButton.Visible = false;
             Recommandation();
         }
+
+        private List<EMPRUNTER> empruntEnRetard()
+        {
+            List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
+            foreach (EMPRUNTER i in utilisateur.EMPRUNTER)
+            {
+                if (i.enRetard())
+                {
+                    listefinale.Add(i);
+                }
+            }
+            return listefinale;
+        }
+
+        private List<EMPRUNTER> empruntEnCours()
+        {
+
+        }
     }
 }
