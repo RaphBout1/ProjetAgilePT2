@@ -33,14 +33,18 @@ namespace PT2
         public void ActualiseListeEmprunté()
         {
             listBoxConsultEmprunt.Items.Clear();
-            foreach (EMPRUNTER e in NouveauxEmprunts())
+            foreach (EMPRUNTER e in MesEmprunts())
             {
                 listBoxConsultEmprunt.Items.Add(e);
             }
             Refresh();
         }
 
-        public List<EMPRUNTER> NouveauxEmprunts()
+        /// <summary>
+        /// Retourne la liste des emprunts de l'utilisateur
+        /// </summary>
+        /// <returns>La liste des emprunts de l'utilisateur</returns>
+        public List<EMPRUNTER> MesEmprunts()
         {
             return (from em in musiqueSQL.EMPRUNTER
                     where em.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
@@ -158,7 +162,7 @@ namespace PT2
             {
                 ActualiseListeEmprunté();
             }
-            MessageBox.Show(nbProlonges + " emprunt(s) ont été prolongé(s).");
+            MessageBox.Show(nbProlonges + " emprunts ont été prolongés.");
         }
 
         /**
