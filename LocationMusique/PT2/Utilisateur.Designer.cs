@@ -149,6 +149,7 @@ namespace PT2
             this.afficherEmprunts.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("afficherEmprunts.BackgroundImage")));
             this.afficherEmprunts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.afficherEmprunts.FlatAppearance.BorderSize = 0;
+            this.afficherEmprunts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.afficherEmprunts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.afficherEmprunts.Location = new System.Drawing.Point(86, 184);
             this.afficherEmprunts.Name = "afficherEmprunts";
@@ -196,7 +197,7 @@ namespace PT2
             this.retard.FlatAppearance.BorderSize = 0;
             this.retard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.retard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.retard.Location = new System.Drawing.Point(12, 646);
+            this.retard.Location = new System.Drawing.Point(1051, 629);
             this.retard.Name = "retard";
             this.retard.Size = new System.Drawing.Size(439, 91);
             this.retard.TabIndex = 12;
@@ -210,7 +211,7 @@ namespace PT2
             this.enCours.FlatAppearance.BorderSize = 0;
             this.enCours.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.enCours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enCours.Location = new System.Drawing.Point(75, 532);
+            this.enCours.Location = new System.Drawing.Point(552, 646);
             this.enCours.Name = "enCours";
             this.enCours.Size = new System.Drawing.Size(430, 91);
             this.enCours.TabIndex = 13;
