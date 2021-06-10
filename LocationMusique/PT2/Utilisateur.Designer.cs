@@ -55,18 +55,26 @@ namespace PT2
             // nom
             // 
             this.nom.AutoSize = true;
-            this.nom.Location = new System.Drawing.Point(78, 25);
+            this.nom.BackColor = System.Drawing.Color.Transparent;
+            this.nom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nom.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nom.Location = new System.Drawing.Point(8, 9);
             this.nom.Name = "nom";
-            this.nom.Size = new System.Drawing.Size(27, 13);
+            this.nom.Size = new System.Drawing.Size(51, 24);
             this.nom.TabIndex = 1;
             this.nom.Text = "nom";
             // 
             // prenom
             // 
             this.prenom.AutoSize = true;
-            this.prenom.Location = new System.Drawing.Point(78, 74);
+            this.prenom.BackColor = System.Drawing.Color.Transparent;
+            this.prenom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.prenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prenom.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.prenom.Location = new System.Drawing.Point(8, 33);
             this.prenom.Name = "prenom";
-            this.prenom.Size = new System.Drawing.Size(42, 13);
+            this.prenom.Size = new System.Drawing.Size(82, 24);
             this.prenom.TabIndex = 2;
             this.prenom.Text = "prenom";
             // 
@@ -93,12 +101,17 @@ namespace PT2
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(172, 144);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(70, 118);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 41);
+            this.button1.Size = new System.Drawing.Size(273, 62);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Emprunter";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // rendreButton
@@ -123,12 +136,16 @@ namespace PT2
             // 
             // afficherEmprunts
             // 
-            this.afficherEmprunts.Location = new System.Drawing.Point(308, 331);
+            this.afficherEmprunts.BackColor = System.Drawing.Color.Transparent;
+            this.afficherEmprunts.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("afficherEmprunts.BackgroundImage")));
+            this.afficherEmprunts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.afficherEmprunts.FlatAppearance.BorderSize = 0;
+            this.afficherEmprunts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.afficherEmprunts.Location = new System.Drawing.Point(142, 212);
             this.afficherEmprunts.Name = "afficherEmprunts";
-            this.afficherEmprunts.Size = new System.Drawing.Size(126, 53);
+            this.afficherEmprunts.Size = new System.Drawing.Size(283, 62);
             this.afficherEmprunts.TabIndex = 9;
-            this.afficherEmprunts.Text = "Mes emprunts";
-            this.afficherEmprunts.UseVisualStyleBackColor = true;
+            this.afficherEmprunts.UseVisualStyleBackColor = false;
             this.afficherEmprunts.Click += new System.EventHandler(this.afficherEmprunts_Click);
             // 
             // afficherRecommandations

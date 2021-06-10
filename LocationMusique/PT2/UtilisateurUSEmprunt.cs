@@ -263,6 +263,9 @@ namespace PT2
 
         }
 
-
+        private void annuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
