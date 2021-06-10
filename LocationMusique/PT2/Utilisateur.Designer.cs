@@ -47,11 +47,16 @@ namespace PT2
             // 
             // listBoxConsultEmprunt
             // 
+            this.listBoxConsultEmprunt.BackColor = System.Drawing.Color.LightGray;
+            this.listBoxConsultEmprunt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxConsultEmprunt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxConsultEmprunt.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.listBoxConsultEmprunt.FormattingEnabled = true;
             this.listBoxConsultEmprunt.HorizontalScrollbar = true;
-            this.listBoxConsultEmprunt.Location = new System.Drawing.Point(782, 118);
+            this.listBoxConsultEmprunt.ItemHeight = 20;
+            this.listBoxConsultEmprunt.Location = new System.Drawing.Point(645, 68);
             this.listBoxConsultEmprunt.Name = "listBoxConsultEmprunt";
-            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(374, 342);
+            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(884, 600);
             this.listBoxConsultEmprunt.TabIndex = 0;
             this.listBoxConsultEmprunt.SelectedIndexChanged += new System.EventHandler(this.listBoxConsultEmprunt_SelectedIndexChanged);
             // 
@@ -83,23 +88,36 @@ namespace PT2
             // 
             // prolonger1Button
             // 
+            this.prolonger1Button.BackColor = System.Drawing.Color.Transparent;
+            this.prolonger1Button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("prolonger1Button.BackgroundImage")));
+            this.prolonger1Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.prolonger1Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.prolonger1Button.Enabled = false;
-            this.prolonger1Button.Location = new System.Drawing.Point(1051, 568);
+            this.prolonger1Button.FlatAppearance.BorderSize = 0;
+            this.prolonger1Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.prolonger1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.prolonger1Button.Location = new System.Drawing.Point(1191, 675);
             this.prolonger1Button.Name = "prolonger1Button";
-            this.prolonger1Button.Size = new System.Drawing.Size(105, 55);
+            this.prolonger1Button.Size = new System.Drawing.Size(338, 68);
             this.prolonger1Button.TabIndex = 4;
-            this.prolonger1Button.Text = "Prolonger l\'emprunt";
-            this.prolonger1Button.UseVisualStyleBackColor = true;
+            this.prolonger1Button.UseVisualStyleBackColor = false;
             this.prolonger1Button.Click += new System.EventHandler(this.prolonger1Button_Click);
             // 
             // prolongerTousButton
             // 
-            this.prolongerTousButton.Location = new System.Drawing.Point(782, 568);
+            this.prolongerTousButton.BackColor = System.Drawing.Color.Transparent;
+            this.prolongerTousButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.prolongerTousButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.prolongerTousButton.FlatAppearance.BorderSize = 0;
+            this.prolongerTousButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.prolongerTousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.prolongerTousButton.ForeColor = System.Drawing.Color.Transparent;
+            this.prolongerTousButton.Image = ((System.Drawing.Image)(resources.GetObject("prolongerTousButton.Image")));
+            this.prolongerTousButton.Location = new System.Drawing.Point(645, 682);
             this.prolongerTousButton.Name = "prolongerTousButton";
-            this.prolongerTousButton.Size = new System.Drawing.Size(105, 55);
+            this.prolongerTousButton.Size = new System.Drawing.Size(338, 55);
             this.prolongerTousButton.TabIndex = 5;
-            this.prolongerTousButton.Text = "Prolonger TOUS les emprunts";
-            this.prolongerTousButton.UseVisualStyleBackColor = true;
+            this.prolongerTousButton.UseVisualStyleBackColor = false;
             this.prolongerTousButton.Click += new System.EventHandler(this.prolongerTousButton_Click);
             // 
             // button1
@@ -110,7 +128,7 @@ namespace PT2
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(12, 80);
+            this.button1.Location = new System.Drawing.Point(39, 118);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(319, 60);
             this.button1.TabIndex = 6;
@@ -126,7 +144,7 @@ namespace PT2
             this.rendreButton.FlatAppearance.BorderSize = 0;
             this.rendreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.rendreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rendreButton.Location = new System.Drawing.Point(154, 410);
+            this.rendreButton.Location = new System.Drawing.Point(354, 68);
             this.rendreButton.Name = "rendreButton";
             this.rendreButton.Size = new System.Drawing.Size(351, 89);
             this.rendreButton.TabIndex = 7;
@@ -151,7 +169,7 @@ namespace PT2
             this.afficherEmprunts.FlatAppearance.BorderSize = 0;
             this.afficherEmprunts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.afficherEmprunts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.afficherEmprunts.Location = new System.Drawing.Point(86, 184);
+            this.afficherEmprunts.Location = new System.Drawing.Point(155, 300);
             this.afficherEmprunts.Name = "afficherEmprunts";
             this.afficherEmprunts.Size = new System.Drawing.Size(311, 62);
             this.afficherEmprunts.TabIndex = 9;
@@ -167,7 +185,7 @@ namespace PT2
             this.afficherRecommandations.FlatAppearance.BorderSize = 0;
             this.afficherRecommandations.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.afficherRecommandations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.afficherRecommandations.Location = new System.Drawing.Point(164, 301);
+            this.afficherRecommandations.Location = new System.Drawing.Point(155, 479);
             this.afficherRecommandations.Name = "afficherRecommandations";
             this.afficherRecommandations.Size = new System.Drawing.Size(341, 83);
             this.afficherRecommandations.TabIndex = 10;
@@ -184,7 +202,7 @@ namespace PT2
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(-15, 765);
+            this.button2.Location = new System.Drawing.Point(39, 701);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(346, 70);
             this.button2.TabIndex = 11;
@@ -198,9 +216,9 @@ namespace PT2
             this.retard.FlatAppearance.BorderSize = 0;
             this.retard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.retard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.retard.Location = new System.Drawing.Point(1051, 629);
+            this.retard.Location = new System.Drawing.Point(1191, 743);
             this.retard.Name = "retard";
-            this.retard.Size = new System.Drawing.Size(439, 91);
+            this.retard.Size = new System.Drawing.Size(338, 79);
             this.retard.TabIndex = 12;
             this.retard.UseVisualStyleBackColor = false;
             this.retard.Click += new System.EventHandler(this.retard_Click);
@@ -213,9 +231,9 @@ namespace PT2
             this.enCours.FlatAppearance.BorderSize = 0;
             this.enCours.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.enCours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enCours.Location = new System.Drawing.Point(552, 629);
+            this.enCours.Location = new System.Drawing.Point(645, 743);
             this.enCours.Name = "enCours";
-            this.enCours.Size = new System.Drawing.Size(430, 91);
+            this.enCours.Size = new System.Drawing.Size(338, 79);
             this.enCours.TabIndex = 13;
             this.enCours.UseVisualStyleBackColor = false;
             this.enCours.Click += new System.EventHandler(this.enCours_Click);

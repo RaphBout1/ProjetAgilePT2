@@ -25,6 +25,7 @@ namespace PT2
             prenom.Text = uti.PRÉNOM_ABONNÉ;
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
+            
         }
 
         /**
