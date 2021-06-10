@@ -238,7 +238,15 @@ namespace PT2
 
         private List<EMPRUNTER> empruntEnCours()
         {
+            List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
+            foreach(EMPRUNTER i in utilisateur.EMPRUNTER){
+                if(i.DATE_RETOUR == null)
+                {
+                    listefinale.Add(i);
+                }
 
+            }
+            return listefinale;
         }
     }
 }
