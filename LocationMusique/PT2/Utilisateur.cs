@@ -184,6 +184,8 @@ namespace PT2
                 EMPRUNTER emprunt = (EMPRUNTER)listBoxConsultEmprunt.SelectedItem;
                 ProlongerEmprunt(emprunt);
                 ActualiseListeEmprunté();
+                prolonger1Button.Visible = false;
+                prolongerTousButton.Visible = false;
                 MessageBox.Show("L'emprunt de l'album " + emprunt.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
             }
             catch (Exception ex)
@@ -195,23 +197,31 @@ namespace PT2
         private void button1_Click_1(object sender, EventArgs e)
         {
             new UtilisateurUSEmprunt(utilisateur).ShowDialog();
+            enCours.Visible = false;
+            retard.Visible = false;
         }
 
         private void rendreButton_Click(object sender, EventArgs e)
         {
             new US14Rendre(utilisateur).ShowDialog();
+            enCours.Visible = false;
+            retard.Visible = false;
         }
 
         private void MAJButton_Click(object sender, EventArgs e)
         {
             ActualiseListeEmprunté();
+            enCours.Visible = true;
+            retard.Visible = true;
         }
 
         private void afficherEmprunts_Click(object sender, EventArgs e)
         {
             listBoxConsultEmprunt.Items.Clear();
-            prolonger1Button.Visible = true;
-            prolongerTousButton.Visible = true;
+            prolonger1Button.Visible = false;
+            prolongerTousButton.Visible = false;
+            enCours.Visible = true;
+            retard.Visible = true;
             ActualiseListeEmprunté();
         }
 
@@ -220,6 +230,8 @@ namespace PT2
             listBoxConsultEmprunt.Items.Clear();
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
+            enCours.Visible = false;
+            retard.Visible = false;
             Recommandation();
         }
         /// <summary>
@@ -239,6 +251,28 @@ namespace PT2
             return listefinale;
         }
         /// <summary>
+        /// Rempli la listebox avec tous les emprunts de l'utilisateur qui sont en retards.
+        /// </summary>
+        private void actualiserListeEnRetard()
+        {
+            listBoxConsultEmprunt.Items.Clear();
+            foreach(EMPRUNTER i in empruntEnRetard())
+            {
+                listBoxConsultEmprunt.Items.Add(i);
+            }
+            Refresh();
+        }
+
+        private void actualiserListeEnCours()
+        {
+            listBoxConsultEmprunt.Items.Clear();
+            foreach (EMPRUNTER i in empruntEnCours())
+            {
+                listBoxConsultEmprunt.Items.Add(i);
+            }
+            Refresh();
+        }
+        /// <summary>
         /// Fourni une liste des emprunts de l'utilisateurs qui sont en cours
         /// </summary>
         /// <returns>La liste</returns>
@@ -253,6 +287,20 @@ namespace PT2
 
             }
             return listefinale;
+        }
+
+        private void enCours_Click(object sender, EventArgs e)
+        {
+            prolonger1Button.Visible = true;
+            prolongerTousButton.Visible = true;
+            actualiserListeEnCours();
+        }
+
+        private void retard_Click(object sender, EventArgs e)
+        {
+            prolonger1Button.Visible = true;
+            prolongerTousButton.Visible = true;
+            actualiserListeEnRetard();
         }
     }
 }
