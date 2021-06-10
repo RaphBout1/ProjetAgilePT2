@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -113,11 +114,22 @@ namespace PT2
             InfoEditeur.Text = "Editeur : " + albumAEmprunter.EDITEURS.NOM_EDITEUR;
             InfoGenre.Text = "Genre : " + albumAEmprunter.GENRES.LIBELLÉ_GENRE;
             InfoPrix.Text = "Prix : " + albumAEmprunter.PRIX_ALBUM.ToString() + " €";
-
+            pictureBox1.Image = byteArrayToImage(albumAEmprunter.POCHETTE);
         }
         #endregion
         #endregion
 
+        #region Affichage des pochettes
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
+
+
+        #endregion
 
         #region Création de l'emprunt
         /// <summary>
@@ -275,11 +287,13 @@ namespace PT2
                         {
                             Titre1.Text = listeAlbumsVisualiser[0].TITRE_ALBUM;
                             Genre1.Text = listeAlbumsVisualiser[0].GENRES.LIBELLÉ_GENRE;
+                            pochette1.Image = byteArrayToImage(listeAlbumsVisualiser[0].POCHETTE);
                         }
                         else
                         {
                             Titre1.Text = "";
                             Genre1.Text = "";
+                            pochette1.Image = null;
                         }
                         break;
                     case 1:
@@ -287,11 +301,13 @@ namespace PT2
                         {
                             Titre2.Text = listeAlbumsVisualiser[1].TITRE_ALBUM;
                             Genre2.Text = listeAlbumsVisualiser[1].GENRES.LIBELLÉ_GENRE;
+                            pochette2.Image = byteArrayToImage(listeAlbumsVisualiser[1].POCHETTE);
                         }
                         else
                         {
                             Titre2.Text = "";
                             Genre2.Text = "";
+                            pochette2.Image = null;
                         }
                         break;
                     case 2:
@@ -299,11 +315,13 @@ namespace PT2
                         {
                             Titre3.Text = listeAlbumsVisualiser[2].TITRE_ALBUM;
                             Genre3.Text = listeAlbumsVisualiser[2].GENRES.LIBELLÉ_GENRE;
+                            pochette3.Image = byteArrayToImage(listeAlbumsVisualiser[2].POCHETTE);
                         }
                         else
                         {
                             Titre3.Text = "";
                             Genre3.Text = "";
+                            pochette3.Image = null;
                         }
                         break;
                     case 3:
@@ -311,11 +329,13 @@ namespace PT2
                         {
                             Titre4.Text = listeAlbumsVisualiser[3].TITRE_ALBUM;
                             Genre4.Text = listeAlbumsVisualiser[3].GENRES.LIBELLÉ_GENRE;
+                            pochette4.Image = byteArrayToImage(listeAlbumsVisualiser[3].POCHETTE);
                         }
                         else
                         {
                             Titre4.Text = "";
                             Genre4.Text = "";
+                            pochette4.Image = null;
                         }
                         break;
                     case 4:
@@ -323,11 +343,13 @@ namespace PT2
                         {
                             Titre5.Text = listeAlbumsVisualiser[4].TITRE_ALBUM;
                             Genre5.Text = listeAlbumsVisualiser[4].GENRES.LIBELLÉ_GENRE;
+                            pochette5.Image = byteArrayToImage(listeAlbumsVisualiser[4].POCHETTE);
                         }
                         else
                         {
                             Titre5.Text = "";
                             Genre5.Text = "";
+                            pochette5.Image = null;
                         }
                         break;
                 }
