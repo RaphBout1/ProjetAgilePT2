@@ -12,21 +12,35 @@ namespace PT2
 {
     public partial class AdminChangerMdp : Form
     {
-        public String nouveauMdp { get { return textBoxMdp.Text; } }
+        public string nouveauMdp { get { return textBoxMdp.Text; } }
         public AdminChangerMdp()
         {
             InitializeComponent();
         }
 
-
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (textBoxMdp.Text == textBoxMdpConfirm.Text && textBoxMdp.Text != "" && !textBoxMdp.Text.Contains(" "))
+            try
+            {
+                confirmation();
+            } catch (InformationsInvalidesException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// vérifie si le formulaire pour changer de mot de passe est correctement rempli et répond en conséquence
+        /// </summary>
+        private void confirmation()
+        {
+            if (Inscription.LongueurEntreeValide(textBoxMdp.Text) && textBoxMdp.Text.Equals(textBoxMdpConfirm.Text))
             {
                 this.DialogResult = DialogResult.OK;
             }
-            else { 
-                MessageBox.Show("Les deux mots de passe sont différents.");
+            else
+            {
+                throw new InformationsInvalidesException("Les deux mots de passe sont différents.");
             }
         }
     }

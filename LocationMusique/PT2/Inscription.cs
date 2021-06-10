@@ -45,9 +45,9 @@ namespace PT2
          */
         public static void abonner(string nom, string prenom, string pays, string login, string password, string passwordConfirmation)
         {
-            if (nom.Length < 1 || prenom.Length < 1)
+            if (!LongueurEntreeValide(nom) || !LongueurEntreeValide(prenom) || !LongueurEntreeValide(login) || !LongueurEntreeValide(password))
             {
-                throw new InformationsInvalidesException("Les champs nom et prénom ne doivent pas être vides.");
+                throw new InformationsInvalidesException("Aucun champ ne doit être laissé vide.");
             }
             int LoginCount = (from aa in musiqueSQL.ABONNÉS where aa.LOGIN_ABONNÉ == login select aa).Count();
             if (LoginCount != 0)
@@ -76,6 +76,20 @@ namespace PT2
             {
                 throw new InformationsInvalidesException("Pays inexistant.");
             }
+        }
+
+        /// <summary>
+        /// Vérifie qu'une chaîne de caractère a une longueur comprise entre 1 et 32 inclus
+        /// </summary>
+        /// <param name="entree">la chaîne de caractère dont la longueur est controllée</param>
+        /// <returns>vrai si la chaîne de caractère respectent bien ces règles</returns>
+        public static bool LongueurEntreeValide(string entree)
+        {
+            if (String.IsNullOrEmpty(entree) || entree.Length > 32)
+            {
+                return false;
+            }
+            return true;
         }
 
         /**
