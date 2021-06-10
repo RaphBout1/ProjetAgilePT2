@@ -126,16 +126,17 @@ namespace PT2
         {
             if (listeGenreEmprunte.Count() > 0)
             {
-                var albumsDuGenre = listeGenreEmprunte.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
-                int nombreAlbumsAAfficher = Math.Min(10, albumsDuGenre.ALBUMS.Count());
-                var albums = (from a in musiqueSQL.ALBUMS where a.CODE_GENRE == albumsDuGenre.CODE_GENRE orderby a.EMPRUNTER.Count() select a).Take(nombreAlbumsAAfficher);
+                int genre = listeGenreEmprunte.Aggregate((l, r) => l.Value > r.Value ? l : r).Key.CODE_GENRE;
+                var albumsDuGenreDisponibles = (from alb in musiqueSQL.ALBUMS where alb.CODE_GENRE == genre select alb).ToList().Except(from e in musiqueSQL.EMPRUNTER where (e.ALBUMS.CODE_GENRE == genre && e.DATE_RETOUR == null) select e.ALBUMS).ToList();
+                int maxAffichage = albumsDuGenreDisponibles.Count();
+                int nombreAlbumsAAfficher = Math.Min(10, maxAffichage);
+                var albums = (from a in albumsDuGenreDisponibles where a.CODE_GENRE == genre orderby a.EMPRUNTER.Count() select a).Take(nombreAlbumsAAfficher);
                 foreach (ALBUMS a in albums)
                 {
-                listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM);
+                    listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM);
                 }
                 Refresh();
             }
-
         }
         #endregion
 
