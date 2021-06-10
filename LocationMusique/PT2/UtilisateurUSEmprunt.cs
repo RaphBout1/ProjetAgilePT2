@@ -118,6 +118,17 @@ namespace PT2
         #endregion
         #endregion
 
+        #region Affichage des pochettes
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
+
+
+        #endregion
 
         #region Création de l'emprunt
         /// <summary>
