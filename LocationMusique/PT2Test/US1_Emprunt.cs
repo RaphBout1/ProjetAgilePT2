@@ -39,19 +39,21 @@ namespace PT2Test
         private void ImportAbonne()
         {
             var abonne = from a in testSQL.ABONNÉS
-                                 where a.PRÉNOM_ABONNÉ == "Test | US1_Emprunt"
-                                 && a.LOGIN_ABONNÉ == "Test | US1_Emprunt"
-                                 select a;
-            utilisateurEmpruntTest= new UtilisateurUSEmprunt(abonneTest);
+                         where a.PRÉNOM_ABONNÉ == "Test | US1_Emprunt"
+                         && a.LOGIN_ABONNÉ == "Test | US1_Emprunt"
+                         select a;
+            foreach (ABONNÉS a in abonne) { abonneTest = a; }
+            utilisateurEmpruntTest = new UtilisateurUSEmprunt(abonneTest);
         }
         #endregion
 
         #region Album
         private void ImportAlbum()
         {
-            albumTest = (ALBUMS)(from a in testSQL.ALBUMS
-                                 where a.CODE_ALBUM == 500
-                                 select a);
+            var album = from a in testSQL.ALBUMS
+                        where a.CODE_ALBUM == 500
+                        select a;
+            foreach (ALBUMS a in album) { albumTest = a; }
         }
         #endregion
         #endregion
@@ -66,11 +68,12 @@ namespace PT2Test
 
         private bool RetrouveEmprunt()
         {
-            EMPRUNTER emprunt = (EMPRUNTER)(from e in testSQL.EMPRUNTER
-                              where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
-                              && e.CODE_ALBUM == albumTest.CODE_ALBUM
-                              select e);
-            return emprunt != null;
+            var emprunt = from e in testSQL.EMPRUNTER
+                          where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
+                          && e.CODE_ALBUM == albumTest.CODE_ALBUM
+                          select e;
+            foreach (EMPRUNTER e in emprunt) { if (e != null) { return true; } }
+            return false;
         }
     }
 }
