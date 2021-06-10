@@ -87,13 +87,12 @@ namespace PT2
                 bool trouveAlbum = false;
                 foreach (KeyValuePair<int, int> ivv in caseY)
                 {
-                    if (listeAlbumsVisualiser.Count < compteurCase)
+                    if (listeAlbumsVisualiser.Count > compteurCase)
                     {
                         if (!trouveAlbum)
                         {
                             if (souris.Y >= ivv.Key && souris.Y <= ivv.Value)
                             {
-
                                 albumAEmprunter = listeAlbumsVisualiser[compteurCase];
                                 AfficheAlbumActuelle();
                             }
