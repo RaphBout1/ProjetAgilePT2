@@ -17,13 +17,11 @@ namespace PT2
         public Connexion()
         {
             InitializeComponent();
-
         }
-            
+
         private void InscriptionButton_Click(object sender, EventArgs e)
         {
             new Inscription().ShowDialog();
-
         }
         private void UtilisateurButton_Click(object sender, EventArgs e)
         {
@@ -36,7 +34,7 @@ namespace PT2
 
         private void adminButton_Click(object sender, EventArgs e)
         {
-                       new Admin().ShowDialog();
+            new Admin().ShowDialog();
         }
 
         private void connectbutton_Click(object sender, EventArgs e)
@@ -49,16 +47,18 @@ namespace PT2
             String loginAbo = pseudo.Text;
             string mdpAbo = mdp.Text;
             var Abo = (from l in musiqueSQL.ABONNÉS where l.LOGIN_ABONNÉ.Equals(loginAbo) && l.PASSWORD_ABONNÉ.Equals(mdpAbo) select l);
-            if(Abo.Count() > 0)
-            {                ABONNÉS aboconnecte = Abo.First();
-                if (loginAbo.Equals("admin")){
+            if (Abo.Count() > 0)
+            {
+                ABONNÉS aboconnecte = Abo.First();
+                if (loginAbo.Equals("admin"))
+                {
                     new Admin().ShowDialog();
                 }
                 else
                 {
                     new Utilisateur(aboconnecte).ShowDialog();
                 }
-                
+
             }
             else
             {

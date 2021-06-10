@@ -54,6 +54,7 @@ namespace PT2
             {
                 throw new InformationsInvalidesException("Login déjà existant. Veuillez entrer un login différent.");
             }
+            //if ("admin".Equals)
             if (!password.Equals(passwordConfirmation))
             {
                 throw new InformationsInvalidesException("Les mots de passe ne correspondent pas.");

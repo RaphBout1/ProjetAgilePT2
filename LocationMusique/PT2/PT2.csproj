@@ -68,11 +68,11 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminChangerMdp.cs">
+    <Compile Include="ChangerMdp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminChangerMdp.Designer.cs">
-      <DependentUpon>AdminChangerMdp.cs</DependentUpon>
+    <Compile Include="ChangerMdp.Designer.cs">
+      <DependentUpon>ChangerMdp.cs</DependentUpon>
     </Compile>
     <Compile Include="ALBUMS.cs">
       <DependentUpon>LienBD.tt</DependentUpon>
@@ -153,8 +153,8 @@
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminChangerMdp.resx">
-      <DependentUpon>AdminChangerMdp.cs</DependentUpon>
+    <EmbeddedResource Include="ChangerMdp.resx">
+      <DependentUpon>ChangerMdp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>

@@ -180,10 +180,10 @@ namespace PT2
                     if (empruntProlongeable(emDb))
                     {
                         ProlongerEmprunt(emprunt);
-                ActualiseListeEmprunté();
-                prolonger1Button.Visible = false;
-                prolongerTousButton.Visible = false;
-                MessageBox.Show("L'emprunt de l'album " + emprunt.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
+                        ActualiseListeEmprunté();
+                        prolonger1Button.Visible = false;
+                        prolongerTousButton.Visible = false;
+                        MessageBox.Show("L'emprunt de l'album " + emprunt.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
                     }
                     else
                     {
@@ -265,7 +265,7 @@ namespace PT2
         private void actualiserListeEnRetard()
         {
             listBoxConsultEmprunt.Items.Clear();
-            foreach(EMPRUNTER i in empruntEnRetard())
+            foreach (EMPRUNTER i in empruntEnRetard())
             {
                 listBoxConsultEmprunt.Items.Add(i);
             }
@@ -288,8 +288,9 @@ namespace PT2
         private List<EMPRUNTER> empruntEnCours()
         {
             List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
-            foreach(EMPRUNTER i in utilisateur.EMPRUNTER){
-                if(i.DATE_RETOUR == null)
+            foreach (EMPRUNTER i in utilisateur.EMPRUNTER)
+            {
+                if (i.DATE_RETOUR == null)
                 {
                     listefinale.Add(i);
                 }
@@ -314,7 +315,17 @@ namespace PT2
 
         public void changerMdp()
         {
-            
+            ChangerMdp changementMdp = new ChangerMdp(utilisateur);
+            if (changementMdp.ShowDialog() == DialogResult.OK)
+            {
+                utilisateur.PASSWORD_ABONNÉ = changementMdp.nouveauMdp;
+                musiqueSQL.SaveChanges();
+            }
+        }
+
+        private void utilisateurChangerMdp_Click(object sender, EventArgs e)
+        {
+            changerMdp();
         }
     }
 }

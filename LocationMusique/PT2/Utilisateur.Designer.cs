@@ -229,6 +229,7 @@ namespace PT2
             this.utilisateurChangerMdp.TabIndex = 18;
             this.utilisateurChangerMdp.Text = "changer mot de passe";
             this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
+            this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
             // 
             // Utilisateur
             // 
