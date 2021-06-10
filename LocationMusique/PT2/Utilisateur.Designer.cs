@@ -43,6 +43,7 @@ namespace PT2
             this.button2 = new System.Windows.Forms.Button();
             this.retard = new System.Windows.Forms.Button();
             this.enCours = new System.Windows.Forms.Button();
+            this.listAlbum = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
@@ -238,6 +239,16 @@ namespace PT2
             this.enCours.UseVisualStyleBackColor = false;
             this.enCours.Click += new System.EventHandler(this.enCours_Click);
             // 
+            // listAlbum
+            // 
+            this.listAlbum.HideSelection = false;
+            this.listAlbum.Location = new System.Drawing.Point(669, 253);
+            this.listAlbum.Name = "listAlbum";
+            this.listAlbum.Size = new System.Drawing.Size(491, 365);
+            this.listAlbum.TabIndex = 14;
+            this.listAlbum.UseCompatibleStateImageBehavior = false;
+            this.listAlbum.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +256,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.listAlbum);
             this.Controls.Add(this.enCours);
             this.Controls.Add(this.retard);
             this.Controls.Add(this.button2);
@@ -281,5 +293,6 @@ namespace PT2
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button retard;
         private System.Windows.Forms.Button enCours;
+        private System.Windows.Forms.ListView listAlbum;
     }
 }

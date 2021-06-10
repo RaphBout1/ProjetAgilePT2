@@ -303,5 +303,10 @@ namespace PT2
             prolongerTousButton.Visible = true;
             actualiserListeEnRetard();
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
