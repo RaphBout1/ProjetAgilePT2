@@ -155,7 +155,7 @@ namespace PT2Test
             initAboTest();
             initEmprunt();            
             int empruntATrouver = 3;
-            Assert.AreEqual(empruntATrouver, utilisateur.ActualiseListeEmprunté().Count);
+            Assert.AreEqual(empruntATrouver, utilisateur.NouveauxEmprunts().Count);
             //nettoyageBase();
         }
         #endregion
