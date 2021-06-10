@@ -52,34 +52,19 @@ namespace PT2
          */
         public void ProlongerEmprunt(EMPRUNTER em)
         {
-            EMPRUNTER emDb = (from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == em.CODE_ABONNÉ && e.CODE_ALBUM == em.CODE_ALBUM select e).FirstOrDefault();
-            if (emDb != null && emDb.DATE_RETOUR == null)
-            {
-                if (empruntProlongeable(emDb, emDb.ALBUMS))
-                {
-                    musiqueSQL.EMPRUNTER.Remove(emDb);
-                    musiqueSQL.SaveChanges();
-                    emDb.DATE_RETOUR_ATTENDUE = emDb.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                    musiqueSQL.EMPRUNTER.Add(emDb);
-                    musiqueSQL.SaveChanges();
-                }
-                else
-                {
-                    throw new ProlongementEmpruntException("Emprunt déjà prolongé!");
-                }
-            }
-            else
-            {
-                throw new ProlongementEmpruntException("Emprunt introuvable ou déjà rendu.");
-            }
+            musiqueSQL.EMPRUNTER.Remove(em);
+            musiqueSQL.SaveChanges();
+            em.DATE_RETOUR_ATTENDUE = em.DATE_RETOUR_ATTENDUE.AddMonths(1);
+            musiqueSQL.EMPRUNTER.Add(em);
+            musiqueSQL.SaveChanges();
         }
 
         /*
          * Renvoie true si l'emprunt de l'album sélectionné n'a jamais été prolongé.
          */
-        public bool empruntProlongeable(EMPRUNTER em, ALBUMS al)
+        public bool empruntProlongeable(EMPRUNTER em)
         {
-            if (em.DATE_EMPRUNT.AddDays(al.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
+            if (em.DATE_EMPRUNT.AddDays(em.ALBUMS.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
             {
                 return true;
             }
@@ -159,19 +144,21 @@ namespace PT2
          */
         private void prolongerTousButton_Click(object sender, EventArgs e)
         {
-            foreach (EMPRUNTER em in utilisateur.EMPRUNTER)
+            var mesEmprunts = (from em in musiqueSQL.EMPRUNTER where (em.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ) select em).ToList();
+            int nbProlonges = 0;
+            foreach (EMPRUNTER em in mesEmprunts)
             {
-                try
+                if (empruntProlongeable(em))
                 {
                     ProlongerEmprunt(em);
-                }
-                catch (Exception)
-                {
-
+                    nbProlonges++;
                 }
             }
-            ActualiseListeEmprunté();
-            MessageBox.Show("Tous vos emprunts prolongeables ont été prolongés d'un mois.");
+            if (nbProlonges > 0)
+            {
+                ActualiseListeEmprunté();
+            }
+            MessageBox.Show(nbProlonges + " emprunt(s) ont été prolongé(s).");
         }
 
         /**
@@ -182,11 +169,26 @@ namespace PT2
             try
             {
                 EMPRUNTER emprunt = (EMPRUNTER)listBoxConsultEmprunt.SelectedItem;
-                ProlongerEmprunt(emprunt);
+                EMPRUNTER emDb = (from em in musiqueSQL.EMPRUNTER where emprunt.CODE_ABONNÉ == em.CODE_ABONNÉ && emprunt.CODE_ALBUM == em.CODE_ALBUM select em).FirstOrDefault();
+                if (emDb != null)
+                {
+                    if (empruntProlongeable(emDb))
+                    {
+                        ProlongerEmprunt(emprunt);
                 ActualiseListeEmprunté();
                 prolonger1Button.Visible = false;
                 prolongerTousButton.Visible = false;
                 MessageBox.Show("L'emprunt de l'album " + emprunt.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
+                    }
+                    else
+                    {
+                        throw new ProlongementEmpruntException("Emprunt non prolongeable (déjà prolongé ou déjà rendu)!");
+                    }
+                }
+                else
+                {
+                    throw new ProlongementEmpruntException("Emprunt introuvable.");
+                }
             }
             catch (Exception ex)
             {
