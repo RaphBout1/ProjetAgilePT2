@@ -86,7 +86,7 @@ namespace PT2
             // 
             // monthCalendarClassique
             // 
-            this.monthCalendarClassique.Location = new System.Drawing.Point(1353, 474);
+            this.monthCalendarClassique.Location = new System.Drawing.Point(1359, 347);
             this.monthCalendarClassique.Name = "monthCalendarClassique";
             this.monthCalendarClassique.TabIndex = 5;
             // 
@@ -96,6 +96,7 @@ namespace PT2
             this.pochette1.Location = new System.Drawing.Point(42, 27);
             this.pochette1.Name = "pochette1";
             this.pochette1.Size = new System.Drawing.Size(161, 155);
+            this.pochette1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pochette1.TabIndex = 7;
             this.pochette1.TabStop = false;
             this.pochette1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);
@@ -106,6 +107,7 @@ namespace PT2
             this.pochette2.Location = new System.Drawing.Point(42, 190);
             this.pochette2.Name = "pochette2";
             this.pochette2.Size = new System.Drawing.Size(161, 155);
+            this.pochette2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pochette2.TabIndex = 8;
             this.pochette2.TabStop = false;
             this.pochette2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);
@@ -271,6 +273,7 @@ namespace PT2
             this.pictureBox1.Location = new System.Drawing.Point(1292, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(266, 260);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
@@ -336,6 +339,7 @@ namespace PT2
             this.boutonSuivant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.boutonSuivant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.boutonSuivant.FlatAppearance.BorderSize = 0;
+            this.boutonSuivant.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.boutonSuivant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boutonSuivant.Location = new System.Drawing.Point(827, 308);
             this.boutonSuivant.Name = "boutonSuivant";
@@ -398,19 +402,28 @@ namespace PT2
             // 
             // rechercheBox
             // 
-            this.rechercheBox.Location = new System.Drawing.Point(906, 790);
+            this.rechercheBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.rechercheBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rechercheBox.Location = new System.Drawing.Point(1113, 607);
             this.rechercheBox.Name = "rechercheBox";
-            this.rechercheBox.Size = new System.Drawing.Size(213, 20);
+            this.rechercheBox.Size = new System.Drawing.Size(445, 31);
             this.rechercheBox.TabIndex = 33;
             // 
             // rechercherButton
             // 
-            this.rechercherButton.Location = new System.Drawing.Point(948, 724);
+            this.rechercherButton.BackColor = System.Drawing.Color.Transparent;
+            this.rechercherButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rechercherButton.BackgroundImage")));
+            this.rechercherButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rechercherButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rechercherButton.FlatAppearance.BorderSize = 0;
+            this.rechercherButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.rechercherButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rechercherButton.Location = new System.Drawing.Point(1040, 600);
             this.rechercherButton.Name = "rechercherButton";
-            this.rechercherButton.Size = new System.Drawing.Size(161, 23);
+            this.rechercherButton.Size = new System.Drawing.Size(53, 51);
             this.rechercherButton.TabIndex = 34;
-            this.rechercherButton.Text = "Rechercher";
-            this.rechercherButton.UseVisualStyleBackColor = true;
+            this.rechercherButton.Text = " ";
+            this.rechercherButton.UseVisualStyleBackColor = false;
             this.rechercherButton.Click += new System.EventHandler(this.rechercherButton_Click);
             // 
             // UtilisateurUSEmprunt

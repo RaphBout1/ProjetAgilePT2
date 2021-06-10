@@ -114,7 +114,7 @@ namespace PT2
             InfoEditeur.Text = "Editeur : " + albumAEmprunter.EDITEURS.NOM_EDITEUR;
             InfoGenre.Text = "Genre : " + albumAEmprunter.GENRES.LIBELLÉ_GENRE;
             InfoPrix.Text = "Prix : " + albumAEmprunter.PRIX_ALBUM.ToString() + " €";
-            pictureBox1.Image = byteArrayToImage(albumAEmprunter.POCHETTE);
+            pictureBox1.Image = RefaireImage(byteArrayToImage(albumAEmprunter.POCHETTE), 266, 260);
         }
         #endregion
         #endregion
@@ -125,6 +125,11 @@ namespace PT2
             MemoryStream ms = new MemoryStream(byteArrayIn);
             Image returnImage = Image.FromStream(ms);
             return returnImage;
+        } 
+
+        private Image RefaireImage(Image im, int tailleX, int tailleY)
+        {
+            return (Image)(new Bitmap(im, new Size(tailleX, tailleY)));
         }
 
 
@@ -158,6 +163,7 @@ namespace PT2
             nouvelEmprunt.DATE_RETOUR_ATTENDUE = DATERTR;
             musiqueSQL.EMPRUNTER.Add(nouvelEmprunt);
             musiqueSQL.SaveChanges();
+            this.Close();
         }
         #endregion
 
@@ -287,7 +293,7 @@ namespace PT2
                         {
                             Titre1.Text = listeAlbumsVisualiser[0].TITRE_ALBUM;
                             Genre1.Text = listeAlbumsVisualiser[0].GENRES.LIBELLÉ_GENRE;
-                            pochette1.Image = byteArrayToImage(listeAlbumsVisualiser[0].POCHETTE);
+                            pochette1.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[0].POCHETTE),161,155);
                         }
                         else
                         {
@@ -301,7 +307,7 @@ namespace PT2
                         {
                             Titre2.Text = listeAlbumsVisualiser[1].TITRE_ALBUM;
                             Genre2.Text = listeAlbumsVisualiser[1].GENRES.LIBELLÉ_GENRE;
-                            pochette2.Image = byteArrayToImage(listeAlbumsVisualiser[1].POCHETTE);
+                            pochette2.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[1].POCHETTE), 161, 155);
                         }
                         else
                         {
@@ -315,7 +321,7 @@ namespace PT2
                         {
                             Titre3.Text = listeAlbumsVisualiser[2].TITRE_ALBUM;
                             Genre3.Text = listeAlbumsVisualiser[2].GENRES.LIBELLÉ_GENRE;
-                            pochette3.Image = byteArrayToImage(listeAlbumsVisualiser[2].POCHETTE);
+                            pochette3.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[2].POCHETTE), 161, 155);
                         }
                         else
                         {
@@ -329,7 +335,7 @@ namespace PT2
                         {
                             Titre4.Text = listeAlbumsVisualiser[3].TITRE_ALBUM;
                             Genre4.Text = listeAlbumsVisualiser[3].GENRES.LIBELLÉ_GENRE;
-                            pochette4.Image = byteArrayToImage(listeAlbumsVisualiser[3].POCHETTE);
+                            pochette4.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[3].POCHETTE), 161, 155);
                         }
                         else
                         {
@@ -343,7 +349,7 @@ namespace PT2
                         {
                             Titre5.Text = listeAlbumsVisualiser[4].TITRE_ALBUM;
                             Genre5.Text = listeAlbumsVisualiser[4].GENRES.LIBELLÉ_GENRE;
-                            pochette5.Image = byteArrayToImage(listeAlbumsVisualiser[4].POCHETTE);
+                            pochette5.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[4].POCHETTE), 161, 155);
                         }
                         else
                         {
