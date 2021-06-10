@@ -51,30 +51,6 @@ namespace PT2
                     select em).ToList();
         }
 
-        /**
-         * Tente de prolonger l'emprunt passé en paramètre
-         */
-        public void ProlongerEmprunt(EMPRUNTER em)
-        {
-            musiqueSQL.EMPRUNTER.Remove(em);
-            musiqueSQL.SaveChanges();
-            em.DATE_RETOUR_ATTENDUE = em.DATE_RETOUR_ATTENDUE.AddMonths(1);
-            musiqueSQL.EMPRUNTER.Add(em);
-            musiqueSQL.SaveChanges();
-        }
-
-        /*
-         * Renvoie true si l'emprunt de l'album sélectionné n'a jamais été prolongé.
-         */
-        public bool empruntProlongeable(EMPRUNTER em)
-        {
-            if (em.DATE_EMPRUNT.AddDays(em.ALBUMS.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
-            {
-                return true;
-            }
-            return false;
-        }
-
         #region Recommandation
         /// <summary>
         /// Initialise le listage des recommandations
@@ -143,6 +119,31 @@ namespace PT2
             }
         }
 
+        #region prolonger emprunt
+        /**
+         * Tente de prolonger l'emprunt passé en paramètre
+         */
+        public void ProlongerEmprunt(EMPRUNTER em)
+        {
+            musiqueSQL.EMPRUNTER.Remove(em);
+            musiqueSQL.SaveChanges();
+            em.DATE_RETOUR_ATTENDUE = em.DATE_RETOUR_ATTENDUE.AddMonths(1);
+            musiqueSQL.EMPRUNTER.Add(em);
+            musiqueSQL.SaveChanges();
+        }
+
+        /*
+         * Renvoie true si l'emprunt de l'album sélectionné n'a jamais été prolongé.
+         */
+        public bool empruntProlongeable(EMPRUNTER em)
+        {
+            if (em.DATE_EMPRUNT.AddDays(em.ALBUMS.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         /**
          * Appelle les fonctions nécessaires au prolongement de tous les emprunts
          */
@@ -199,6 +200,8 @@ namespace PT2
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        #endregion
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -307,6 +310,11 @@ namespace PT2
             prolonger1Button.Visible = true;
             prolongerTousButton.Visible = true;
             actualiserListeEnRetard();
+        }
+
+        public void changerMdp()
+        {
+            
         }
     }
 }

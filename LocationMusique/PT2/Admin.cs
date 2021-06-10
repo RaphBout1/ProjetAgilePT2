@@ -16,7 +16,7 @@ namespace PT2
 
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
-         private bool listeabonneVisible = false;
+        private bool listeabonneVisible = false;
 
         public Admin()
         {
@@ -200,7 +200,8 @@ namespace PT2
                 purgerAbonné(a.CODE_ABONNÉ);
                 purgebutton.Enabled = false;
                 abonnésAPurger();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
             }
@@ -235,7 +236,7 @@ namespace PT2
         private void listerAbonnés()
         {
             var abonnés = from a in musiqueSQL.ABONNÉS orderby a.NOM_ABONNÉ select a;
-            foreach(ABONNÉS a in abonnés)
+            foreach (ABONNÉS a in abonnés)
             {
                 listBoxAbonnés.Items.Add(a);
             }
@@ -246,14 +247,10 @@ namespace PT2
             try
             {
                 ABONNÉS a = (ABONNÉS)listBoxAbonnés.SelectedItem;
-                ABONNÉS abo = (from l in musiqueSQL.ABONNÉS where l.CODE_ABONNÉ == a.CODE_ABONNÉ select l).First();
                 AdminChangerMdp changementMdp = new AdminChangerMdp();
-                if (changementMdp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (changementMdp.ShowDialog() == DialogResult.OK)
                 {
-                    musiqueSQL.ABONNÉS.Remove(abo);
-                    musiqueSQL.SaveChanges();
-                    abo.PASSWORD_ABONNÉ = changementMdp.nouveauMdp; //à crypter
-                    musiqueSQL.ABONNÉS.Add(abo);
+                    a.PASSWORD_ABONNÉ = changementMdp.nouveauMdp;
                     musiqueSQL.SaveChanges();
                 }
             }
@@ -269,7 +266,7 @@ namespace PT2
         private void remplir10pluspopulaires()
         {
             listBoxGlobale.Items.Clear();
-            foreach(ALBUMS i in DixPlusVue())
+            foreach (ALBUMS i in DixPlusVue())
             {
                 listBoxGlobale.Items.Add(i);
             }
@@ -307,7 +304,7 @@ namespace PT2
             abonnésAPurger();
             purgeModeOn = true;
             Refresh();
-            
+
         }
 
         private void listBoxGlobale_SelectedIndexChanged(object sender, EventArgs e)

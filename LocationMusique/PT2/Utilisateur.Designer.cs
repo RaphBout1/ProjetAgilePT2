@@ -43,6 +43,7 @@ namespace PT2
             this.button2 = new System.Windows.Forms.Button();
             this.retard = new System.Windows.Forms.Button();
             this.enCours = new System.Windows.Forms.Button();
+            this.utilisateurChangerMdp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxConsultEmprunt
@@ -220,6 +221,15 @@ namespace PT2
             this.enCours.UseVisualStyleBackColor = false;
             this.enCours.Click += new System.EventHandler(this.enCours_Click);
             // 
+            // utilisateurChangerMdp
+            // 
+            this.utilisateurChangerMdp.Location = new System.Drawing.Point(223, 599);
+            this.utilisateurChangerMdp.Name = "utilisateurChangerMdp";
+            this.utilisateurChangerMdp.Size = new System.Drawing.Size(145, 23);
+            this.utilisateurChangerMdp.TabIndex = 18;
+            this.utilisateurChangerMdp.Text = "changer mot de passe";
+            this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
+            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,6 +237,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.utilisateurChangerMdp);
             this.Controls.Add(this.enCours);
             this.Controls.Add(this.retard);
             this.Controls.Add(this.button2);
@@ -263,5 +274,6 @@ namespace PT2
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button retard;
         private System.Windows.Forms.Button enCours;
+        private System.Windows.Forms.Button utilisateurChangerMdp;
     }
 }
