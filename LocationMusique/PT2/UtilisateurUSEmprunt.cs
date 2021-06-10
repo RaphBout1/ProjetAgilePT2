@@ -161,6 +161,7 @@ namespace PT2
         private void boutonSuivant_Click(object sender, EventArgs e)
         {
             page++;
+            listeAlbumsVisualiser.Clear();
             AffectationCinqAlbum(5);
             AfficheAlbum();
             boutonRetour.Visible = true;
@@ -174,6 +175,7 @@ namespace PT2
         private void boutonRetour_Click(object sender, EventArgs e)
         {
             page--;
+            listeAlbumsVisualiser.Clear();
             AffectationCinqAlbum(5);
             AfficheAlbum();
             boutonSuivant.Visible = true;
@@ -188,13 +190,26 @@ namespace PT2
         /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         public void ImplementeAlbumsEmpruntable(int ensemble)
         {
-
-            var album = from a in musiqueSQL.ALBUMS
+            IQueryable album;
+            String recherche = rechercheBox.Text;
+             
+            if (rechercheBox.TextLength > 0)
+            {
+                album = from a in musiqueSQL.ALBUMS
+                        where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 6 && a.TITRE_ALBUM.Contains(recherche)
+                        select a;
+            }
+            else
+            {
+                album = from a in musiqueSQL.ALBUMS
                         where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 6
                         select a;
+            }
+           
             Console.WriteLine("Nouvel liste : ");
             foreach (ALBUMS a in album)
             {
+                Console.WriteLine(" A examiner : " + a.CODE_ALBUM);
                 bool enEmprunt = false;
                 foreach (EMPRUNTER e in a.EMPRUNTER)
                 {
@@ -231,7 +246,7 @@ namespace PT2
         /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         private void AffectationCinqAlbum(int ensemble)
         {
-            listeAlbumsVisualiser.Clear();
+            
             for (int index = 0; index < 5; index++)
             {
                 if (listeAlbumsVisualiser.Count < 5)
