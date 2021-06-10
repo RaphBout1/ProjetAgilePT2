@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,7 +55,6 @@ namespace PT2
             {
                 throw new InformationsInvalidesException("Login déjà existant. Veuillez entrer un login différent.");
             }
-            //if ("admin".Equals)
             if (!password.Equals(passwordConfirmation))
             {
                 throw new InformationsInvalidesException("Les mots de passe ne correspondent pas.");
@@ -62,6 +62,7 @@ namespace PT2
             var paysInt = from p in musiqueSQL.PAYS where p.NOM_PAYS.ToLower() == pays.ToLower() select p.CODE_PAYS;
             if (paysInt.Count() > 0)
             {
+                password = crypterMot(password);
                 ABONNÉS a = new ABONNÉS
                 {
                     CODE_PAYS = paysInt.First(),
@@ -92,6 +93,25 @@ namespace PT2
             }
             return true;
         }
+        /// <summary>
+        /// Génère le hachage de cryptage par la méthode HMACSHA1
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static String crypterMot(String data)
+        {
+            byte[] salt = new byte[128 / 8];
+            var saltnbr = 1234567891234567;
+            BitConverter.GetBytes(saltnbr);
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            password: data,
+            salt: salt,
+            prf: KeyDerivationPrf.HMACSHA1,
+            iterationCount: 10000,
+            numBytesRequested: 30 / 8));
+            return hashed;
+        }
+    
 
         /**
          * Lance la création d'un nouvel abonné à partir des informations du formulaire
