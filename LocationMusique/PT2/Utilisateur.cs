@@ -225,7 +225,10 @@ namespace PT2
             prolongerTousButton.Visible = false;
             Recommandation();
         }
-
+        /// <summary>
+        /// Fourni une liste des emprunts de l'utilisateurs qui sont en retards
+        /// </summary>
+        /// <returns>La liste</returns>
         private List<EMPRUNTER> empruntEnRetard()
         {
             List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
@@ -238,7 +241,10 @@ namespace PT2
             }
             return listefinale;
         }
-
+        /// <summary>
+        /// Fourni une liste des emprunts de l'utilisateurs qui sont en cours
+        /// </summary>
+        /// <returns>La liste</returns>
         private List<EMPRUNTER> empruntEnCours()
         {
             List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
