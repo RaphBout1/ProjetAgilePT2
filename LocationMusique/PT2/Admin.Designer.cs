@@ -66,9 +66,9 @@ namespace PT2
             // listBoxAbonnés
             // 
             this.listBoxAbonnés.FormattingEnabled = true;
-            this.listBoxAbonnés.Location = new System.Drawing.Point(1099, 260);
+            this.listBoxAbonnés.Location = new System.Drawing.Point(1099, 290);
             this.listBoxAbonnés.Name = "listBoxAbonnés";
-            this.listBoxAbonnés.Size = new System.Drawing.Size(328, 147);
+            this.listBoxAbonnés.Size = new System.Drawing.Size(377, 277);
             this.listBoxAbonnés.TabIndex = 7;
             this.listBoxAbonnés.Visible = false;
             this.listBoxAbonnés.SelectedIndexChanged += new System.EventHandler(this.listBoxAbonnés_SelectedIndexChanged);
@@ -163,7 +163,7 @@ namespace PT2
             // 
             // buttonChangerMdp
             // 
-            this.buttonChangerMdp.Location = new System.Drawing.Point(1099, 469);
+            this.buttonChangerMdp.Location = new System.Drawing.Point(1099, 590);
             this.buttonChangerMdp.Name = "buttonChangerMdp";
             this.buttonChangerMdp.Size = new System.Drawing.Size(98, 23);
             this.buttonChangerMdp.TabIndex = 17;

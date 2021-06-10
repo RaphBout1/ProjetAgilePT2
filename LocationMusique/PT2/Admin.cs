@@ -16,7 +16,8 @@ namespace PT2
 
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
-         private bool listeabonneVisible = false;
+        private bool listeabonneVisible = false;
+        private string filtre;
 
         public Admin()
         {
@@ -49,6 +50,9 @@ namespace PT2
             return enretard10;
         }
 
+        /// <summary>
+        /// Méthode rajoutant à la listbox les albums dont l'emprunt est actuellement prolongé
+        /// </summary>
         private void LivreEmprunteProlongé()
         {
             listBoxGlobale.Items.Clear();
@@ -200,7 +204,8 @@ namespace PT2
                 purgerAbonné(a.CODE_ABONNÉ);
                 purgebutton.Enabled = false;
                 abonnésAPurger();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
             }
@@ -211,9 +216,10 @@ namespace PT2
             purgebutton.Enabled = true;
         }
 
-        /**
-         * retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an
-         */
+        /// <summary>
+        /// retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an
+        /// </summary>
+        /// <returns>Un hashset de cet ensemble</returns>
         public HashSet<ALBUMS> albumPasEmpruntesDepuis1An()
         {
             HashSet<ALBUMS> albumPasEmprunter1An = new HashSet<ALBUMS>();
@@ -229,18 +235,59 @@ namespace PT2
             return albumPasEmprunter1An;
         }
 
-        /*
-         * Liste les abonnés
-         */
+        /// <summary>
+        /// retourne la date du premier emprunt d'un abonné.
+        /// </summary>
+        /// <param name="abo">L'abonné concerné</param>
+        /// <returns>La date de son premier emprunt en string, ou alors précise qu'il n'y a pas d'emprunts</returns>
+        public string datePremierEmprunt(ABONNÉS abo)
+        {
+            DateTime date = (from a in musiqueSQL.ABONNÉS
+                             join e in musiqueSQL.EMPRUNTER on a.CODE_ABONNÉ equals e.CODE_ABONNÉ
+                             where e.CODE_ABONNÉ == abo.CODE_ABONNÉ
+                             orderby e.DATE_EMPRUNT descending
+                             select e.DATE_EMPRUNT).FirstOrDefault();
+            if (date != DateTime.MinValue)
+                return date.ToString();
+            else return "Pas d'emprunts";
+        }
+
+        /// <summary>
+        /// retourne le nombre d'emprunts d'un abonné
+        /// </summary>
+        /// <param name="abo">L'abonné concerné</param>
+        /// <returns>le nombre d'emprunt de cet abonné</returns>
+        public int nombreEmpruntsAbonné(ABONNÉS abo)
+        {
+            var requete = from a in musiqueSQL.ABONNÉS
+                          join e in musiqueSQL.EMPRUNTER on a.CODE_ABONNÉ equals e.CODE_ABONNÉ
+                          where e.CODE_ABONNÉ == abo.CODE_ABONNÉ
+                          select e;
+            int num = 0;
+            foreach(EMPRUNTER e in requete)
+            {
+                num++;
+            }
+            return num;
+        }
+
+        /// <summary>
+        /// Affiche la liste des abonnés dans une listBox
+        /// </summary>
         private void listerAbonnés()
         {
+
             var abonnés = from a in musiqueSQL.ABONNÉS orderby a.NOM_ABONNÉ select a;
-            foreach(ABONNÉS a in abonnés)
+            foreach (ABONNÉS a in abonnés)
             {
-                listBoxAbonnés.Items.Add(a);
+                listBoxAbonnés.Items.Add(a.ToString() + datePremierEmprunt(a) + "    " + nombreEmpruntsAbonné(a));
             }
         }
 
+
+        /// <summary>
+        /// Ouvre une boîte de dialogue lorsque le bouton est pressé et qu'un abonné est sélectionné.
+        /// </summary>
         private void changerMdp()
         {
             try
@@ -264,12 +311,27 @@ namespace PT2
         }
 
         /// <summary>
+        /// Affiche le nombre d'album emprunte par titre d'album 
+        /// </summary>
+        /// <param album>L'album dont on veut connaître le nombre d'emprunts</param> 
+        private int nombreEmpruntAlbum(ALBUMS album)
+        {
+            DateTime date = DateTime.UtcNow.AddYears(-1);
+            var q = (from e in musiqueSQL.EMPRUNTER
+                     join a in musiqueSQL.ALBUMS on e.CODE_ALBUM equals a.CODE_ALBUM
+                     where e.DATE_EMPRUNT > date && e.CODE_ALBUM == album.CODE_ALBUM
+                     select e.DATE_EMPRUNT);
+            int i = q.Count();
+            return i;
+        }
+
+        /// <summary>
         /// Vide et remplit la listeboxglobale avec les 10 albums les plus populaires
         /// </summary>
         private void remplir10pluspopulaires()
         {
             listBoxGlobale.Items.Clear();
-            foreach(ALBUMS i in DixPlusVue())
+            foreach (ALBUMS i in DixPlusVue())
             {
                 listBoxGlobale.Items.Add(i);
             }
@@ -307,7 +369,7 @@ namespace PT2
             abonnésAPurger();
             purgeModeOn = true;
             Refresh();
-            
+
         }
 
         private void listBoxGlobale_SelectedIndexChanged(object sender, EventArgs e)
@@ -339,6 +401,7 @@ namespace PT2
             listeabonneVisible = !listeabonneVisible;
             listBoxAbonnés.Visible = listeabonneVisible;
             label4.Visible = listeabonneVisible;
+            filtre = "nom";
             Refresh();
         }
 
@@ -350,6 +413,12 @@ namespace PT2
         private void listBoxAbonnés_SelectedIndexChanged(object sender, EventArgs e)
         {
             buttonChangerMdp.Enabled = true;
+        }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
+
         }
     }
 }
