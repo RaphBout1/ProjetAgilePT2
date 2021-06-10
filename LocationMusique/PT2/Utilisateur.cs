@@ -318,7 +318,8 @@ namespace PT2
             ChangerMdp changementMdp = new ChangerMdp(utilisateur);
             if (changementMdp.ShowDialog() == DialogResult.OK)
             {
-                utilisateur.PASSWORD_ABONNÉ = changementMdp.nouveauMdp;
+                ABONNÉS aboAModif = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ select ab).First();
+                aboAModif.PASSWORD_ABONNÉ = changementMdp.nouveauMdp;
                 musiqueSQL.SaveChanges();
             }
         }
