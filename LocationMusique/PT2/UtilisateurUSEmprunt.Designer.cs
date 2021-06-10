@@ -58,6 +58,7 @@ namespace PT2
             this.InfoNumero = new System.Windows.Forms.Label();
             this.labelPage = new System.Windows.Forms.Label();
             this.annuler = new System.Windows.Forms.Button();
+            this.rechercheBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pochette1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pochette3)).BeginInit();
@@ -394,6 +395,13 @@ namespace PT2
             this.annuler.UseVisualStyleBackColor = false;
             this.annuler.Click += new System.EventHandler(this.annuler_Click);
             // 
+            // rechercheBox
+            // 
+            this.rechercheBox.Location = new System.Drawing.Point(906, 790);
+            this.rechercheBox.Name = "rechercheBox";
+            this.rechercheBox.Size = new System.Drawing.Size(213, 20);
+            this.rechercheBox.TabIndex = 33;
+            // 
             // UtilisateurUSEmprunt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,6 +409,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.rechercheBox);
             this.Controls.Add(this.annuler);
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.InfoNumero);
@@ -473,5 +482,6 @@ namespace PT2
         private System.Windows.Forms.Label InfoNumero;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.Button annuler;
+        private System.Windows.Forms.TextBox rechercheBox;
     }
 }
