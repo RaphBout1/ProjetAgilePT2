@@ -12,6 +12,7 @@ namespace PT2
 {
     public partial class UtilisateurUSEmprunt : Form
     {
+        #region attribut
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         Dictionary<int, ALBUMS> listeAlbumsEmpruntable = new Dictionary<int, ALBUMS>();
         Dictionary<int, int> caseY = new Dictionary<int, int>();
@@ -21,19 +22,33 @@ namespace PT2
         int nmbAlbum;
         ALBUMS albumAEmprunter;
         ABONNÉS utilisateur;
+        #endregion
+
+        #region Constructeur
+        /// <summary>
+        /// Unique constructeur de la classe,
+        /// cette méthode initialise les 5 premiers albums empruntable et affiché
+        /// </summary>
+        /// <param name="utilisateur"> l'abonnée voulant emprunter un album </param>
         public UtilisateurUSEmprunt(ABONNÉS utilisateur)
         {
             InitializeComponent();
-            compteurAlbum = 0;
-            page = 0;
+            this.utilisateur = utilisateur;
             InitialisationGlobaleDeVariable();
             ImplementeAlbumsEmpruntable(5);
-            this.utilisateur = utilisateur;
-            monthCalendarClassique.Visible = false;// a enlever pour test
         }
-        #region initialisation de la page
+
+        /// <summary>
+        /// Initialise des attribut de la page :
+        ///     -Les compteur (page, nombre d'album visité dans la page)
+        ///     -Les positions Y des zones de sélection des 5 albums dans l'affichage
+        ///     -le nombre d'album globale de la base de donnée
+        /// </summary>
         public void InitialisationGlobaleDeVariable()
         {
+            monthCalendarClassique.Visible = false;// a enlever pour test
+            compteurAlbum = 0;
+            page = 0;
             labelPage.Text = "Page : " + page.ToString();
             caseY.Add(57, 212);
             caseY.Add(220, 375);
@@ -43,65 +58,59 @@ namespace PT2
             nmbAlbum = (from a in musiqueSQL.ALBUMS
                         select a).Count();
         }
-        public void ImplementeAlbumsEmpruntable(int ensemble)
-        {
-
-            var album = from a in musiqueSQL.ALBUMS
-                        where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 6
-                        select a;
-
-            Console.WriteLine("Nouvel liste : ");
-            foreach (ALBUMS a in album)
-            {
-                bool enEmprunt = false;
-                foreach (EMPRUNTER e in a.EMPRUNTER)
-                {
-                    if (e.DATE_RETOUR == null) { enEmprunt = true; }
-                }
-                if (!enEmprunt)
-                {
-                    bool dejaContenu = false;
-                    int compteurInverse = compteurAlbum;
-                    Console.WriteLine(" A examiner : " + a.CODE_ALBUM);
-                    while (!dejaContenu && compteurInverse > compteurAlbum - 5 && compteurInverse > 0)
-                    {
-                        if (listeAlbumsEmpruntable.ContainsKey(compteurInverse))
-                        {
-                            Console.WriteLine("     Originale : "+listeAlbumsEmpruntable[compteurInverse].CODE_ALBUM);
-                            if (listeAlbumsEmpruntable[compteurInverse].Equals(a)) { dejaContenu = true; }
-                        }
-                        compteurInverse--;
-                    }
-                    if (!dejaContenu)
-                    {
-                        listeAlbumsEmpruntable.Add(compteurAlbum, a);
-                        compteurAlbum++;
-                    }
-                    
-                }
-            }
-            AffectationCinqAlbum(ensemble);
-            AfficheAlbum();
-        }
         #endregion
 
         #region interraction
-       /* private void comboBoxTitreAlbumAEmprunter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            albumAEmprunter = (ALBUMS)comboBoxTitreAlbumAEmprunter.SelectedItem;
-
-        }*/
-
+        /// <summary>
+        /// Permet d'envoyer une requête de création d'emprunt avec les éléments
+        /// de l'album sélectionné sur la page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void boutonEmprunterAlbumPrecis_Click(object sender, EventArgs e)
         {
             creerEmprunt(utilisateur.CODE_ABONNÉ, albumAEmprunter.CODE_ALBUM, monthCalendarClassique.SelectionStart, monthCalendarClassique.SelectionStart.AddDays(albumAEmprunter.GENRES.DÉLAI));
+        }
 
+        /// <summary>
+        /// Permet de calculer la position de la souris sur l'écran,
+        /// De plus, elle permet de selectionner un emprunt précis sur la page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"> les paramètres et évenement de la souris</param>
+        private void UtilisateurUSEmprunt_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point souris = new Point(MousePosition.X - this.Location.X, MousePosition.Y - this.Location.Y);
+            if (souris.X >= 42 && souris.X <= 740)
+            {
+                int compteurCase = 0;
+                bool trouveAlbum = false;
+                foreach (KeyValuePair<int, int> ivv in caseY)
+                {
+                    if (!trouveAlbum)
+                    {
+                        if (souris.Y >= ivv.Key && souris.Y <= ivv.Value)
+                        {
+                            albumAEmprunter = listeAlbumsVisualiser[compteurCase];
 
+                            AfficheAlbumActuelle();
+                        }
+                        compteurCase++;
+                    }
+                }
+            }
         }
         #endregion
 
 
         #region Création de l'emprunt
+        /// <summary>
+        /// Permet de créer un emprunt dans la base de donnée
+        /// </summary>
+        /// <param name="CODEABO"> Le CODE_ABONNE de l'utilisateur empruntant l'album</param>
+        /// <param name="CODEALB"> Le CODE_ALBUM de l'album emprunté</param>
+        /// <param name="DATEMPR"> La date au moment de l'emprunt</param>
+        /// <param name="DATERTR"> La date prévu pour le retour</param>
         public void creerEmprunt(int CODEABO, int CODEALB, DateTime DATEMPR, DateTime DATERTR)
         {
             var listempruntabo = from b in musiqueSQL.ABONNÉS where b.CODE_ABONNÉ == CODEABO select b.EMPRUNTER;
@@ -126,18 +135,81 @@ namespace PT2
 
 
         #region Changement de Page
+        /// <summary>
+        /// Méthode permettant d'aller à la page suivante 
+        /// lors du clique sur le bouton correspondant
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void boutonSuivant_Click(object sender, EventArgs e)
         {
             page++;
             AffectationCinqAlbum(5);
             AfficheAlbum();
         }
+        /// <summary>
+        /// Méthode permettant d'aller à la page retour
+        /// lors du clique sur le bouton précédant
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void boutonRetour_Click(object sender, EventArgs e)
         {
             page--;
             AffectationCinqAlbum(5);
             AfficheAlbum();
         }
+
+        #region recherche des albums à afficher
+        /// <summary>
+        /// Implémente jusqu'à 5 album dans la liste des albums pouvant être emprunté
+        /// ces derniers sont indexé par ordre croisant de leur CODE_ALBUM
+        /// </summary>
+        /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
+        public void ImplementeAlbumsEmpruntable(int ensemble)
+        {
+
+            var album = from a in musiqueSQL.ALBUMS
+                        where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 6
+                        select a;
+
+            Console.WriteLine("Nouvel liste : ");
+            foreach (ALBUMS a in album)
+            {
+                bool enEmprunt = false;
+                foreach (EMPRUNTER e in a.EMPRUNTER)
+                {
+                    if (e.DATE_RETOUR == null) { enEmprunt = true; }
+                }
+                if (!enEmprunt)
+                {
+                    bool dejaContenu = false;
+                    int compteurInverse = compteurAlbum;
+                    Console.WriteLine(" A examiner : " + a.CODE_ALBUM);
+                    while (!dejaContenu && compteurInverse > compteurAlbum - 5 && compteurInverse > 0)
+                    {
+                        if (listeAlbumsEmpruntable.ContainsKey(compteurInverse))
+                        {
+                            Console.WriteLine("     Originale : " + listeAlbumsEmpruntable[compteurInverse].CODE_ALBUM);
+                            if (listeAlbumsEmpruntable[compteurInverse].Equals(a)) { dejaContenu = true; }
+                        }
+                        compteurInverse--;
+                    }
+                    if (!dejaContenu)
+                    {
+                        listeAlbumsEmpruntable.Add(compteurAlbum, a);
+                        compteurAlbum++;
+                    }
+
+                }
+            }
+            AffectationCinqAlbum(ensemble);
+            AfficheAlbum();
+        }
+        /// <summary>
+        /// Permet de selectionné les 5 albums à affiché
+        /// </summary>
+        /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         private void AffectationCinqAlbum(int ensemble)
         {
             listeAlbumsVisualiser.Clear();
@@ -151,12 +223,23 @@ namespace PT2
                     }
                     else
                     {
-                        ensemble += 5;
-                        ImplementeAlbumsEmpruntable(ensemble);
+                        if (ensemble <= nmbAlbum - 5)
+                        {
+                            ensemble += 5;
+                            ImplementeAlbumsEmpruntable(ensemble);
+                        }
+                        
                     }
                 }
             }
         }
+        #endregion
+
+
+        /// <summary>
+        /// Permet d'afficher les 5 albums correspondant à la page actuelle.
+        /// Active ou désactive les boutons de changement de page
+        /// </summary>
         private void AfficheAlbum()
         {
             labelPage.Text = "Page : " + page.ToString();
@@ -221,35 +304,9 @@ namespace PT2
                     boutonSuivant.Visible = true;
                 }
             }
-            
         }
-
-
         #endregion
 
-
-        private void UtilisateurUSEmprunt_MouseDown(object sender, MouseEventArgs e)
-        {
-            Point souris = new Point(MousePosition.X - this.Location.X, MousePosition.Y - this.Location.Y);
-            if(souris.X>=42 && souris.X <= 740)
-            {
-                int compteurCase = 0;
-                bool trouveAlbum = false;
-                foreach(KeyValuePair<int,int> ivv in caseY)
-                {
-                    if (!trouveAlbum)
-                    {
-                        if (souris.Y >= ivv.Key && souris.Y <= ivv.Value)
-                        {
-                            albumAEmprunter = listeAlbumsVisualiser[compteurCase];
-                            
-                            AfficheAlbumActuelle();
-                        }
-                        compteurCase++;
-                    }
-                }
-            }
-        }
 
         private void AfficheAlbumActuelle()
         {
