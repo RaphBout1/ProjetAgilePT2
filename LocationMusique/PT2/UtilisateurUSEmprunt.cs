@@ -190,9 +190,16 @@ namespace PT2
         /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         public void ImplementeAlbumsEmpruntable(int ensemble)
         {
+            string texte = rechercheBox.Text;
             var album = from a in musiqueSQL.ALBUMS
                         where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 5
                         select a;
+            if (texte.Length > 0)
+            {
+                album = from a in musiqueSQL.ALBUMS
+                            where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 5 && a.TITRE_ALBUM.Contains(texte)
+                            select a;
+            }
             Console.WriteLine("     Nouvel liste : ");
             foreach (ALBUMS a in album)
             {
@@ -231,7 +238,6 @@ namespace PT2
             int index = 0;
             while(listeAlbumsVisualiser.Count < 5 && ((page * 5) + ensemble) < (nmbAlbum - 5))
             {
-                Console.WriteLine("Index recherché : "+index);
                 if (listeAlbumsEmpruntable.ContainsKey(index + (5 * page)))
                 {
                     listeAlbumsVisualiser.Add(listeAlbumsEmpruntable[index + (5 * page)]);
@@ -351,6 +357,17 @@ namespace PT2
         private void annuler_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rechercherButton_Click(object sender, EventArgs e)
+        {
+            compteurAlbum = 0;
+            page = 0;
+            listeAlbumsEmpruntable.Clear();
+            listeAlbumsVisualiser.Clear();
+            AffectationCinqAlbum(5);
+            AfficheAlbum();
+            boutonSuivant.Visible = true;
         }
     }
 }
