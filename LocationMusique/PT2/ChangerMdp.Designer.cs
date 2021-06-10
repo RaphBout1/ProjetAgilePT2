@@ -1,7 +1,7 @@
 ﻿
 namespace PT2
 {
-    partial class AdminChangerMdp
+    partial class ChangerMdp
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,8 @@ namespace PT2
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
+            this.AncienMdpLabel = new System.Windows.Forms.Label();
+            this.AncienMdpTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonAnnuler
@@ -49,14 +51,14 @@ namespace PT2
             // 
             // textBoxMdp
             // 
-            this.textBoxMdp.Location = new System.Drawing.Point(159, 46);
+            this.textBoxMdp.Location = new System.Drawing.Point(185, 56);
             this.textBoxMdp.Name = "textBoxMdp";
             this.textBoxMdp.Size = new System.Drawing.Size(133, 20);
             this.textBoxMdp.TabIndex = 2;
             // 
             // textBoxMdpConfirm
             // 
-            this.textBoxMdpConfirm.Location = new System.Drawing.Point(159, 92);
+            this.textBoxMdpConfirm.Location = new System.Drawing.Point(185, 99);
             this.textBoxMdpConfirm.Name = "textBoxMdpConfirm";
             this.textBoxMdpConfirm.Size = new System.Drawing.Size(133, 20);
             this.textBoxMdpConfirm.TabIndex = 3;
@@ -64,7 +66,7 @@ namespace PT2
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 49);
+            this.label1.Location = new System.Drawing.Point(12, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 13);
             this.label1.TabIndex = 4;
@@ -73,7 +75,7 @@ namespace PT2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 95);
+            this.label2.Location = new System.Drawing.Point(12, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 13);
             this.label2.TabIndex = 5;
@@ -89,19 +91,37 @@ namespace PT2
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // AdminChangerMdp
+            // AncienMdpLabel
+            // 
+            this.AncienMdpLabel.AutoSize = true;
+            this.AncienMdpLabel.Location = new System.Drawing.Point(12, 23);
+            this.AncienMdpLabel.Name = "AncienMdpLabel";
+            this.AncienMdpLabel.Size = new System.Drawing.Size(106, 13);
+            this.AncienMdpLabel.TabIndex = 7;
+            this.AncienMdpLabel.Text = "Ancien mot de passe";
+            // 
+            // AncienMdpTextBox
+            // 
+            this.AncienMdpTextBox.Location = new System.Drawing.Point(185, 20);
+            this.AncienMdpTextBox.Name = "AncienMdpTextBox";
+            this.AncienMdpTextBox.Size = new System.Drawing.Size(133, 20);
+            this.AncienMdpTextBox.TabIndex = 8;
+            // 
+            // ChangerMdp
             // 
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 177);
+            this.Controls.Add(this.AncienMdpTextBox);
+            this.Controls.Add(this.AncienMdpLabel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxMdpConfirm);
             this.Controls.Add(this.textBoxMdp);
             this.Controls.Add(this.buttonAnnuler);
-            this.Name = "AdminChangerMdp";
+            this.Name = "ChangerMdp";
             this.Text = "Changer mot de passe";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -115,5 +135,7 @@ namespace PT2
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Label AncienMdpLabel;
+        private System.Windows.Forms.TextBox AncienMdpTextBox;
     }
 }

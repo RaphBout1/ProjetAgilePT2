@@ -13,7 +13,7 @@ namespace PT2
     public partial class Admin : Form
     {
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
-
+        private readonly static string logAdmin = "admin";
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
         private bool listeabonneVisible = false;
@@ -244,19 +244,12 @@ namespace PT2
 
         private void changerMdp()
         {
-            try
+            ABONNÉS a = (ABONNÉS)listBoxAbonnés.SelectedItem;
+            ChangerMdp changementMdp = new ChangerMdp((from abo in musiqueSQL.ABONNÉS where abo.LOGIN_ABONNÉ == logAdmin select abo).First());
+            if (changementMdp.ShowDialog() == DialogResult.OK)
             {
-                ABONNÉS a = (ABONNÉS)listBoxAbonnés.SelectedItem;
-                AdminChangerMdp changementMdp = new AdminChangerMdp();
-                if (changementMdp.ShowDialog() == DialogResult.OK)
-                {
-                    a.PASSWORD_ABONNÉ = changementMdp.nouveauMdp;
-                    musiqueSQL.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
+                a.PASSWORD_ABONNÉ = changementMdp.nouveauMdp;
+                musiqueSQL.SaveChanges();
             }
         }
 
