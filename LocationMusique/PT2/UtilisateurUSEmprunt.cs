@@ -87,19 +87,36 @@ namespace PT2
                 bool trouveAlbum = false;
                 foreach (KeyValuePair<int, int> ivv in caseY)
                 {
-                    if (!trouveAlbum)
+                    if (listeAlbumsVisualiser.Count < compteurCase)
                     {
-                        if (souris.Y >= ivv.Key && souris.Y <= ivv.Value)
+                        if (!trouveAlbum)
                         {
-                            albumAEmprunter = listeAlbumsVisualiser[compteurCase];
+                            if (souris.Y >= ivv.Key && souris.Y <= ivv.Value)
+                            {
 
-                            AfficheAlbumActuelle();
+                                albumAEmprunter = listeAlbumsVisualiser[compteurCase];
+                                AfficheAlbumActuelle();
+                            }
+                            
                         }
                         compteurCase++;
                     }
                 }
             }
         }
+        #region affichage Selectionné
+        private void AfficheAlbumActuelle()
+        {
+            boutonEmprunterAlbumPrecis.Visible = true;
+            InfoNumero.Text = "N° : " + albumAEmprunter.CODE_ALBUM.ToString();
+            InfoTitre.Text = albumAEmprunter.TITRE_ALBUM;
+            InfoAnnee.Text = "Année : " + albumAEmprunter.ANNÉE_ALBUM.ToString();
+            InfoEditeur.Text = "Editeur : " + albumAEmprunter.EDITEURS.NOM_EDITEUR;
+            InfoGenre.Text = "Genre : " + albumAEmprunter.GENRES.LIBELLÉ_GENRE;
+            InfoPrix.Text = "Prix : " + albumAEmprunter.PRIX_ALBUM.ToString() + " €";
+
+        }
+        #endregion
         #endregion
 
 
@@ -135,6 +152,7 @@ namespace PT2
 
 
         #region Changement de Page
+        #region interaction bouton
         /// <summary>
         /// Méthode permettant d'aller à la page suivante 
         /// lors du clique sur le bouton correspondant
@@ -146,6 +164,7 @@ namespace PT2
             page++;
             AffectationCinqAlbum(5);
             AfficheAlbum();
+            boutonRetour.Visible = true;
         }
         /// <summary>
         /// Méthode permettant d'aller à la page retour
@@ -158,7 +177,9 @@ namespace PT2
             page--;
             AffectationCinqAlbum(5);
             AfficheAlbum();
+            boutonSuivant.Visible = true;
         }
+        #endregion
 
         #region recherche des albums à afficher
         /// <summary>
@@ -172,7 +193,6 @@ namespace PT2
             var album = from a in musiqueSQL.ALBUMS
                         where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 6
                         select a;
-
             Console.WriteLine("Nouvel liste : ");
             foreach (ALBUMS a in album)
             {
@@ -223,7 +243,7 @@ namespace PT2
                     }
                     else
                     {
-                        if (ensemble <= nmbAlbum - 5)
+                        if ((page*5) + ensemble <= nmbAlbum - 5)
                         {
                             ensemble += 5;
                             ImplementeAlbumsEmpruntable(ensemble);
@@ -235,7 +255,7 @@ namespace PT2
         }
         #endregion
 
-
+        #region affichage
         /// <summary>
         /// Permet d'afficher les 5 albums correspondant à la page actuelle.
         /// Active ou désactive les boutons de changement de page
@@ -253,12 +273,22 @@ namespace PT2
                             Titre1.Text = listeAlbumsVisualiser[0].TITRE_ALBUM;
                             Genre1.Text = listeAlbumsVisualiser[0].GENRES.LIBELLÉ_GENRE;
                         }
+                        else
+                        {
+                            Titre1.Text = "";
+                            Genre1.Text = "";
+                        }
                         break;
                     case 1:
                         if (listeAlbumsVisualiser.Count() >= 2)
                         {
                             Titre2.Text = listeAlbumsVisualiser[1].TITRE_ALBUM;
                             Genre2.Text = listeAlbumsVisualiser[1].GENRES.LIBELLÉ_GENRE;
+                        }
+                        else
+                        {
+                            Titre2.Text = "";
+                            Genre2.Text = "";
                         }
                         break;
                     case 2:
@@ -267,12 +297,22 @@ namespace PT2
                             Titre3.Text = listeAlbumsVisualiser[2].TITRE_ALBUM;
                             Genre3.Text = listeAlbumsVisualiser[2].GENRES.LIBELLÉ_GENRE;
                         }
+                        else
+                        {
+                            Titre3.Text = "";
+                            Genre3.Text = "";
+                        }
                         break;
                     case 3:
                         if (listeAlbumsVisualiser.Count() >= 4)
                         {
                             Titre4.Text = listeAlbumsVisualiser[3].TITRE_ALBUM;
                             Genre4.Text = listeAlbumsVisualiser[3].GENRES.LIBELLÉ_GENRE;
+                        }
+                        else
+                        {
+                            Titre4.Text = "";
+                            Genre4.Text = "";
                         }
                         break;
                     case 4:
@@ -281,44 +321,35 @@ namespace PT2
                             Titre5.Text = listeAlbumsVisualiser[4].TITRE_ALBUM;
                             Genre5.Text = listeAlbumsVisualiser[4].GENRES.LIBELLÉ_GENRE;
                         }
+                        else
+                        {
+                            Titre5.Text = "";
+                            Genre5.Text = "";
+                        }
                         break;
                 }
             }
-            if (listeAlbumsVisualiser[0].Equals(listeAlbumsEmpruntable[0]))
+            if (listeAlbumsVisualiser.Count()>0)
             {
-                boutonRetour.Visible = false;
-                boutonSuivant.Visible = true;
+                if (listeAlbumsVisualiser[0].Equals(listeAlbumsEmpruntable[0]))
+                {
+                    boutonRetour.Visible = false;
+                }
             }
-            else
-            {
-                boutonRetour.Visible = true;
+            else 
+            { 
+                boutonSuivant.Visible = false;
             }
             if (listeAlbumsEmpruntable.ContainsKey(nmbAlbum))
             {
-                if (listeAlbumsVisualiser.Last().Equals(listeAlbumsEmpruntable[0]))
+                if (/*listeAlbumsVisualiser.Last().Equals(listeAlbumsEmpruntable.Last()) || */listeAlbumsVisualiser.Count() < 5)
                 {
                     boutonSuivant.Visible = false;
-                }
-                else
-                {
-                    boutonSuivant.Visible = true;
                 }
             }
         }
         #endregion
-
-
-        private void AfficheAlbumActuelle()
-        {
-            boutonEmprunterAlbumPrecis.Visible = true;
-            InfoNumero.Text = "N° : "+albumAEmprunter.CODE_ALBUM.ToString();
-            InfoTitre.Text = albumAEmprunter.TITRE_ALBUM;
-            InfoAnnee.Text = "Année : "+albumAEmprunter.ANNÉE_ALBUM.ToString();
-            InfoEditeur.Text = "Editeur : "+albumAEmprunter.EDITEURS.NOM_EDITEUR;
-            InfoGenre.Text = "Genre : "+albumAEmprunter.GENRES.LIBELLÉ_GENRE;
-            InfoPrix.Text = "Prix : "+albumAEmprunter.PRIX_ALBUM.ToString()+" €";
-
-        }
+        #endregion
 
 
     }
