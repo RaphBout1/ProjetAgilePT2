@@ -27,7 +27,7 @@ namespace PT2
         #region Constructeur
         /// <summary>
         /// Unique constructeur de la classe,
-        /// cette méthode initialise les 5 premiers albums empruntable et affiché
+        /// cette méthode initialise les 5 premiers albums empruntables et affichés
         /// </summary>
         /// <param name="utilisateur"> l'abonnée voulant emprunter un album </param>
         public UtilisateurUSEmprunt(ABONNÉS utilisateur)
@@ -39,10 +39,10 @@ namespace PT2
         }
 
         /// <summary>
-        /// Initialise des attribut de la page :
-        ///     -Les compteur (page, nombre d'album visité dans la page)
+        /// Initialise des attributs de la page :
+        ///     -Les compteurs (page, nombre d'albums visités dans la page)
         ///     -Les positions Y des zones de sélection des 5 albums dans l'affichage
-        ///     -le nombre d'album globale de la base de donnée
+        ///     -le nombre d'albums global de la base de donnée
         /// </summary>
         public void InitialisationGlobaleDeVariable()
         {
@@ -95,7 +95,7 @@ namespace PT2
                             {
 
                                 albumAEmprunter = listeAlbumsVisualiser[compteurCase];
-                                AfficheAlbumActuelle();
+                                AfficheAlbumActuel();
                             }
                             
                         }
@@ -105,7 +105,7 @@ namespace PT2
             }
         }
         #region affichage Selectionné
-        private void AfficheAlbumActuelle()
+        private void AfficheAlbumActuel()
         {
             boutonEmprunterAlbumPrecis.Visible = true;
             InfoNumero.Text = "N° : " + albumAEmprunter.CODE_ALBUM.ToString();
@@ -168,7 +168,7 @@ namespace PT2
         }
         /// <summary>
         /// Méthode permettant d'aller à la page retour
-        /// lors du clique sur le bouton précédant
+        /// lors du clique sur le bouton précédent
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -183,8 +183,8 @@ namespace PT2
 
         #region recherche des albums à afficher
         /// <summary>
-        /// Implémente jusqu'à 5 album dans la liste des albums pouvant être emprunté
-        /// ces derniers sont indexé par ordre croisant de leur CODE_ALBUM
+        /// Implémente jusqu'à 5 albums dans la liste des albums empruntables
+        /// ces derniers sont indexés par ordre croisant de leur CODE_ALBUM
         /// </summary>
         /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         public void ImplementeAlbumsEmpruntable(int ensemble)
@@ -227,7 +227,7 @@ namespace PT2
             AfficheAlbum();
         }
         /// <summary>
-        /// Permet de selectionné les 5 albums à affiché
+        /// Permet de selectionné les 5 albums à afficher
         /// </summary>
         /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         private void AffectationCinqAlbum(int ensemble)
@@ -342,7 +342,7 @@ namespace PT2
             }
             if (listeAlbumsEmpruntable.ContainsKey(nmbAlbum))
             {
-                if (/*listeAlbumsVisualiser.Last().Equals(listeAlbumsEmpruntable.Last()) || */listeAlbumsVisualiser.Count() < 5)
+                if (listeAlbumsVisualiser.Count() < 5)
                 {
                     boutonSuivant.Visible = false;
                 }
