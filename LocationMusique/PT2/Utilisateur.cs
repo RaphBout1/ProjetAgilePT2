@@ -30,24 +30,21 @@ namespace PT2
         /**
          * Actualise l'affichage des emprunts
          */
-        public List<EMPRUNTER> ActualiseListeEmprunté()
+        public void ActualiseListeEmprunté()
         {
-            List<EMPRUNTER> listePourTest = new List<EMPRUNTER>();
-            if (utilisateur != null)
+            listBoxConsultEmprunt.Items.Clear();
+            foreach (EMPRUNTER e in NouveauxEmprunts())
             {
-                listBoxConsultEmprunt.Items.Clear();
-                var emprunt = from em in musiqueSQL.EMPRUNTER
-                              where em.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
-                              select em;
-                foreach (EMPRUNTER e in emprunt)
-                {
-                    listePourTest.Add(e);
-                    listBoxConsultEmprunt.Items.Add(e);
-                }
+                listBoxConsultEmprunt.Items.Add(e);
             }
-
             Refresh();
-            return listePourTest;
+        }
+
+        public List<EMPRUNTER> NouveauxEmprunts()
+        {
+            return (from em in musiqueSQL.EMPRUNTER
+                    where em.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
+                    select em).ToList();
         }
 
         /**
