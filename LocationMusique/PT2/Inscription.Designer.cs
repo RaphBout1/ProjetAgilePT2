@@ -41,6 +41,7 @@ namespace PT2
             this.nomPrenomPaysImage = new System.Windows.Forms.PictureBox();
             this.loginmdpImage = new System.Windows.Forms.PictureBox();
             this.retour = new System.Windows.Forms.Button();
+            this.confirmationMdpBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nomPrenomPaysImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginmdpImage)).BeginInit();
             this.SuspendLayout();
@@ -175,6 +176,13 @@ namespace PT2
             this.retour.UseVisualStyleBackColor = false;
             this.retour.Click += new System.EventHandler(this.retour_Click);
             // 
+            // confirmationMdpBox
+            // 
+            this.confirmationMdpBox.Location = new System.Drawing.Point(1150, 371);
+            this.confirmationMdpBox.Name = "confirmationMdpBox";
+            this.confirmationMdpBox.Size = new System.Drawing.Size(100, 20);
+            this.confirmationMdpBox.TabIndex = 17;
+            // 
             // Inscription
             // 
             this.AcceptButton = this.submit;
@@ -183,6 +191,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.confirmationMdpBox);
             this.Controls.Add(this.retour);
             this.Controls.Add(this.passwordText);
             this.Controls.Add(this.loginText);
@@ -217,5 +226,6 @@ namespace PT2
         private System.Windows.Forms.PictureBox nomPrenomPaysImage;
         private System.Windows.Forms.PictureBox loginmdpImage;
         private System.Windows.Forms.Button retour;
+        private System.Windows.Forms.TextBox confirmationMdpBox;
     }
 }

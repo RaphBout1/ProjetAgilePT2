@@ -43,16 +43,20 @@ namespace PT2
         /**
          * Crée un nouvel abonné dans la base si les informations données sont valides
          */
-        public static void abonner(string nom, string prenom, string pays, string login, string password)
+        public static void abonner(string nom, string prenom, string pays, string login, string password, string passwordConfirmation)
         {
             if (nom.Length < 1 || prenom.Length < 1)
             {
-                throw new InformationsInvalidesException("les champs nom et prénom ne doivent pas être vides.");
+                throw new InformationsInvalidesException("Les champs nom et prénom ne doivent pas être vides.");
             }
             int LoginCount = (from aa in musiqueSQL.ABONNÉS where aa.LOGIN_ABONNÉ == login select aa).Count();
             if (LoginCount != 0)
             {
-                throw new InformationsInvalidesException("login déjà existant. Veuillez entrer un login différent.");
+                throw new InformationsInvalidesException("Login déjà existant. Veuillez entrer un login différent.");
+            }
+            if (!password.Equals(passwordConfirmation))
+            {
+                throw new InformationsInvalidesException("Les mots de passe ne correspondent pas.");
             }
             var paysInt = from p in musiqueSQL.PAYS where p.NOM_PAYS.ToLower() == pays.ToLower() select p.CODE_PAYS;
             if (paysInt.Count() > 0)
@@ -85,7 +89,7 @@ namespace PT2
                 {
                     throw new InformationsInvalidesException("L'identifiant ne doit pas contenir le mot \"test\"");
                 }
-                abonner(nomText.Text, prenomText.Text, paysComboBox.Text, loginText.Text, passwordText.Text);
+                abonner(nomText.Text, prenomText.Text, paysComboBox.Text, loginText.Text, passwordText.Text, confirmationMdpBox.Text);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 Close();
             }
