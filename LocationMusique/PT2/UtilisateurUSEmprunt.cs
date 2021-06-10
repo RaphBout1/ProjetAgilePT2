@@ -35,7 +35,7 @@ namespace PT2
             InitializeComponent();
             this.utilisateur = utilisateur;
             InitialisationGlobaleDeVariable();
-            ImplementeAlbumsEmpruntable(5);
+            AffectationCinqAlbum(0);
         }
 
         /// <summary>
@@ -161,6 +161,7 @@ namespace PT2
         private void boutonSuivant_Click(object sender, EventArgs e)
         {
             page++;
+            listeAlbumsVisualiser.Clear();
             AffectationCinqAlbum(5);
             AfficheAlbum();
             boutonRetour.Visible = true;
@@ -174,6 +175,7 @@ namespace PT2
         private void boutonRetour_Click(object sender, EventArgs e)
         {
             page--;
+            listeAlbumsVisualiser.Clear();
             AffectationCinqAlbum(5);
             AfficheAlbum();
             boutonSuivant.Visible = true;
@@ -188,11 +190,10 @@ namespace PT2
         /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         public void ImplementeAlbumsEmpruntable(int ensemble)
         {
-
             var album = from a in musiqueSQL.ALBUMS
-                        where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 6
+                        where a.CODE_ALBUM < (page * 5) + ensemble && a.CODE_ALBUM >= (page * 5) + ensemble - 5
                         select a;
-            Console.WriteLine("Nouvel liste : ");
+            Console.WriteLine("     Nouvel liste : ");
             foreach (ALBUMS a in album)
             {
                 bool enEmprunt = false;
@@ -202,19 +203,16 @@ namespace PT2
                 }
                 if (!enEmprunt)
                 {
-                    bool dejaContenu = false;
-                    int compteurInverse = compteurAlbum;
-                    Console.WriteLine(" A examiner : " + a.CODE_ALBUM);
-                    while (!dejaContenu && compteurInverse > compteurAlbum - 5 && compteurInverse > 0)
+                    Console.WriteLine("     A examiner : " + a.CODE_ALBUM);
+                    if (compteurAlbum - 1 >= 0)
                     {
-                        if (listeAlbumsEmpruntable.ContainsKey(compteurInverse))
+                        if(listeAlbumsEmpruntable[compteurAlbum-1].CODE_ALBUM < a.CODE_ALBUM)
                         {
-                            Console.WriteLine("     Originale : " + listeAlbumsEmpruntable[compteurInverse].CODE_ALBUM);
-                            if (listeAlbumsEmpruntable[compteurInverse].Equals(a)) { dejaContenu = true; }
+                            listeAlbumsEmpruntable.Add(compteurAlbum, a);
+                            compteurAlbum++;
                         }
-                        compteurInverse--;
                     }
-                    if (!dejaContenu)
+                    else
                     {
                         listeAlbumsEmpruntable.Add(compteurAlbum, a);
                         compteurAlbum++;
@@ -222,8 +220,6 @@ namespace PT2
 
                 }
             }
-            AffectationCinqAlbum(ensemble);
-            AfficheAlbum();
         }
         /// <summary>
         /// Permet de selectionné les 5 albums à affiché
@@ -231,26 +227,27 @@ namespace PT2
         /// <param name="ensemble"> la position correspondant à l'ensemble d'album devant être recherché (par intervalle de 5)</param>
         private void AffectationCinqAlbum(int ensemble)
         {
-            listeAlbumsVisualiser.Clear();
-            for (int index = 0; index < 5; index++)
+            int index = 0;
+            while(listeAlbumsVisualiser.Count < 5 && ((page * 5) + ensemble) < (nmbAlbum - 5))
             {
-                if (listeAlbumsVisualiser.Count < 5)
+                Console.WriteLine("Index recherché : "+index);
+                if (listeAlbumsEmpruntable.ContainsKey(index + (5 * page)))
                 {
-                    if (listeAlbumsEmpruntable.ContainsKey(index + (5 * page)))
-                    {
-                        listeAlbumsVisualiser.Add(listeAlbumsEmpruntable[index + (5 * page)]);
-                    }
-                    else
-                    {
-                        if ((page*5) + ensemble <= nmbAlbum - 5)
-                        {
-                            ensemble += 5;
-                            ImplementeAlbumsEmpruntable(ensemble);
-                        }
-                        
-                    }
+                    listeAlbumsVisualiser.Add(listeAlbumsEmpruntable[index + (5 * page)]);
+                    index++;
                 }
+                else
+                {
+                    if ((page * 5) + ensemble <= nmbAlbum - 5)
+                    {
+                        ensemble += 5;
+                        ImplementeAlbumsEmpruntable(ensemble);
+                    }
+
+                }
+                
             }
+            AfficheAlbum();
         }
         #endregion
 
@@ -341,7 +338,7 @@ namespace PT2
             }
             if (listeAlbumsEmpruntable.ContainsKey(nmbAlbum))
             {
-                if (/*listeAlbumsVisualiser.Last().Equals(listeAlbumsEmpruntable.Last()) || */listeAlbumsVisualiser.Count() < 5)
+                if (listeAlbumsVisualiser.Count() < 5)
                 {
                     boutonSuivant.Visible = false;
                 }
