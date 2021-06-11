@@ -409,10 +409,10 @@ namespace PT2
         /// <param name="casier">Le numéro du casier</param>
         private void chargerAlbumsManquantsCasier(string allée, int casier)
         {
-            dataGridViewGlobale.DataSource = from a in musiqueSQL.ALBUMS
+            dataGridViewGlobale.DataSource = (from a in musiqueSQL.ALBUMS
                                              join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
                                              where a.ALLÉE_ALBUM == allée.ToString() && a.CASIER_ALBUM == casier && emp.DATE_RETOUR == null
-                                             select a;
+                                             select a).ToList();
         }
 
         /// <summary>
