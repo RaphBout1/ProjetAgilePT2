@@ -42,6 +42,7 @@ namespace PT2
             this.loginmdpImage = new System.Windows.Forms.PictureBox();
             this.retour = new System.Windows.Forms.Button();
             this.confirmationMdpBox = new System.Windows.Forms.TextBox();
+            this.afficherMdp = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nomPrenomPaysImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginmdpImage)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +60,6 @@ namespace PT2
             this.passwordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordText.Location = new System.Drawing.Point(1093, 240);
             this.passwordText.Name = "passwordText";
-            this.passwordText.PasswordChar = '*';
             this.passwordText.Size = new System.Drawing.Size(408, 35);
             this.passwordText.TabIndex = 3;
             this.passwordText.UseSystemPasswordChar = true;
@@ -183,6 +183,16 @@ namespace PT2
             this.confirmationMdpBox.Size = new System.Drawing.Size(100, 20);
             this.confirmationMdpBox.TabIndex = 17;
             // 
+            // afficherMdp
+            // 
+            this.afficherMdp.AutoSize = true;
+            this.afficherMdp.Location = new System.Drawing.Point(1528, 257);
+            this.afficherMdp.Name = "afficherMdp";
+            this.afficherMdp.Size = new System.Drawing.Size(15, 14);
+            this.afficherMdp.TabIndex = 18;
+            this.afficherMdp.UseVisualStyleBackColor = true;
+            this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
+            // 
             // Inscription
             // 
             this.AcceptButton = this.submit;
@@ -191,6 +201,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.afficherMdp);
             this.Controls.Add(this.confirmationMdpBox);
             this.Controls.Add(this.retour);
             this.Controls.Add(this.passwordText);
@@ -227,5 +238,6 @@ namespace PT2
         private System.Windows.Forms.PictureBox loginmdpImage;
         private System.Windows.Forms.Button retour;
         private System.Windows.Forms.TextBox confirmationMdpBox;
+        private System.Windows.Forms.CheckBox afficherMdp;
     }
 }

@@ -16,6 +16,7 @@ namespace PT2
     /// </summary>
     public partial class Inscription : Form
     {
+        bool afficherMdpTexte;
         public Inscription()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace PT2
             loginmdpImage.Visible = false;
             submit.Visible = false;
             retour.Visible = false;
+            afficherMdpTexte = true;
         }
 
         /// <summary>
@@ -168,6 +170,14 @@ namespace PT2
             loginmdpImage.Visible = false;
             submit.Visible = false;
             retour.Visible = false;
+        }
+
+        private void afficherMdp_CheckedChanged(object sender, EventArgs e)
+        {
+            afficherMdpTexte = !afficherMdpTexte;
+            passwordText.UseSystemPasswordChar = afficherMdpTexte;
+            Console.WriteLine("      Affichage du mdp ou non");
+            Refresh();
         }
     }
 }
