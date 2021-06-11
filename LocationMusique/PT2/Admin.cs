@@ -76,58 +76,14 @@ namespace PT2
         /// <returns> une List<ALBUMS> ne contenant que les 10 albums les plus vues</returns>
         public List<ALBUMS> DixPlusVue()
         {
-            List<ALBUMS> lesDixPlusEmprunte = new List<ALBUMS>();
-            lesDixPlusEmprunte.Clear();
-            var lesAlbums = from a in musiqueSQL.ALBUMS
-                            select a;
-            foreach (ALBUMS a in lesAlbums)
-            {
-                a.EmpruntAnnee();
-                if (a.nmbEmpruntEnUnAn > 0)
-                {
-                    int compteurBoucle;
-                    bool placeTrouver = false;
-                    //Rempli la liste en comparant à partir du plus vue
-                    //Permet de remplir la liste quand elle n'est pas pleine (inférieur à 10)
-                    if (lesDixPlusEmprunte.Count() < 10)
-                    {
-                        compteurBoucle = 0;
-                        while (!placeTrouver && compteurBoucle < 10)
-                        {
-                            if (lesDixPlusEmprunte.Count() <= compteurBoucle)
-                            {
-                                lesDixPlusEmprunte.Add(a);
-                                placeTrouver = true;
-                            }
-                            else if (lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() <= a.EMPRUNTER.Count())
-                            {
-                                placeTrouver = true;
-                                DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, lesDixPlusEmprunte.Count());
-                            }
-                            compteurBoucle++;
-                        }
-                        compteurBoucle++;
-                    }
-                    //Remplie la liste en comparant à partir du moins vue
-                    else
-                    {
-                        compteurBoucle = 9;
-                        while (!placeTrouver && compteurBoucle > 0)
-                        {
-                            if (!(lesDixPlusEmprunte[compteurBoucle].EMPRUNTER.Count() < a.EMPRUNTER.Count()))
-                            {
-                                placeTrouver = true;
-                                if (compteurBoucle != 9) { DecaleDroiteAlbum(lesDixPlusEmprunte, a, compteurBoucle, 10); }
-                            }
-                            compteurBoucle--;
-                        }
-                        compteurBoucle--;
-                    }
-                }
-
-            }
-            return lesDixPlusEmprunte;
+            DateTime ilYAUnAn = DateTime.UtcNow.AddYears(-1);
+            return (from e in musiqueSQL.EMPRUNTER
+                    where e.DATE_EMPRUNT.CompareTo(ilYAUnAn) >= 0
+                    group e by e.CODE_ALBUM into newGroup
+                    orderby newGroup.Count() descending
+                    select (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == newGroup.Key select a).FirstOrDefault()).Take(10).ToList();
         }
+
         /// <summary>
         /// Permet d'effectuer un décalage droite dans une List<ALBUMS>
         /// en indiquant l'objet à placer après décalage et son index
