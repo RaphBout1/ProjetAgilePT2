@@ -36,6 +36,19 @@ namespace PT2
             this.fenetrePrecedente = fenetrePrecedente;
         }
 
+        public Utilisateur(ABONNÉS uti)
+        {
+            InitializeComponent();
+            InitialiserListView();
+            utilisateur = uti;
+            nom.Text = uti.NOM_ABONNÉ;
+            prenom.Text = uti.PRÉNOM_ABONNÉ;
+            prolonger1Button.Visible = false;
+            prolongerTousButton.Visible = false;
+            rendreButton.Visible = false;
+            
+        }
+
         /**
          * Actualise l'affichage des emprunts
          */
