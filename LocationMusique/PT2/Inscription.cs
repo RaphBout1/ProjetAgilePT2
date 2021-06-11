@@ -94,7 +94,7 @@ namespace PT2
             return true;
         }
         /// <summary>
-        /// Génère le hachage de cryptage par la méthode HMACSHA1
+        /// Génère le hachage de cryptage par la méthode HMACSHA1, le sel de cryptage est fixe
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -108,7 +108,7 @@ namespace PT2
             salt: salt,
             prf: KeyDerivationPrf.HMACSHA1,
             iterationCount: 10000,
-            numBytesRequested: 30 / 8));
+            numBytesRequested: 36 / 8));
             return hashed;
         }
     
