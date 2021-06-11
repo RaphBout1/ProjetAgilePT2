@@ -47,6 +47,8 @@ namespace PT2
             this.comboCasier = new System.Windows.Forms.ComboBox();
             this.allee = new System.Windows.Forms.PictureBox();
             this.caiser = new System.Windows.Forms.PictureBox();
+            this.suivantButton = new System.Windows.Forms.Button();
+            this.precButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.caiser)).BeginInit();
@@ -302,6 +304,26 @@ namespace PT2
             this.caiser.TabStop = false;
             this.caiser.Visible = false;
             // 
+            // suivantButton
+            // 
+            this.suivantButton.Location = new System.Drawing.Point(1392, 62);
+            this.suivantButton.Name = "suivantButton";
+            this.suivantButton.Size = new System.Drawing.Size(75, 23);
+            this.suivantButton.TabIndex = 29;
+            this.suivantButton.Text = "suivant";
+            this.suivantButton.UseVisualStyleBackColor = true;
+            this.suivantButton.Click += new System.EventHandler(this.suivantButton_Click);
+            // 
+            // precButton
+            // 
+            this.precButton.Location = new System.Drawing.Point(1392, 117);
+            this.precButton.Name = "precButton";
+            this.precButton.Size = new System.Drawing.Size(75, 23);
+            this.precButton.TabIndex = 30;
+            this.precButton.Text = "Précédent";
+            this.precButton.UseVisualStyleBackColor = true;
+            this.precButton.Click += new System.EventHandler(this.precButton_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,6 +333,8 @@ namespace PT2
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.caiser);
             this.Controls.Add(this.allee);
+            this.Controls.Add(this.precButton);
+            this.Controls.Add(this.suivantButton);
             this.Controls.Add(this.comboCasier);
             this.Controls.Add(this.comboAllée);
             this.Controls.Add(this.dataGridViewGlobale);
@@ -356,5 +380,7 @@ namespace PT2
         private System.Windows.Forms.ComboBox comboCasier;
         private System.Windows.Forms.PictureBox allee;
         private System.Windows.Forms.PictureBox caiser;
+        private System.Windows.Forms.Button suivantButton;
+        private System.Windows.Forms.Button precButton;
     }
 }

@@ -43,6 +43,15 @@ namespace PT2
             this.fenetrePrecedente = fenetrePrecedente;
         }
 
+        public UtilisateurUSEmprunt(ABONNÉS utilisateur)
+        {
+            InitializeComponent();
+            this.utilisateur = utilisateur;
+            InitialisationGlobaleDeVariable();
+            listePredefini = false;
+            AffectationCinqAlbum(0);
+        }
+
         /// <summary>
         /// Constructeur de la classe
         /// cette méthode initialise l'emprunt mais seulement
