@@ -146,7 +146,6 @@ namespace PT2Test
         {
             InitAlbum();
             InitListeAbonneTest();
-            //EmpruntMassifAlbum();
             Admin admin = new Admin();
             List<ALBUMS> listeATester = admin.DixPlusVue();
             Assert.AreEqual(listeAlbums[0], listeATester[0]);

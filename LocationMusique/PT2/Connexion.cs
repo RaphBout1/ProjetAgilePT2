@@ -45,6 +45,10 @@ namespace PT2
             ConnexionProcess();
         }
 
+        ///<summary>
+        /// permet de se connecter en fournissant un login et un mot de passe 
+        /// si le pseudo ou le mot de passe est pas bon alors on affiche une erreur et on efface les infos rentrées
+        ///</summary>
         private void ConnexionProcess()
         {
             String loginAbo = pseudo.Text;

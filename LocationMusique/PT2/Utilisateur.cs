@@ -48,10 +48,10 @@ namespace PT2
             rendreButton.Visible = false;
             
         }
-
-        /**
-         * Actualise l'affichage des emprunts
-         */
+   
+        /// <summary>
+        /// Actualise l'affichage des emprunts
+        /// </summary>        
         public void ActualiseListeEmprunté()
         {
 
@@ -74,10 +74,11 @@ namespace PT2
                     where em.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
                     select em).ToList();
         }
-
-        /**
-         * Tente de prolonger l'emprunt passé en paramètre
-         */
+    
+        /// <summary>
+        /// Tente de prolonger l'emprunt passé en paramètre
+        /// </summary>
+        /// <param name="emprunt">L'emprunt concerné</param>        
         public void ProlongerEmprunt(EMPRUNTER emprunt)
         {
             EMPRUNTER emDb = (from em in musiqueSQL.EMPRUNTER where emprunt.CODE_ABONNÉ == em.CODE_ABONNÉ && emprunt.CODE_ALBUM == em.CODE_ALBUM select em).FirstOrDefault();
@@ -103,9 +104,11 @@ namespace PT2
             }
         }
 
-        /*
-         * Renvoie true si l'emprunt de l'album sélectionné n'a jamais été prolongé.
-         */
+        /// <summary>
+        /// Renvoie true si l'emprunt de l'album sélectionné n'a jamais été prolongé.
+        /// </summary>
+        /// <param name="em">L'emprunt concerné</param>
+        /// <returns>si l'emprunt est prolongeable ou non</returns>
         public bool empruntProlongeable(EMPRUNTER em)
         {
             if (em.DATE_EMPRUNT.AddDays(em.ALBUMS.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
@@ -174,9 +177,12 @@ namespace PT2
         #endregion
 
         #region prolonger clic
-        /**
-         * Appelle les fonctions nécessaires au prolongement de tous les emprunts
-         */
+         
+        /// <summary>
+        /// Appelle les fonctions nécessaires au prolongement de tous les emprunts
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void prolongerTousButton_Click(object sender, EventArgs e)
         {
             var mesEmprunts = (from em in musiqueSQL.EMPRUNTER where (em.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ) select em).ToList();
@@ -196,9 +202,11 @@ namespace PT2
             MessageBox.Show(nbProlonges + " emprunts ont été prolongés.");
         }
 
-        /**
-         * Appelle les fonctions nécessaires au prolongement d'un certain emprunt
-         */
+        /// <summary>
+        /// Appelle les fonctions nécessaires au prolongement d'un certain emprunt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void prolonger1Button_Click(object sender, EventArgs e)
         {
             try
@@ -287,6 +295,9 @@ namespace PT2
             Refresh();
         }
 
+        ///<summary>
+        ///On actualise la liste qui est en train de fonctionner afin d'actualiser les informations
+        ///</summary>
         private void actualiserListeEnCours()
         {
             enregistrerDansListe(empruntEnCours());
@@ -404,6 +415,10 @@ namespace PT2
         #endregion
 
         #region pagination
+        /// <summary>
+        /// Affiche la première page d'une liste et ses éléments, ainsi que les flèches pour changer de page.
+        /// </summary>
+        /// <param name="le">La liste d'emprunts</param>
         private void enregistrerDansListe(List<EMPRUNTER> le)
         {
             if (le.Count == 0) { MessageBox.Show("Il n'y a aucun album dans cette catégorie !"); }
@@ -418,6 +433,9 @@ namespace PT2
 
         }
 
+        /// <summary>
+        /// En fonction de l'entier page, affiche la page actuelle et affiche 7 éléments par pages
+        /// </summary>
         private void changerPage()
         {
             labelPage.Text = "Page : "+(page+1).ToString();
@@ -487,6 +505,9 @@ namespace PT2
         }
         #endregion
 
+        ///<summary>
+        ///On change le mot de passe et ensuite on enregistre le nouveau mot de passe dans la base de données 
+        ///</summary>
         public void changerMdp()
         {
             ChangerMdp changementMdp = new ChangerMdp(utilisateur);
