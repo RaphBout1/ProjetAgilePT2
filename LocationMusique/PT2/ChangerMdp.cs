@@ -12,7 +12,7 @@ namespace PT2
 {
     public partial class ChangerMdp : Form
     {
-        public string nouveauMdp { get { return textBoxMdp.Text; } }
+        public string nouveauMdp { get { return Inscription.crypterMot(textBoxMdp.Text); } }
         private bool estAdmin { get; set; }
         private ABONNÉS utilisateur { get; set; }
         public ChangerMdp(ABONNÉS abonne)
