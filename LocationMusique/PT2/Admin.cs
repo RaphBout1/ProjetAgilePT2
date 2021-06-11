@@ -56,7 +56,7 @@ namespace PT2
 
             foreach (EMPRUNTER m in lesLivresEmpruntes)
             {
-                if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
+                if (!(m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) >= 0) && m.DATE_RETOUR == null)
                 {
                     listBoxGlobale.Items.Add(m);
                 }
@@ -372,7 +372,8 @@ namespace PT2
                 {
                     listBoxCasier.Items.Add(i);
                 }
-            } else
+            }
+            else
             {
                 buttonCasier.Visible = false;
             }
@@ -380,19 +381,24 @@ namespace PT2
 
         private void buttonCasier_Click(object sender, EventArgs e)
         {
-            listBoxGlobale.Items.Clear();
-            int numCasier = Convert.ToInt32(listBoxCasier.SelectedItem);
-            string allée = listBoxAllée.SelectedItem.ToString();
-            var albums = from a in musiqueSQL.ALBUMS
-                         join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
-                         where a.ALLÉE_ALBUM == allée && a.CASIER_ALBUM == numCasier && emp.DATE_RETOUR == null
-                         select a;
-            foreach (ALBUMS a in albums)
+            var allée = listBoxAllée.SelectedItem;
+            var casier = listBoxCasier.SelectedItem;
+            if (allée != null && casier != null)
             {
-                if (!listBoxGlobale.Items.Contains(a))
+                listBoxGlobale.Items.Clear();
+                int numCasier = Convert.ToInt32(casier);
+                var albums = from a in musiqueSQL.ALBUMS
+                             join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
+                             where a.ALLÉE_ALBUM == allée.ToString() && a.CASIER_ALBUM == numCasier && emp.DATE_RETOUR == null
+                             select a;
+                foreach (ALBUMS a in albums)
                 {
                     listBoxGlobale.Items.Add(a);
                 }
+            }
+            else
+            {
+
             }
         }
     }
