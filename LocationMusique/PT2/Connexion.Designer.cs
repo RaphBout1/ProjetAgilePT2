@@ -34,8 +34,6 @@ namespace PT2
             this.mdp = new System.Windows.Forms.TextBox();
             this.connectbutton = new System.Windows.Forms.Button();
             this.InscriptionButton = new System.Windows.Forms.Button();
-            this.UtilisateurButton = new System.Windows.Forms.Button();
-            this.AdminButton = new System.Windows.Forms.Button();
             this.afficherMdp = new System.Windows.Forms.CheckBox();
             this.pasAfficher = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -92,28 +90,6 @@ namespace PT2
             this.InscriptionButton.UseVisualStyleBackColor = false;
             this.InscriptionButton.Click += new System.EventHandler(this.InscriptionButton_Click);
             // 
-            // UtilisateurButton
-            // 
-            this.UtilisateurButton.Location = new System.Drawing.Point(831, 577);
-            this.UtilisateurButton.Margin = new System.Windows.Forms.Padding(4);
-            this.UtilisateurButton.Name = "UtilisateurButton";
-            this.UtilisateurButton.Size = new System.Drawing.Size(100, 28);
-            this.UtilisateurButton.TabIndex = 5;
-            this.UtilisateurButton.Text = "Utilisateur";
-            this.UtilisateurButton.UseVisualStyleBackColor = true;
-            this.UtilisateurButton.Click += new System.EventHandler(this.UtilisateurButton_Click);
-            // 
-            // AdminButton
-            // 
-            this.AdminButton.Location = new System.Drawing.Point(538, 577);
-            this.AdminButton.Margin = new System.Windows.Forms.Padding(4);
-            this.AdminButton.Name = "AdminButton";
-            this.AdminButton.Size = new System.Drawing.Size(100, 28);
-            this.AdminButton.TabIndex = 6;
-            this.AdminButton.Text = "Admin";
-            this.AdminButton.UseVisualStyleBackColor = true;
-            this.AdminButton.Click += new System.EventHandler(this.adminButton_Click);
-            // 
             // afficherMdp
             // 
             this.afficherMdp.Appearance = System.Windows.Forms.Appearance.Button;
@@ -164,8 +140,6 @@ namespace PT2
             this.ClientSize = new System.Drawing.Size(1443, 862);
             this.Controls.Add(this.pasAfficher);
             this.Controls.Add(this.afficherMdp);
-            this.Controls.Add(this.AdminButton);
-            this.Controls.Add(this.UtilisateurButton);
             this.Controls.Add(this.InscriptionButton);
             this.Controls.Add(this.connectbutton);
             this.Controls.Add(this.mdp);
@@ -188,8 +162,6 @@ namespace PT2
         private System.Windows.Forms.TextBox mdp;
         private System.Windows.Forms.Button connectbutton;
         private System.Windows.Forms.Button InscriptionButton;
-        private System.Windows.Forms.Button UtilisateurButton;
-        private System.Windows.Forms.Button AdminButton;
         private System.Windows.Forms.CheckBox afficherMdp;
         private System.Windows.Forms.CheckBox pasAfficher;
     }

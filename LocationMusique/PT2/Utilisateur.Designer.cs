@@ -36,7 +36,6 @@ namespace PT2
             this.prolongerTousButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.rendreButton = new System.Windows.Forms.Button();
-            this.MAJButton = new System.Windows.Forms.Button();
             this.afficherEmprunts = new System.Windows.Forms.Button();
             this.afficherRecommandations = new System.Windows.Forms.Button();
             this.quitter = new System.Windows.Forms.Button();
@@ -140,16 +139,6 @@ namespace PT2
             this.rendreButton.UseVisualStyleBackColor = false;
             this.rendreButton.Visible = false;
             this.rendreButton.Click += new System.EventHandler(this.rendreButton_Click);
-            // 
-            // MAJButton
-            // 
-            this.MAJButton.Location = new System.Drawing.Point(12, 430);
-            this.MAJButton.Name = "MAJButton";
-            this.MAJButton.Size = new System.Drawing.Size(75, 23);
-            this.MAJButton.TabIndex = 8;
-            this.MAJButton.Text = "Mise à jour";
-            this.MAJButton.UseVisualStyleBackColor = true;
-            this.MAJButton.Click += new System.EventHandler(this.MAJButton_Click);
             // 
             // afficherEmprunts
             // 
@@ -327,7 +316,6 @@ namespace PT2
             this.Controls.Add(this.quitter);
             this.Controls.Add(this.afficherRecommandations);
             this.Controls.Add(this.afficherEmprunts);
-            this.Controls.Add(this.MAJButton);
             this.Controls.Add(this.rendreButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.prolongerTousButton);
@@ -352,7 +340,6 @@ namespace PT2
         private System.Windows.Forms.Button prolongerTousButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button rendreButton;
-        private System.Windows.Forms.Button MAJButton;
         private System.Windows.Forms.Button afficherEmprunts;
         private System.Windows.Forms.Button afficherRecommandations;
         private System.Windows.Forms.Button quitter;
