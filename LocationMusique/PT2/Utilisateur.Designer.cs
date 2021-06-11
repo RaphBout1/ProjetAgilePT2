@@ -39,7 +39,7 @@ namespace PT2
             this.MAJButton = new System.Windows.Forms.Button();
             this.afficherEmprunts = new System.Windows.Forms.Button();
             this.afficherRecommandations = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.quitter = new System.Windows.Forms.Button();
             this.retard = new System.Windows.Forms.Button();
             this.enCours = new System.Windows.Forms.Button();
             this.listViewConsultation = new System.Windows.Forms.ListView();
@@ -178,21 +178,21 @@ namespace PT2
             this.afficherRecommandations.UseVisualStyleBackColor = false;
             this.afficherRecommandations.Click += new System.EventHandler(this.afficherRecommandations_Click);
             // 
-            // button2
+            // quitter
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(39, 701);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(346, 70);
-            this.button2.TabIndex = 11;
-            this.button2.UseVisualStyleBackColor = false;
+            this.quitter.BackColor = System.Drawing.Color.Transparent;
+            this.quitter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("quitter.BackgroundImage")));
+            this.quitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.quitter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.quitter.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.quitter.FlatAppearance.BorderSize = 0;
+            this.quitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.quitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.quitter.Location = new System.Drawing.Point(39, 701);
+            this.quitter.Name = "quitter";
+            this.quitter.Size = new System.Drawing.Size(346, 70);
+            this.quitter.TabIndex = 11;
+            this.quitter.UseVisualStyleBackColor = false;
             // 
             // retard
             // 
@@ -224,16 +224,6 @@ namespace PT2
             this.enCours.UseVisualStyleBackColor = false;
             this.enCours.Click += new System.EventHandler(this.enCours_Click);
             // 
-            // utilisateurChangerMdp
-            // 
-            this.utilisateurChangerMdp.Location = new System.Drawing.Point(223, 599);
-            this.utilisateurChangerMdp.Name = "utilisateurChangerMdp";
-            this.utilisateurChangerMdp.Size = new System.Drawing.Size(145, 23);
-            this.utilisateurChangerMdp.TabIndex = 18;
-            this.utilisateurChangerMdp.Text = "changer mot de passe";
-            this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
-            this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
-            // 
             // listViewConsultation
             // 
             this.listViewConsultation.HideSelection = false;
@@ -244,6 +234,16 @@ namespace PT2
             this.listViewConsultation.TabIndex = 14;
             this.listViewConsultation.UseCompatibleStateImageBehavior = false;
             this.listViewConsultation.SelectedIndexChanged += new System.EventHandler(this.listViewConsultation_SelectedIndexChanged);
+            // 
+            // utilisateurChangerMdp
+            // 
+            this.utilisateurChangerMdp.Location = new System.Drawing.Point(223, 599);
+            this.utilisateurChangerMdp.Name = "utilisateurChangerMdp";
+            this.utilisateurChangerMdp.Size = new System.Drawing.Size(145, 23);
+            this.utilisateurChangerMdp.TabIndex = 18;
+            this.utilisateurChangerMdp.Text = "changer mot de passe";
+            this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
+            this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
             // 
             // Utilisateur
             // 
@@ -256,7 +256,7 @@ namespace PT2
             this.Controls.Add(this.listViewConsultation);
             this.Controls.Add(this.enCours);
             this.Controls.Add(this.retard);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.quitter);
             this.Controls.Add(this.afficherRecommandations);
             this.Controls.Add(this.afficherEmprunts);
             this.Controls.Add(this.MAJButton);
@@ -284,7 +284,7 @@ namespace PT2
         private System.Windows.Forms.Button MAJButton;
         private System.Windows.Forms.Button afficherEmprunts;
         private System.Windows.Forms.Button afficherRecommandations;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button quitter;
         private System.Windows.Forms.Button retard;
         private System.Windows.Forms.Button enCours;
         private System.Windows.Forms.ListView listViewConsultation;

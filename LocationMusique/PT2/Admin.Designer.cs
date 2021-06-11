@@ -210,6 +210,7 @@ namespace PT2
             this.quitter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("quitter.BackgroundImage")));
             this.quitter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.quitter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.quitter.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.quitter.FlatAppearance.BorderSize = 0;
             this.quitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.quitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
