@@ -38,7 +38,6 @@ namespace PT2
             this.labelAncien = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.mdpCheckBox = new System.Windows.Forms.CheckBox();
             this.afficherMdp = new System.Windows.Forms.CheckBox();
             this.affichermdp2 = new System.Windows.Forms.CheckBox();
             this.affichermdp3 = new System.Windows.Forms.CheckBox();
@@ -141,13 +140,6 @@ namespace PT2
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
-            // mdpCheckBox
-            // 
-            this.mdpCheckBox.Location = new System.Drawing.Point(0, 0);
-            this.mdpCheckBox.Name = "mdpCheckBox";
-            this.mdpCheckBox.Size = new System.Drawing.Size(104, 24);
-            this.mdpCheckBox.TabIndex = 20;
-            // 
             // afficherMdp
             // 
             this.afficherMdp.Appearance = System.Windows.Forms.Appearance.Button;
@@ -213,7 +205,6 @@ namespace PT2
             this.Controls.Add(this.affichermdp3);
             this.Controls.Add(this.affichermdp2);
             this.Controls.Add(this.afficherMdp);
-            this.Controls.Add(this.mdpCheckBox);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelAncien);
@@ -222,7 +213,9 @@ namespace PT2
             this.Controls.Add(this.textBoxMdpConfirm);
             this.Controls.Add(this.textBoxMdp);
             this.Controls.Add(this.buttonAnnuler);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ChangerMdp";
             this.Text = "Changer mot de passe";
             ((System.ComponentModel.ISupportInitialize)(this.labelAncien)).EndInit();
@@ -242,7 +235,6 @@ namespace PT2
         private System.Windows.Forms.PictureBox labelAncien;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.CheckBox mdpCheckBox;
         private System.Windows.Forms.CheckBox afficherMdp;
         private System.Windows.Forms.CheckBox affichermdp2;
         private System.Windows.Forms.CheckBox affichermdp3;

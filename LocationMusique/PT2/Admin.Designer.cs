@@ -308,7 +308,9 @@ namespace PT2
             this.Controls.Add(this.listBoxAbonnés);
             this.Controls.Add(this.purgebutton);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Admin";
             this.Text = "Admin";
             this.ResumeLayout(false);

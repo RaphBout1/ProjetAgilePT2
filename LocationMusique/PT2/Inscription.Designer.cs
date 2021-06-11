@@ -262,7 +262,9 @@ namespace PT2
             this.Controls.Add(this.nomText);
             this.Controls.Add(this.nomPrenomPaysImage);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Inscription";
             this.Text = "Inscription";
             ((System.ComponentModel.ISupportInitialize)(this.nomPrenomPaysImage)).EndInit();

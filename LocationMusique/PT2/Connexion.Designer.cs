@@ -148,8 +148,10 @@ namespace PT2
             this.Controls.Add(this.pseudo);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "Connexion";
             this.Text = "Discothèque";
             this.ResumeLayout(false);

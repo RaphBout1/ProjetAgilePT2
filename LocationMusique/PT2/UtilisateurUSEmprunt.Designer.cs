@@ -466,6 +466,9 @@ namespace PT2
             this.Controls.Add(this.monthCalendarClassique);
             this.Controls.Add(this.boutonEmprunterAlbumPrecis);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "UtilisateurUSEmprunt";
             this.Text = "UtilisateurUSEmprunt";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UtilisateurUSEmprunt_MouseDown);

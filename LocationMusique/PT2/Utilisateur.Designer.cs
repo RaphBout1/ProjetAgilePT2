@@ -250,7 +250,6 @@ namespace PT2
             this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
             // 
             // boutonPageRetour
-            // listViewConsultation
             // 
             this.boutonPageRetour.Location = new System.Drawing.Point(1497, 624);
             this.boutonPageRetour.Name = "boutonPageRetour";
@@ -282,16 +281,6 @@ namespace PT2
             this.labelPage.TabIndex = 21;
             this.labelPage.Text = "   ";
             // 
-            // utilisateurChangerMdp
-            // 
-            this.utilisateurChangerMdp.Location = new System.Drawing.Point(223, 599);
-            this.utilisateurChangerMdp.Name = "utilisateurChangerMdp";
-            this.utilisateurChangerMdp.Size = new System.Drawing.Size(145, 23);
-            this.utilisateurChangerMdp.TabIndex = 18;
-            this.utilisateurChangerMdp.Text = "changer mot de passe";
-            this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
-            this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
-            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,6 +306,9 @@ namespace PT2
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Utilisateur";
             this.Text = "Utilisateur";
             this.ResumeLayout(false);
