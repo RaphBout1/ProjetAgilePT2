@@ -362,7 +362,14 @@ namespace PT2
                         {
                             Titre1.Text = listeAlbumsVisualiser[0].TITRE_ALBUM;
                             Genre1.Text = listeAlbumsVisualiser[0].GENRES.LIBELLÉ_GENRE;
-                            pochette1.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[0].POCHETTE),161,155);
+                            if (listeAlbumsVisualiser[0].POCHETTE != null)
+                            {
+                                pochette1.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[0].POCHETTE), 161, 155);
+                            }
+                            else
+                            {
+                                pochette1.Image = null;
+                            }
                         }
                         else
                         {
@@ -376,7 +383,14 @@ namespace PT2
                         {
                             Titre2.Text = listeAlbumsVisualiser[1].TITRE_ALBUM;
                             Genre2.Text = listeAlbumsVisualiser[1].GENRES.LIBELLÉ_GENRE;
-                            pochette2.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[1].POCHETTE), 161, 155);
+                            if (listeAlbumsVisualiser[1].POCHETTE != null)
+                            {
+                                pochette2.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[1].POCHETTE), 161, 155);
+                            }
+                            else
+                            {
+                                pochette2.Image = null;
+                            }
                         }
                         else
                         {
@@ -390,7 +404,14 @@ namespace PT2
                         {
                             Titre3.Text = listeAlbumsVisualiser[2].TITRE_ALBUM;
                             Genre3.Text = listeAlbumsVisualiser[2].GENRES.LIBELLÉ_GENRE;
-                            pochette3.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[2].POCHETTE), 161, 155);
+                            if (listeAlbumsVisualiser[2].POCHETTE != null)
+                            {
+                                pochette3.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[2].POCHETTE), 161, 155);
+                            }
+                            else
+                            {
+                                pochette3.Image = null;
+                            }
                         }
                         else
                         {
@@ -404,7 +425,14 @@ namespace PT2
                         {
                             Titre4.Text = listeAlbumsVisualiser[3].TITRE_ALBUM;
                             Genre4.Text = listeAlbumsVisualiser[3].GENRES.LIBELLÉ_GENRE;
-                            pochette4.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[3].POCHETTE), 161, 155);
+                            if (listeAlbumsVisualiser[3].POCHETTE != null)
+                            {
+                                pochette4.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[3].POCHETTE), 161, 155);
+                            }
+                            else
+                            {
+                                pochette4.Image = null;
+                            }
                         }
                         else
                         {
@@ -418,7 +446,14 @@ namespace PT2
                         {
                             Titre5.Text = listeAlbumsVisualiser[4].TITRE_ALBUM;
                             Genre5.Text = listeAlbumsVisualiser[4].GENRES.LIBELLÉ_GENRE;
-                            pochette5.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[4].POCHETTE), 161, 155);
+                            if (listeAlbumsVisualiser[4].POCHETTE != null)
+                            {
+                                pochette5.Image = RefaireImage(byteArrayToImage(listeAlbumsVisualiser[4].POCHETTE), 161, 155);
+                            }
+                            else
+                            {
+                                pochette5.Image = null;
+                            }
                         }
                         else
                         {
