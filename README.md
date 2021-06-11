@@ -163,7 +163,7 @@ Cas limite et détails:
 ## US-TU2: Tests unitaires extra
 
 - [X] US3
-- [X] US4
+- [ ] US4
 - [X] US5
 - [X] US6
 - [X] US7
