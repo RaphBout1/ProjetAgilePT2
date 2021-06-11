@@ -139,10 +139,13 @@ namespace PT2
                 int maxAffichage = albumsDuGenreDisponibles.Count();
                 int nombreAlbumsAAfficher = Math.Min(10, maxAffichage);
                 var albums = (from a in albumsDuGenreDisponibles where a.CODE_GENRE == genre orderby a.EMPRUNTER.Count() select a).Take(nombreAlbumsAAfficher);
+                List<ALBUMS> listeRecommandation = new List<ALBUMS>();
                 foreach (ALBUMS a in albums)
                 {
-                    //listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM);
+                    listeRecommandation.Add(a);
                 }
+                UtilisateurUSEmprunt recommandationEmpruntable = new UtilisateurUSEmprunt(utilisateur, listeRecommandation);
+                recommandationEmpruntable.Show();
                 Refresh();
             }
         }
