@@ -18,6 +18,7 @@ namespace PT2
         Dictionary<int, ALBUMS> listeAlbumsEmpruntable = new Dictionary<int, ALBUMS>();
         Dictionary<int, int> caseY = new Dictionary<int, int>();
         List<ALBUMS> listeAlbumsVisualiser = new List<ALBUMS>();
+        bool listePredefini;
         int compteurAlbum;
         int page;
         int nmbAlbum;
@@ -27,7 +28,7 @@ namespace PT2
 
         #region Constructeur
         /// <summary>
-        /// Unique constructeur de la classe,
+        /// Constructeur par défaut de la classe,
         /// cette méthode initialise les 5 premiers albums empruntables et affichés
         /// </summary>
         /// <param name="utilisateur"> l'abonnée voulant emprunter un album </param>
@@ -36,9 +37,27 @@ namespace PT2
             InitializeComponent();
             this.utilisateur = utilisateur;
             InitialisationGlobaleDeVariable();
+            listePredefini = false;
             AffectationCinqAlbum(0);
         }
+        public UtilisateurUSEmprunt(ABONNÉS utilisateur, List<ALBUMS> listeVoulu)
+        {
+            InitializeComponent();
+            this.utilisateur = utilisateur;
+            InitialisationGlobaleDeVariable();
+            InitialisationListeAlbumPredefini(listeVoulu);
+            AffectationCinqAlbumPrédéfini(5);
+        }
 
+        public void InitialisationListeAlbumPredefini(List<ALBUMS> listeVoulu)
+        {
+            listePredefini = true;
+            foreach (ALBUMS a in listeVoulu)
+            {
+                listeAlbumsEmpruntable.Add(compteurAlbum, a);
+                compteurAlbum++;
+            }
+        }
         /// <summary>
         /// Initialise des attributs de la page :
         ///     -Les compteurs (page, nombre d'albums visités dans la page)
@@ -179,9 +198,7 @@ namespace PT2
         private void boutonSuivant_Click(object sender, EventArgs e)
         {
             page++;
-            listeAlbumsVisualiser.Clear();
-            AffectationCinqAlbum(5);
-            AfficheAlbum();
+            changementDePage();
             boutonRetour.Visible = true;
         }
         /// <summary>
@@ -193,10 +210,24 @@ namespace PT2
         private void boutonRetour_Click(object sender, EventArgs e)
         {
             page--;
-            listeAlbumsVisualiser.Clear();
-            AffectationCinqAlbum(5);
-            AfficheAlbum();
+            changementDePage();
             boutonSuivant.Visible = true;
+        }
+
+        private void changementDePage()
+        {
+            if (listePredefini)
+            {
+                listeAlbumsVisualiser.Clear();
+                AffectationCinqAlbumPrédéfini(5);
+                AfficheAlbum();
+            }
+            else
+            {
+                listeAlbumsVisualiser.Clear();
+                AffectationCinqAlbum(5);
+                AfficheAlbum();
+            }
         }
         #endregion
 
@@ -271,6 +302,24 @@ namespace PT2
 
                 }
                 
+            }
+            AfficheAlbum();
+        }
+        #endregion
+
+        #region Selectionné dans liste prédéfini
+        private void AffectationCinqAlbumPrédéfini(int ensemble)
+        {
+            int index = 0;
+            bool fini=false;
+            while (listeAlbumsVisualiser.Count < 5 && ((page * 5) + ensemble) < (nmbAlbum - 5) && !fini)
+            {
+                if (listeAlbumsEmpruntable.ContainsKey(index + (5 * page)))
+                {
+                    listeAlbumsVisualiser.Add(listeAlbumsEmpruntable[index + (5 * page)]);
+                    index++;
+                }
+                else { fini = true; }
             }
             AfficheAlbum();
         }
