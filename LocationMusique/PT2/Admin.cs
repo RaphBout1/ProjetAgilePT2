@@ -21,9 +21,6 @@ namespace PT2
         public Admin()
         {
             InitializeComponent();
-            enRetard();
-            LivreEmprunteProlongé();
-            abonnésAPurger();
             listerAbonnés();
             desactiverCasier();
             albumsUS8 = albumPasEmpruntesDepuis1An();
