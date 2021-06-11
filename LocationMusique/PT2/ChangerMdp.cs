@@ -29,7 +29,7 @@ namespace PT2
         {
             utilisateur = abonne;
             estAdmin = "admin".Equals((utilisateur.LOGIN_ABONNÉ).Trim());
-            AncienMdpLabel.Visible = !estAdmin;
+            labelAncien.Visible = !estAdmin;
             AncienMdpTextBox.Visible = !estAdmin;
         }
 
@@ -66,5 +66,7 @@ namespace PT2
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+
     }
 }
