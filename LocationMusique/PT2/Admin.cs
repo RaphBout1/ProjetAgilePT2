@@ -286,9 +286,8 @@ namespace PT2
         /// <summary>
         /// Rend visible ou invisible (toggle) l'ensemble des éléments liés à l'allée et au casier des disques.
         /// </summary>
-        public void toggleCasiers()
+        public void toggleCasiers(bool afficher)
         {
-            bool afficher = !comboAllée.Visible;
             comboAllée.Visible = afficher;
             comboCasier.Visible = afficher;
             allee.Visible = afficher;
@@ -309,6 +308,7 @@ namespace PT2
             buttonChangerMdp.Visible = false;
             precButton.Visible = false;
             suivantButton.Visible = false;
+            toggleCasiers(false);
         }
 
         private void moinsPopulaireButton_Click(object sender, EventArgs e)
@@ -324,6 +324,7 @@ namespace PT2
             buttonChangerMdp.Visible = false;
             precButton.Visible = true;
             suivantButton.Visible = true;
+            toggleCasiers(false);
         }
 
         private void purgerModeButton_Click(object sender, EventArgs e)
@@ -343,7 +344,7 @@ namespace PT2
             dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
             purgeModeOn = false;
             purgebutton.Visible = false;
-            toggleCasiers();
+            toggleCasiers(false);
             Refresh();
         }
 
@@ -354,7 +355,7 @@ namespace PT2
             purgebutton.Visible = false;
             precButton.Visible = false;
             suivantButton.Visible = false;
-            toggleCasiers();
+            toggleCasiers(false);
             Refresh();
         }
 
@@ -369,6 +370,7 @@ namespace PT2
             buttonChangerMdp.Visible = true;
             precButton.Visible = false;
             suivantButton.Visible = false;
+            toggleCasiers(false);
         }
 
         private void buttonChangerMdp_Click(object sender, EventArgs e)
@@ -383,7 +385,7 @@ namespace PT2
             precButton.Visible = false;
             suivantButton.Visible = false;
             listerAllées();
-            toggleCasiers();
+            toggleCasiers(true);
         }
 
         private void buttonCasier_Click(object sender, EventArgs e)
