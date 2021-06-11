@@ -29,7 +29,7 @@ namespace PT2Test
             }
             aDb = (from ab in musiqueSQL.ABONNÉS where ab.LOGIN_ABONNÉ == testLogin select ab).FirstOrDefault();
             Assert.IsTrue(aDb == null);
-            Inscription.abonner("test", "test", "France", testLogin, "test");
+            Inscription.abonner("test", "test", "France", testLogin, "test", "test");
             musiqueSQL.SaveChanges();
             aDb = (from ab in musiqueSQL.ABONNÉS where ab.LOGIN_ABONNÉ == testLogin select ab).FirstOrDefault();
             Assert.IsFalse(aDb == null);
@@ -45,10 +45,10 @@ namespace PT2Test
             var aDb = (from ab in musiqueSQL.ABONNÉS where ab.LOGIN_ABONNÉ == testLogin select ab).FirstOrDefault();
             if (aDb == null)
             {
-                Inscription.abonner("test", "test", "France", testLogin, "test");
+                Inscription.abonner("test", "test", "France", testLogin, "test", "test");
                 musiqueSQL.SaveChanges();
             }
-            Inscription.abonner("test", "test", "France", testLogin, "test");
+            Inscription.abonner("test", "test", "France", testLogin, "test", "test");
             musiqueSQL.SaveChanges();
         }
 
@@ -65,7 +65,7 @@ namespace PT2Test
                 admin.purgerAbonné(aDb.CODE_ABONNÉ);
                 musiqueSQL.SaveChanges();
             }
-            Inscription.abonner("", "test", "France", testLogin, "test");
+            Inscription.abonner("", "test", "France", testLogin, "test", "test");
             musiqueSQL.SaveChanges();
         }
 
@@ -82,7 +82,7 @@ namespace PT2Test
                 admin.purgerAbonné(aDb.CODE_ABONNÉ);
                 musiqueSQL.SaveChanges();
             }
-            Inscription.abonner("test", "", "France", testLogin, "test");
+            Inscription.abonner("test", "", "France", testLogin, "test", "test");
             musiqueSQL.SaveChanges();
         }
 
@@ -99,7 +99,7 @@ namespace PT2Test
                 admin.purgerAbonné(aDb.CODE_ABONNÉ);
                 musiqueSQL.SaveChanges();
             }
-            Inscription.abonner("test", "test", "PaysInvalide", testLogin, "test");
+            Inscription.abonner("test", "test", "PaysInvalide", testLogin, "test", "test");
             musiqueSQL.SaveChanges();
         }
     }
