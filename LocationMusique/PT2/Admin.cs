@@ -16,7 +16,7 @@ namespace PT2
         private readonly static string logAdmin = "admin";
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
-        private bool listeabonneVisible = false;
+
 
         public Admin()
         {
@@ -31,7 +31,7 @@ namespace PT2
         /// <returns>La Liste en question.</returns>
         public List<ABONNÉS> enRetard()
         {
-            listBoxGlobale.Items.Clear();
+
             List<ABONNÉS> enretard10 = new List<ABONNÉS>();
             var listemprunt = from l in musiqueSQL.EMPRUNTER select l;
             foreach (EMPRUNTER e in listemprunt)
@@ -39,17 +39,16 @@ namespace PT2
                 if (e.enRetard())
                 {
                     enretard10.Add(e.ABONNÉS);
-                    listBoxGlobale.Items.Add(e.ABONNÉS);
-
                 }
             }
-            Refresh();
+
             return enretard10;
         }
 
-        private void LivreEmprunteProlongé()
+        private List<EMPRUNTER> LivreEmprunteProlongé()
         {
-            listBoxGlobale.Items.Clear();
+            List<EMPRUNTER> prolongeList = new List<EMPRUNTER>();
+            //listBoxGlobale.Items.Clear();
             var lesLivresEmpruntes =
                    from m in musiqueSQL.EMPRUNTER
                    select m;
@@ -58,13 +57,17 @@ namespace PT2
             {
                 if (!(m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) >= 0) && m.DATE_RETOUR == null)
                 {
-                    listBoxGlobale.Items.Add(m);
+                    //listBoxGlobale.Items.Add(m);
+                    prolongeList.Add(m);
                 }
             }
-            Refresh();
+            return prolongeList;
         }
 
-
+        private void remplirDataProlonge()
+        {
+            dataGridViewGlobale.DataSource = LivreEmprunteProlongé();
+        }
         /// <summary>
         /// Méthode permettant renvoyant une liste d'album
         /// Cette dernière contient les 10 albums les plus empruntés de la base
@@ -109,9 +112,10 @@ namespace PT2
         /// <summary>
         /// liste dans une listBox les abonnés purgeables
         /// </summary>
-        private void abonnésAPurger()
+        private List<ABONNÉS> abonnésAPurger()
         {
-            listBoxGlobale.Items.Clear();
+            //listBoxGlobale.Items.Clear();
+            List<ABONNÉS> aPurgerListe = new List<ABONNÉS>();
             DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ABONNÉ into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
             foreach (var kv in dates)
@@ -119,10 +123,19 @@ namespace PT2
                 if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) > 0)
                 {
                     ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
-                    listBoxGlobale.Items.Add(aPurger);
+                    aPurgerListe.Add(aPurger);
+                    //listBoxGlobale.Items.Add(aPurger);
                 }
             }
-            Refresh();
+            return aPurgerListe;
+        }
+
+        private void remplirDataAPurger()
+        {
+            dataGridViewGlobale.DataSource = abonnésAPurger();
+            dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
+            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
         }
 
         /// <summary>
@@ -149,20 +162,16 @@ namespace PT2
         {
             try
             {
-                ABONNÉS a = (ABONNÉS)listBoxGlobale.SelectedItem;
+                ABONNÉS a = dataGridViewGlobale.SelectedRows[0].DataBoundItem as ABONNÉS;
+                Console.WriteLine(a);
                 purgerAbonné(a.CODE_ABONNÉ);
                 purgebutton.Enabled = false;
-                abonnésAPurger();
+                remplirDataAPurger();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
             }
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            purgebutton.Enabled = true;
         }
 
         /**
@@ -188,18 +197,25 @@ namespace PT2
         /*
          * Liste les abonnés
          */
-        private void listerAbonnés()
+        private List<ABONNÉS> listerAbonnés()
         {
+            List<ABONNÉS> abo = new List<ABONNÉS>();
             var abonnés = from a in musiqueSQL.ABONNÉS orderby a.NOM_ABONNÉ select a;
             foreach (ABONNÉS a in abonnés)
             {
-                listBoxAbonnés.Items.Add(a);
+                abo.Add(a);
             }
+            return abo;
+        }
+
+        private void remplirDataViewAbo()
+        {
+            dataGridViewGlobale.DataSource = listerAbonnés();
         }
 
         private void changerMdp()
         {
-            ABONNÉS a = (ABONNÉS)listBoxAbonnés.SelectedItem;
+            ABONNÉS a = dataGridViewGlobale.SelectedRows[0].DataBoundItem as ABONNÉS;
             ChangerMdp changementMdp = new ChangerMdp((from abo in musiqueSQL.ABONNÉS where abo.LOGIN_ABONNÉ == logAdmin select abo).First());
             if (changementMdp.ShowDialog() == DialogResult.OK)
             {
@@ -228,22 +244,43 @@ namespace PT2
         /// </summary>
         private void remplir10pluspopulaires()
         {
-            listBoxGlobale.Items.Clear();
-            foreach (ALBUMS i in DixPlusVue())
+            dataGridViewGlobale.DataSource = DixPlusVue();
+            dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
+            for (int i = 0; i < dataGridViewGlobale.RowCount; i++)
             {
-                listBoxGlobale.Items.Add(i.ToString() + nombreEmprunt(i));
+                dataGridViewGlobale.Rows[i].Height = 100;
             }
+            for (int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
+            {
+                dataGridViewGlobale.Columns[i].Width = 100;
+            }
+            dataGridViewGlobale.RowHeadersWidth = 5;
+            dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Refresh();
         }
         /// <summary>
         /// Vide et remplit la listeboxglobale avec les albums non empruntés depuis 1 an.
         /// </summary>
         private void remplirAlbumsPasEmpruntes1An()
         {
-            listBoxGlobale.Items.Clear();
-            foreach (ALBUMS i in albumPasEmpruntesDepuis1An())
+            dataGridViewGlobale.DataSource = albumPasEmpruntesDepuis1An().ToList();
+            dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
+            for(int i = 0; i < dataGridViewGlobale.RowCount; i++)
             {
-                listBoxGlobale.Items.Add(i);
+                dataGridViewGlobale.Rows[i].Height = 100;
             }
+            for(int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
+            {
+                dataGridViewGlobale.Columns[i].Width = 100;
+            }
+            dataGridViewGlobale.RowHeadersWidth = 5;
+            dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Refresh();
+           
         }
 
         /// <summary>
@@ -291,7 +328,7 @@ namespace PT2
 
         private void purgerModeButton_Click(object sender, EventArgs e)
         {
-            abonnésAPurger();
+            remplirDataAPurger();
             purgeModeOn = true;
             Refresh();
 
@@ -307,7 +344,10 @@ namespace PT2
 
         private void enRetardButton_Click(object sender, EventArgs e)
         {
-            enRetard();
+            dataGridViewGlobale.DataSource = enRetard();
+            dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
+            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false; 
             purgeModeOn = false;
             purgebutton.Enabled = false;
             desactiverCasier();
@@ -316,7 +356,7 @@ namespace PT2
 
         private void prolongesButton_Click(object sender, EventArgs e)
         {
-            LivreEmprunteProlongé();
+            remplirDataProlonge();
             purgeModeOn = false;
             purgebutton.Enabled = false;
             desactiverCasier();
@@ -325,9 +365,10 @@ namespace PT2
 
         private void listeAbonnés_Click(object sender, EventArgs e)
         {
-            listeabonneVisible = !listeabonneVisible;
-            listBoxAbonnés.Visible = listeabonneVisible;
-            Refresh();
+            remplirDataViewAbo();
+            dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
+            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
         }
 
         private void buttonChangerMdp_Click(object sender, EventArgs e)
@@ -403,6 +444,14 @@ namespace PT2
             else
             {
                 throw new InformationsInvalidesException("Le champ allée ou le champ casier ne présente pas de sélection valide.");
+            }
+        }
+
+        private void dataGridViewGlobale_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (purgeModeOn)
+            {
+                purgebutton.Enabled = true;
             }
         }
     }
