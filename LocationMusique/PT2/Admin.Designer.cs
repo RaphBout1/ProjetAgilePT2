@@ -40,14 +40,16 @@ namespace PT2
             this.listeAbonnés = new System.Windows.Forms.Button();
             this.buttonChangerMdp = new System.Windows.Forms.Button();
             this.quitter = new System.Windows.Forms.Button();
-            this.labelAllée = new System.Windows.Forms.Label();
-            this.labelCasier = new System.Windows.Forms.Label();
             this.buttonCasier = new System.Windows.Forms.Button();
             this.buttonAllée = new System.Windows.Forms.Button();
             this.dataGridViewGlobale = new System.Windows.Forms.DataGridView();
             this.comboAllée = new System.Windows.Forms.ComboBox();
             this.comboCasier = new System.Windows.Forms.ComboBox();
+            this.allee = new System.Windows.Forms.PictureBox();
+            this.caiser = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.caiser)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -203,32 +205,23 @@ namespace PT2
             this.quitter.UseVisualStyleBackColor = false;
             this.quitter.Click += new System.EventHandler(this.quitter_Click);
             // 
-            // labelAllée
-            // 
-            this.labelAllée.AutoSize = true;
-            this.labelAllée.Location = new System.Drawing.Point(532, 47);
-            this.labelAllée.Name = "labelAllée";
-            this.labelAllée.Size = new System.Drawing.Size(36, 13);
-            this.labelAllée.TabIndex = 22;
-            this.labelAllée.Text = "Allée :";
-            // 
-            // labelCasier
-            // 
-            this.labelCasier.AutoSize = true;
-            this.labelCasier.Location = new System.Drawing.Point(521, 143);
-            this.labelCasier.Name = "labelCasier";
-            this.labelCasier.Size = new System.Drawing.Size(65, 13);
-            this.labelCasier.TabIndex = 23;
-            this.labelCasier.Text = "Casier num :";
-            // 
             // buttonCasier
             // 
-            this.buttonCasier.Location = new System.Drawing.Point(542, 239);
+            this.buttonCasier.BackColor = System.Drawing.Color.Transparent;
+            this.buttonCasier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCasier.BackgroundImage")));
+            this.buttonCasier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonCasier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCasier.FlatAppearance.BorderSize = 0;
+            this.buttonCasier.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonCasier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.buttonCasier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCasier.Location = new System.Drawing.Point(1401, 9);
             this.buttonCasier.Name = "buttonCasier";
-            this.buttonCasier.Size = new System.Drawing.Size(75, 23);
+            this.buttonCasier.Size = new System.Drawing.Size(56, 48);
             this.buttonCasier.TabIndex = 24;
-            this.buttonCasier.Text = "Rechercher";
-            this.buttonCasier.UseVisualStyleBackColor = true;
+            this.buttonCasier.Text = " ";
+            this.buttonCasier.UseVisualStyleBackColor = false;
+            this.buttonCasier.Visible = false;
             this.buttonCasier.Click += new System.EventHandler(this.buttonCasier_Click);
             // 
             // buttonAllée
@@ -250,29 +243,63 @@ namespace PT2
             // dataGridViewGlobale
             // 
             this.dataGridViewGlobale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGlobale.Location = new System.Drawing.Point(645, 21);
+            this.dataGridViewGlobale.Location = new System.Drawing.Point(650, 67);
             this.dataGridViewGlobale.Name = "dataGridViewGlobale";
             this.dataGridViewGlobale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewGlobale.Size = new System.Drawing.Size(685, 775);
+            this.dataGridViewGlobale.Size = new System.Drawing.Size(685, 758);
             this.dataGridViewGlobale.TabIndex = 26;
             this.dataGridViewGlobale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGlobale_CellContentClick);
             // 
             // comboAllée
             // 
+            this.comboAllée.BackColor = System.Drawing.Color.LightGray;
+            this.comboAllée.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboAllée.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboAllée.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboAllée.FormattingEnabled = true;
-            this.comboAllée.Location = new System.Drawing.Point(496, 82);
+            this.comboAllée.Location = new System.Drawing.Point(749, 12);
             this.comboAllée.Name = "comboAllée";
-            this.comboAllée.Size = new System.Drawing.Size(121, 21);
+            this.comboAllée.Size = new System.Drawing.Size(121, 37);
             this.comboAllée.TabIndex = 27;
+            this.comboAllée.Visible = false;
             this.comboAllée.SelectedIndexChanged += new System.EventHandler(this.comboAllée_SelectedIndexChanged);
             // 
             // comboCasier
             // 
+            this.comboCasier.BackColor = System.Drawing.Color.LightGray;
+            this.comboCasier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboCasier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboCasier.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboCasier.FormattingEnabled = true;
-            this.comboCasier.Location = new System.Drawing.Point(496, 182);
+            this.comboCasier.Location = new System.Drawing.Point(1261, 12);
             this.comboCasier.Name = "comboCasier";
-            this.comboCasier.Size = new System.Drawing.Size(121, 21);
+            this.comboCasier.Size = new System.Drawing.Size(121, 37);
             this.comboCasier.TabIndex = 28;
+            this.comboCasier.Visible = false;
+            // 
+            // allee
+            // 
+            this.allee.BackColor = System.Drawing.Color.Transparent;
+            this.allee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("allee.BackgroundImage")));
+            this.allee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.allee.Location = new System.Drawing.Point(409, 4);
+            this.allee.Name = "allee";
+            this.allee.Size = new System.Drawing.Size(334, 50);
+            this.allee.TabIndex = 29;
+            this.allee.TabStop = false;
+            this.allee.Visible = false;
+            // 
+            // caiser
+            // 
+            this.caiser.BackColor = System.Drawing.Color.Transparent;
+            this.caiser.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("caiser.BackgroundImage")));
+            this.caiser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.caiser.Location = new System.Drawing.Point(876, -2);
+            this.caiser.Name = "caiser";
+            this.caiser.Size = new System.Drawing.Size(379, 63);
+            this.caiser.TabIndex = 30;
+            this.caiser.TabStop = false;
+            this.caiser.Visible = false;
             // 
             // Admin
             // 
@@ -281,13 +308,13 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.caiser);
+            this.Controls.Add(this.allee);
             this.Controls.Add(this.comboCasier);
             this.Controls.Add(this.comboAllée);
             this.Controls.Add(this.dataGridViewGlobale);
             this.Controls.Add(this.buttonAllée);
             this.Controls.Add(this.buttonCasier);
-            this.Controls.Add(this.labelCasier);
-            this.Controls.Add(this.labelAllée);
             this.Controls.Add(this.quitter);
             this.Controls.Add(this.buttonChangerMdp);
             this.Controls.Add(this.listeAbonnés);
@@ -304,8 +331,9 @@ namespace PT2
             this.Name = "Admin";
             this.Text = "Admin";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.caiser)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -320,12 +348,12 @@ namespace PT2
         private System.Windows.Forms.Button listeAbonnés;
         private System.Windows.Forms.Button buttonChangerMdp;
         private System.Windows.Forms.Button quitter;
-        private System.Windows.Forms.Label labelAllée;
-        private System.Windows.Forms.Label labelCasier;
         private System.Windows.Forms.Button buttonCasier;
         private System.Windows.Forms.Button buttonAllée;
         private System.Windows.Forms.DataGridView dataGridViewGlobale;
         private System.Windows.Forms.ComboBox comboAllée;
         private System.Windows.Forms.ComboBox comboCasier;
+        private System.Windows.Forms.PictureBox allee;
+        private System.Windows.Forms.PictureBox caiser;
     }
 }
