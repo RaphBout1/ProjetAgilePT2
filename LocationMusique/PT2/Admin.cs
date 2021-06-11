@@ -328,7 +328,7 @@ namespace PT2
         {
             listeabonneVisible = !listeabonneVisible;
             listBoxAbonnés.Visible = listeabonneVisible;
-            label4.Visible = listeabonneVisible;
+
             Refresh();
         }
 
