@@ -41,6 +41,9 @@ namespace PT2
             this.afficherMdp = new System.Windows.Forms.CheckBox();
             this.affichermdp2 = new System.Windows.Forms.CheckBox();
             this.affichermdp3 = new System.Windows.Forms.CheckBox();
+            this.pasAfficher1 = new System.Windows.Forms.CheckBox();
+            this.pasAfficher2 = new System.Windows.Forms.CheckBox();
+            this.pasAfficher3 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.labelAncien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -149,6 +152,7 @@ namespace PT2
             this.afficherMdp.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.afficherMdp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.afficherMdp.FlatAppearance.BorderSize = 0;
+            this.afficherMdp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.afficherMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.afficherMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.afficherMdp.Location = new System.Drawing.Point(706, 68);
@@ -156,6 +160,7 @@ namespace PT2
             this.afficherMdp.Size = new System.Drawing.Size(43, 43);
             this.afficherMdp.TabIndex = 19;
             this.afficherMdp.UseVisualStyleBackColor = false;
+            this.afficherMdp.Visible = false;
             this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
             // 
             // affichermdp2
@@ -167,6 +172,7 @@ namespace PT2
             this.affichermdp2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.affichermdp2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.affichermdp2.FlatAppearance.BorderSize = 0;
+            this.affichermdp2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.affichermdp2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.affichermdp2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.affichermdp2.Location = new System.Drawing.Point(706, 161);
@@ -185,6 +191,7 @@ namespace PT2
             this.affichermdp3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.affichermdp3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.affichermdp3.FlatAppearance.BorderSize = 0;
+            this.affichermdp3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.affichermdp3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.affichermdp3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.affichermdp3.Location = new System.Drawing.Point(706, 263);
@@ -194,6 +201,67 @@ namespace PT2
             this.affichermdp3.UseVisualStyleBackColor = false;
             this.affichermdp3.CheckedChanged += new System.EventHandler(this.affichermdp3_CheckedChanged);
             // 
+            // pasAfficher1
+            // 
+            this.pasAfficher1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.pasAfficher1.BackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pasAfficher1.BackgroundImage")));
+            this.pasAfficher1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pasAfficher1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pasAfficher1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pasAfficher1.FlatAppearance.BorderSize = 0;
+            this.pasAfficher1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.pasAfficher1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pasAfficher1.Location = new System.Drawing.Point(706, 68);
+            this.pasAfficher1.Name = "pasAfficher1";
+            this.pasAfficher1.Size = new System.Drawing.Size(43, 43);
+            this.pasAfficher1.TabIndex = 23;
+            this.pasAfficher1.UseVisualStyleBackColor = false;
+            this.pasAfficher1.Visible = false;
+            this.pasAfficher1.CheckedChanged += new System.EventHandler(this.pasAfficher1_CheckedChanged);
+            // 
+            // pasAfficher2
+            // 
+            this.pasAfficher2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.pasAfficher2.BackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pasAfficher2.BackgroundImage")));
+            this.pasAfficher2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pasAfficher2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pasAfficher2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pasAfficher2.FlatAppearance.BorderSize = 0;
+            this.pasAfficher2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.pasAfficher2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pasAfficher2.Location = new System.Drawing.Point(706, 161);
+            this.pasAfficher2.Name = "pasAfficher2";
+            this.pasAfficher2.Size = new System.Drawing.Size(43, 43);
+            this.pasAfficher2.TabIndex = 24;
+            this.pasAfficher2.UseVisualStyleBackColor = false;
+            this.pasAfficher2.Visible = false;
+            this.pasAfficher2.CheckedChanged += new System.EventHandler(this.pasAfficher2_CheckedChanged);
+            // 
+            // pasAfficher3
+            // 
+            this.pasAfficher3.Appearance = System.Windows.Forms.Appearance.Button;
+            this.pasAfficher3.BackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pasAfficher3.BackgroundImage")));
+            this.pasAfficher3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pasAfficher3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pasAfficher3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pasAfficher3.FlatAppearance.BorderSize = 0;
+            this.pasAfficher3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.pasAfficher3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pasAfficher3.Location = new System.Drawing.Point(706, 263);
+            this.pasAfficher3.Name = "pasAfficher3";
+            this.pasAfficher3.Size = new System.Drawing.Size(43, 43);
+            this.pasAfficher3.TabIndex = 25;
+            this.pasAfficher3.UseVisualStyleBackColor = false;
+            this.pasAfficher3.Visible = false;
+            this.pasAfficher3.CheckedChanged += new System.EventHandler(this.pasAfficher3_CheckedChanged);
+            // 
             // ChangerMdp
             // 
             this.AcceptButton = this.buttonOK;
@@ -202,6 +270,9 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 411);
+            this.Controls.Add(this.pasAfficher3);
+            this.Controls.Add(this.pasAfficher2);
+            this.Controls.Add(this.pasAfficher1);
             this.Controls.Add(this.affichermdp3);
             this.Controls.Add(this.affichermdp2);
             this.Controls.Add(this.afficherMdp);
@@ -213,6 +284,7 @@ namespace PT2
             this.Controls.Add(this.textBoxMdpConfirm);
             this.Controls.Add(this.textBoxMdp);
             this.Controls.Add(this.buttonAnnuler);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -238,5 +310,8 @@ namespace PT2
         private System.Windows.Forms.CheckBox afficherMdp;
         private System.Windows.Forms.CheckBox affichermdp2;
         private System.Windows.Forms.CheckBox affichermdp3;
+        private System.Windows.Forms.CheckBox pasAfficher1;
+        private System.Windows.Forms.CheckBox pasAfficher2;
+        private System.Windows.Forms.CheckBox pasAfficher3;
     }
 }

@@ -154,6 +154,8 @@ namespace PT2
             afficherMdp.Visible = true;
             confirmerPicture.Visible = true;
             affichemdp2.Visible = true;
+            pasAfficher.Visible = true;
+            pasAfficher2.Visible = true;
         }
 
         private void retour_Click(object sender, EventArgs e)
@@ -178,17 +180,38 @@ namespace PT2
             afficherMdp.Visible = false;
             confirmerPicture.Visible = false;
             affichemdp2.Visible = false;
+            pasAfficher.Visible = false;
+            pasAfficher2.Visible = false;
         }
 
         private void afficherMdp_CheckedChanged(object sender, EventArgs e)
         {
-            passwordText.UseSystemPasswordChar = !passwordText.UseSystemPasswordChar;
+            passwordText.UseSystemPasswordChar = false;
+            afficherMdp.Visible = false;
+            pasAfficher.Visible = true;
 
         }
 
         private void affichemdp2_CheckedChanged(object sender, EventArgs e)
         {
-            confirmationMdpBox.UseSystemPasswordChar = !confirmationMdpBox.UseSystemPasswordChar;
+            confirmationMdpBox.UseSystemPasswordChar = false;
+            affichemdp2.Visible = false;
+            pasAfficher2.Visible = true;
+        }
+
+        private void pasAfficher_CheckedChanged(object sender, EventArgs e)
+        {
+            passwordText.UseSystemPasswordChar = true;
+            afficherMdp.Visible = true;
+            pasAfficher.Visible = false;
+
+        }
+
+        private void pasAfficher2_CheckedChanged(object sender, EventArgs e)
+        {
+            confirmationMdpBox.UseSystemPasswordChar = true;
+            affichemdp2.Visible = true;
+            pasAfficher2.Visible = false;
         }
     }
 }
