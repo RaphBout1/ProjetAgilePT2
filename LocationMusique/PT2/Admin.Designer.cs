@@ -265,7 +265,7 @@ namespace PT2
             this.comboAllée.TabIndex = 27;
             this.comboAllée.TextChanged += new System.EventHandler(this.comboAllée_TextChanged);
             this.comboAllée.Visible = false;
-            this.comboAllée.SelectedIndexChanged += new System.EventHandler(this.comboAllée_SelectedIndexChanged);
+
             // 
             // comboCasier
             // 

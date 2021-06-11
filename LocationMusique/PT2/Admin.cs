@@ -472,13 +472,13 @@ namespace PT2
                 }
             }
         }
-
+        /**
         private void quitter_Click(object sender, EventArgs e)
         {
             fenetrePrecedente.Visible = true;
             this.Close();
         }
-
+        */
         private void suivantButton_Click(object sender, EventArgs e)
         {
             page++;
