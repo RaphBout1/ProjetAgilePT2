@@ -240,11 +240,14 @@ namespace PT2
         /// </summary>
         private void remplirAlbumsPasEmpruntes1An()
         {
-            listBoxGlobale.Items.Clear();
-            foreach (ALBUMS i in albumPasEmpruntesDepuis1An())
-            {
-                listBoxGlobale.Items.Add(i);
-            }
+            dataGridViewGlobale.DataSource = albumPasEmpruntesDepuis1An().ToList();
+            dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
+            dataGridViewGlobale.AutoResizeRows();
+            dataGridViewGlobale.AutoResizeColumns();
+            Refresh();
+           
         }
 
         private void listerAllées()
