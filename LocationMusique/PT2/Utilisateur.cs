@@ -463,7 +463,6 @@ namespace PT2
             else { prolonger1Button.Enabled = false; }
         }
         #endregion
-        #endregion
 
         #region Importer Image
         public Image ConstructionImageDepuisByte(byte[] tabByte)

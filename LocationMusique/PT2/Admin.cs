@@ -186,13 +186,20 @@ namespace PT2
         /*
          * Liste les abonnés
          */
-        private void listerAbonnés()
+        private List<ABONNÉS> listerAbonnés()
         {
+            List<ABONNÉS> abo = new List<ABONNÉS>();
             var abonnés = from a in musiqueSQL.ABONNÉS orderby a.NOM_ABONNÉ select a;
             foreach (ABONNÉS a in abonnés)
             {
-                listBoxAbonnés.Items.Add(a);
+                abo.Add(a);
             }
+            return abo;
+        }
+
+        private void remplirDataViewAbo()
+        {
+            dataGridViewGlobale.DataSource = listerAbonnés();
         }
 
         private void changerMdp()
@@ -347,9 +354,10 @@ namespace PT2
 
         private void listeAbonnés_Click(object sender, EventArgs e)
         {
-            listeabonneVisible = !listeabonneVisible;
-            listBoxAbonnés.Visible = listeabonneVisible;
-            Refresh();
+            remplirDataViewAbo();
+            dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
+            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
         }
 
         private void buttonChangerMdp_Click(object sender, EventArgs e)
