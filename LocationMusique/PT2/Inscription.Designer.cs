@@ -186,11 +186,12 @@ namespace PT2
             // afficherMdp
             // 
             this.afficherMdp.AutoSize = true;
+            this.afficherMdp.BackColor = System.Drawing.Color.Transparent;
             this.afficherMdp.Location = new System.Drawing.Point(1528, 257);
             this.afficherMdp.Name = "afficherMdp";
             this.afficherMdp.Size = new System.Drawing.Size(15, 14);
             this.afficherMdp.TabIndex = 18;
-            this.afficherMdp.UseVisualStyleBackColor = true;
+            this.afficherMdp.UseVisualStyleBackColor = false;
             this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
             // 
             // Inscription

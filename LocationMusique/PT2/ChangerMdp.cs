@@ -31,6 +31,7 @@ namespace PT2
             estAdmin = "admin".Equals((utilisateur.LOGIN_ABONNÉ).Trim());
             labelAncien.Visible = !estAdmin;
             AncienMdpTextBox.Visible = !estAdmin;
+            mdpCheckBox.Visible = !estAdmin;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -58,7 +59,7 @@ namespace PT2
             {
                 if (!estAdmin)
                 {
-                    if (!AncienMdpTextBox.Text.Equals(utilisateur.PASSWORD_ABONNÉ.Trim()))
+                    if (!Inscription.crypterMot(AncienMdpTextBox.Text).Equals(utilisateur.PASSWORD_ABONNÉ.Trim()))
                     {
                         throw new InformationsInvalidesException("Le mot de passe donné ne correspond pas à l'ancien mot de passe.");
                     }
@@ -66,7 +67,26 @@ namespace PT2
                 this.DialogResult = DialogResult.OK;
             }
         }
+        /// <summary>
+        /// Change l'affichage du mot de passe (ancien) avec des étoiles ou non
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mdpCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AncienMdpTextBox.UseSystemPasswordChar = !AncienMdpTextBox.UseSystemPasswordChar;
+        }
+        /// <summary>
+        /// Change l'affichage du mot de passe (nouveau) ainsi que sa confirmation avec des étoiles ou non
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void nvMdpCheckBox_Click(object sender, EventArgs e)
+        {
+            textBoxMdp.UseSystemPasswordChar = !textBoxMdp.UseSystemPasswordChar;
+            textBoxMdpConfirm.UseSystemPasswordChar = !textBoxMdpConfirm.UseSystemPasswordChar;
 
 
+        }
     }
 }
