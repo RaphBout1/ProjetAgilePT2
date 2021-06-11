@@ -343,8 +343,6 @@ namespace PT2
         private void buttonAllée_Click(object sender, EventArgs e)
         {
             listerAllées();
-            listBoxAllée.Visible = true;
-            labelAllée.Visible = true;
         }
 
         private void listBoxAllée_SelectedIndexChanged(object sender, EventArgs e)
@@ -352,18 +350,12 @@ namespace PT2
             var allée = listBoxAllée.SelectedItem;
             if (allée != null)
             {
-                listBoxCasier.Visible = true;
-                labelCasier.Visible = true;
                 listBoxCasier.Items.Clear();
                 var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée.ToString() group a by a.CASIER_ALBUM into casier select casier.Key;
                 foreach (int i in casiers)
                 {
                     listBoxCasier.Items.Add(i);
                 }
-            }
-            else
-            {
-                buttonCasier.Visible = false;
             }
         }
 
