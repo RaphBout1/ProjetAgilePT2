@@ -353,8 +353,10 @@ namespace PT2
             remplirDataProlonge();
             purgeModeOn = false;
             purgebutton.Visible = false;
+            enRetardButton.Visible = false;
             precButton.Visible = false;
             suivantButton.Visible = false;
+            purgerModeButton.Visible = false;
             toggleCasiers(false);
             Refresh();
         }
@@ -384,6 +386,9 @@ namespace PT2
         {
             precButton.Visible = false;
             suivantButton.Visible = false;
+            purgebutton.Visible = false;
+            enRetardButton.Visible = false;
+            purgerModeButton.Visible = false;
             listerAllées();
             toggleCasiers(true);
         }
