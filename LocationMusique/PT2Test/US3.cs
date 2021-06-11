@@ -54,11 +54,10 @@ namespace PT2Test
             /**
             //Test 1 : si un emprunt n'a jamais été fait, fonctionne
             resetEmprunt();
-            Assert.IsTrue(user.empruntProlongeable(emprunt1, album1));
+            Assert.IsTrue(user.empruntProlongeable(emprunt1));
             //Test 2 : si un emprunt a déjà été fait, ne fonctionne pas 
             resetEmprunt();
-            Assert.IsFalse(user.empruntProlongeable(emprunt2, album2));
-            */
+            Assert.IsFalse(user.empruntProlongeable(emprunt2));
         }
     }
 }
