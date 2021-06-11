@@ -44,6 +44,9 @@ namespace PT2
             this.enCours = new System.Windows.Forms.Button();
             this.listViewConsultation = new System.Windows.Forms.ListView();
             this.utilisateurChangerMdp = new System.Windows.Forms.Button();
+            this.boutonPageRetour = new System.Windows.Forms.Button();
+            this.boutonPageSuivant = new System.Windows.Forms.Button();
+            this.labelPage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nom
@@ -224,16 +227,6 @@ namespace PT2
             this.enCours.UseVisualStyleBackColor = false;
             this.enCours.Click += new System.EventHandler(this.enCours_Click);
             // 
-            // utilisateurChangerMdp
-            // 
-            this.utilisateurChangerMdp.Location = new System.Drawing.Point(223, 599);
-            this.utilisateurChangerMdp.Name = "utilisateurChangerMdp";
-            this.utilisateurChangerMdp.Size = new System.Drawing.Size(145, 23);
-            this.utilisateurChangerMdp.TabIndex = 18;
-            this.utilisateurChangerMdp.Text = "changer mot de passe";
-            this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
-            this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
-            // 
             // listViewConsultation
             // 
             this.listViewConsultation.HideSelection = false;
@@ -245,6 +238,48 @@ namespace PT2
             this.listViewConsultation.UseCompatibleStateImageBehavior = false;
             this.listViewConsultation.SelectedIndexChanged += new System.EventHandler(this.listViewConsultation_SelectedIndexChanged);
             // 
+            // utilisateurChangerMdp
+            // 
+            this.utilisateurChangerMdp.Location = new System.Drawing.Point(223, 599);
+            this.utilisateurChangerMdp.Name = "utilisateurChangerMdp";
+            this.utilisateurChangerMdp.Size = new System.Drawing.Size(145, 23);
+            this.utilisateurChangerMdp.TabIndex = 18;
+            this.utilisateurChangerMdp.Text = "changer mot de passe";
+            this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
+            this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
+            // 
+            // boutonPageRetour
+            // 
+            this.boutonPageRetour.Location = new System.Drawing.Point(1497, 624);
+            this.boutonPageRetour.Name = "boutonPageRetour";
+            this.boutonPageRetour.Size = new System.Drawing.Size(75, 23);
+            this.boutonPageRetour.TabIndex = 19;
+            this.boutonPageRetour.Text = "Retour";
+            this.boutonPageRetour.UseVisualStyleBackColor = true;
+            this.boutonPageRetour.Visible = false;
+            this.boutonPageRetour.Click += new System.EventHandler(this.boutonPageRetour_Click);
+            // 
+            // boutonPageSuivant
+            // 
+            this.boutonPageSuivant.Location = new System.Drawing.Point(1497, 554);
+            this.boutonPageSuivant.Name = "boutonPageSuivant";
+            this.boutonPageSuivant.Size = new System.Drawing.Size(75, 23);
+            this.boutonPageSuivant.TabIndex = 20;
+            this.boutonPageSuivant.Text = "Suivant";
+            this.boutonPageSuivant.UseVisualStyleBackColor = true;
+            this.boutonPageSuivant.Visible = false;
+            this.boutonPageSuivant.Click += new System.EventHandler(this.boutonPageSuivant_Click);
+            // 
+            // labelPage
+            // 
+            this.labelPage.AutoSize = true;
+            this.labelPage.BackColor = System.Drawing.Color.Transparent;
+            this.labelPage.Location = new System.Drawing.Point(1503, 599);
+            this.labelPage.Name = "labelPage";
+            this.labelPage.Size = new System.Drawing.Size(16, 13);
+            this.labelPage.TabIndex = 21;
+            this.labelPage.Text = "   ";
+            // 
             // Utilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,6 +287,9 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.labelPage);
+            this.Controls.Add(this.boutonPageSuivant);
+            this.Controls.Add(this.boutonPageRetour);
             this.Controls.Add(this.utilisateurChangerMdp);
             this.Controls.Add(this.listViewConsultation);
             this.Controls.Add(this.enCours);
@@ -289,5 +327,8 @@ namespace PT2
         private System.Windows.Forms.Button enCours;
         private System.Windows.Forms.ListView listViewConsultation;
         private System.Windows.Forms.Button utilisateurChangerMdp;
+        private System.Windows.Forms.Button boutonPageRetour;
+        private System.Windows.Forms.Button boutonPageSuivant;
+        private System.Windows.Forms.Label labelPage;
     }
 }
