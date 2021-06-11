@@ -38,8 +38,10 @@ namespace PT2
             this.labelAncien = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.nvMdpCheckBox = new System.Windows.Forms.CheckBox();
             this.mdpCheckBox = new System.Windows.Forms.CheckBox();
+            this.afficherMdp = new System.Windows.Forms.CheckBox();
+            this.affichermdp2 = new System.Windows.Forms.CheckBox();
+            this.affichermdp3 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.labelAncien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -139,27 +141,66 @@ namespace PT2
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
-            // nvMdpCheckBox
-            // 
-            this.nvMdpCheckBox.AutoSize = true;
-            this.nvMdpCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.nvMdpCheckBox.Location = new System.Drawing.Point(715, 224);
-            this.nvMdpCheckBox.Name = "nvMdpCheckBox";
-            this.nvMdpCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.nvMdpCheckBox.TabIndex = 12;
-            this.nvMdpCheckBox.UseVisualStyleBackColor = false;
-            this.nvMdpCheckBox.Click += new System.EventHandler(this.nvMdpCheckBox_Click);
-            // 
             // mdpCheckBox
             // 
-            this.mdpCheckBox.AutoSize = true;
-            this.mdpCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.mdpCheckBox.Location = new System.Drawing.Point(741, 89);
+            this.mdpCheckBox.Location = new System.Drawing.Point(0, 0);
             this.mdpCheckBox.Name = "mdpCheckBox";
-            this.mdpCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.mdpCheckBox.TabIndex = 13;
-            this.mdpCheckBox.UseVisualStyleBackColor = false;
-            this.mdpCheckBox.CheckedChanged += new System.EventHandler(this.mdpCheckBox_CheckedChanged);
+            this.mdpCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.mdpCheckBox.TabIndex = 20;
+            // 
+            // afficherMdp
+            // 
+            this.afficherMdp.Appearance = System.Windows.Forms.Appearance.Button;
+            this.afficherMdp.BackColor = System.Drawing.Color.Transparent;
+            this.afficherMdp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("afficherMdp.BackgroundImage")));
+            this.afficherMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.afficherMdp.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.afficherMdp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.afficherMdp.FlatAppearance.BorderSize = 0;
+            this.afficherMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.afficherMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.afficherMdp.Location = new System.Drawing.Point(706, 68);
+            this.afficherMdp.Name = "afficherMdp";
+            this.afficherMdp.Size = new System.Drawing.Size(43, 43);
+            this.afficherMdp.TabIndex = 19;
+            this.afficherMdp.UseVisualStyleBackColor = false;
+            this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
+            // 
+            // affichermdp2
+            // 
+            this.affichermdp2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.affichermdp2.BackColor = System.Drawing.Color.Transparent;
+            this.affichermdp2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("affichermdp2.BackgroundImage")));
+            this.affichermdp2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.affichermdp2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.affichermdp2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.affichermdp2.FlatAppearance.BorderSize = 0;
+            this.affichermdp2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.affichermdp2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.affichermdp2.Location = new System.Drawing.Point(706, 161);
+            this.affichermdp2.Name = "affichermdp2";
+            this.affichermdp2.Size = new System.Drawing.Size(43, 43);
+            this.affichermdp2.TabIndex = 21;
+            this.affichermdp2.UseVisualStyleBackColor = false;
+            this.affichermdp2.CheckedChanged += new System.EventHandler(this.affichermdp2_CheckedChanged);
+            // 
+            // affichermdp3
+            // 
+            this.affichermdp3.Appearance = System.Windows.Forms.Appearance.Button;
+            this.affichermdp3.BackColor = System.Drawing.Color.Transparent;
+            this.affichermdp3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("affichermdp3.BackgroundImage")));
+            this.affichermdp3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.affichermdp3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.affichermdp3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.affichermdp3.FlatAppearance.BorderSize = 0;
+            this.affichermdp3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.affichermdp3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.affichermdp3.Location = new System.Drawing.Point(706, 263);
+            this.affichermdp3.Name = "affichermdp3";
+            this.affichermdp3.Size = new System.Drawing.Size(43, 43);
+            this.affichermdp3.TabIndex = 22;
+            this.affichermdp3.UseVisualStyleBackColor = false;
+            this.affichermdp3.CheckedChanged += new System.EventHandler(this.affichermdp3_CheckedChanged);
             // 
             // ChangerMdp
             // 
@@ -169,8 +210,10 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 411);
+            this.Controls.Add(this.affichermdp3);
+            this.Controls.Add(this.affichermdp2);
+            this.Controls.Add(this.afficherMdp);
             this.Controls.Add(this.mdpCheckBox);
-            this.Controls.Add(this.nvMdpCheckBox);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelAncien);
@@ -179,6 +222,7 @@ namespace PT2
             this.Controls.Add(this.textBoxMdpConfirm);
             this.Controls.Add(this.textBoxMdp);
             this.Controls.Add(this.buttonAnnuler);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangerMdp";
             this.Text = "Changer mot de passe";
             ((System.ComponentModel.ISupportInitialize)(this.labelAncien)).EndInit();
@@ -198,7 +242,9 @@ namespace PT2
         private System.Windows.Forms.PictureBox labelAncien;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.CheckBox nvMdpCheckBox;
         private System.Windows.Forms.CheckBox mdpCheckBox;
+        private System.Windows.Forms.CheckBox afficherMdp;
+        private System.Windows.Forms.CheckBox affichermdp2;
+        private System.Windows.Forms.CheckBox affichermdp3;
     }
 }

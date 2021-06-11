@@ -68,12 +68,14 @@ namespace PT2
             pseudo.Clear();
             mdp.Clear();
         }
+
+
         /// <summary>
         /// Affiche le mot de passe dans la textbox en clair ou non en fonction du statut de la checkbox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void afficherMdpCheckBox_Click(object sender, EventArgs e)
+        private void afficherMdp_CheckedChanged(object sender, EventArgs e)
         {
             mdp.UseSystemPasswordChar = !mdp.UseSystemPasswordChar;
         }

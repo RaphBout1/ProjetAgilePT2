@@ -411,6 +411,7 @@ namespace PT2
             // 
             // rechercherButton
             // 
+            this.rechercherButton.AccessibleDescription = "";
             this.rechercherButton.BackColor = System.Drawing.Color.Transparent;
             this.rechercherButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rechercherButton.BackgroundImage")));
             this.rechercherButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -428,6 +429,7 @@ namespace PT2
             // 
             // UtilisateurUSEmprunt
             // 
+            this.AcceptButton = this.rechercherButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));

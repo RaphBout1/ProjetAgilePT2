@@ -43,14 +43,17 @@ namespace PT2
             this.retour = new System.Windows.Forms.Button();
             this.confirmationMdpBox = new System.Windows.Forms.TextBox();
             this.afficherMdp = new System.Windows.Forms.CheckBox();
+            this.confirmerPicture = new System.Windows.Forms.PictureBox();
+            this.affichemdp2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nomPrenomPaysImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginmdpImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.confirmerPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // loginText
             // 
             this.loginText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginText.Location = new System.Drawing.Point(1093, 96);
+            this.loginText.Location = new System.Drawing.Point(1051, 34);
             this.loginText.Name = "loginText";
             this.loginText.Size = new System.Drawing.Size(408, 35);
             this.loginText.TabIndex = 0;
@@ -58,7 +61,7 @@ namespace PT2
             // passwordText
             // 
             this.passwordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordText.Location = new System.Drawing.Point(1093, 240);
+            this.passwordText.Location = new System.Drawing.Point(1051, 179);
             this.passwordText.Name = "passwordText";
             this.passwordText.Size = new System.Drawing.Size(408, 35);
             this.passwordText.TabIndex = 3;
@@ -154,7 +157,7 @@ namespace PT2
             // 
             this.loginmdpImage.BackColor = System.Drawing.Color.Transparent;
             this.loginmdpImage.Image = ((System.Drawing.Image)(resources.GetObject("loginmdpImage.Image")));
-            this.loginmdpImage.Location = new System.Drawing.Point(828, -3);
+            this.loginmdpImage.Location = new System.Drawing.Point(782, -67);
             this.loginmdpImage.Name = "loginmdpImage";
             this.loginmdpImage.Size = new System.Drawing.Size(280, 356);
             this.loginmdpImage.TabIndex = 15;
@@ -178,23 +181,62 @@ namespace PT2
             // 
             // confirmationMdpBox
             // 
-            this.confirmationMdpBox.Location = new System.Drawing.Point(1150, 371);
+            this.confirmationMdpBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmationMdpBox.Location = new System.Drawing.Point(1051, 295);
             this.confirmationMdpBox.Name = "confirmationMdpBox";
-            this.confirmationMdpBox.Size = new System.Drawing.Size(100, 20);
+            this.confirmationMdpBox.Size = new System.Drawing.Size(408, 35);
             this.confirmationMdpBox.TabIndex = 17;
+            this.confirmationMdpBox.UseSystemPasswordChar = true;
             this.confirmationMdpBox.Visible = false;
             // 
             // afficherMdp
             // 
-            this.afficherMdp.AutoSize = true;
+            this.afficherMdp.Appearance = System.Windows.Forms.Appearance.Button;
             this.afficherMdp.BackColor = System.Drawing.Color.Transparent;
-            this.afficherMdp.Location = new System.Drawing.Point(1528, 257);
+            this.afficherMdp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("afficherMdp.BackgroundImage")));
+            this.afficherMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.afficherMdp.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.afficherMdp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.afficherMdp.FlatAppearance.BorderSize = 0;
+            this.afficherMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.afficherMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.afficherMdp.Location = new System.Drawing.Point(1507, 179);
             this.afficherMdp.Name = "afficherMdp";
-            this.afficherMdp.Size = new System.Drawing.Size(15, 14);
+            this.afficherMdp.Size = new System.Drawing.Size(43, 43);
             this.afficherMdp.TabIndex = 18;
             this.afficherMdp.UseVisualStyleBackColor = false;
             this.afficherMdp.Visible = false;
             this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
+            // 
+            // confirmerPicture
+            // 
+            this.confirmerPicture.BackColor = System.Drawing.Color.Transparent;
+            this.confirmerPicture.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("confirmerPicture.BackgroundImage")));
+            this.confirmerPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.confirmerPicture.Location = new System.Drawing.Point(734, 278);
+            this.confirmerPicture.Name = "confirmerPicture";
+            this.confirmerPicture.Size = new System.Drawing.Size(280, 61);
+            this.confirmerPicture.TabIndex = 19;
+            this.confirmerPicture.TabStop = false;
+            // 
+            // affichemdp2
+            // 
+            this.affichemdp2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.affichemdp2.BackColor = System.Drawing.Color.Transparent;
+            this.affichemdp2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("affichemdp2.BackgroundImage")));
+            this.affichemdp2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.affichemdp2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.affichemdp2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.affichemdp2.FlatAppearance.BorderSize = 0;
+            this.affichemdp2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.affichemdp2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.affichemdp2.Location = new System.Drawing.Point(1507, 295);
+            this.affichemdp2.Name = "affichemdp2";
+            this.affichemdp2.Size = new System.Drawing.Size(43, 43);
+            this.affichemdp2.TabIndex = 20;
+            this.affichemdp2.UseVisualStyleBackColor = false;
+            this.affichemdp2.Visible = false;
+            this.affichemdp2.CheckedChanged += new System.EventHandler(this.affichemdp2_CheckedChanged);
             // 
             // Inscription
             // 
@@ -204,6 +246,8 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.affichemdp2);
+            this.Controls.Add(this.confirmerPicture);
             this.Controls.Add(this.afficherMdp);
             this.Controls.Add(this.confirmationMdpBox);
             this.Controls.Add(this.retour);
@@ -218,10 +262,12 @@ namespace PT2
             this.Controls.Add(this.nomText);
             this.Controls.Add(this.nomPrenomPaysImage);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inscription";
             this.Text = "Inscription";
             ((System.ComponentModel.ISupportInitialize)(this.nomPrenomPaysImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginmdpImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.confirmerPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +288,7 @@ namespace PT2
         private System.Windows.Forms.Button retour;
         private System.Windows.Forms.TextBox confirmationMdpBox;
         private System.Windows.Forms.CheckBox afficherMdp;
+        private System.Windows.Forms.PictureBox confirmerPicture;
+        private System.Windows.Forms.CheckBox affichemdp2;
     }
 }
