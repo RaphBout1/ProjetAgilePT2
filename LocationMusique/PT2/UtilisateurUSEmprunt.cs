@@ -82,7 +82,7 @@ namespace PT2
             monthCalendarClassique.Visible = false;// a enlever pour test
             compteurAlbum = 0;
             page = 0;
-            labelPage.Text = "Page : " + page.ToString();
+            labelPage.Text = "Page : " + (page+1).ToString();
             caseY.Add(57, 212);
             caseY.Add(220, 375);
             caseY.Add(384, 539);
@@ -352,7 +352,7 @@ namespace PT2
         /// </summary>
         private void AfficheAlbum()
         {
-            labelPage.Text = "Page : " + page.ToString();
+            labelPage.Text = "Page : " + (page+1).ToString();
             for (int index = 0; index < 5; index++)
             {
                 switch (index)

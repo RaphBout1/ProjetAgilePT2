@@ -17,6 +17,10 @@ namespace PT2
         private ABONNÉS utilisateur;
         MusiquePT2_DEntities musiqueSQL = new MusiquePT2_DEntities();
         Dictionary<GENRES, int> listeGenreEmprunte = new Dictionary<GENRES, int>();
+        #region listView Emprunt
+        List<EMPRUNTER> EnsembleEmpruntPouvantEtreAfficher = new List<EMPRUNTER>();
+        int page;
+        #endregion
         EMPRUNTER empruntCourant = new EMPRUNTER();
 
         public Utilisateur(ABONNÉS uti)
@@ -42,7 +46,7 @@ namespace PT2
             {
                 listeFinale.Add(e);
             }
-            PlacerNouvelleInfo(listeFinale);
+            enregistrerDansListe(listeFinale);
             Refresh();
         }
 
@@ -75,7 +79,7 @@ namespace PT2
                 }
                 else
                 {
-                    throw new ProlongementEmpruntException("L'album : "+emDb.ALBUMS.TITRE_ALBUM+"\n"+
+                    throw new ProlongementEmpruntException("L'album : " + emDb.ALBUMS.TITRE_ALBUM + "\n" +
                         "Emprunt déjà prolongé!");
                 }
             }
@@ -184,7 +188,7 @@ namespace PT2
         {
             try
             {
-                foreach(ListViewItem i in listViewConsultation.SelectedItems)
+                foreach (ListViewItem i in listViewConsultation.SelectedItems)
                 {
                     Console.WriteLine(i.Text);
                     empruntCourant = retrouveEmprunter_ListViewItem(i);
@@ -266,13 +270,13 @@ namespace PT2
         /// </summary>
         private void actualiserListeEnRetard()
         {
-            PlacerNouvelleInfo(empruntEnRetard());
+            enregistrerDansListe(empruntEnRetard());
             Refresh();
         }
 
         private void actualiserListeEnCours()
         {
-            PlacerNouvelleInfo(empruntEnCours());
+            enregistrerDansListe(empruntEnCours());
             Refresh();
         }
 
@@ -286,7 +290,7 @@ namespace PT2
             var emprunt = from e in musiqueSQL.EMPRUNTER
                           where e.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
                           select e;
-            List < EMPRUNTER > listefinale = new List<EMPRUNTER>();
+            List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
             foreach (EMPRUNTER i in emprunt)
             {
                 if (i.DATE_RETOUR == null)
@@ -337,7 +341,6 @@ namespace PT2
         private void PlacerNouvelleInfo(List<EMPRUNTER> le)
         {
             listViewConsultation.Items.Clear();
-            if (le.Count == 0) { MessageBox.Show("Il n'y a aucun album dans cette catégorie !"); }
             ImageList imageListSmall = new ImageList();
             int compteurEmpruntTemp = 0;
             foreach (EMPRUNTER e in le)
@@ -385,6 +388,58 @@ namespace PT2
             ColumnHeaderAutoResizeStyle.ColumnContent);
             #endregion
         }
+        #endregion
+
+        #region pagination
+        private void enregistrerDansListe(List<EMPRUNTER> le)
+        {
+            if (le.Count == 0) { MessageBox.Show("Il n'y a aucun album dans cette catégorie !"); }
+            else
+            {
+                EnsembleEmpruntPouvantEtreAfficher = le;
+                page = 0;
+                boutonPageSuivant.Visible = true;
+                boutonPageRetour.Visible = true;
+                changerPage();
+            }
+
+        }
+
+        private void changerPage()
+        {
+            labelPage.Text = "Page : "+(page+1).ToString();
+            int nmbEmpruntParPage = 30;
+            List<EMPRUNTER> listAAfficher = new List<EMPRUNTER>();
+            for (int i = page * nmbEmpruntParPage; i < page * nmbEmpruntParPage + nmbEmpruntParPage; i++)
+            {
+                if (EnsembleEmpruntPouvantEtreAfficher.Count > i)
+                {
+                    listAAfficher.Add(EnsembleEmpruntPouvantEtreAfficher[i]);
+                }
+            }
+            if (page == 0) { boutonPageRetour.Enabled = false; }
+            if (listAAfficher.Count< nmbEmpruntParPage)
+            {
+                boutonPageSuivant.Enabled = false;
+            }
+            PlacerNouvelleInfo(listAAfficher);
+        }
+
+        #region bouton
+        private void boutonPageSuivant_Click(object sender, EventArgs e)
+        {
+            page++;
+            changerPage();
+            boutonPageRetour.Enabled = true;
+        }
+
+        private void boutonPageRetour_Click(object sender, EventArgs e)
+        {
+            page--;
+            changerPage();
+            boutonPageSuivant.Enabled = true;
+        }
+        #endregion
         #endregion
         #endregion
 
@@ -434,5 +489,7 @@ namespace PT2
         {
             changerMdp();
         }
+
+
     }
 }
