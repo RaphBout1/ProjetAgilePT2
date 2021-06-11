@@ -17,8 +17,8 @@ namespace PT2
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
         Connexion fenetrePrecedente;
-
-
+        int page;
+        List<ALBUMS> listeaffiche;
         public Admin(Connexion fenetrePrecedente)
         {
             InitializeComponent();
@@ -26,6 +26,17 @@ namespace PT2
             listerAllées();
             albumsUS8 = albumPasEmpruntesDepuis1An();
             this.fenetrePrecedente = fenetrePrecedente;
+            page = 0;
+            listeaffiche = new List<ALBUMS>();
+        }
+        public Admin()
+        {
+            InitializeComponent();
+            listerAbonnés();
+            listerAllées();
+            albumsUS8 = albumPasEmpruntesDepuis1An();
+            page = 0;
+            listeaffiche = new List<ALBUMS>();
         }
         /// <summary>
         /// Renvoie une liste d'abonnée ayant un emprunt non rendu en retard de 10 jours sur la date de rendue attendue.
@@ -322,7 +333,8 @@ namespace PT2
 
         private void moinsPopulaireButton_Click(object sender, EventArgs e)
         {
-            remplirAlbumsPasEmpruntes1An();
+            page = 0;
+            changerPage();
             purgeModeOn = false;
             Refresh();
             toggleCasiers();
@@ -459,6 +471,58 @@ namespace PT2
         {
             fenetrePrecedente.Visible = true;
             this.Close();
+        }
+
+        private void suivantButton_Click(object sender, EventArgs e)
+        {
+            page++;
+            Console.WriteLine(page);
+            changerPage();
+            precButton.Visible = true;
+        }
+
+        private void precButton_Click(object sender, EventArgs e)
+        {
+            page--;
+            changerPage();
+            suivantButton.Visible = true;
+        }
+
+        private void changerPage()
+        {
+            var listetotale = albumPasEmpruntesDepuis1An().ToList();
+            int nmb = 6;
+            listeaffiche.Clear();
+            for(int i = page * nmb; i < page * nmb + nmb; i++)
+            {
+                if (listetotale.Count > i)
+                {
+                    listeaffiche.Add(listetotale[i]);
+                }
+            }
+            if (page == 0)
+            {
+                precButton.Visible = false;
+            }
+            if (listeaffiche.Count < nmb)
+            {
+                suivantButton.Visible = false;
+            }
+            dataGridViewGlobale.DataSource = listeaffiche;
+            dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
+            for (int i = 0; i < dataGridViewGlobale.RowCount; i++)
+            {
+                dataGridViewGlobale.Rows[i].Height = 100;
+            }
+            for (int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
+            {
+                dataGridViewGlobale.Columns[i].Width = 100;
+            }
+            dataGridViewGlobale.RowHeadersWidth = 5;
+            dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Refresh();
         }
     }
 }

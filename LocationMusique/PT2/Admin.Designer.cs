@@ -47,6 +47,8 @@ namespace PT2
             this.dataGridViewGlobale = new System.Windows.Forms.DataGridView();
             this.comboAllée = new System.Windows.Forms.ComboBox();
             this.comboCasier = new System.Windows.Forms.ComboBox();
+            this.suivantButton = new System.Windows.Forms.Button();
+            this.precButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobale)).BeginInit();
             this.SuspendLayout();
             // 
@@ -274,6 +276,26 @@ namespace PT2
             this.comboCasier.Size = new System.Drawing.Size(121, 21);
             this.comboCasier.TabIndex = 28;
             // 
+            // suivantButton
+            // 
+            this.suivantButton.Location = new System.Drawing.Point(1392, 62);
+            this.suivantButton.Name = "suivantButton";
+            this.suivantButton.Size = new System.Drawing.Size(75, 23);
+            this.suivantButton.TabIndex = 29;
+            this.suivantButton.Text = "suivant";
+            this.suivantButton.UseVisualStyleBackColor = true;
+            this.suivantButton.Click += new System.EventHandler(this.suivantButton_Click);
+            // 
+            // precButton
+            // 
+            this.precButton.Location = new System.Drawing.Point(1392, 117);
+            this.precButton.Name = "precButton";
+            this.precButton.Size = new System.Drawing.Size(75, 23);
+            this.precButton.TabIndex = 30;
+            this.precButton.Text = "Précédent";
+            this.precButton.UseVisualStyleBackColor = true;
+            this.precButton.Click += new System.EventHandler(this.precButton_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,6 +303,8 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.precButton);
+            this.Controls.Add(this.suivantButton);
             this.Controls.Add(this.comboCasier);
             this.Controls.Add(this.comboAllée);
             this.Controls.Add(this.dataGridViewGlobale);
@@ -327,5 +351,7 @@ namespace PT2
         private System.Windows.Forms.DataGridView dataGridViewGlobale;
         private System.Windows.Forms.ComboBox comboAllée;
         private System.Windows.Forms.ComboBox comboCasier;
+        private System.Windows.Forms.Button suivantButton;
+        private System.Windows.Forms.Button precButton;
     }
 }
