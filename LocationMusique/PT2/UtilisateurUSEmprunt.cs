@@ -24,6 +24,7 @@ namespace PT2
         int nmbAlbum;
         ALBUMS albumAEmprunter;
         ABONNÉS utilisateur;
+        Utilisateur fenetrePrecedente;
         #endregion
 
         #region Constructeur
@@ -32,13 +33,14 @@ namespace PT2
         /// cette méthode initialise les 5 premiers albums empruntables et affichés
         /// </summary>
         /// <param name="utilisateur"> l'abonnée voulant emprunter un album </param>
-        public UtilisateurUSEmprunt(ABONNÉS utilisateur)
+        public UtilisateurUSEmprunt(ABONNÉS utilisateur, Utilisateur fenetrePrecedente)
         {
             InitializeComponent();
             this.utilisateur = utilisateur;
             InitialisationGlobaleDeVariable();
             listePredefini = false;
             AffectationCinqAlbum(0);
+            this.fenetrePrecedente = fenetrePrecedente;
         }
 
         /// <summary>
@@ -48,13 +50,14 @@ namespace PT2
         /// </summary>
         /// <param name="utilisateur">l'abonnée voulant emprunter</param>
         /// <param name="listeVoulu"> la liste d'album pouvant être consulté</param>
-        public UtilisateurUSEmprunt(ABONNÉS utilisateur, List<ALBUMS> listeVoulu)
+        public UtilisateurUSEmprunt(ABONNÉS utilisateur, List<ALBUMS> listeVoulu, Utilisateur fenetrePrecedente)
         {
             InitializeComponent();
             this.utilisateur = utilisateur;
             InitialisationGlobaleDeVariable();
             InitialisationListeAlbumPredefini(listeVoulu);
             AffectationCinqAlbumPrédéfini(5);
+            this.fenetrePrecedente = fenetrePrecedente;
         }
 
         /// <summary>
@@ -488,6 +491,7 @@ namespace PT2
 
         private void annuler_Click(object sender, EventArgs e)
         {
+            fenetrePrecedente.Visible = true;
             this.Close();
         }
 

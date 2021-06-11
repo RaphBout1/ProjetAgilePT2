@@ -197,6 +197,7 @@ namespace PT2
             this.quitter.Size = new System.Drawing.Size(346, 70);
             this.quitter.TabIndex = 11;
             this.quitter.UseVisualStyleBackColor = false;
+            this.quitter.Click += new System.EventHandler(this.quitter_Click);
             // 
             // retard
             // 
