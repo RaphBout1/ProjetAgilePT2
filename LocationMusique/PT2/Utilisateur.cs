@@ -28,7 +28,7 @@ namespace PT2
             prenom.Text = uti.PRÉNOM_ABONNÉ;
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
-            
+
         }
 
         /**
@@ -36,11 +36,13 @@ namespace PT2
          */
         public void ActualiseListeEmprunté()
         {
-            listBoxConsultEmprunt.Items.Clear();
+
+            List<EMPRUNTER> listeFinale = new List<EMPRUNTER>();
             foreach (EMPRUNTER e in NouveauxEmprunts())
             {
-                listBoxConsultEmprunt.Items.Add(e);
+                listeFinale.Add(e);
             }
+            PlacerNouvelleInfo(listeFinale);
             Refresh();
         }
 
@@ -54,21 +56,23 @@ namespace PT2
         /**
          * Tente de prolonger l'emprunt passé en paramètre
          */
-        public void ProlongerEmprunt(EMPRUNTER em)
+        public void ProlongerEmprunt(EMPRUNTER emprunt)
         {
-            if (em != null && em.DATE_RETOUR == null && retouveAlbum_Emprunter(em)!= null)
+            EMPRUNTER emDb = (from em in musiqueSQL.EMPRUNTER where emprunt.CODE_ABONNÉ == em.CODE_ABONNÉ && emprunt.CODE_ALBUM == em.CODE_ALBUM select em).FirstOrDefault();
+            if (emDb != null && emDb.DATE_RETOUR == null && emDb.ALBUMS != null)
             {
-                if (empruntProlongeable(em, retouveAlbum_Emprunter(em)))
+                if (empruntProlongeable(emDb))
                 {
-                    musiqueSQL.EMPRUNTER.Remove(em);
+                    musiqueSQL.EMPRUNTER.Remove(emDb);
                     musiqueSQL.SaveChanges();
-                    em.DATE_RETOUR_ATTENDUE = em.DATE_RETOUR_ATTENDUE.AddMonths(1);
-                    musiqueSQL.EMPRUNTER.Add(em);
+                    emDb.DATE_RETOUR_ATTENDUE = emDb.DATE_RETOUR_ATTENDUE.AddMonths(1);
+                    musiqueSQL.EMPRUNTER.Add(emDb);
                     musiqueSQL.SaveChanges();
                 }
                 else
                 {
-                    throw new ProlongementEmpruntException("Emprunt déjà prolongé!");
+                    throw new ProlongementEmpruntException("L'album : "+emDb.ALBUMS.TITRE_ALBUM+"\n"+
+                        "Emprunt déjà prolongé!");
                 }
             }
             else
@@ -80,9 +84,9 @@ namespace PT2
         /*
          * Renvoie true si l'emprunt de l'album sélectionné n'a jamais été prolongé.
          */
-        public bool empruntProlongeable(EMPRUNTER em, ALBUMS al)
+        public bool empruntProlongeable(EMPRUNTER em)
         {
-            if (em.DATE_EMPRUNT.AddDays(al.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
+            if (em.DATE_EMPRUNT.AddDays(em.ALBUMS.GENRES.DÉLAI).CompareTo(em.DATE_RETOUR_ATTENDUE) == 0 && em.DATE_RETOUR == null)
             {
                 return true;
             }
@@ -133,7 +137,7 @@ namespace PT2
                 var albums = (from a in albumsDuGenreDisponibles where a.CODE_GENRE == genre orderby a.EMPRUNTER.Count() select a).Take(nombreAlbumsAAfficher);
                 foreach (ALBUMS a in albums)
                 {
-                    listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM);
+                    //listBoxConsultEmprunt.Items.Add(a.TITRE_ALBUM);
                 }
                 Refresh();
             }
@@ -141,21 +145,6 @@ namespace PT2
         #endregion
 
         #endregion
-
-        /**
-         * Gère l'activation du bouton pour prolonger un emprunt (après sélection d'un item dans la listbox)
-         */
-        private void listBoxConsultEmprunt_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxConsultEmprunt.SelectedItem != null)
-            {
-                prolonger1Button.Enabled = true;
-            }
-            else
-            {
-                prolonger1Button.Enabled = false;
-            }
-        }
 
         /**
          * Appelle les fonctions nécessaires au prolongement de tous les emprunts
@@ -184,11 +173,16 @@ namespace PT2
         {
             try
             {
-                ProlongerEmprunt(empruntCourant);
-                ActualiseListeEmprunté();
-                prolonger1Button.Visible = false;
-                prolongerTousButton.Visible = false;
-                MessageBox.Show("L'emprunt de l'album " + empruntCourant.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
+                foreach(ListViewItem i in listViewConsultation.SelectedItems)
+                {
+                    Console.WriteLine(i.Text);
+                    empruntCourant = retrouveEmprunter_ListViewItem(i);
+                    ProlongerEmprunt(empruntCourant);
+                    ActualiseListeEmprunté();
+                    prolonger1Button.Visible = false;
+                    prolongerTousButton.Visible = false;
+                    MessageBox.Show("L'emprunt de l'album " + empruntCourant.ALBUMS.TITRE_ALBUM + " a bien été prolongé.");
+                }
             }
             catch (Exception ex)
             {
@@ -219,7 +213,6 @@ namespace PT2
 
         private void afficherEmprunts_Click(object sender, EventArgs e)
         {
-            listBoxConsultEmprunt.Items.Clear();
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
             enCours.Visible = true;
@@ -229,7 +222,6 @@ namespace PT2
 
         private void afficherRecommandations_Click(object sender, EventArgs e)
         {
-            listBoxConsultEmprunt.Items.Clear();
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
             enCours.Visible = false;
@@ -242,8 +234,11 @@ namespace PT2
         /// <returns>La liste</returns>
         private List<EMPRUNTER> empruntEnRetard()
         {
+            var emprunt = from e in musiqueSQL.EMPRUNTER
+                          where e.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
+                          select e;
             List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
-            foreach (EMPRUNTER i in utilisateur.EMPRUNTER)
+            foreach (EMPRUNTER i in emprunt)
             {
                 if (i.enRetard())
                 {
@@ -258,22 +253,12 @@ namespace PT2
         private void actualiserListeEnRetard()
         {
             PlacerNouvelleInfo(empruntEnRetard());
-            listBoxConsultEmprunt.Items.Clear();
-            foreach(EMPRUNTER i in empruntEnRetard())
-            {
-                listBoxConsultEmprunt.Items.Add(i);
-            }
             Refresh();
         }
 
         private void actualiserListeEnCours()
         {
             PlacerNouvelleInfo(empruntEnCours());
-            listBoxConsultEmprunt.Items.Clear();
-            foreach (EMPRUNTER i in empruntEnCours())
-            {
-                listBoxConsultEmprunt.Items.Add(i);
-            }
             Refresh();
         }
 
@@ -284,9 +269,13 @@ namespace PT2
         /// <returns>La liste</returns>
         private List<EMPRUNTER> empruntEnCours()
         {
-            List<EMPRUNTER> listefinale = new List<EMPRUNTER>();
-            foreach(EMPRUNTER i in utilisateur.EMPRUNTER){
-                if(i.DATE_RETOUR == null)
+            var emprunt = from e in musiqueSQL.EMPRUNTER
+                          where e.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
+                          select e;
+            List < EMPRUNTER > listefinale = new List<EMPRUNTER>();
+            foreach (EMPRUNTER i in emprunt)
+            {
+                if (i.DATE_RETOUR == null)
                 {
                     listefinale.Add(i);
                 }
@@ -320,6 +309,7 @@ namespace PT2
             listViewConsultation.View = View.Details;
             listViewConsultation.GridLines = true;
             listViewConsultation.Columns.Add("Titre", -2, HorizontalAlignment.Left);
+            listViewConsultation.Columns.Add("N°", -2, HorizontalAlignment.Left);
             listViewConsultation.Columns.Add("Date d'emprunt", -2, HorizontalAlignment.Center);
             listViewConsultation.Columns.Add("Date retour", -2, HorizontalAlignment.Center);
         }
@@ -333,14 +323,15 @@ namespace PT2
         private void PlacerNouvelleInfo(List<EMPRUNTER> le)
         {
             listViewConsultation.Items.Clear();
-            
+            if (le.Count == 0) { MessageBox.Show("Il n'y a aucun album dans cette catégorie !"); }
             ImageList imageListSmall = new ImageList();
             int compteurEmpruntTemp = 0;
-            foreach(EMPRUNTER e in le)
+            foreach (EMPRUNTER e in le)
             {
                 #region rajout d'une ligne
                 //création de l'item et mise en place titre
                 ListViewItem item = new ListViewItem(e.ALBUMS.TITRE_ALBUM, compteurEmpruntTemp);
+                item.SubItems.Add(e.CODE_ALBUM.ToString());
                 //date emprunt
                 item.SubItems.Add(e.DATE_EMPRUNT.ToString());
                 //date de retour ou la date prévue
@@ -351,8 +342,8 @@ namespace PT2
                 else
                 {
                     //prolongé ou pas 
-                    if (empruntProlongeable(e,e.ALBUMS)) { item.SubItems.Add("A retourner pour le : " + e.DATE_RETOUR_ATTENDUE.ToString()); }
-                    else { item.SubItems.Add("A retourner pour le : " + e.DATE_RETOUR_ATTENDUE.ToString()+" (Déjà prolongé)"); }
+                    if (empruntProlongeable(e)) { item.SubItems.Add("A retourner pour le : " + e.DATE_RETOUR_ATTENDUE.ToString()); }
+                    else { item.SubItems.Add("A retourner pour le : " + e.DATE_RETOUR_ATTENDUE.ToString() + " (Déjà prolongé)"); }
                 }
                 //image
                 if (e.ALBUMS.POCHETTE != null)
@@ -376,6 +367,8 @@ namespace PT2
             ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewConsultation.AutoResizeColumn(2,
             ColumnHeaderAutoResizeStyle.ColumnContent);
+            listViewConsultation.AutoResizeColumn(3,
+            ColumnHeaderAutoResizeStyle.ColumnContent);
             #endregion
         }
         #endregion
@@ -397,41 +390,19 @@ namespace PT2
         /// <param name="e"></param>
         private void listViewConsultation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int compteurIndexSelectionne = 0;
-            string titreAlbum = "";
-            foreach (ListViewItem lvi in listViewConsultation.SelectedItems)
-            {
-                compteurIndexSelectionne++;
-                Console.WriteLine(lvi.SubItems.ToString());
-                titreAlbum = lvi.SubItems.ToString();
-            }
-            if (compteurIndexSelectionne == 1)
-            {
-                var emprunt = from emp in musiqueSQL.EMPRUNTER
-                              where emp.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
-                              select emp;
-                foreach (EMPRUNTER emp in emprunt)
-                {
-                    if (emp.ALBUMS.TITRE_ALBUM == titreAlbum) { empruntCourant = emp; }
-                }
-                if (empruntCourant != null) { prolonger1Button.Enabled = true; }
-                else { prolonger1Button.Enabled = false; }
-            }
+            if (listViewConsultation.SelectedItems != null) { prolonger1Button.Enabled = true; }
+            else { prolonger1Button.Enabled = false; }
         }
 
-        #region retrouve Album
-        /// <summary>
-        /// Retrouve l'album correspond à un emprunt
-        /// </summary>
-        /// <param name="em"> l'emprunt dont on doit rechercher l'album </param>
-        /// <returns> l'album emprunté </returns>
-        private ALBUMS retouveAlbum_Emprunter(EMPRUNTER em)
+        #region retrouve Element
+
+        private EMPRUNTER retrouveEmprunter_ListViewItem(ListViewItem lvi)
         {
-            return (from e in musiqueSQL.EMPRUNTER
-                    join a in musiqueSQL.ALBUMS on e.CODE_ALBUM equals a.CODE_ALBUM
-                    where e.CODE_ABONNÉ == utilisateur.CODE_ABONNÉ
-                    select a).FirstOrDefault();
+            return (from a in musiqueSQL.ALBUMS
+                    join e in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals e.CODE_ALBUM
+                    where a.TITRE_ALBUM == lvi.Text && e.DATE_RETOUR == null
+                    select e).FirstOrDefault();
         }
-        #endregion
+        #endregion 
     }
 }

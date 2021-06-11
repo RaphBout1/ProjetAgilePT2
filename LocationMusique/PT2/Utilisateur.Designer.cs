@@ -30,7 +30,6 @@ namespace PT2
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Utilisateur));
-            this.listBoxConsultEmprunt = new System.Windows.Forms.ListBox();
             this.nom = new System.Windows.Forms.Label();
             this.prenom = new System.Windows.Forms.Label();
             this.prolonger1Button = new System.Windows.Forms.Button();
@@ -45,21 +44,6 @@ namespace PT2
             this.enCours = new System.Windows.Forms.Button();
             this.listViewConsultation = new System.Windows.Forms.ListView();
             this.SuspendLayout();
-            // 
-            // listBoxConsultEmprunt
-            // 
-            this.listBoxConsultEmprunt.BackColor = System.Drawing.Color.LightGray;
-            this.listBoxConsultEmprunt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxConsultEmprunt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxConsultEmprunt.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.listBoxConsultEmprunt.FormattingEnabled = true;
-            this.listBoxConsultEmprunt.HorizontalScrollbar = true;
-            this.listBoxConsultEmprunt.ItemHeight = 20;
-            this.listBoxConsultEmprunt.Location = new System.Drawing.Point(645, 68);
-            this.listBoxConsultEmprunt.Name = "listBoxConsultEmprunt";
-            this.listBoxConsultEmprunt.Size = new System.Drawing.Size(223, 40);
-            this.listBoxConsultEmprunt.TabIndex = 0;
-            this.listBoxConsultEmprunt.SelectedIndexChanged += new System.EventHandler(this.listBoxConsultEmprunt_SelectedIndexChanged);
             // 
             // nom
             // 
@@ -243,6 +227,7 @@ namespace PT2
             // 
             this.listViewConsultation.HideSelection = false;
             this.listViewConsultation.Location = new System.Drawing.Point(645, 114);
+            this.listViewConsultation.MultiSelect = false;
             this.listViewConsultation.Name = "listViewConsultation";
             this.listViewConsultation.Size = new System.Drawing.Size(839, 533);
             this.listViewConsultation.TabIndex = 14;
@@ -269,7 +254,6 @@ namespace PT2
             this.Controls.Add(this.prolonger1Button);
             this.Controls.Add(this.prenom);
             this.Controls.Add(this.nom);
-            this.Controls.Add(this.listBoxConsultEmprunt);
             this.DoubleBuffered = true;
             this.Name = "Utilisateur";
             this.Text = "Utilisateur";
@@ -279,8 +263,6 @@ namespace PT2
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxConsultEmprunt;
         private System.Windows.Forms.Label nom;
         private System.Windows.Forms.Label prenom;
         private System.Windows.Forms.Button prolonger1Button;
