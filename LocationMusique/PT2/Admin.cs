@@ -306,8 +306,8 @@ namespace PT2
             bool afficher = !comboAllée.Visible;
             comboAllée.Visible = afficher;
             comboCasier.Visible = afficher;
-            labelAllée.Visible = afficher;
-            labelCasier.Visible = afficher;
+            allee.Visible = afficher;
+            caiser.Visible = afficher;
             buttonCasier.Visible = afficher;
         }
 
