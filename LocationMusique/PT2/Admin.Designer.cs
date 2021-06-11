@@ -34,7 +34,6 @@ namespace PT2
             this.purgebutton = new System.Windows.Forms.Button();
             this.listBoxAbonnés = new System.Windows.Forms.ListBox();
             this.listBoxGlobale = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.enRetardButton = new System.Windows.Forms.Button();
             this.Pluspopulairebutton = new System.Windows.Forms.Button();
             this.purgerModeButton = new System.Windows.Forms.Button();
@@ -43,7 +42,6 @@ namespace PT2
             this.listeAbonnés = new System.Windows.Forms.Button();
             this.buttonChangerMdp = new System.Windows.Forms.Button();
             this.quitter = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.listBoxAllée = new System.Windows.Forms.ListBox();
             this.listBoxCasier = new System.Windows.Forms.ListBox();
             this.labelAllée = new System.Windows.Forms.Label();
@@ -62,7 +60,7 @@ namespace PT2
             // purgebutton
             // 
             this.purgebutton.Enabled = false;
-            this.purgebutton.Location = new System.Drawing.Point(572, 158);
+            this.purgebutton.Location = new System.Drawing.Point(1436, 479);
             this.purgebutton.Name = "purgebutton";
             this.purgebutton.Size = new System.Drawing.Size(126, 23);
             this.purgebutton.TabIndex = 6;
@@ -73,7 +71,7 @@ namespace PT2
             // listBoxAbonnés
             // 
             this.listBoxAbonnés.FormattingEnabled = true;
-            this.listBoxAbonnés.Location = new System.Drawing.Point(1099, 260);
+            this.listBoxAbonnés.Location = new System.Drawing.Point(1244, 117);
             this.listBoxAbonnés.Name = "listBoxAbonnés";
             this.listBoxAbonnés.Size = new System.Drawing.Size(328, 147);
             this.listBoxAbonnés.TabIndex = 7;
@@ -83,20 +81,11 @@ namespace PT2
             // listBoxGlobale
             // 
             this.listBoxGlobale.FormattingEnabled = true;
-            this.listBoxGlobale.Location = new System.Drawing.Point(586, 290);
+            this.listBoxGlobale.Location = new System.Drawing.Point(710, 159);
             this.listBoxGlobale.Name = "listBoxGlobale";
-            this.listBoxGlobale.Size = new System.Drawing.Size(316, 277);
+            this.listBoxGlobale.Size = new System.Drawing.Size(505, 602);
             this.listBoxGlobale.TabIndex = 9;
             this.listBoxGlobale.SelectedIndexChanged += new System.EventHandler(this.listBoxGlobale_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(599, 244);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "listBoxglobale";
             // 
             // enRetardButton
             // 
@@ -107,7 +96,7 @@ namespace PT2
             this.enRetardButton.FlatAppearance.BorderSize = 0;
             this.enRetardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.enRetardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enRetardButton.Location = new System.Drawing.Point(-16, 759);
+            this.enRetardButton.Location = new System.Drawing.Point(1322, 290);
             this.enRetardButton.Name = "enRetardButton";
             this.enRetardButton.Size = new System.Drawing.Size(309, 78);
             this.enRetardButton.TabIndex = 11;
@@ -124,7 +113,7 @@ namespace PT2
             this.Pluspopulairebutton.FlatAppearance.BorderSize = 0;
             this.Pluspopulairebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.Pluspopulairebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Pluspopulairebutton.Location = new System.Drawing.Point(111, 227);
+            this.Pluspopulairebutton.Location = new System.Drawing.Point(101, 210);
             this.Pluspopulairebutton.Name = "Pluspopulairebutton";
             this.Pluspopulairebutton.Size = new System.Drawing.Size(359, 80);
             this.Pluspopulairebutton.TabIndex = 12;
@@ -141,7 +130,7 @@ namespace PT2
             this.purgerModeButton.FlatAppearance.BorderSize = 0;
             this.purgerModeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.purgerModeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.purgerModeButton.Location = new System.Drawing.Point(12, 663);
+            this.purgerModeButton.Location = new System.Drawing.Point(1306, 374);
             this.purgerModeButton.Name = "purgerModeButton";
             this.purgerModeButton.Size = new System.Drawing.Size(325, 78);
             this.purgerModeButton.TabIndex = 13;
@@ -158,7 +147,7 @@ namespace PT2
             this.prolongesButton.FlatAppearance.BorderSize = 0;
             this.prolongesButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.prolongesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prolongesButton.Location = new System.Drawing.Point(42, 123);
+            this.prolongesButton.Location = new System.Drawing.Point(32, 117);
             this.prolongesButton.Name = "prolongesButton";
             this.prolongesButton.Size = new System.Drawing.Size(330, 64);
             this.prolongesButton.TabIndex = 14;
@@ -175,7 +164,7 @@ namespace PT2
             this.moinsPopulaireButton.FlatAppearance.BorderSize = 0;
             this.moinsPopulaireButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.moinsPopulaireButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.moinsPopulaireButton.Location = new System.Drawing.Point(164, 349);
+            this.moinsPopulaireButton.Location = new System.Drawing.Point(158, 312);
             this.moinsPopulaireButton.Name = "moinsPopulaireButton";
             this.moinsPopulaireButton.Size = new System.Drawing.Size(345, 81);
             this.moinsPopulaireButton.TabIndex = 15;
@@ -187,14 +176,14 @@ namespace PT2
             // 
             this.listeAbonnés.BackColor = System.Drawing.Color.Transparent;
             this.listeAbonnés.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("listeAbonnés.BackgroundImage")));
-            this.listeAbonnés.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.listeAbonnés.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.listeAbonnés.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listeAbonnés.FlatAppearance.BorderSize = 0;
             this.listeAbonnés.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.listeAbonnés.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listeAbonnés.Location = new System.Drawing.Point(138, 576);
+            this.listeAbonnés.Location = new System.Drawing.Point(80, 714);
             this.listeAbonnés.Name = "listeAbonnés";
-            this.listeAbonnés.Size = new System.Drawing.Size(342, 81);
+            this.listeAbonnés.Size = new System.Drawing.Size(149, 64);
             this.listeAbonnés.TabIndex = 16;
             this.listeAbonnés.Text = " ";
             this.listeAbonnés.UseVisualStyleBackColor = false;
@@ -202,12 +191,17 @@ namespace PT2
             // 
             // buttonChangerMdp
             // 
-            this.buttonChangerMdp.Location = new System.Drawing.Point(1099, 469);
+            this.buttonChangerMdp.BackColor = System.Drawing.Color.Transparent;
+            this.buttonChangerMdp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonChangerMdp.BackgroundImage")));
+            this.buttonChangerMdp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonChangerMdp.FlatAppearance.BorderSize = 0;
+            this.buttonChangerMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.buttonChangerMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangerMdp.Location = new System.Drawing.Point(1383, 541);
             this.buttonChangerMdp.Name = "buttonChangerMdp";
-            this.buttonChangerMdp.Size = new System.Drawing.Size(98, 23);
+            this.buttonChangerMdp.Size = new System.Drawing.Size(189, 50);
             this.buttonChangerMdp.TabIndex = 17;
-            this.buttonChangerMdp.Text = "changer mdp";
-            this.buttonChangerMdp.UseVisualStyleBackColor = true;
+            this.buttonChangerMdp.UseVisualStyleBackColor = false;
             this.buttonChangerMdp.Click += new System.EventHandler(this.buttonChangerMdp_Click);
             // 
             // quitter
@@ -226,19 +220,10 @@ namespace PT2
             this.quitter.Text = " ";
             this.quitter.UseVisualStyleBackColor = false;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1119, 201);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "label1";
-            // 
             // listBoxAllée
             // 
             this.listBoxAllée.FormattingEnabled = true;
-            this.listBoxAllée.Location = new System.Drawing.Point(586, 627);
+            this.listBoxAllée.Location = new System.Drawing.Point(555, 210);
             this.listBoxAllée.Name = "listBoxAllée";
             this.listBoxAllée.Size = new System.Drawing.Size(84, 173);
             this.listBoxAllée.TabIndex = 20;
@@ -247,7 +232,7 @@ namespace PT2
             // listBoxCasier
             // 
             this.listBoxCasier.FormattingEnabled = true;
-            this.listBoxCasier.Location = new System.Drawing.Point(729, 627);
+            this.listBoxCasier.Location = new System.Drawing.Point(555, 520);
             this.listBoxCasier.Name = "listBoxCasier";
             this.listBoxCasier.Size = new System.Drawing.Size(84, 173);
             this.listBoxCasier.TabIndex = 21;
@@ -256,7 +241,7 @@ namespace PT2
             // labelAllée
             // 
             this.labelAllée.AutoSize = true;
-            this.labelAllée.Location = new System.Drawing.Point(586, 608);
+            this.labelAllée.Location = new System.Drawing.Point(552, 194);
             this.labelAllée.Name = "labelAllée";
             this.labelAllée.Size = new System.Drawing.Size(36, 13);
             this.labelAllée.TabIndex = 22;
@@ -265,7 +250,7 @@ namespace PT2
             // labelCasier
             // 
             this.labelCasier.AutoSize = true;
-            this.labelCasier.Location = new System.Drawing.Point(729, 607);
+            this.labelCasier.Location = new System.Drawing.Point(552, 504);
             this.labelCasier.Name = "labelCasier";
             this.labelCasier.Size = new System.Drawing.Size(65, 13);
             this.labelCasier.TabIndex = 23;
@@ -273,7 +258,7 @@ namespace PT2
             // 
             // buttonCasier
             // 
-            this.buttonCasier.Location = new System.Drawing.Point(838, 627);
+            this.buttonCasier.Location = new System.Drawing.Point(564, 755);
             this.buttonCasier.Name = "buttonCasier";
             this.buttonCasier.Size = new System.Drawing.Size(75, 23);
             this.buttonCasier.TabIndex = 24;
@@ -283,12 +268,18 @@ namespace PT2
             // 
             // buttonAllée
             // 
-            this.buttonAllée.Location = new System.Drawing.Point(475, 718);
+            this.buttonAllée.BackColor = System.Drawing.Color.Transparent;
+            this.buttonAllée.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAllée.BackgroundImage")));
+            this.buttonAllée.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAllée.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAllée.FlatAppearance.BorderSize = 0;
+            this.buttonAllée.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.buttonAllée.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAllée.Location = new System.Drawing.Point(140, 427);
             this.buttonAllée.Name = "buttonAllée";
-            this.buttonAllée.Size = new System.Drawing.Size(85, 39);
+            this.buttonAllée.Size = new System.Drawing.Size(341, 126);
             this.buttonAllée.TabIndex = 25;
-            this.buttonAllée.Text = "Rechercher dans Casiers";
-            this.buttonAllée.UseVisualStyleBackColor = true;
+            this.buttonAllée.UseVisualStyleBackColor = false;
             this.buttonAllée.Click += new System.EventHandler(this.buttonAllée_Click);
             // 
             // Admin
@@ -304,7 +295,6 @@ namespace PT2
             this.Controls.Add(this.labelAllée);
             this.Controls.Add(this.listBoxCasier);
             this.Controls.Add(this.listBoxAllée);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.quitter);
             this.Controls.Add(this.buttonChangerMdp);
             this.Controls.Add(this.listeAbonnés);
@@ -313,11 +303,11 @@ namespace PT2
             this.Controls.Add(this.purgerModeButton);
             this.Controls.Add(this.Pluspopulairebutton);
             this.Controls.Add(this.enRetardButton);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.listBoxGlobale);
             this.Controls.Add(this.listBoxAbonnés);
             this.Controls.Add(this.purgebutton);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Admin";
             this.Text = "Admin";
             this.ResumeLayout(false);
@@ -330,7 +320,6 @@ namespace PT2
         private System.Windows.Forms.Button purgebutton;
         private System.Windows.Forms.ListBox listBoxAbonnés;
         private System.Windows.Forms.ListBox listBoxGlobale;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button enRetardButton;
         private System.Windows.Forms.Button Pluspopulairebutton;
         private System.Windows.Forms.Button purgerModeButton;
@@ -339,7 +328,6 @@ namespace PT2
         private System.Windows.Forms.Button listeAbonnés;
         private System.Windows.Forms.Button buttonChangerMdp;
         private System.Windows.Forms.Button quitter;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listBoxAllée;
         private System.Windows.Forms.ListBox listBoxCasier;
         private System.Windows.Forms.Label labelAllée;
