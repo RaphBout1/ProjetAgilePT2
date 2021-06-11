@@ -149,7 +149,8 @@ namespace PT2
             submit.Visible = true;
             retour.Visible = true;
             cancelButton.Visible = false;
-
+            confirmationMdpBox.Visible = true;
+            afficherMdp.Visible = true;
         }
 
         private void retour_Click(object sender, EventArgs e)
@@ -170,6 +171,8 @@ namespace PT2
             loginmdpImage.Visible = false;
             submit.Visible = false;
             retour.Visible = false;
+            confirmationMdpBox.Visible = false;
+            afficherMdp.Visible = false;
         }
 
         private void afficherMdp_CheckedChanged(object sender, EventArgs e)

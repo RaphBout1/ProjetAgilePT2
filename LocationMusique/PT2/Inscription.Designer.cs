@@ -182,6 +182,7 @@ namespace PT2
             this.confirmationMdpBox.Name = "confirmationMdpBox";
             this.confirmationMdpBox.Size = new System.Drawing.Size(100, 20);
             this.confirmationMdpBox.TabIndex = 17;
+            this.confirmationMdpBox.Visible = false;
             // 
             // afficherMdp
             // 
@@ -192,6 +193,7 @@ namespace PT2
             this.afficherMdp.Size = new System.Drawing.Size(15, 14);
             this.afficherMdp.TabIndex = 18;
             this.afficherMdp.UseVisualStyleBackColor = false;
+            this.afficherMdp.Visible = false;
             this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
             // 
             // Inscription
