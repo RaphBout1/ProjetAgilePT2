@@ -63,13 +63,20 @@ namespace PT2
             // 
             // purgebutton
             // 
+            this.purgebutton.BackColor = System.Drawing.Color.Transparent;
+            this.purgebutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("purgebutton.BackgroundImage")));
+            this.purgebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.purgebutton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.purgebutton.Enabled = false;
-            this.purgebutton.Location = new System.Drawing.Point(1436, 479);
+            this.purgebutton.FlatAppearance.BorderSize = 0;
+            this.purgebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.purgebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.purgebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.purgebutton.Location = new System.Drawing.Point(1363, 590);
             this.purgebutton.Name = "purgebutton";
-            this.purgebutton.Size = new System.Drawing.Size(126, 23);
+            this.purgebutton.Size = new System.Drawing.Size(189, 54);
             this.purgebutton.TabIndex = 6;
-            this.purgebutton.Text = "Purger l\'abonné";
-            this.purgebutton.UseVisualStyleBackColor = true;
+            this.purgebutton.UseVisualStyleBackColor = false;
             this.purgebutton.Click += new System.EventHandler(this.purgebutton_Click);
             // 
             // enRetardButton
@@ -81,7 +88,7 @@ namespace PT2
             this.enRetardButton.FlatAppearance.BorderSize = 0;
             this.enRetardButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.enRetardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enRetardButton.Location = new System.Drawing.Point(1322, 290);
+            this.enRetardButton.Location = new System.Drawing.Point(650, 745);
             this.enRetardButton.Name = "enRetardButton";
             this.enRetardButton.Size = new System.Drawing.Size(309, 78);
             this.enRetardButton.TabIndex = 11;
@@ -115,7 +122,7 @@ namespace PT2
             this.purgerModeButton.FlatAppearance.BorderSize = 0;
             this.purgerModeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.purgerModeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.purgerModeButton.Location = new System.Drawing.Point(1306, 374);
+            this.purgerModeButton.Location = new System.Drawing.Point(1010, 745);
             this.purgerModeButton.Name = "purgerModeButton";
             this.purgerModeButton.Size = new System.Drawing.Size(325, 78);
             this.purgerModeButton.TabIndex = 13;
@@ -182,7 +189,7 @@ namespace PT2
             this.buttonChangerMdp.FlatAppearance.BorderSize = 0;
             this.buttonChangerMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.buttonChangerMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChangerMdp.Location = new System.Drawing.Point(1383, 541);
+            this.buttonChangerMdp.Location = new System.Drawing.Point(1363, 465);
             this.buttonChangerMdp.Name = "buttonChangerMdp";
             this.buttonChangerMdp.Size = new System.Drawing.Size(189, 50);
             this.buttonChangerMdp.TabIndex = 17;
@@ -199,7 +206,7 @@ namespace PT2
             this.quitter.FlatAppearance.BorderSize = 0;
             this.quitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.quitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.quitter.Location = new System.Drawing.Point(1280, 802);
+            this.quitter.Location = new System.Drawing.Point(1341, 804);
             this.quitter.Name = "quitter";
             this.quitter.Size = new System.Drawing.Size(292, 56);
             this.quitter.TabIndex = 18;
@@ -248,7 +255,7 @@ namespace PT2
             this.dataGridViewGlobale.Location = new System.Drawing.Point(650, 67);
             this.dataGridViewGlobale.Name = "dataGridViewGlobale";
             this.dataGridViewGlobale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewGlobale.Size = new System.Drawing.Size(685, 758);
+            this.dataGridViewGlobale.Size = new System.Drawing.Size(685, 672);
             this.dataGridViewGlobale.TabIndex = 26;
             this.dataGridViewGlobale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGlobale_CellContentClick);
             // 
@@ -263,9 +270,8 @@ namespace PT2
             this.comboAllée.Name = "comboAllée";
             this.comboAllée.Size = new System.Drawing.Size(121, 37);
             this.comboAllée.TabIndex = 27;
-            this.comboAllée.TextChanged += new System.EventHandler(this.comboAllée_TextChanged);
             this.comboAllée.Visible = false;
-
+            this.comboAllée.TextChanged += new System.EventHandler(this.comboAllée_TextChanged);
             // 
             // comboCasier
             // 
@@ -306,22 +312,34 @@ namespace PT2
             // 
             // suivantButton
             // 
-            this.suivantButton.Location = new System.Drawing.Point(1392, 62);
+            this.suivantButton.BackColor = System.Drawing.Color.Transparent;
+            this.suivantButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("suivantButton.BackgroundImage")));
+            this.suivantButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.suivantButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.suivantButton.FlatAppearance.BorderSize = 0;
+            this.suivantButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.suivantButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.suivantButton.Location = new System.Drawing.Point(1392, 104);
             this.suivantButton.Name = "suivantButton";
-            this.suivantButton.Size = new System.Drawing.Size(75, 23);
+            this.suivantButton.Size = new System.Drawing.Size(65, 59);
             this.suivantButton.TabIndex = 29;
-            this.suivantButton.Text = "suivant";
-            this.suivantButton.UseVisualStyleBackColor = true;
+            this.suivantButton.UseVisualStyleBackColor = false;
             this.suivantButton.Click += new System.EventHandler(this.suivantButton_Click);
             // 
             // precButton
             // 
-            this.precButton.Location = new System.Drawing.Point(1392, 117);
+            this.precButton.BackColor = System.Drawing.Color.Transparent;
+            this.precButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("precButton.BackgroundImage")));
+            this.precButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.precButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.precButton.FlatAppearance.BorderSize = 0;
+            this.precButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.precButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.precButton.Location = new System.Drawing.Point(1392, 210);
             this.precButton.Name = "precButton";
-            this.precButton.Size = new System.Drawing.Size(75, 23);
+            this.precButton.Size = new System.Drawing.Size(65, 59);
             this.precButton.TabIndex = 30;
-            this.precButton.Text = "Précédent";
-            this.precButton.UseVisualStyleBackColor = true;
+            this.precButton.UseVisualStyleBackColor = false;
             this.precButton.Click += new System.EventHandler(this.precButton_Click);
             // 
             // Admin
