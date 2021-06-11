@@ -38,6 +38,8 @@ namespace PT2
             this.labelAncien = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.nvMdpCheckBox = new System.Windows.Forms.CheckBox();
+            this.mdpCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.labelAncien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -67,6 +69,7 @@ namespace PT2
             this.textBoxMdp.Name = "textBoxMdp";
             this.textBoxMdp.Size = new System.Drawing.Size(499, 35);
             this.textBoxMdp.TabIndex = 2;
+            this.textBoxMdp.UseSystemPasswordChar = true;
             // 
             // textBoxMdpConfirm
             // 
@@ -75,6 +78,7 @@ namespace PT2
             this.textBoxMdpConfirm.Name = "textBoxMdpConfirm";
             this.textBoxMdpConfirm.Size = new System.Drawing.Size(499, 35);
             this.textBoxMdpConfirm.TabIndex = 3;
+            this.textBoxMdpConfirm.UseSystemPasswordChar = true;
             // 
             // buttonOK
             // 
@@ -100,6 +104,7 @@ namespace PT2
             this.AncienMdpTextBox.Name = "AncienMdpTextBox";
             this.AncienMdpTextBox.Size = new System.Drawing.Size(499, 35);
             this.AncienMdpTextBox.TabIndex = 8;
+            this.AncienMdpTextBox.UseSystemPasswordChar = true;
             // 
             // labelAncien
             // 
@@ -134,6 +139,28 @@ namespace PT2
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
+            // nvMdpCheckBox
+            // 
+            this.nvMdpCheckBox.AutoSize = true;
+            this.nvMdpCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.nvMdpCheckBox.Location = new System.Drawing.Point(715, 224);
+            this.nvMdpCheckBox.Name = "nvMdpCheckBox";
+            this.nvMdpCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.nvMdpCheckBox.TabIndex = 12;
+            this.nvMdpCheckBox.UseVisualStyleBackColor = false;
+            this.nvMdpCheckBox.Click += new System.EventHandler(this.nvMdpCheckBox_Click);
+            // 
+            // mdpCheckBox
+            // 
+            this.mdpCheckBox.AutoSize = true;
+            this.mdpCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.mdpCheckBox.Location = new System.Drawing.Point(741, 89);
+            this.mdpCheckBox.Name = "mdpCheckBox";
+            this.mdpCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.mdpCheckBox.TabIndex = 13;
+            this.mdpCheckBox.UseVisualStyleBackColor = false;
+            this.mdpCheckBox.CheckedChanged += new System.EventHandler(this.mdpCheckBox_CheckedChanged);
+            // 
             // ChangerMdp
             // 
             this.AcceptButton = this.buttonOK;
@@ -142,6 +169,8 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 411);
+            this.Controls.Add(this.mdpCheckBox);
+            this.Controls.Add(this.nvMdpCheckBox);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelAncien);
@@ -169,5 +198,7 @@ namespace PT2
         private System.Windows.Forms.PictureBox labelAncien;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.CheckBox nvMdpCheckBox;
+        private System.Windows.Forms.CheckBox mdpCheckBox;
     }
 }
