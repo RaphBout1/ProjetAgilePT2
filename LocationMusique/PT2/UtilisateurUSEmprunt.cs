@@ -508,11 +508,13 @@ namespace PT2
         {
             compteurAlbum = 0;
             page = 0;
+            boutonSuivant.Visible = true;
+            boutonRetour.Visible = false;
             listeAlbumsEmpruntable.Clear();
             listeAlbumsVisualiser.Clear();
             AffectationCinqAlbum(5);
             AfficheAlbum();
-            boutonSuivant.Visible = true;
+            
         }
     }
 }
