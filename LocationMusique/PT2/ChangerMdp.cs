@@ -51,9 +51,13 @@ namespace PT2
         /// </summary>
         private void confirmation()
         {
-            if (!Inscription.LongueurEntreeValide(textBoxMdp.Text) || !textBoxMdp.Text.Equals(textBoxMdpConfirm.Text))
+            if (!textBoxMdp.Text.Equals(textBoxMdpConfirm.Text))
             {
                 throw new InformationsInvalidesException("Les deux mots de passe sont différents.");
+            }
+            if (!Inscription.LongueurEntreeValide(textBoxMdp.Text))
+            {
+                throw new InformationsInvalidesException("La longueur du mot de passe doit être comprise entre 1 et 32 caractères.");
             }
             else
             {
