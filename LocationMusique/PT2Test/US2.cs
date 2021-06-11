@@ -35,32 +35,6 @@ namespace PT2Test
                 abonneTest = a;
             }
             utilisateur = new Utilisateur(abonneTest);
-
-
-            /*var emprunt = from e in TestSQL.EMPRUNTER
-                          where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
-                             && e.CODE_ALBUM == 500
-                          select e;
-            foreach (EMPRUNTER e in emprunt)
-            {
-                empruntTest = e;
-            }
-            emprunt = from e in TestSQL.EMPRUNTER
-                      where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
-                         && e.CODE_ALBUM == 480
-                      select e;
-            foreach (EMPRUNTER e in emprunt)
-            {
-                empruntTest2 = e;
-            }
-            emprunt = from e in TestSQL.EMPRUNTER
-                      where e.CODE_ABONNÉ == abonneTest.CODE_ABONNÉ
-                         && e.CODE_ALBUM == 514
-                      select e;
-            foreach (EMPRUNTER e in emprunt)
-            {
-                empruntTest3 = e;
-            }*/
         }
         #endregion
 
@@ -151,12 +125,10 @@ namespace PT2Test
         [TestMethod]
         public void TestActualiseListeEmprunté()
         {
-            //initTotal();
             initAboTest();
             initEmprunt();            
             int empruntATrouver = 3;
             Assert.AreEqual(empruntATrouver, utilisateur.MesEmprunts().Count);
-            //nettoyageBase();
         }
         #endregion
 

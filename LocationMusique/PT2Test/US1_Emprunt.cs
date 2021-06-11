@@ -16,9 +16,6 @@ namespace PT2Test
         ALBUMS albumTest;
         MusiquePT2_DEntities testSQL = new MusiquePT2_DEntities();
 
-
-        
-
         /// <summary>
         /// Test de l'US1, on crée un abonné, on lui fait faire un emprunt et on vérifie que celui-ci a bien été enregistré.
         /// </summary>
@@ -30,13 +27,13 @@ namespace PT2Test
             Assert.AreEqual(true, RetrouveEmprunt());
         }
 
+        
+        #region Initialisation
         /// <summary>
         /// initialise l'abonné crée et un emprunt d'un album pour celui-ci.
         /// </summary>
-        #region Initialisation
         private void InitialisationGlobale()
         {
-            //InitialiseAbonne();
             ImportAbonne();
             ImportAlbum();
         }

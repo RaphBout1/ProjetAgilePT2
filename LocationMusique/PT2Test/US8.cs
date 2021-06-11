@@ -30,7 +30,6 @@ namespace PT2Test
             HashSet<ALBUMS> albumPasEmprunter1An = user.albumPasEmpruntesDepuis1An();
             musiqueSQL.SaveChanges();
             Assert.IsTrue(albumPasEmprunter1An.Contains(album1));
-
         }
 
         /// <summary>

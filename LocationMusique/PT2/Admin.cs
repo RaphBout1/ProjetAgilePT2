@@ -68,6 +68,9 @@ namespace PT2
             return enretard10;
         }
 
+        /// <summary>
+        /// Ajoute à une liste box l'ensemble des livres qui ont été prolongé 
+        /// </summary>
         private List<EMPRUNTER> LivreEmprunteProlongé()
         {
             List<EMPRUNTER> prolongeList = new List<EMPRUNTER>();
@@ -87,10 +90,14 @@ namespace PT2
             return prolongeList;
         }
 
+        /// <summary>
+        /// Remplit la datagrid avec tous les emprunts déjà prolongés
+        /// </summary>
         private void remplirDataProlonge()
         {
             dataGridViewGlobale.DataSource = LivreEmprunteProlongé();
         }
+
         /// <summary>
         /// Méthode permettant renvoyant une liste d'album
         /// Cette dernière contient les 10 albums les plus empruntés de la base
@@ -197,9 +204,9 @@ namespace PT2
             }
         }
 
-        /**
-         * retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an (ou n'a jamais été emprunté)
-         */
+        /// <summary>
+        /// retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an (ou n'a jamais été emprunté)
+        /// </summary>
         public HashSet<ALBUMS> albumPasEmpruntesDepuis1An()
         {
             HashSet<ALBUMS> albumPasEmprunter1An = new HashSet<ALBUMS>();
@@ -217,9 +224,9 @@ namespace PT2
             return albumPasEmprunter1An;
         }
 
-        /*
-         * Liste les abonnés
-         */
+        ///<summary>
+        ///Permet de lister les abonnés 
+        ///</summary>
         private List<ABONNÉS> listerAbonnés()
         {
             List<ABONNÉS> abo = new List<ABONNÉS>();
@@ -236,6 +243,9 @@ namespace PT2
             dataGridViewGlobale.DataSource = listerAbonnés();
         }
 
+        /// <summary>
+        /// Changer de mot de passe d'un abonné et ensuite on fait la mise à jour dans la base de données 
+        /// </summary>
         private void changerMdp()
         {
             ABONNÉS a = dataGridViewGlobale.SelectedRows[0].DataBoundItem as ABONNÉS;
