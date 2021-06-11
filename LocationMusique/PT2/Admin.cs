@@ -56,7 +56,7 @@ namespace PT2
 
             foreach (EMPRUNTER m in lesLivresEmpruntes)
             {
-                if (!(m.DATE_EMPRUNT.AddMonths(1).AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE.AddMonths(1)) >= 0) && m.DATE_RETOUR == null) //à vérifier
+                if (!(m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) >= 0) && m.DATE_RETOUR == null)
                 {
                     listBoxGlobale.Items.Add(m);
                 }
@@ -340,23 +340,9 @@ namespace PT2
             buttonChangerMdp.Enabled = true;
         }
 
-        private void listBoxCasier_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxCasier.SelectedItem != null)
-            {
-                buttonCasier.Visible = true;
-            }
-            else
-            {
-                buttonCasier.Visible = false;
-            }
-        }
-
         private void buttonAllée_Click(object sender, EventArgs e)
         {
             listerAllées();
-            listBoxAllée.Visible = true;
-            labelAllée.Visible = true;
         }
 
         private void listBoxAllée_SelectedIndexChanged(object sender, EventArgs e)
@@ -364,35 +350,59 @@ namespace PT2
             var allée = listBoxAllée.SelectedItem;
             if (allée != null)
             {
-                listBoxCasier.Visible = true;
-                labelCasier.Visible = true;
                 listBoxCasier.Items.Clear();
                 var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée.ToString() group a by a.CASIER_ALBUM into casier select casier.Key;
                 foreach (int i in casiers)
                 {
                     listBoxCasier.Items.Add(i);
                 }
-            } else
-            {
-                buttonCasier.Visible = false;
             }
         }
 
         private void buttonCasier_Click(object sender, EventArgs e)
         {
+            try
+            {
+                declencherChargerAlbumsManquantsCasier();
+            }
+            catch (InformationsInvalidesException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Liste les albums manquants d'un casier dans une ListBox
+        /// </summary>
+        /// <param name="allée">L'allée du casier</param>
+        /// <param name="casier">Le numéro du casier</param>
+        private void chargerAlbumsManquantsCasier(string allée, int casier)
+        {
             listBoxGlobale.Items.Clear();
-            int numCasier = Convert.ToInt32(listBoxCasier.SelectedItem);
-            string allée = listBoxAllée.SelectedItem.ToString();
             var albums = from a in musiqueSQL.ALBUMS
                          join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
-                         where a.ALLÉE_ALBUM == allée && a.CASIER_ALBUM == numCasier && emp.DATE_RETOUR == null
+                         where a.ALLÉE_ALBUM == allée.ToString() && a.CASIER_ALBUM == casier && emp.DATE_RETOUR == null
                          select a;
             foreach (ALBUMS a in albums)
             {
-                if (!listBoxGlobale.Items.Contains(a))
-                {
-                    listBoxGlobale.Items.Add(a);
-                }
+                listBoxGlobale.Items.Add(a);
+            }
+        }
+
+        /// <summary>
+        /// Appelle la fonction chargerAlbumsManquantsCasier en passant les informations des ListBox correspondantes en paramètre
+        /// </summary>
+        private void declencherChargerAlbumsManquantsCasier()
+        {
+            var allée = listBoxAllée.SelectedItem;
+            var casier = listBoxCasier.SelectedItem;
+            if (allée != null && casier != null)
+            {
+                chargerAlbumsManquantsCasier(allée.ToString(), Convert.ToInt32(casier));
+            }
+            else
+            {
+                throw new InformationsInvalidesException("Le champ allée ou le champ casier ne présente pas de sélection valide.");
             }
         }
     }

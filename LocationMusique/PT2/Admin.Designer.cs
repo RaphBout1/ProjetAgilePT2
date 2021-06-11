@@ -237,7 +237,6 @@ namespace PT2
             this.listBoxCasier.Name = "listBoxCasier";
             this.listBoxCasier.Size = new System.Drawing.Size(84, 173);
             this.listBoxCasier.TabIndex = 21;
-            this.listBoxCasier.SelectedIndexChanged += new System.EventHandler(this.listBoxCasier_SelectedIndexChanged);
             // 
             // labelAllée
             // 
