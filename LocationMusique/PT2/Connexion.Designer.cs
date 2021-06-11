@@ -36,6 +36,7 @@ namespace PT2
             this.InscriptionButton = new System.Windows.Forms.Button();
             this.UtilisateurButton = new System.Windows.Forms.Button();
             this.AdminButton = new System.Windows.Forms.Button();
+            this.afficherMdpCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // pseudo
@@ -53,7 +54,6 @@ namespace PT2
             this.mdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mdp.Location = new System.Drawing.Point(304, 314);
             this.mdp.Name = "mdp";
-            this.mdp.PasswordChar = '*';
             this.mdp.Size = new System.Drawing.Size(554, 35);
             this.mdp.TabIndex = 2;
             this.mdp.UseSystemPasswordChar = true;
@@ -113,6 +113,17 @@ namespace PT2
             this.AdminButton.UseVisualStyleBackColor = true;
             this.AdminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
+            // afficherMdpCheckBox
+            // 
+            this.afficherMdpCheckBox.AutoSize = true;
+            this.afficherMdpCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.afficherMdpCheckBox.Location = new System.Drawing.Point(887, 266);
+            this.afficherMdpCheckBox.Name = "afficherMdpCheckBox";
+            this.afficherMdpCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.afficherMdpCheckBox.TabIndex = 7;
+            this.afficherMdpCheckBox.UseVisualStyleBackColor = false;
+            this.afficherMdpCheckBox.Click += new System.EventHandler(this.afficherMdpCheckBox_Click);
+            // 
             // Connexion
             // 
             this.AcceptButton = this.connectbutton;
@@ -121,6 +132,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1443, 862);
+            this.Controls.Add(this.afficherMdpCheckBox);
             this.Controls.Add(this.AdminButton);
             this.Controls.Add(this.UtilisateurButton);
             this.Controls.Add(this.InscriptionButton);
@@ -144,6 +156,7 @@ namespace PT2
         private System.Windows.Forms.Button InscriptionButton;
         private System.Windows.Forms.Button UtilisateurButton;
         private System.Windows.Forms.Button AdminButton;
+        private System.Windows.Forms.CheckBox afficherMdpCheckBox;
     }
 }
 
