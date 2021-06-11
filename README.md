@@ -111,7 +111,7 @@ Cas limite et détails:
 
 À ce stade, la priorité est d'avoir des tests unitaires fonctionnels pour US1 & US2
 
-- [ ] Les tests ou une procédure documentée permet de remettre la base de données dans un état connu (on ne se base pas sur l'état de la base de données au moment de lancer les tests)
+- [X] Les tests ou une procédure documentée permet de remettre la base de données dans un état connu (on ne se base pas sur l'état de la base de données au moment de lancer les tests)
 - [X] US1
 - [X] US2
 
