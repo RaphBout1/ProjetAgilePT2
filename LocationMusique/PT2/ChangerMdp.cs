@@ -31,7 +31,6 @@ namespace PT2
             estAdmin = "admin".Equals((utilisateur.LOGIN_ABONNÉ).Trim());
             labelAncien.Visible = !estAdmin;
             AncienMdpTextBox.Visible = !estAdmin;
-            mdpCheckBox.Visible = !estAdmin;
             afficherMdp.Visible = !estAdmin;
         }
 
