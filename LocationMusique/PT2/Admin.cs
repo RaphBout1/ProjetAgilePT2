@@ -296,6 +296,7 @@ namespace PT2
         {
             listBoxAllée.Visible = true;
             labelAllée.Visible = true;
+            listBoxAllée.Items.Clear();
             char[] allées = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
             foreach (char c in allées)
             {
@@ -399,12 +400,17 @@ namespace PT2
         {
             listBoxCasier.Visible = true;
             labelCasier.Visible = true;
+            listBoxCasier.Items.Clear();
             string allée = listBoxAllée.SelectedItem.ToString();
             var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée orderby a.CASIER_ALBUM select a.CASIER_ALBUM; 
             foreach (int i in casiers)
             {
                 if (!listBoxCasier.Items.Contains(i))
                     listBoxCasier.Items.Add(i);
+            }
+            if (listBoxCasier.SelectedItem == null)
+            {
+                buttonCasier.Visible = false;
             }
         }
 
