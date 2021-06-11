@@ -48,6 +48,8 @@ namespace PT2
             this.labelCasier = new System.Windows.Forms.Label();
             this.buttonCasier = new System.Windows.Forms.Button();
             this.buttonAllée = new System.Windows.Forms.Button();
+            this.dataGridViewGlobale = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobale)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -81,7 +83,7 @@ namespace PT2
             // listBoxGlobale
             // 
             this.listBoxGlobale.FormattingEnabled = true;
-            this.listBoxGlobale.Location = new System.Drawing.Point(710, 159);
+            this.listBoxGlobale.Location = new System.Drawing.Point(738, 651);
             this.listBoxGlobale.Name = "listBoxGlobale";
             this.listBoxGlobale.Size = new System.Drawing.Size(505, 602);
             this.listBoxGlobale.TabIndex = 9;
@@ -283,6 +285,15 @@ namespace PT2
             this.buttonAllée.UseVisualStyleBackColor = false;
             this.buttonAllée.Click += new System.EventHandler(this.buttonAllée_Click);
             // 
+            // dataGridViewGlobale
+            // 
+            this.dataGridViewGlobale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGlobale.Location = new System.Drawing.Point(692, 143);
+            this.dataGridViewGlobale.Name = "dataGridViewGlobale";
+            this.dataGridViewGlobale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewGlobale.Size = new System.Drawing.Size(546, 532);
+            this.dataGridViewGlobale.TabIndex = 26;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +301,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.dataGridViewGlobale);
             this.Controls.Add(this.buttonAllée);
             this.Controls.Add(this.buttonCasier);
             this.Controls.Add(this.labelCasier);
@@ -313,6 +325,7 @@ namespace PT2
             this.MaximizeBox = false;
             this.Name = "Admin";
             this.Text = "Admin";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,5 +350,6 @@ namespace PT2
         private System.Windows.Forms.Label labelCasier;
         private System.Windows.Forms.Button buttonCasier;
         private System.Windows.Forms.Button buttonAllée;
+        private System.Windows.Forms.DataGridView dataGridViewGlobale;
     }
 }
