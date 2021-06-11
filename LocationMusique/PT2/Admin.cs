@@ -33,6 +33,8 @@ namespace PT2
             enRetardButton.Visible = false;
             purgerModeButton.Visible = false;
             buttonChangerMdp.Visible = false;
+            precButton.Visible = false;
+            suivantButton.Visible = false;
         }
         public Admin()
         {
@@ -47,6 +49,8 @@ namespace PT2
             enRetardButton.Visible = false;
             purgerModeButton.Visible = false;
             buttonChangerMdp.Visible = false;
+            precButton.Visible = false;
+            suivantButton.Visible = false;
         }
         /// <summary>
         /// Renvoie une liste d'abonnée ayant un emprunt non rendu en retard de 10 jours sur la date de rendue attendue.
@@ -71,7 +75,6 @@ namespace PT2
         private List<EMPRUNTER> LivreEmprunteProlongé()
         {
             List<EMPRUNTER> prolongeList = new List<EMPRUNTER>();
-            //listBoxGlobale.Items.Clear();
             var lesLivresEmpruntes =
                    from m in musiqueSQL.EMPRUNTER
                    select m;
@@ -80,7 +83,6 @@ namespace PT2
             {
                 if (!(m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) >= 0) && m.DATE_RETOUR == null)
                 {
-                    //listBoxGlobale.Items.Add(m);
                     prolongeList.Add(m);
                 }
             }
@@ -137,7 +139,6 @@ namespace PT2
         /// </summary>
         private List<ABONNÉS> abonnésAPurger()
         {
-            //listBoxGlobale.Items.Clear();
             List<ABONNÉS> aPurgerListe = new List<ABONNÉS>();
             DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ABONNÉ into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
@@ -147,7 +148,6 @@ namespace PT2
                 {
                     ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
                     aPurgerListe.Add(aPurger);
-                    //listBoxGlobale.Items.Add(aPurger);
                 }
             }
             return aPurgerListe;
@@ -217,9 +217,10 @@ namespace PT2
             return albumPasEmprunter1An;
         }
 
-        /*
-         * Liste les abonnés
-         */
+        /// <summary>
+        /// liste les abonnés
+        /// </summary>
+        /// <returns></returns>
         private List<ABONNÉS> listerAbonnés()
         {
             List<ABONNÉS> abo = new List<ABONNÉS>();
@@ -248,21 +249,6 @@ namespace PT2
         }
 
         /// <summary>
-        /// Affiche le nombre d'album emprunte par titre d'album 
-        /// </summary>
-        /// <param album></param> 
-        private int nombreEmprunt(ALBUMS album)
-        {
-            DateTime date = DateTime.UtcNow.AddYears(-1);
-            var q = (from e in musiqueSQL.EMPRUNTER
-                     join a in musiqueSQL.ALBUMS on e.CODE_ALBUM equals a.CODE_ALBUM
-                     where e.DATE_EMPRUNT > date && e.CODE_ALBUM == album.CODE_ALBUM
-                     select e.DATE_EMPRUNT);
-            int i = q.Count();
-            return i;
-        }
-
-        /// <summary>
         /// Vide et remplit la listeboxglobale avec les 10 albums les plus populaires
         /// </summary>
         private void remplir10pluspopulaires()
@@ -282,28 +268,6 @@ namespace PT2
             dataGridViewGlobale.RowHeadersWidth = 5;
             dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Refresh();
-        }
-        /// <summary>
-        /// Vide et remplit la listeboxglobale avec les albums non empruntés depuis 1 an.
-        /// </summary>
-        private void remplirAlbumsPasEmpruntes1An()
-        {
-            dataGridViewGlobale.DataSource = albumPasEmpruntesDepuis1An().ToList();
-            dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
-            dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
-            dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
-            for (int i = 0; i < dataGridViewGlobale.RowCount; i++)
-            {
-                dataGridViewGlobale.Rows[i].Height = 100;
-            }
-            for (int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
-            {
-                dataGridViewGlobale.Columns[i].Width = 100;
-            }
-            dataGridViewGlobale.RowHeadersWidth = 5;
-            dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Refresh();
-
         }
 
         /// <summary>
@@ -343,6 +307,8 @@ namespace PT2
             enRetardButton.Visible = false;
             purgerModeButton.Visible = false;
             buttonChangerMdp.Visible = false;
+            precButton.Visible = false;
+            suivantButton.Visible = false;
         }
 
         private void moinsPopulaireButton_Click(object sender, EventArgs e)
@@ -356,6 +322,8 @@ namespace PT2
             enRetardButton.Visible = false;
             purgerModeButton.Visible = false;
             buttonChangerMdp.Visible = false;
+            precButton.Visible = true;
+            suivantButton.Visible = true;
         }
 
         private void purgerModeButton_Click(object sender, EventArgs e)
@@ -365,14 +333,6 @@ namespace PT2
             Refresh();
             purgebutton.Visible = true;
 
-        }
-
-        private void listBoxGlobale_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (purgeModeOn)
-            {
-                purgebutton.Visible = true;
-            }
         }
 
         private void enRetardButton_Click(object sender, EventArgs e)
@@ -392,6 +352,8 @@ namespace PT2
             remplirDataProlonge();
             purgeModeOn = false;
             purgebutton.Visible = false;
+            precButton.Visible = false;
+            suivantButton.Visible = false;
             toggleCasiers();
             Refresh();
         }
@@ -405,6 +367,8 @@ namespace PT2
             enRetardButton.Visible = true;
             purgerModeButton.Visible = true;
             buttonChangerMdp.Visible = true;
+            precButton.Visible = false;
+            suivantButton.Visible = false;
         }
 
         private void buttonChangerMdp_Click(object sender, EventArgs e)
@@ -416,6 +380,8 @@ namespace PT2
 
         private void buttonAllée_Click(object sender, EventArgs e)
         {
+            precButton.Visible = false;
+            suivantButton.Visible = false;
             listerAllées();
             toggleCasiers();
         }
@@ -504,13 +470,7 @@ namespace PT2
                 }
             }
         }
-        /**
-        private void quitter_Click(object sender, EventArgs e)
-        {
-            fenetrePrecedente.Visible = true;
-            this.Close();
-        }
-        */
+
         private void suivantButton_Click(object sender, EventArgs e)
         {
             page++;
