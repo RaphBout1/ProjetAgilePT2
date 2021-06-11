@@ -420,9 +420,9 @@ namespace PT2
         /// </summary>
         private void declencherChargerAlbumsManquantsCasier()
         {
-            var allée = comboAllée.SelectedItem;
-            var casier = comboCasier.SelectedItem;
-            if (allée != null && casier != null)
+            var allée = comboAllée.Text;
+            var casier = comboCasier.Text;
+            if (!String.IsNullOrEmpty(allée) && !String.IsNullOrEmpty(casier))
             {
                 chargerAlbumsManquantsCasier(allée.ToString(), Convert.ToInt32(casier));
             }
@@ -440,12 +440,18 @@ namespace PT2
             }
         }
 
-        private void comboAllée_SelectedIndexChanged(object sender, EventArgs e)
+        private void quitter_Click(object sender, EventArgs e)
         {
-            var allée = comboAllée.SelectedItem;
-            if (allée != null)
+            fenetrePrecedente.Visible = true;
+            this.Close();
+        }
+
+        private void comboAllée_TextChanged(object sender, EventArgs e)
+        {
+            var allée = comboAllée.Text;
+            if (!String.IsNullOrEmpty(allée))
             {
-                comboCasier.SelectedIndex = -1;
+                comboCasier.Text = null;
                 comboCasier.Items.Clear();
                 var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée.ToString() group a by a.CASIER_ALBUM into casier select casier.Key;
                 foreach (int i in casiers)
@@ -453,12 +459,6 @@ namespace PT2
                     comboCasier.Items.Add(i);
                 }
             }
-        }
-
-        private void quitter_Click(object sender, EventArgs e)
-        {
-            fenetrePrecedente.Visible = true;
-            this.Close();
         }
     }
 }

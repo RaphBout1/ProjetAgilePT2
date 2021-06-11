@@ -264,7 +264,7 @@ namespace PT2
             this.comboAllée.Name = "comboAllée";
             this.comboAllée.Size = new System.Drawing.Size(121, 21);
             this.comboAllée.TabIndex = 27;
-            this.comboAllée.SelectedIndexChanged += new System.EventHandler(this.comboAllée_SelectedIndexChanged);
+            this.comboAllée.TextChanged += new System.EventHandler(this.comboAllée_TextChanged);
             // 
             // comboCasier
             // 
