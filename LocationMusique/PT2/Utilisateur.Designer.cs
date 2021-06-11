@@ -85,9 +85,9 @@ namespace PT2
             this.prolonger1Button.FlatAppearance.BorderSize = 0;
             this.prolonger1Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.prolonger1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prolonger1Button.Location = new System.Drawing.Point(1191, 675);
+            this.prolonger1Button.Location = new System.Drawing.Point(1224, 660);
             this.prolonger1Button.Name = "prolonger1Button";
-            this.prolonger1Button.Size = new System.Drawing.Size(338, 68);
+            this.prolonger1Button.Size = new System.Drawing.Size(338, 61);
             this.prolonger1Button.TabIndex = 4;
             this.prolonger1Button.UseVisualStyleBackColor = false;
             this.prolonger1Button.Click += new System.EventHandler(this.prolonger1Button_Click);
@@ -102,7 +102,7 @@ namespace PT2
             this.prolongerTousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prolongerTousButton.ForeColor = System.Drawing.Color.Transparent;
             this.prolongerTousButton.Image = ((System.Drawing.Image)(resources.GetObject("prolongerTousButton.Image")));
-            this.prolongerTousButton.Location = new System.Drawing.Point(645, 682);
+            this.prolongerTousButton.Location = new System.Drawing.Point(568, 663);
             this.prolongerTousButton.Name = "prolongerTousButton";
             this.prolongerTousButton.Size = new System.Drawing.Size(338, 55);
             this.prolongerTousButton.TabIndex = 5;
@@ -133,11 +133,12 @@ namespace PT2
             this.rendreButton.FlatAppearance.BorderSize = 0;
             this.rendreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.rendreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rendreButton.Location = new System.Drawing.Point(288, 12);
+            this.rendreButton.Location = new System.Drawing.Point(901, 653);
             this.rendreButton.Name = "rendreButton";
-            this.rendreButton.Size = new System.Drawing.Size(351, 89);
+            this.rendreButton.Size = new System.Drawing.Size(351, 72);
             this.rendreButton.TabIndex = 7;
             this.rendreButton.UseVisualStyleBackColor = false;
+            this.rendreButton.Visible = false;
             this.rendreButton.Click += new System.EventHandler(this.rendreButton_Click);
             // 
             // MAJButton

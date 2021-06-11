@@ -32,6 +32,7 @@ namespace PT2
             prenom.Text = uti.PRÉNOM_ABONNÉ;
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
+            rendreButton.Visible = false;
 
         }
 
@@ -190,8 +191,7 @@ namespace PT2
             {
                 foreach (ListViewItem i in listViewConsultation.SelectedItems)
                 {
-                    Console.WriteLine(i.Text);
-                    empruntCourant = retrouveEmprunter_ListViewItem(i);
+                    EMPRUNTER empruntCourant = retrouveEmprunter_ListViewItem(i);
                     ProlongerEmprunt(empruntCourant);
                     ActualiseListeEmprunté();
                     prolonger1Button.Visible = false;
@@ -213,14 +213,10 @@ namespace PT2
             new UtilisateurUSEmprunt(utilisateur).ShowDialog();
             enCours.Visible = false;
             retard.Visible = false;
+            rendreButton.Visible = false;
         }
 
-        private void rendreButton_Click(object sender, EventArgs e)
-        {
-            new US14Rendre(utilisateur).ShowDialog();
-            enCours.Visible = false;
-            retard.Visible = false;
-        }
+        
 
         private void MAJButton_Click(object sender, EventArgs e)
         {
@@ -233,6 +229,7 @@ namespace PT2
         {
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
+            rendreButton.Visible = false;
             enCours.Visible = true;
             retard.Visible = true;
             ActualiseListeEmprunté();
@@ -242,6 +239,7 @@ namespace PT2
         {
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
+            rendreButton.Visible = false;
             enCours.Visible = false;
             retard.Visible = false;
             Recommandation();
@@ -306,6 +304,7 @@ namespace PT2
         {
             prolonger1Button.Visible = true;
             prolongerTousButton.Visible = true;
+            rendreButton.Visible = true;
             actualiserListeEnCours();
         }
 
@@ -313,6 +312,7 @@ namespace PT2
         {
             prolonger1Button.Visible = true;
             prolongerTousButton.Visible = true;
+            rendreButton.Visible = true;
             actualiserListeEnRetard();
         }
 
@@ -443,15 +443,15 @@ namespace PT2
         #endregion
         #endregion
 
-        #region Importer Image
-        public Image ConstructionImageDepuisByte(byte[] tabByte)
-        {
-            MemoryStream ms = new MemoryStream(tabByte);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-        #endregion
+        #region retrouve Element
 
+        private EMPRUNTER retrouveEmprunter_ListViewItem(ListViewItem lvi)
+        {
+            return (from a in musiqueSQL.ALBUMS
+                    join e in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals e.CODE_ALBUM
+                    where a.TITRE_ALBUM == lvi.Text && e.DATE_RETOUR == null
+                    select e).FirstOrDefault();
+        }
         /// <summary>
         /// Lors de la selection d'un élément, on définit un emprunt courant pour éxécuter des modifications futures
         /// </summary>
@@ -462,17 +462,17 @@ namespace PT2
             if (listViewConsultation.SelectedItems != null) { prolonger1Button.Enabled = true; }
             else { prolonger1Button.Enabled = false; }
         }
+        #endregion
+        #endregion
 
-        #region retrouve Element
-
-        private EMPRUNTER retrouveEmprunter_ListViewItem(ListViewItem lvi)
+        #region Importer Image
+        public Image ConstructionImageDepuisByte(byte[] tabByte)
         {
-            return (from a in musiqueSQL.ALBUMS
-                    join e in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals e.CODE_ALBUM
-                    where a.TITRE_ALBUM == lvi.Text && e.DATE_RETOUR == null
-                    select e).FirstOrDefault();
+            MemoryStream ms = new MemoryStream(tabByte);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
         }
-        #endregion 
+        #endregion
 
         public void changerMdp()
         {
@@ -490,6 +490,27 @@ namespace PT2
             changerMdp();
         }
 
+        #region rendre Emprunt
+        private void rendreButton_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem i in listViewConsultation.SelectedItems)
+            {
+                EMPRUNTER empruntCourant = retrouveEmprunter_ListViewItem(i);
+                rendreEmprunt(empruntCourant);
+            }
+            actualiserListeEnCours();
+        }
 
+        /// <summary>
+        /// Méthode qui rend un emprunt
+        /// </summary>
+        /// <param name="m">L'emprunt en question</param>
+        public void rendreEmprunt(EMPRUNTER m)
+        {
+            var bonEmprunt = from l in musiqueSQL.EMPRUNTER where l.CODE_ABONNÉ == m.CODE_ABONNÉ && l.CODE_ALBUM == m.CODE_ALBUM select l;
+            bonEmprunt.First().DATE_RETOUR = DateTime.UtcNow;
+            musiqueSQL.SaveChanges();
+        }
+        #endregion
     }
 }
