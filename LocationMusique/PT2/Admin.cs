@@ -16,7 +16,7 @@ namespace PT2
         private readonly static string logAdmin = "admin";
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
-        private bool listeabonneVisible = false;
+
 
         public Admin()
         {
@@ -45,9 +45,10 @@ namespace PT2
             return enretard10;
         }
 
-        private void LivreEmprunteProlongé()
+        private List<EMPRUNTER> LivreEmprunteProlongé()
         {
-            listBoxGlobale.Items.Clear();
+            List<EMPRUNTER> prolongeList = new List<EMPRUNTER>();
+            //listBoxGlobale.Items.Clear();
             var lesLivresEmpruntes =
                    from m in musiqueSQL.EMPRUNTER
                    select m;
@@ -56,13 +57,17 @@ namespace PT2
             {
                 if (!(m.DATE_EMPRUNT.AddDays(m.ALBUMS.GENRES.DÉLAI).CompareTo(m.DATE_RETOUR_ATTENDUE) >= 0) && m.DATE_RETOUR == null)
                 {
-                    listBoxGlobale.Items.Add(m);
+                    //listBoxGlobale.Items.Add(m);
+                    prolongeList.Add(m);
                 }
             }
-            Refresh();
+            return prolongeList;
         }
 
-
+        private void remplirDataProlonge()
+        {
+            dataGridViewGlobale.DataSource = LivreEmprunteProlongé();
+        }
         /// <summary>
         /// Méthode permettant renvoyant une liste d'album
         /// Cette dernière contient les 10 albums les plus empruntés de la base
@@ -123,7 +128,6 @@ namespace PT2
                 }
             }
             return aPurgerListe;
-            Refresh();
         }
 
         private void remplirDataAPurger()
@@ -352,7 +356,7 @@ namespace PT2
 
         private void prolongesButton_Click(object sender, EventArgs e)
         {
-            LivreEmprunteProlongé();
+            remplirDataProlonge();
             purgeModeOn = false;
             purgebutton.Enabled = false;
             desactiverCasier();
