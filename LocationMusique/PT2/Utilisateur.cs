@@ -145,7 +145,8 @@ namespace PT2
                     listeRecommandation.Add(a);
                 }
                 UtilisateurUSEmprunt recommandationEmpruntable = new UtilisateurUSEmprunt(utilisateur, listeRecommandation);
-                recommandationEmpruntable.Show();
+                listViewConsultation.Items.Clear();
+                recommandationEmpruntable.ShowDialog();
                 Refresh();
             }
         }
@@ -204,6 +205,7 @@ namespace PT2
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            listViewConsultation.Items.Clear();
             new UtilisateurUSEmprunt(utilisateur).ShowDialog();
             enCours.Visible = false;
             retard.Visible = false;
