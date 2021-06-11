@@ -31,7 +31,7 @@ namespace PT2
             estAdmin = "admin".Equals((utilisateur.LOGIN_ABONNÉ).Trim());
             labelAncien.Visible = !estAdmin;
             AncienMdpTextBox.Visible = !estAdmin;
-            afficherMdp.Visible = !estAdmin;
+            pasAfficher1.Visible = !estAdmin;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -91,17 +91,44 @@ namespace PT2
         /// <param name="e"></param>
         private void afficherMdp_CheckedChanged(object sender, EventArgs e)
         {
-            AncienMdpTextBox.UseSystemPasswordChar = !AncienMdpTextBox.UseSystemPasswordChar;
+            pasAfficher1.Visible = true;
+            AncienMdpTextBox.UseSystemPasswordChar = true;
+            afficherMdp.Visible = false;
         }
 
         private void affichermdp2_CheckedChanged(object sender, EventArgs e)
         {
+            pasAfficher2.Visible = true;
             textBoxMdp.UseSystemPasswordChar = !textBoxMdp.UseSystemPasswordChar;
+            affichermdp2.Visible = false;
         }
 
         private void affichermdp3_CheckedChanged(object sender, EventArgs e)
         {
+            pasAfficher3.Visible = true;
             textBoxMdpConfirm.UseSystemPasswordChar = !textBoxMdpConfirm.UseSystemPasswordChar;
+            affichermdp3.Visible = false;
+        }
+
+        private void pasAfficher1_CheckedChanged(object sender, EventArgs e)
+        {
+            AncienMdpTextBox.UseSystemPasswordChar = false;
+            afficherMdp.Visible = true;
+            pasAfficher1.Visible = false;
+        }
+
+        private void pasAfficher2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxMdp.UseSystemPasswordChar = false;
+            affichermdp2.Visible = true;
+            pasAfficher2.Visible = false;
+        }
+
+        private void pasAfficher3_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxMdpConfirm.UseSystemPasswordChar = false;
+            affichermdp3.Visible = true;
+            pasAfficher3.Visible = false;
         }
     }
 }

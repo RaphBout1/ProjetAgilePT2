@@ -37,6 +37,7 @@ namespace PT2
             this.UtilisateurButton = new System.Windows.Forms.Button();
             this.AdminButton = new System.Windows.Forms.Button();
             this.afficherMdp = new System.Windows.Forms.CheckBox();
+            this.pasAfficher = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // pseudo
@@ -122,6 +123,7 @@ namespace PT2
             this.afficherMdp.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.afficherMdp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.afficherMdp.FlatAppearance.BorderSize = 0;
+            this.afficherMdp.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.afficherMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.afficherMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.afficherMdp.Location = new System.Drawing.Point(864, 310);
@@ -131,6 +133,27 @@ namespace PT2
             this.afficherMdp.UseVisualStyleBackColor = false;
             this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
             // 
+            // pasAfficher
+            // 
+            this.pasAfficher.Appearance = System.Windows.Forms.Appearance.Button;
+            this.pasAfficher.BackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pasAfficher.BackgroundImage")));
+            this.pasAfficher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pasAfficher.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pasAfficher.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pasAfficher.FlatAppearance.BorderSize = 0;
+            this.pasAfficher.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.pasAfficher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.pasAfficher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pasAfficher.Location = new System.Drawing.Point(864, 310);
+            this.pasAfficher.Name = "pasAfficher";
+            this.pasAfficher.Size = new System.Drawing.Size(43, 43);
+            this.pasAfficher.TabIndex = 26;
+            this.pasAfficher.UseVisualStyleBackColor = false;
+            this.pasAfficher.Visible = false;
+            this.pasAfficher.CheckedChanged += new System.EventHandler(this.pasAfficher_CheckedChanged);
+            // 
             // Connexion
             // 
             this.AcceptButton = this.connectbutton;
@@ -139,6 +162,7 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1443, 862);
+            this.Controls.Add(this.pasAfficher);
             this.Controls.Add(this.afficherMdp);
             this.Controls.Add(this.AdminButton);
             this.Controls.Add(this.UtilisateurButton);
@@ -167,6 +191,7 @@ namespace PT2
         private System.Windows.Forms.Button UtilisateurButton;
         private System.Windows.Forms.Button AdminButton;
         private System.Windows.Forms.CheckBox afficherMdp;
+        private System.Windows.Forms.CheckBox pasAfficher;
     }
 }
 
