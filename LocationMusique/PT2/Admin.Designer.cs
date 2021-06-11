@@ -293,6 +293,7 @@ namespace PT2
             this.dataGridViewGlobale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewGlobale.Size = new System.Drawing.Size(685, 775);
             this.dataGridViewGlobale.TabIndex = 26;
+            this.dataGridViewGlobale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGlobale_CellContentClick);
             // 
             // Admin
             // 

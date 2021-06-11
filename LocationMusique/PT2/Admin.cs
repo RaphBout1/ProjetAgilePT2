@@ -107,9 +107,10 @@ namespace PT2
         /// <summary>
         /// liste dans une listBox les abonnés purgeables
         /// </summary>
-        private void abonnésAPurger()
+        private List<ABONNÉS> abonnésAPurger()
         {
-            listBoxGlobale.Items.Clear();
+            //listBoxGlobale.Items.Clear();
+            List<ABONNÉS> aPurgerListe = new List<ABONNÉS>();
             DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ABONNÉ into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
             foreach (var kv in dates)
@@ -117,10 +118,20 @@ namespace PT2
                 if (DateTime.UtcNow.AddYears(-1).CompareTo(kv.derniereDate) > 0)
                 {
                     ABONNÉS aPurger = (from ab in musiqueSQL.ABONNÉS where ab.CODE_ABONNÉ == kv.Key select ab).First();
-                    listBoxGlobale.Items.Add(aPurger);
+                    aPurgerListe.Add(aPurger);
+                    //listBoxGlobale.Items.Add(aPurger);
                 }
             }
+            return aPurgerListe;
             Refresh();
+        }
+
+        private void remplirDataAPurger()
+        {
+            dataGridViewGlobale.DataSource = abonnésAPurger();
+            dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
+            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
         }
 
         /// <summary>
@@ -147,20 +158,16 @@ namespace PT2
         {
             try
             {
-                ABONNÉS a = (ABONNÉS)listBoxGlobale.SelectedItem;
+                ABONNÉS a = dataGridViewGlobale.SelectedRows[0].DataBoundItem as ABONNÉS;
+                Console.WriteLine(a);
                 purgerAbonné(a.CODE_ABONNÉ);
                 purgebutton.Enabled = false;
-                abonnésAPurger();
+                remplirDataAPurger();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString() + Environment.NewLine + "Annulation.");
             }
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            purgebutton.Enabled = true;
         }
 
         /**
@@ -317,7 +324,7 @@ namespace PT2
 
         private void purgerModeButton_Click(object sender, EventArgs e)
         {
-            abonnésAPurger();
+            remplirDataAPurger();
             purgeModeOn = true;
             Refresh();
 
@@ -429,6 +436,14 @@ namespace PT2
             else
             {
 
+            }
+        }
+
+        private void dataGridViewGlobale_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (purgeModeOn)
+            {
+                purgebutton.Enabled = true;
             }
         }
     }
