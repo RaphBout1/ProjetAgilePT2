@@ -51,7 +51,7 @@ namespace PT2Test
         [TestMethod]
         public void testEmpruntProlongé()
         {
-            /**
+             
             //Test 1 : si un emprunt n'a jamais été fait, fonctionne
             resetEmprunt();
             Assert.IsTrue(user.empruntProlongeable(emprunt1));
@@ -61,3 +61,4 @@ namespace PT2Test
         }
     }
 }
+                   

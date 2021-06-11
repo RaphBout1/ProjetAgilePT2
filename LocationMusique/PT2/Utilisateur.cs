@@ -38,7 +38,7 @@ namespace PT2
         {
 
             List<EMPRUNTER> listeFinale = new List<EMPRUNTER>();
-            foreach (EMPRUNTER e in NouveauxEmprunts())
+            foreach (EMPRUNTER e in MesEmprunts())
             {
                 listeFinale.Add(e);
             }
@@ -150,6 +150,7 @@ namespace PT2
 
         #endregion
 
+        #region prolonger clic
         /**
          * Appelle les fonctions nécessaires au prolongement de tous les emprunts
          */
