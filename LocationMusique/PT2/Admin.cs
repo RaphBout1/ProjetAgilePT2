@@ -25,6 +25,7 @@ namespace PT2
             LivreEmprunteProlongé();
             abonnésAPurger();
             listerAbonnés();
+            desactiverCasier();
             albumsUS8 = albumPasEmpruntesDepuis1An();
         }
         /// <summary>
@@ -291,11 +292,35 @@ namespace PT2
             }
         }
 
+        private void listerAllées()
+        {
+            listBoxAllée.Visible = true;
+            labelAllée.Visible = true;
+            char[] allées = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+            foreach (char c in allées)
+            {
+                listBoxAllée.Items.Add(c);
+            }
+        }
+
+        /// <summary>
+        /// Rend invisible l'ensemble des éléments liés à l'allée et au casier des disques.
+        /// </summary>
+        public void desactiverCasier()
+        {
+            listBoxAllée.Visible = false;
+            listBoxCasier.Visible = false;
+            labelAllée.Visible = false;
+            labelCasier.Visible = false;
+            buttonCasier.Visible = false;
+        }
+
         private void Pluspopulairebutton_Click(object sender, EventArgs e)
         {
             remplir10pluspopulaires();
             purgeModeOn = false;
             Refresh();
+            desactiverCasier();
             purgebutton.Enabled = false;
         }
 
@@ -304,6 +329,7 @@ namespace PT2
             remplir10moinspopulaires();
             purgeModeOn = false;
             Refresh();
+            desactiverCasier();
             purgebutton.Enabled = false;
         }
 
@@ -328,6 +354,7 @@ namespace PT2
             enRetard();
             purgeModeOn = false;
             purgebutton.Enabled = false;
+            desactiverCasier();
             Refresh();
         }
 
@@ -336,6 +363,7 @@ namespace PT2
             LivreEmprunteProlongé();
             purgeModeOn = false;
             purgebutton.Enabled = false;
+            desactiverCasier();
             Refresh();
         }
 
@@ -355,6 +383,47 @@ namespace PT2
         private void listBoxAbonnés_SelectedIndexChanged(object sender, EventArgs e)
         {
             buttonChangerMdp.Enabled = true;
+        }
+
+        private void listBoxCasier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonCasier.Visible = true;
+        }
+
+        private void buttonAllée_Click(object sender, EventArgs e)
+        {
+            listerAllées();
+        }
+
+        private void listBoxAllée_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxCasier.Visible = true;
+            labelCasier.Visible = true;
+            string allée = listBoxAllée.SelectedItem.ToString();
+            var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée orderby a.CASIER_ALBUM select a.CASIER_ALBUM; 
+            foreach (int i in casiers)
+            {
+                if (!listBoxCasier.Items.Contains(i))
+                    listBoxCasier.Items.Add(i);
+            }
+        }
+
+        private void buttonCasier_Click(object sender, EventArgs e)
+        {
+            listBoxGlobale.Items.Clear();
+            int numCasier = Convert.ToInt32(listBoxCasier.SelectedItem);
+            string allée = listBoxAllée.SelectedItem.ToString();
+            var albums = from a in musiqueSQL.ALBUMS
+                         join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
+                         where a.ALLÉE_ALBUM == allée && a.CASIER_ALBUM == numCasier
+                         select a;
+            foreach (ALBUMS a in albums)
+            {
+                if (!listBoxGlobale.Items.Contains(a))
+                {
+                    listBoxGlobale.Items.Add(a);
+                }
+            }
         }
     }
 }

@@ -44,6 +44,12 @@ namespace PT2
             this.buttonChangerMdp = new System.Windows.Forms.Button();
             this.quitter = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.listBoxAllée = new System.Windows.Forms.ListBox();
+            this.listBoxCasier = new System.Windows.Forms.ListBox();
+            this.labelAllée = new System.Windows.Forms.Label();
+            this.labelCasier = new System.Windows.Forms.Label();
+            this.buttonCasier = new System.Windows.Forms.Button();
+            this.buttonAllée = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -229,6 +235,62 @@ namespace PT2
             this.label4.TabIndex = 19;
             this.label4.Text = "label1";
             // 
+            // listBoxAllée
+            // 
+            this.listBoxAllée.FormattingEnabled = true;
+            this.listBoxAllée.Location = new System.Drawing.Point(586, 627);
+            this.listBoxAllée.Name = "listBoxAllée";
+            this.listBoxAllée.Size = new System.Drawing.Size(84, 173);
+            this.listBoxAllée.TabIndex = 20;
+            this.listBoxAllée.SelectedIndexChanged += new System.EventHandler(this.listBoxAllée_SelectedIndexChanged);
+            // 
+            // listBoxCasier
+            // 
+            this.listBoxCasier.FormattingEnabled = true;
+            this.listBoxCasier.Location = new System.Drawing.Point(729, 627);
+            this.listBoxCasier.Name = "listBoxCasier";
+            this.listBoxCasier.Size = new System.Drawing.Size(84, 173);
+            this.listBoxCasier.TabIndex = 21;
+            this.listBoxCasier.SelectedIndexChanged += new System.EventHandler(this.listBoxCasier_SelectedIndexChanged);
+            // 
+            // labelAllée
+            // 
+            this.labelAllée.AutoSize = true;
+            this.labelAllée.Location = new System.Drawing.Point(586, 608);
+            this.labelAllée.Name = "labelAllée";
+            this.labelAllée.Size = new System.Drawing.Size(36, 13);
+            this.labelAllée.TabIndex = 22;
+            this.labelAllée.Text = "Allée :";
+            // 
+            // labelCasier
+            // 
+            this.labelCasier.AutoSize = true;
+            this.labelCasier.Location = new System.Drawing.Point(729, 607);
+            this.labelCasier.Name = "labelCasier";
+            this.labelCasier.Size = new System.Drawing.Size(65, 13);
+            this.labelCasier.TabIndex = 23;
+            this.labelCasier.Text = "Casier num :";
+            // 
+            // buttonCasier
+            // 
+            this.buttonCasier.Location = new System.Drawing.Point(838, 627);
+            this.buttonCasier.Name = "buttonCasier";
+            this.buttonCasier.Size = new System.Drawing.Size(75, 23);
+            this.buttonCasier.TabIndex = 24;
+            this.buttonCasier.Text = "Rechercher";
+            this.buttonCasier.UseVisualStyleBackColor = true;
+            this.buttonCasier.Click += new System.EventHandler(this.buttonCasier_Click);
+            // 
+            // buttonAllée
+            // 
+            this.buttonAllée.Location = new System.Drawing.Point(475, 718);
+            this.buttonAllée.Name = "buttonAllée";
+            this.buttonAllée.Size = new System.Drawing.Size(85, 39);
+            this.buttonAllée.TabIndex = 25;
+            this.buttonAllée.Text = "Rechercher dans Casiers";
+            this.buttonAllée.UseVisualStyleBackColor = true;
+            this.buttonAllée.Click += new System.EventHandler(this.buttonAllée_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +298,12 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.buttonAllée);
+            this.Controls.Add(this.buttonCasier);
+            this.Controls.Add(this.labelCasier);
+            this.Controls.Add(this.labelAllée);
+            this.Controls.Add(this.listBoxCasier);
+            this.Controls.Add(this.listBoxAllée);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.quitter);
             this.Controls.Add(this.buttonChangerMdp);
@@ -272,5 +340,11 @@ namespace PT2
         private System.Windows.Forms.Button buttonChangerMdp;
         private System.Windows.Forms.Button quitter;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox listBoxAllée;
+        private System.Windows.Forms.ListBox listBoxCasier;
+        private System.Windows.Forms.Label labelAllée;
+        private System.Windows.Forms.Label labelCasier;
+        private System.Windows.Forms.Button buttonCasier;
+        private System.Windows.Forms.Button buttonAllée;
     }
 }
