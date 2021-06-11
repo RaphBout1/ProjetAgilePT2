@@ -31,7 +31,7 @@ namespace PT2
         /// <returns>La Liste en question.</returns>
         public List<ABONNÉS> enRetard()
         {
-            listBoxGlobale.Items.Clear();
+
             List<ABONNÉS> enretard10 = new List<ABONNÉS>();
             var listemprunt = from l in musiqueSQL.EMPRUNTER select l;
             foreach (EMPRUNTER e in listemprunt)
@@ -39,11 +39,9 @@ namespace PT2
                 if (e.enRetard())
                 {
                     enretard10.Add(e.ABONNÉS);
-                    listBoxGlobale.Items.Add(e.ABONNÉS);
-
                 }
             }
-            Refresh();
+
             return enretard10;
         }
 
@@ -228,11 +226,21 @@ namespace PT2
         /// </summary>
         private void remplir10pluspopulaires()
         {
-            listBoxGlobale.Items.Clear();
-            foreach (ALBUMS i in DixPlusVue())
+            dataGridViewGlobale.DataSource = DixPlusVue();
+            dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
+            for (int i = 0; i < dataGridViewGlobale.RowCount; i++)
             {
-                listBoxGlobale.Items.Add(i.ToString() + nombreEmprunt(i));
+                dataGridViewGlobale.Rows[i].Height = 100;
             }
+            for (int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
+            {
+                dataGridViewGlobale.Columns[i].Width = 100;
+            }
+            dataGridViewGlobale.RowHeadersWidth = 5;
+            dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Refresh();
         }
         /// <summary>
         /// Vide et remplit la listeboxglobale avec les albums non empruntés depuis 1 an.
@@ -243,8 +251,16 @@ namespace PT2
             dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
             dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
             dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
-            dataGridViewGlobale.AutoResizeRows();
-            dataGridViewGlobale.AutoResizeColumns();
+            for(int i = 0; i < dataGridViewGlobale.RowCount; i++)
+            {
+                dataGridViewGlobale.Rows[i].Height = 100;
+            }
+            for(int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
+            {
+                dataGridViewGlobale.Columns[i].Width = 100;
+            }
+            dataGridViewGlobale.RowHeadersWidth = 5;
+            dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Refresh();
            
         }
@@ -310,7 +326,7 @@ namespace PT2
 
         private void enRetardButton_Click(object sender, EventArgs e)
         {
-            enRetard();
+            dataGridViewGlobale.DataSource = enRetard();
             purgeModeOn = false;
             purgebutton.Enabled = false;
             desactiverCasier();
