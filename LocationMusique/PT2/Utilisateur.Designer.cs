@@ -54,11 +54,11 @@ namespace PT2
             this.nom.AutoSize = true;
             this.nom.BackColor = System.Drawing.Color.Transparent;
             this.nom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nom.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.nom.Location = new System.Drawing.Point(8, 9);
             this.nom.Name = "nom";
-            this.nom.Size = new System.Drawing.Size(51, 24);
+            this.nom.Size = new System.Drawing.Size(56, 25);
             this.nom.TabIndex = 1;
             this.nom.Text = "nom";
             // 
@@ -67,11 +67,11 @@ namespace PT2
             this.prenom.AutoSize = true;
             this.prenom.BackColor = System.Drawing.Color.Transparent;
             this.prenom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prenom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prenom.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.prenom.Location = new System.Drawing.Point(8, 33);
+            this.prenom.Location = new System.Drawing.Point(9, 34);
             this.prenom.Name = "prenom";
-            this.prenom.Size = new System.Drawing.Size(82, 24);
+            this.prenom.Size = new System.Drawing.Size(90, 25);
             this.prenom.TabIndex = 2;
             this.prenom.Text = "prenom";
             // 
@@ -85,7 +85,7 @@ namespace PT2
             this.prolonger1Button.FlatAppearance.BorderSize = 0;
             this.prolonger1Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.prolonger1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prolonger1Button.Location = new System.Drawing.Point(1224, 660);
+            this.prolonger1Button.Location = new System.Drawing.Point(1193, 638);
             this.prolonger1Button.Name = "prolonger1Button";
             this.prolonger1Button.Size = new System.Drawing.Size(338, 61);
             this.prolonger1Button.TabIndex = 4;
@@ -102,7 +102,7 @@ namespace PT2
             this.prolongerTousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prolongerTousButton.ForeColor = System.Drawing.Color.Transparent;
             this.prolongerTousButton.Image = ((System.Drawing.Image)(resources.GetObject("prolongerTousButton.Image")));
-            this.prolongerTousButton.Location = new System.Drawing.Point(568, 663);
+            this.prolongerTousButton.Location = new System.Drawing.Point(532, 641);
             this.prolongerTousButton.Name = "prolongerTousButton";
             this.prolongerTousButton.Size = new System.Drawing.Size(338, 55);
             this.prolongerTousButton.TabIndex = 5;
@@ -133,7 +133,7 @@ namespace PT2
             this.rendreButton.FlatAppearance.BorderSize = 0;
             this.rendreButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.rendreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rendreButton.Location = new System.Drawing.Point(901, 653);
+            this.rendreButton.Location = new System.Drawing.Point(867, 632);
             this.rendreButton.Name = "rendreButton";
             this.rendreButton.Size = new System.Drawing.Size(351, 72);
             this.rendreButton.TabIndex = 7;
@@ -159,7 +159,7 @@ namespace PT2
             this.afficherEmprunts.FlatAppearance.BorderSize = 0;
             this.afficherEmprunts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.afficherEmprunts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.afficherEmprunts.Location = new System.Drawing.Point(155, 300);
+            this.afficherEmprunts.Location = new System.Drawing.Point(143, 276);
             this.afficherEmprunts.Name = "afficherEmprunts";
             this.afficherEmprunts.Size = new System.Drawing.Size(311, 62);
             this.afficherEmprunts.TabIndex = 9;
@@ -175,7 +175,7 @@ namespace PT2
             this.afficherRecommandations.FlatAppearance.BorderSize = 0;
             this.afficherRecommandations.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.afficherRecommandations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.afficherRecommandations.Location = new System.Drawing.Point(155, 479);
+            this.afficherRecommandations.Location = new System.Drawing.Point(161, 441);
             this.afficherRecommandations.Name = "afficherRecommandations";
             this.afficherRecommandations.Size = new System.Drawing.Size(341, 83);
             this.afficherRecommandations.TabIndex = 10;
@@ -192,7 +192,7 @@ namespace PT2
             this.quitter.FlatAppearance.BorderSize = 0;
             this.quitter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.quitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.quitter.Location = new System.Drawing.Point(39, 701);
+            this.quitter.Location = new System.Drawing.Point(-22, 759);
             this.quitter.Name = "quitter";
             this.quitter.Size = new System.Drawing.Size(346, 70);
             this.quitter.TabIndex = 11;
@@ -206,11 +206,12 @@ namespace PT2
             this.retard.FlatAppearance.BorderSize = 0;
             this.retard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.retard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.retard.Location = new System.Drawing.Point(1191, 743);
+            this.retard.Location = new System.Drawing.Point(1101, 732);
             this.retard.Name = "retard";
             this.retard.Size = new System.Drawing.Size(338, 79);
             this.retard.TabIndex = 12;
             this.retard.UseVisualStyleBackColor = false;
+            this.retard.Visible = false;
             this.retard.Click += new System.EventHandler(this.retard_Click);
             // 
             // enCours
@@ -221,53 +222,79 @@ namespace PT2
             this.enCours.FlatAppearance.BorderSize = 0;
             this.enCours.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.enCours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.enCours.Location = new System.Drawing.Point(645, 743);
+            this.enCours.Location = new System.Drawing.Point(600, 732);
             this.enCours.Name = "enCours";
             this.enCours.Size = new System.Drawing.Size(338, 79);
             this.enCours.TabIndex = 13;
             this.enCours.UseVisualStyleBackColor = false;
+            this.enCours.Visible = false;
             this.enCours.Click += new System.EventHandler(this.enCours_Click);
             // 
             // listViewConsultation
             // 
+            this.listViewConsultation.BackColor = System.Drawing.Color.DimGray;
+            this.listViewConsultation.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("listViewConsultation.BackgroundImage")));
+            this.listViewConsultation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewConsultation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewConsultation.HideSelection = false;
-            this.listViewConsultation.Location = new System.Drawing.Point(645, 114);
+            this.listViewConsultation.Location = new System.Drawing.Point(563, 61);
             this.listViewConsultation.MultiSelect = false;
             this.listViewConsultation.Name = "listViewConsultation";
-            this.listViewConsultation.Size = new System.Drawing.Size(839, 533);
+            this.listViewConsultation.Size = new System.Drawing.Size(882, 531);
             this.listViewConsultation.TabIndex = 14;
             this.listViewConsultation.UseCompatibleStateImageBehavior = false;
+            this.listViewConsultation.View = System.Windows.Forms.View.Tile;
             this.listViewConsultation.SelectedIndexChanged += new System.EventHandler(this.listViewConsultation_SelectedIndexChanged);
             // 
             // utilisateurChangerMdp
             // 
-            this.utilisateurChangerMdp.Location = new System.Drawing.Point(223, 599);
+            this.utilisateurChangerMdp.BackColor = System.Drawing.Color.Transparent;
+            this.utilisateurChangerMdp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("utilisateurChangerMdp.BackgroundImage")));
+            this.utilisateurChangerMdp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.utilisateurChangerMdp.FlatAppearance.BorderSize = 0;
+            this.utilisateurChangerMdp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.utilisateurChangerMdp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.utilisateurChangerMdp.Location = new System.Drawing.Point(75, 612);
             this.utilisateurChangerMdp.Name = "utilisateurChangerMdp";
-            this.utilisateurChangerMdp.Size = new System.Drawing.Size(145, 23);
+            this.utilisateurChangerMdp.Size = new System.Drawing.Size(379, 67);
             this.utilisateurChangerMdp.TabIndex = 18;
-            this.utilisateurChangerMdp.Text = "changer mot de passe";
-            this.utilisateurChangerMdp.UseVisualStyleBackColor = true;
+            this.utilisateurChangerMdp.UseVisualStyleBackColor = false;
             this.utilisateurChangerMdp.Click += new System.EventHandler(this.utilisateurChangerMdp_Click);
             // 
             // boutonPageRetour
             // 
-            this.boutonPageRetour.Location = new System.Drawing.Point(1497, 624);
+            this.boutonPageRetour.BackColor = System.Drawing.Color.Transparent;
+            this.boutonPageRetour.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("boutonPageRetour.BackgroundImage")));
+            this.boutonPageRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.boutonPageRetour.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.boutonPageRetour.FlatAppearance.BorderSize = 0;
+            this.boutonPageRetour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.boutonPageRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.boutonPageRetour.Location = new System.Drawing.Point(1465, 391);
             this.boutonPageRetour.Name = "boutonPageRetour";
-            this.boutonPageRetour.Size = new System.Drawing.Size(75, 23);
+            this.boutonPageRetour.Size = new System.Drawing.Size(55, 48);
             this.boutonPageRetour.TabIndex = 19;
-            this.boutonPageRetour.Text = "Retour";
-            this.boutonPageRetour.UseVisualStyleBackColor = true;
+            this.boutonPageRetour.Text = " ";
+            this.boutonPageRetour.UseVisualStyleBackColor = false;
             this.boutonPageRetour.Visible = false;
             this.boutonPageRetour.Click += new System.EventHandler(this.boutonPageRetour_Click);
             // 
             // boutonPageSuivant
             // 
-            this.boutonPageSuivant.Location = new System.Drawing.Point(1497, 554);
+            this.boutonPageSuivant.BackColor = System.Drawing.Color.Transparent;
+            this.boutonPageSuivant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("boutonPageSuivant.BackgroundImage")));
+            this.boutonPageSuivant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.boutonPageSuivant.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.boutonPageSuivant.FlatAppearance.BorderSize = 0;
+            this.boutonPageSuivant.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.boutonPageSuivant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.boutonPageSuivant.ForeColor = System.Drawing.Color.DimGray;
+            this.boutonPageSuivant.Location = new System.Drawing.Point(1465, 300);
             this.boutonPageSuivant.Name = "boutonPageSuivant";
-            this.boutonPageSuivant.Size = new System.Drawing.Size(75, 23);
+            this.boutonPageSuivant.Size = new System.Drawing.Size(54, 48);
             this.boutonPageSuivant.TabIndex = 20;
-            this.boutonPageSuivant.Text = "Suivant";
-            this.boutonPageSuivant.UseVisualStyleBackColor = true;
+            this.boutonPageSuivant.Text = " ";
+            this.boutonPageSuivant.UseVisualStyleBackColor = false;
             this.boutonPageSuivant.Visible = false;
             this.boutonPageSuivant.Click += new System.EventHandler(this.boutonPageSuivant_Click);
             // 
@@ -275,9 +302,10 @@ namespace PT2
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.BackColor = System.Drawing.Color.Transparent;
-            this.labelPage.Location = new System.Drawing.Point(1503, 599);
+            this.labelPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPage.Location = new System.Drawing.Point(1471, 360);
             this.labelPage.Name = "labelPage";
-            this.labelPage.Size = new System.Drawing.Size(16, 13);
+            this.labelPage.Size = new System.Drawing.Size(20, 16);
             this.labelPage.TabIndex = 21;
             this.labelPage.Text = "   ";
             // 
