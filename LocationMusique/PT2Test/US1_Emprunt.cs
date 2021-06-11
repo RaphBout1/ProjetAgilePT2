@@ -17,6 +17,22 @@ namespace PT2Test
         MusiquePT2_DEntities testSQL = new MusiquePT2_DEntities();
 
 
+        
+
+        /// <summary>
+        /// Test de l'US1, on crée un abonné, on lui fait faire un emprunt et on vérifie que celui-ci a bien été enregistré.
+        /// </summary>
+        [TestMethod]
+        public void testEmprunt()
+        {
+            InitialisationGlobale();
+            utilisateurEmpruntTest.creerEmprunt(abonneTest.CODE_ABONNÉ, albumTest.CODE_ALBUM, DateTime.UtcNow, DateTime.UtcNow.AddDays(albumTest.GENRES.DÉLAI));
+            Assert.AreEqual(true, RetrouveEmprunt());
+        }
+
+        /// <summary>
+        /// initialise l'abonné crée et un emprunt d'un album pour celui-ci.
+        /// </summary>
         #region Initialisation
         private void InitialisationGlobale()
         {
@@ -58,14 +74,10 @@ namespace PT2Test
         #endregion
         #endregion
 
-        [TestMethod]
-        public void testEmprunt()
-        {
-            InitialisationGlobale();
-            utilisateurEmpruntTest.creerEmprunt(abonneTest.CODE_ABONNÉ, albumTest.CODE_ALBUM, DateTime.UtcNow, DateTime.UtcNow.AddDays(albumTest.GENRES.DÉLAI));
-            Assert.AreEqual(true, RetrouveEmprunt());
-        }
-
+        /// <summary>
+        /// Cherche l'emprunt crée par le test dans la base de données.
+        /// </summary>
+        /// <returns>true si l'emprunt existe bien, false sinon.</returns>
         private bool RetrouveEmprunt()
         {
             var emprunt = from e in testSQL.EMPRUNTER

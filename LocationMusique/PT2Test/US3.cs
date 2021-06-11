@@ -20,6 +20,25 @@ namespace PT2Test
         public EMPRUNTER emprunt2;
         public List<EMPRUNTER> listeEmprunts;
 
+        
+
+        /// <summary>
+        /// Test de l'US3, si un emprunt n'a jamais été prolongé, on rajoute 1 mois à la date de retour attendue, si oui, ne fait rien.
+        /// </summary>
+        [TestMethod]
+        public void testEmpruntProlongé()
+        {    
+            //Test 1 : si un emprunt n'a jamais été fait, fonctionne
+            resetEmprunt();
+            Assert.IsTrue(user.empruntProlongeable(emprunt1));
+            //Test 2 : si un emprunt a déjà été fait, ne fonctionne pas 
+            resetEmprunt();
+            Assert.IsFalse(user.empruntProlongeable(emprunt2));
+        }
+
+        /// <summary>
+        /// réinitialise toutes les variables utilisées pendant le test (abonné concerné, emprunts des albums utilisés)
+        /// </summary>
         public void resetEmprunt()
         {
             abonné = (from a in musiqueSQL.ABONNÉS where a.CODE_ABONNÉ == 6 select a).FirstOrDefault();
@@ -43,21 +62,6 @@ namespace PT2Test
             emprunt2.DATE_RETOUR = null;
 
             listeEmprunts = new List<EMPRUNTER>();
-        }
-
-        /*
-         * Test de l'US3, si un emprunt n'a jamais été prolongé, on rajoute 1 mois à la date de retour attendue, si oui, ne fait rien.
-         */
-        [TestMethod]
-        public void testEmpruntProlongé()
-        {
-             
-            //Test 1 : si un emprunt n'a jamais été fait, fonctionne
-            resetEmprunt();
-            Assert.IsTrue(user.empruntProlongeable(emprunt1));
-            //Test 2 : si un emprunt a déjà été fait, ne fonctionne pas 
-            resetEmprunt();
-            Assert.IsFalse(user.empruntProlongeable(emprunt2));
         }
     }
 }
