@@ -207,6 +207,8 @@ namespace PT2
             nouvelEmprunt.DATE_RETOUR_ATTENDUE = DATERTR;
             musiqueSQL.EMPRUNTER.Add(nouvelEmprunt);
             musiqueSQL.SaveChanges();
+            this.fenetrePrecedente.Visible = true;
+            this.Close();
         }
         #endregion
 
