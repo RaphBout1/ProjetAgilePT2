@@ -4,15 +4,22 @@
 
 ## Equipe
 
-- Numéro d'équipe : [x].[y]
-- Nom de la base de données : [z]_MusiquePT2
+- Numéro d'équipe : [2].[1]
+- Nom de la base de données : MusiquePT2_D
 - Composition de l'équipe :
-  - prénom nom (éventuellement rôle)
-  - ...
+  - Bertet Gauthier
+  - Boutin Raphael 
+  - Descomps Theo
+  - Luxey Aurelien
+  - Mannarelli Killian
+  - Paolini Timothe 
 
 ## Projet
 
 Donner ici le nom et une description courte du projet avec un screenshot représentatif de l'application.
+
+
+{"A?":"B","a":5,"d":"B","h":"www.canva.com","c":"DAEgsBwCJa4","i":"Z4JwppsjeaM5N2LhUIBT8w","b":1623408494092,"A":[{"A?":"I","A":203.18882246473692,"B":62.76376973403637,"D":1116.5118028183215,"C":606.1869636513615,"a":{"B":{"A":{"A":"MAEhEyEKFyo","B":1},"B":{"A":-5.684341886080802e-14,"B":-1.1368683772161603e-13,"D":1116.5118028183217,"C":606.1869636513616}}}}],"B":1920,"C":1080}
 
 Vous pouvez également préciser ici quelques éléments qui pourraient nous aider à compiler/déployer ou tester votre application :
 - l'éventuelles bibliothèques externes à installer (donner la procédure)
