@@ -327,6 +327,9 @@ namespace PT2
         private void enRetardButton_Click(object sender, EventArgs e)
         {
             dataGridViewGlobale.DataSource = enRetard();
+            dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
+            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false; 
             purgeModeOn = false;
             purgebutton.Enabled = false;
             desactiverCasier();
