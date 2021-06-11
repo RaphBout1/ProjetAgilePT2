@@ -167,11 +167,13 @@ namespace PT2
         }
 
         /**
-         * retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an
+         * retourne l'ensemble des albums dont la dernière date d'emprunt remonte à plus d'un an (ou n'a jamais été emprunté)
          */
         public HashSet<ALBUMS> albumPasEmpruntesDepuis1An()
         {
             HashSet<ALBUMS> albumPasEmprunter1An = new HashSet<ALBUMS>();
+            var albumsJamaisEmpruntés = (from a in musiqueSQL.ALBUMS select a).ToList().Except(from e in musiqueSQL.EMPRUNTER select e.ALBUMS).ToList();
+            albumsJamaisEmpruntés.ForEach(a => albumPasEmprunter1An.Add(a));
             DateTime dateactuelle = DateTime.UtcNow.AddYears(-1);
             var dates = from e in musiqueSQL.EMPRUNTER group e by e.CODE_ALBUM into newGroup select new { newGroup.Key, derniereDate = newGroup.Max(d => d.DATE_EMPRUNT) };
             foreach (var kv in dates)
@@ -234,9 +236,9 @@ namespace PT2
             }
         }
         /// <summary>
-        /// Vide et remplit la listeboxglobale avec les 10 albums les plus populaires
+        /// Vide et remplit la listeboxglobale avec les albums non empruntés depuis 1 an.
         /// </summary>
-        private void remplir10moinspopulaires()
+        private void remplirAlbumsPasEmpruntes1An()
         {
             listBoxGlobale.Items.Clear();
             foreach (ALBUMS i in albumPasEmpruntesDepuis1An())
@@ -280,7 +282,7 @@ namespace PT2
 
         private void moinsPopulaireButton_Click(object sender, EventArgs e)
         {
-            remplir10moinspopulaires();
+            remplirAlbumsPasEmpruntes1An();
             purgeModeOn = false;
             Refresh();
             desactiverCasier();
