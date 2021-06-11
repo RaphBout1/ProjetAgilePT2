@@ -42,7 +42,10 @@ namespace PT2Test
                 }
             }
             Assert.IsTrue(nbProlonges == 2);
-
+            musiqueSQL.EMPRUNTER.Remove((from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == abonné.CODE_ABONNÉ && e.CODE_ALBUM == album1.CODE_ALBUM select e).FirstOrDefault());
+            musiqueSQL.EMPRUNTER.Remove((from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == abonné.CODE_ABONNÉ && e.CODE_ALBUM == album2.CODE_ALBUM select e).FirstOrDefault());
+            musiqueSQL.EMPRUNTER.Remove((from e in musiqueSQL.EMPRUNTER where e.CODE_ABONNÉ == abonné.CODE_ABONNÉ && e.CODE_ALBUM == album3.CODE_ALBUM select e).FirstOrDefault());
+            musiqueSQL.SaveChanges();
         }
 
         /// <summary>
@@ -82,6 +85,7 @@ namespace PT2Test
             musiqueSQL.EMPRUNTER.Add(emprunt1);
             musiqueSQL.EMPRUNTER.Add(emprunt2);
             musiqueSQL.EMPRUNTER.Add(emprunt3);
+            musiqueSQL.SaveChanges();
         }
     }
 }
