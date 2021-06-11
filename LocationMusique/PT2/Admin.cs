@@ -28,6 +28,11 @@ namespace PT2
             this.fenetrePrecedente = fenetrePrecedente;
             page = 0;
             listeaffiche = new List<ALBUMS>();
+            purgebutton.Enabled = false;
+            purgebutton.Visible = false;
+            enRetardButton.Visible = false;
+            purgerModeButton.Visible = false;
+            buttonChangerMdp.Visible = false;
         }
         public Admin()
         {
@@ -37,6 +42,11 @@ namespace PT2
             albumsUS8 = albumPasEmpruntesDepuis1An();
             page = 0;
             listeaffiche = new List<ALBUMS>();
+            purgebutton.Enabled = false;
+            purgebutton.Visible = false;
+            enRetardButton.Visible = false;
+            purgerModeButton.Visible = false;
+            buttonChangerMdp.Visible = false;
         }
         /// <summary>
         /// Renvoie une liste d'abonnée ayant un emprunt non rendu en retard de 10 jours sur la date de rendue attendue.
@@ -320,6 +330,7 @@ namespace PT2
             allee.Visible = afficher;
             caiser.Visible = afficher;
             buttonCasier.Visible = afficher;
+
         }
 
         private void Pluspopulairebutton_Click(object sender, EventArgs e)
@@ -327,8 +338,11 @@ namespace PT2
             remplir10pluspopulaires();
             purgeModeOn = false;
             Refresh();
-            toggleCasiers();
-            purgebutton.Enabled = false;
+            purgebutton.Visible = false;
+            purgebutton.Visible = false;
+            enRetardButton.Visible = false;
+            purgerModeButton.Visible = false;
+            buttonChangerMdp.Visible = false;
         }
 
         private void moinsPopulaireButton_Click(object sender, EventArgs e)
@@ -337,8 +351,11 @@ namespace PT2
             changerPage();
             purgeModeOn = false;
             Refresh();
-            toggleCasiers();
-            purgebutton.Enabled = false;
+            purgebutton.Visible = false;
+            purgebutton.Visible = false;
+            enRetardButton.Visible = false;
+            purgerModeButton.Visible = false;
+            buttonChangerMdp.Visible = false;
         }
 
         private void purgerModeButton_Click(object sender, EventArgs e)
@@ -346,6 +363,7 @@ namespace PT2
             remplirDataAPurger();
             purgeModeOn = true;
             Refresh();
+            purgebutton.Visible = true;
 
         }
 
@@ -353,7 +371,7 @@ namespace PT2
         {
             if (purgeModeOn)
             {
-                purgebutton.Enabled = true;
+                purgebutton.Visible = true;
             }
         }
 
@@ -364,7 +382,7 @@ namespace PT2
             dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
             dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
             purgeModeOn = false;
-            purgebutton.Enabled = false;
+            purgebutton.Visible = false;
             toggleCasiers();
             Refresh();
         }
@@ -373,7 +391,7 @@ namespace PT2
         {
             remplirDataProlonge();
             purgeModeOn = false;
-            purgebutton.Enabled = false;
+            purgebutton.Visible = false;
             toggleCasiers();
             Refresh();
         }
@@ -384,6 +402,9 @@ namespace PT2
             dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
             dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
             dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
+            enRetardButton.Visible = true;
+            purgerModeButton.Visible = true;
+            buttonChangerMdp.Visible = true;
         }
 
         private void buttonChangerMdp_Click(object sender, EventArgs e)
@@ -391,10 +412,7 @@ namespace PT2
             changerMdp();
         }
 
-        private void listBoxAbonnés_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            buttonChangerMdp.Enabled = true;
-        }
+       
 
         private void buttonAllée_Click(object sender, EventArgs e)
         {
@@ -425,6 +443,20 @@ namespace PT2
                                              join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
                                              where a.ALLÉE_ALBUM == allée.ToString() && a.CASIER_ALBUM == casier && emp.DATE_RETOUR == null
                                              select a).ToList();
+            dataGridViewGlobale.DataSource = listeaffiche;
+            dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
+            dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
+            for (int i = 0; i < dataGridViewGlobale.RowCount; i++)
+            {
+                dataGridViewGlobale.Rows[i].Height = 100;
+            }
+            for (int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
+            {
+                dataGridViewGlobale.Columns[i].Width = 100;
+            }
+            dataGridViewGlobale.RowHeadersWidth = 5;
+            dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         /// <summary>
@@ -448,7 +480,7 @@ namespace PT2
         {
             if (purgeModeOn)
             {
-                purgebutton.Enabled = true;
+                purgebutton.Visible = true;
             }
         }
 
