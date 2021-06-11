@@ -16,14 +16,16 @@ namespace PT2
         private readonly static string logAdmin = "admin";
         private HashSet<ALBUMS> albumsUS8 = new HashSet<ALBUMS>();
         private bool purgeModeOn = true;
+        Connexion fenetrePrecedente;
 
 
-        public Admin()
+        public Admin(Connexion fenetrePrecedente)
         {
             InitializeComponent();
             listerAbonnés();
             desactiverCasier();
             albumsUS8 = albumPasEmpruntesDepuis1An();
+            this.fenetrePrecedente = fenetrePrecedente;
         }
         /// <summary>
         /// Renvoie une liste d'abonnée ayant un emprunt non rendu en retard de 10 jours sur la date de rendue attendue.
@@ -453,6 +455,12 @@ namespace PT2
             {
                 purgebutton.Enabled = true;
             }
+        }
+
+        private void quitter_Click(object sender, EventArgs e)
+        {
+            fenetrePrecedente.Visible = true;
+            this.Close();
         }
     }
 }
