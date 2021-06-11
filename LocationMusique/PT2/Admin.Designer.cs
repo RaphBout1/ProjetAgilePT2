@@ -288,10 +288,10 @@ namespace PT2
             // dataGridViewGlobale
             // 
             this.dataGridViewGlobale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewGlobale.Location = new System.Drawing.Point(645, 21);
+            this.dataGridViewGlobale.Location = new System.Drawing.Point(692, 143);
             this.dataGridViewGlobale.Name = "dataGridViewGlobale";
             this.dataGridViewGlobale.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewGlobale.Size = new System.Drawing.Size(685, 775);
+            this.dataGridViewGlobale.Size = new System.Drawing.Size(546, 532);
             this.dataGridViewGlobale.TabIndex = 26;
             // 
             // Admin
