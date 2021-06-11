@@ -327,7 +327,6 @@ namespace PT2
             listViewConsultation.View = View.Details;
             listViewConsultation.GridLines = true;
             listViewConsultation.Columns.Add("Titre", -2, HorizontalAlignment.Left);
-            listViewConsultation.Columns.Add("N°", -2, HorizontalAlignment.Left);
             listViewConsultation.Columns.Add("Date d'emprunt", -2, HorizontalAlignment.Center);
             listViewConsultation.Columns.Add("Date retour", -2, HorizontalAlignment.Center);
         }
@@ -342,13 +341,13 @@ namespace PT2
         {
             listViewConsultation.Items.Clear();
             ImageList imageListSmall = new ImageList();
+            imageListSmall.ImageSize = new Size(70, 70);
             int compteurEmpruntTemp = 0;
             foreach (EMPRUNTER e in le)
             {
                 #region rajout d'une ligne
                 //création de l'item et mise en place titre
                 ListViewItem item = new ListViewItem(e.ALBUMS.TITRE_ALBUM, compteurEmpruntTemp);
-                item.SubItems.Add(e.CODE_ALBUM.ToString());
                 //date emprunt
                 item.SubItems.Add(e.DATE_EMPRUNT.ToString());
                 //date de retour ou la date prévue
@@ -376,6 +375,7 @@ namespace PT2
                 #endregion
             }
             listViewConsultation.SmallImageList = imageListSmall;
+        
             #region Taille
             //taille colonne
             listViewConsultation.AutoResizeColumn(0,
@@ -383,8 +383,6 @@ namespace PT2
             listViewConsultation.AutoResizeColumn(1,
             ColumnHeaderAutoResizeStyle.ColumnContent);
             listViewConsultation.AutoResizeColumn(2,
-            ColumnHeaderAutoResizeStyle.ColumnContent);
-            listViewConsultation.AutoResizeColumn(3,
             ColumnHeaderAutoResizeStyle.ColumnContent);
             #endregion
         }
@@ -408,7 +406,7 @@ namespace PT2
         private void changerPage()
         {
             labelPage.Text = "Page : "+(page+1).ToString();
-            int nmbEmpruntParPage = 30;
+            int nmbEmpruntParPage =7;
             List<EMPRUNTER> listAAfficher = new List<EMPRUNTER>();
             for (int i = page * nmbEmpruntParPage; i < page * nmbEmpruntParPage + nmbEmpruntParPage; i++)
             {
@@ -417,10 +415,10 @@ namespace PT2
                     listAAfficher.Add(EnsembleEmpruntPouvantEtreAfficher[i]);
                 }
             }
-            if (page == 0) { boutonPageRetour.Enabled = false; }
+            if (page == 0) { boutonPageRetour.Visible = false; }
             if (listAAfficher.Count< nmbEmpruntParPage)
             {
-                boutonPageSuivant.Enabled = false;
+                boutonPageSuivant.Visible = false;
             }
             PlacerNouvelleInfo(listAAfficher);
         }
@@ -430,14 +428,14 @@ namespace PT2
         {
             page++;
             changerPage();
-            boutonPageRetour.Enabled = true;
+            boutonPageRetour.Visible = true;
         }
 
         private void boutonPageRetour_Click(object sender, EventArgs e)
         {
             page--;
             changerPage();
-            boutonPageSuivant.Enabled = true;
+            boutonPageSuivant.Visible = true;
         }
         #endregion
         #endregion
@@ -463,7 +461,7 @@ namespace PT2
             else { prolonger1Button.Enabled = false; }
         }
         #endregion
-        #endregion
+        
 
         #region Importer Image
         public Image ConstructionImageDepuisByte(byte[] tabByte)
