@@ -60,7 +60,6 @@ namespace PT2
                 {
                     listBoxGlobale.Items.Add(m);
                 }
-
             }
             Refresh();
         }
@@ -247,15 +246,16 @@ namespace PT2
             }
         }
 
+        /// <summary>
+        /// Insère dans une liste l'ensemble des allées disponibles
+        /// </summary>
         private void listerAllées()
         {
-            listBoxAllée.Visible = true;
-            labelAllée.Visible = true;
             listBoxAllée.Items.Clear();
-            char[] allées = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
-            foreach (char c in allées)
+            var allees = from a in musiqueSQL.ALBUMS group a by a.ALLÉE_ALBUM into intAllees orderby intAllees.Key select intAllees.Key;
+            foreach (string s in allees)
             {
-                listBoxAllée.Items.Add(c);
+                listBoxAllée.Items.Add(s.Trim());
             }
         }
 
@@ -327,7 +327,6 @@ namespace PT2
         {
             listeabonneVisible = !listeabonneVisible;
             listBoxAbonnés.Visible = listeabonneVisible;
-
             Refresh();
         }
 
@@ -343,27 +342,37 @@ namespace PT2
 
         private void listBoxCasier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonCasier.Visible = true;
+            if (listBoxCasier.SelectedItem != null)
+            {
+                buttonCasier.Visible = true;
+            }
+            else
+            {
+                buttonCasier.Visible = false;
+            }
         }
 
         private void buttonAllée_Click(object sender, EventArgs e)
         {
             listerAllées();
+            listBoxAllée.Visible = true;
+            labelAllée.Visible = true;
         }
 
         private void listBoxAllée_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBoxCasier.Visible = true;
-            labelCasier.Visible = true;
-            listBoxCasier.Items.Clear();
-            string allée = listBoxAllée.SelectedItem.ToString();
-            var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée orderby a.CASIER_ALBUM select a.CASIER_ALBUM; 
-            foreach (int i in casiers)
+            var allée = listBoxAllée.SelectedItem;
+            if (allée != null)
             {
-                if (!listBoxCasier.Items.Contains(i))
+                listBoxCasier.Visible = true;
+                labelCasier.Visible = true;
+                listBoxCasier.Items.Clear();
+                var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée.ToString() group a by a.CASIER_ALBUM into casier select casier.Key;
+                foreach (int i in casiers)
+                {
                     listBoxCasier.Items.Add(i);
-            }
-            if (listBoxCasier.SelectedItem == null)
+                }
+            } else
             {
                 buttonCasier.Visible = false;
             }
@@ -376,7 +385,7 @@ namespace PT2
             string allée = listBoxAllée.SelectedItem.ToString();
             var albums = from a in musiqueSQL.ALBUMS
                          join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
-                         where a.ALLÉE_ALBUM == allée && a.CASIER_ALBUM == numCasier
+                         where a.ALLÉE_ALBUM == allée && a.CASIER_ALBUM == numCasier && emp.DATE_RETOUR == null
                          select a;
             foreach (ALBUMS a in albums)
             {
