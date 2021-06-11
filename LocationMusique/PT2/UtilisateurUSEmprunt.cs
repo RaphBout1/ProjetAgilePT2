@@ -40,6 +40,14 @@ namespace PT2
             listePredefini = false;
             AffectationCinqAlbum(0);
         }
+
+        /// <summary>
+        /// Constructeur de la classe
+        /// cette méthode initialise l'emprunt mais seulement
+        /// parmis ceux d'une liste entrée en paramètre
+        /// </summary>
+        /// <param name="utilisateur">l'abonnée voulant emprunter</param>
+        /// <param name="listeVoulu"> la liste d'album pouvant être consulté</param>
         public UtilisateurUSEmprunt(ABONNÉS utilisateur, List<ALBUMS> listeVoulu)
         {
             InitializeComponent();
@@ -49,6 +57,11 @@ namespace PT2
             AffectationCinqAlbumPrédéfini(5);
         }
 
+        /// <summary>
+        /// Initialise la liste liste des albums empruntable
+        /// avec la liste prédéfini
+        /// </summary>
+        /// <param name="listeVoulu"> liste prédéfini d'album, les seuls pouvant être affiché</param>
         public void InitialisationListeAlbumPredefini(List<ALBUMS> listeVoulu)
         {
             listePredefini = true;
@@ -214,6 +227,9 @@ namespace PT2
             boutonSuivant.Visible = true;
         }
 
+        /// <summary>
+        /// Effectue l'actualise des albums lors du changement de page
+        /// </summary>
         private void changementDePage()
         {
             if (listePredefini)
@@ -308,6 +324,10 @@ namespace PT2
         #endregion
 
         #region Selectionné dans liste prédéfini
+        /// <summary>
+        /// Permet de sélectionner 5 album par rapport à une liste prédéfini
+        /// </summary>
+        /// <param name="ensemble"></param>
         private void AffectationCinqAlbumPrédéfini(int ensemble)
         {
             int index = 0;
