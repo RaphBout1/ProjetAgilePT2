@@ -32,6 +32,7 @@ namespace PT2
             labelAncien.Visible = !estAdmin;
             AncienMdpTextBox.Visible = !estAdmin;
             mdpCheckBox.Visible = !estAdmin;
+            afficherMdp.Visible = !estAdmin;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -71,15 +72,7 @@ namespace PT2
                 this.DialogResult = DialogResult.OK;
             }
         }
-        /// <summary>
-        /// Change l'affichage du mot de passe (ancien) avec des étoiles ou non
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mdpCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            AncienMdpTextBox.UseSystemPasswordChar = !AncienMdpTextBox.UseSystemPasswordChar;
-        }
+
         /// <summary>
         /// Change l'affichage du mot de passe (nouveau) ainsi que sa confirmation avec des étoiles ou non
         /// </summary>
@@ -91,6 +84,25 @@ namespace PT2
             textBoxMdpConfirm.UseSystemPasswordChar = !textBoxMdpConfirm.UseSystemPasswordChar;
 
 
+        }
+/// <summary>
+        /// Change l'affichage du mot de passe (ancien) avec des étoiles ou non
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void afficherMdp_CheckedChanged(object sender, EventArgs e)
+        {
+            AncienMdpTextBox.UseSystemPasswordChar = !AncienMdpTextBox.UseSystemPasswordChar;
+        }
+
+        private void affichermdp2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxMdp.UseSystemPasswordChar = !textBoxMdp.UseSystemPasswordChar;
+        }
+
+        private void affichermdp3_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxMdpConfirm.UseSystemPasswordChar = !textBoxMdpConfirm.UseSystemPasswordChar;
         }
     }
 }

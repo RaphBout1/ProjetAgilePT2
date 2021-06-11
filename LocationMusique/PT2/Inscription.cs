@@ -27,6 +27,7 @@ namespace PT2
             submit.Visible = false;
             retour.Visible = false;
             afficherMdpTexte = true;
+            confirmerPicture.Visible = false;
         }
 
         /// <summary>
@@ -151,6 +152,8 @@ namespace PT2
             cancelButton.Visible = false;
             confirmationMdpBox.Visible = true;
             afficherMdp.Visible = true;
+            confirmerPicture.Visible = true;
+            affichemdp2.Visible = true;
         }
 
         private void retour_Click(object sender, EventArgs e)
@@ -173,14 +176,19 @@ namespace PT2
             retour.Visible = false;
             confirmationMdpBox.Visible = false;
             afficherMdp.Visible = false;
+            confirmerPicture.Visible = false;
+            affichemdp2.Visible = false;
         }
 
         private void afficherMdp_CheckedChanged(object sender, EventArgs e)
         {
-            afficherMdpTexte = !afficherMdpTexte;
-            passwordText.UseSystemPasswordChar = afficherMdpTexte;
-            Console.WriteLine("      Affichage du mdp ou non");
-            Refresh();
+            passwordText.UseSystemPasswordChar = !passwordText.UseSystemPasswordChar;
+
+        }
+
+        private void affichemdp2_CheckedChanged(object sender, EventArgs e)
+        {
+            confirmationMdpBox.UseSystemPasswordChar = !confirmationMdpBox.UseSystemPasswordChar;
         }
     }
 }
