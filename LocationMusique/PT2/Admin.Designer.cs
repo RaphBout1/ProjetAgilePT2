@@ -201,6 +201,7 @@ namespace PT2
             this.quitter.TabIndex = 18;
             this.quitter.Text = " ";
             this.quitter.UseVisualStyleBackColor = false;
+            this.quitter.Click += new System.EventHandler(this.quitter_Click);
             // 
             // labelAllée
             // 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,8 +38,8 @@ namespace PT2Test
         /// </summary>
         public void initaliserVariables()
         {
-            abonné1 = (from a in musiqueSQL.ABONNÉS where a.CODE_ABONNÉ == 6 select a).FirstOrDefault();
-            abonné2 = (from a in musiqueSQL.ABONNÉS where a.CODE_ABONNÉ == 9 select a).FirstOrDefault();
+            abonné1 = (from a in musiqueSQL.ABONNÉS where a.CODE_ABONNÉ == 200 select a).FirstOrDefault();
+            abonné2 = (from a in musiqueSQL.ABONNÉS where a.CODE_ABONNÉ == 201 select a).FirstOrDefault();
             user = new Admin();
 
             album1 = (from a in musiqueSQL.ALBUMS where a.CODE_ALBUM == 700 select a).FirstOrDefault();

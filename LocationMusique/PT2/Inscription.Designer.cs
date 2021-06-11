@@ -116,6 +116,7 @@ namespace PT2
             this.cancelButton.TabIndex = 11;
             this.cancelButton.Text = " ";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // paysComboBox
             // 
@@ -172,7 +173,7 @@ namespace PT2
             this.retour.FlatAppearance.BorderSize = 0;
             this.retour.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.retour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.retour.Location = new System.Drawing.Point(143, 753);
+            this.retour.Location = new System.Drawing.Point(143, 747);
             this.retour.Name = "retour";
             this.retour.Size = new System.Drawing.Size(411, 83);
             this.retour.TabIndex = 16;

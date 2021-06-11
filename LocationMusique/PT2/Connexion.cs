@@ -21,12 +21,14 @@ namespace PT2
 
         private void InscriptionButton_Click(object sender, EventArgs e)
         {
-            new Inscription().ShowDialog();
+            this.Visible = false;
+            new Inscription(this).ShowDialog();
         }
         private void UtilisateurButton_Click(object sender, EventArgs e)
         {
             ABONNÉS robert = (from l in musiqueSQL.ABONNÉS where l.LOGIN_ABONNÉ == "rbDLC" select l).First();
-            Utilisateur utilisateur = new Utilisateur(robert);
+            this.Visible = false;
+            Utilisateur utilisateur = new Utilisateur(robert, this);
             if (utilisateur.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
             }
@@ -34,7 +36,8 @@ namespace PT2
 
         private void adminButton_Click(object sender, EventArgs e)
         {
-            new Admin().ShowDialog();
+            this.Visible = false;
+            new Admin(this).ShowDialog();
         }
 
         private void connectbutton_Click(object sender, EventArgs e)
@@ -53,11 +56,13 @@ namespace PT2
                 ABONNÉS aboconnecte = Abo.First();
                 if (loginAbo.Equals("admin"))
                 {
-                    new Admin().ShowDialog();
+                    this.Visible = false;
+                    new Admin(this).ShowDialog(this);
                 }
                 else
                 {
-                    new Utilisateur(aboconnecte).ShowDialog();
+                    this.Visible = false;
+                    new Utilisateur(aboconnecte,this).ShowDialog();
                 }
 
             }

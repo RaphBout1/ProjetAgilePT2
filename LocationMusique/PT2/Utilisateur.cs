@@ -21,7 +21,20 @@ namespace PT2
         List<EMPRUNTER> EnsembleEmpruntPouvantEtreAfficher = new List<EMPRUNTER>();
         int page;
         #endregion
-        EMPRUNTER empruntCourant = new EMPRUNTER();
+        Connexion fenetrePrecedente;
+
+        public Utilisateur(ABONNÉS uti, Connexion fenetrePrecedente)
+        {
+            InitializeComponent();
+            InitialiserListView();
+            utilisateur = uti;
+            nom.Text = uti.NOM_ABONNÉ;
+            prenom.Text = uti.PRÉNOM_ABONNÉ;
+            prolonger1Button.Visible = false;
+            prolongerTousButton.Visible = false;
+            rendreButton.Visible = false;
+            this.fenetrePrecedente = fenetrePrecedente;
+        }
 
         public Utilisateur(ABONNÉS uti)
         {
@@ -33,7 +46,7 @@ namespace PT2
             prolonger1Button.Visible = false;
             prolongerTousButton.Visible = false;
             rendreButton.Visible = false;
-
+            
         }
 
         /**
@@ -149,8 +162,9 @@ namespace PT2
                 {
                     listeRecommandation.Add(a);
                 }
-                UtilisateurUSEmprunt recommandationEmpruntable = new UtilisateurUSEmprunt(utilisateur, listeRecommandation);
+                UtilisateurUSEmprunt recommandationEmpruntable = new UtilisateurUSEmprunt(utilisateur, listeRecommandation, this);
                 listViewConsultation.Items.Clear();
+                this.Visible = false;
                 recommandationEmpruntable.ShowDialog();
                 Refresh();
             }
@@ -210,7 +224,8 @@ namespace PT2
         private void button1_Click_1(object sender, EventArgs e)
         {
             listViewConsultation.Items.Clear();
-            new UtilisateurUSEmprunt(utilisateur).ShowDialog();
+            this.Visible = false;
+            new UtilisateurUSEmprunt(utilisateur,this).ShowDialog();
             enCours.Visible = false;
             retard.Visible = false;
             rendreButton.Visible = false;
@@ -510,5 +525,10 @@ namespace PT2
             musiqueSQL.SaveChanges();
         }
         #endregion
+
+        private void quitter_Click(object sender, EventArgs e)
+        {
+            fenetrePrecedente.Visible = true;
+        }
     }
 }

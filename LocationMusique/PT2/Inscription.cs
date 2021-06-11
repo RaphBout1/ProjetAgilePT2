@@ -17,7 +17,9 @@ namespace PT2
     public partial class Inscription : Form
     {
         bool afficherMdpTexte;
-        public Inscription()
+        Connexion fenetrePrecedente;
+
+        public Inscription(Connexion fenetrePrecedente)
         {
             InitializeComponent();
             chargerPays();
@@ -28,6 +30,7 @@ namespace PT2
             retour.Visible = false;
             afficherMdpTexte = true;
             confirmerPicture.Visible = false;
+            this.fenetrePrecedente = fenetrePrecedente;
         }
 
         /// <summary>
@@ -128,6 +131,7 @@ namespace PT2
                     throw new InformationsInvalidesException("L'identifiant ne doit pas contenir le mot \"test\"");
                 }
                 abonner(nomText.Text, prenomText.Text, paysComboBox.Text, loginText.Text, passwordText.Text, confirmationMdpBox.Text);
+                fenetrePrecedente.Visible = true;
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 Close();
             }
@@ -189,6 +193,12 @@ namespace PT2
         private void affichemdp2_CheckedChanged(object sender, EventArgs e)
         {
             confirmationMdpBox.UseSystemPasswordChar = !confirmationMdpBox.UseSystemPasswordChar;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            fenetrePrecedente.Visible = true;
+            this.Close();
         }
     }
 }
