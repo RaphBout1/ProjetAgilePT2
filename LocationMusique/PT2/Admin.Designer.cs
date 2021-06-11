@@ -32,8 +32,6 @@ namespace PT2
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.label2 = new System.Windows.Forms.Label();
             this.purgebutton = new System.Windows.Forms.Button();
-            this.listBoxAbonnés = new System.Windows.Forms.ListBox();
-            this.listBoxGlobale = new System.Windows.Forms.ListBox();
             this.enRetardButton = new System.Windows.Forms.Button();
             this.Pluspopulairebutton = new System.Windows.Forms.Button();
             this.purgerModeButton = new System.Windows.Forms.Button();
@@ -42,13 +40,13 @@ namespace PT2
             this.listeAbonnés = new System.Windows.Forms.Button();
             this.buttonChangerMdp = new System.Windows.Forms.Button();
             this.quitter = new System.Windows.Forms.Button();
-            this.listBoxAllée = new System.Windows.Forms.ListBox();
-            this.listBoxCasier = new System.Windows.Forms.ListBox();
             this.labelAllée = new System.Windows.Forms.Label();
             this.labelCasier = new System.Windows.Forms.Label();
             this.buttonCasier = new System.Windows.Forms.Button();
             this.buttonAllée = new System.Windows.Forms.Button();
             this.dataGridViewGlobale = new System.Windows.Forms.DataGridView();
+            this.comboAllée = new System.Windows.Forms.ComboBox();
+            this.comboCasier = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGlobale)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,25 +67,6 @@ namespace PT2
             this.purgebutton.Text = "Purger l\'abonné";
             this.purgebutton.UseVisualStyleBackColor = true;
             this.purgebutton.Click += new System.EventHandler(this.purgebutton_Click);
-            // 
-            // listBoxAbonnés
-            // 
-            this.listBoxAbonnés.FormattingEnabled = true;
-            this.listBoxAbonnés.Location = new System.Drawing.Point(1244, 117);
-            this.listBoxAbonnés.Name = "listBoxAbonnés";
-            this.listBoxAbonnés.Size = new System.Drawing.Size(328, 147);
-            this.listBoxAbonnés.TabIndex = 7;
-            this.listBoxAbonnés.Visible = false;
-            this.listBoxAbonnés.SelectedIndexChanged += new System.EventHandler(this.listBoxAbonnés_SelectedIndexChanged);
-            // 
-            // listBoxGlobale
-            // 
-            this.listBoxGlobale.FormattingEnabled = true;
-            this.listBoxGlobale.Location = new System.Drawing.Point(738, 651);
-            this.listBoxGlobale.Name = "listBoxGlobale";
-            this.listBoxGlobale.Size = new System.Drawing.Size(505, 602);
-            this.listBoxGlobale.TabIndex = 9;
-            this.listBoxGlobale.SelectedIndexChanged += new System.EventHandler(this.listBoxGlobale_SelectedIndexChanged);
             // 
             // enRetardButton
             // 
@@ -223,27 +202,10 @@ namespace PT2
             this.quitter.Text = " ";
             this.quitter.UseVisualStyleBackColor = false;
             // 
-            // listBoxAllée
-            // 
-            this.listBoxAllée.FormattingEnabled = true;
-            this.listBoxAllée.Location = new System.Drawing.Point(555, 210);
-            this.listBoxAllée.Name = "listBoxAllée";
-            this.listBoxAllée.Size = new System.Drawing.Size(84, 173);
-            this.listBoxAllée.TabIndex = 20;
-            this.listBoxAllée.SelectedIndexChanged += new System.EventHandler(this.listBoxAllée_SelectedIndexChanged);
-            // 
-            // listBoxCasier
-            // 
-            this.listBoxCasier.FormattingEnabled = true;
-            this.listBoxCasier.Location = new System.Drawing.Point(555, 520);
-            this.listBoxCasier.Name = "listBoxCasier";
-            this.listBoxCasier.Size = new System.Drawing.Size(84, 173);
-            this.listBoxCasier.TabIndex = 21;
-            // 
             // labelAllée
             // 
             this.labelAllée.AutoSize = true;
-            this.labelAllée.Location = new System.Drawing.Point(552, 194);
+            this.labelAllée.Location = new System.Drawing.Point(532, 47);
             this.labelAllée.Name = "labelAllée";
             this.labelAllée.Size = new System.Drawing.Size(36, 13);
             this.labelAllée.TabIndex = 22;
@@ -252,7 +214,7 @@ namespace PT2
             // labelCasier
             // 
             this.labelCasier.AutoSize = true;
-            this.labelCasier.Location = new System.Drawing.Point(552, 504);
+            this.labelCasier.Location = new System.Drawing.Point(521, 143);
             this.labelCasier.Name = "labelCasier";
             this.labelCasier.Size = new System.Drawing.Size(65, 13);
             this.labelCasier.TabIndex = 23;
@@ -260,7 +222,7 @@ namespace PT2
             // 
             // buttonCasier
             // 
-            this.buttonCasier.Location = new System.Drawing.Point(564, 755);
+            this.buttonCasier.Location = new System.Drawing.Point(542, 239);
             this.buttonCasier.Name = "buttonCasier";
             this.buttonCasier.Size = new System.Drawing.Size(75, 23);
             this.buttonCasier.TabIndex = 24;
@@ -294,6 +256,23 @@ namespace PT2
             this.dataGridViewGlobale.TabIndex = 26;
             this.dataGridViewGlobale.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewGlobale_CellContentClick);
             // 
+            // comboAllée
+            // 
+            this.comboAllée.FormattingEnabled = true;
+            this.comboAllée.Location = new System.Drawing.Point(496, 82);
+            this.comboAllée.Name = "comboAllée";
+            this.comboAllée.Size = new System.Drawing.Size(121, 21);
+            this.comboAllée.TabIndex = 27;
+            this.comboAllée.SelectedIndexChanged += new System.EventHandler(this.comboAllée_SelectedIndexChanged);
+            // 
+            // comboCasier
+            // 
+            this.comboCasier.FormattingEnabled = true;
+            this.comboCasier.Location = new System.Drawing.Point(496, 182);
+            this.comboCasier.Name = "comboCasier";
+            this.comboCasier.Size = new System.Drawing.Size(121, 21);
+            this.comboCasier.TabIndex = 28;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,13 +280,13 @@ namespace PT2
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.comboCasier);
+            this.Controls.Add(this.comboAllée);
             this.Controls.Add(this.dataGridViewGlobale);
             this.Controls.Add(this.buttonAllée);
             this.Controls.Add(this.buttonCasier);
             this.Controls.Add(this.labelCasier);
             this.Controls.Add(this.labelAllée);
-            this.Controls.Add(this.listBoxCasier);
-            this.Controls.Add(this.listBoxAllée);
             this.Controls.Add(this.quitter);
             this.Controls.Add(this.buttonChangerMdp);
             this.Controls.Add(this.listeAbonnés);
@@ -316,8 +295,6 @@ namespace PT2
             this.Controls.Add(this.purgerModeButton);
             this.Controls.Add(this.Pluspopulairebutton);
             this.Controls.Add(this.enRetardButton);
-            this.Controls.Add(this.listBoxGlobale);
-            this.Controls.Add(this.listBoxAbonnés);
             this.Controls.Add(this.purgebutton);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -334,8 +311,6 @@ namespace PT2
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button purgebutton;
-        private System.Windows.Forms.ListBox listBoxAbonnés;
-        private System.Windows.Forms.ListBox listBoxGlobale;
         private System.Windows.Forms.Button enRetardButton;
         private System.Windows.Forms.Button Pluspopulairebutton;
         private System.Windows.Forms.Button purgerModeButton;
@@ -344,12 +319,12 @@ namespace PT2
         private System.Windows.Forms.Button listeAbonnés;
         private System.Windows.Forms.Button buttonChangerMdp;
         private System.Windows.Forms.Button quitter;
-        private System.Windows.Forms.ListBox listBoxAllée;
-        private System.Windows.Forms.ListBox listBoxCasier;
         private System.Windows.Forms.Label labelAllée;
         private System.Windows.Forms.Label labelCasier;
         private System.Windows.Forms.Button buttonCasier;
         private System.Windows.Forms.Button buttonAllée;
         private System.Windows.Forms.DataGridView dataGridViewGlobale;
+        private System.Windows.Forms.ComboBox comboAllée;
+        private System.Windows.Forms.ComboBox comboCasier;
     }
 }

@@ -22,7 +22,7 @@ namespace PT2
         {
             InitializeComponent();
             listerAbonnés();
-            desactiverCasier();
+            listerAllées();
             albumsUS8 = albumPasEmpruntesDepuis1An();
         }
         /// <summary>
@@ -269,18 +269,18 @@ namespace PT2
             dataGridViewGlobale.Columns["CODE_ALBUM"].Visible = false;
             dataGridViewGlobale.Columns["CODE_EDITEUR"].Visible = false;
             dataGridViewGlobale.Columns["CODE_GENRE"].Visible = false;
-            for(int i = 0; i < dataGridViewGlobale.RowCount; i++)
+            for (int i = 0; i < dataGridViewGlobale.RowCount; i++)
             {
                 dataGridViewGlobale.Rows[i].Height = 100;
             }
-            for(int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
+            for (int i = 0; i < dataGridViewGlobale.ColumnCount; i++)
             {
                 dataGridViewGlobale.Columns[i].Width = 100;
             }
             dataGridViewGlobale.RowHeadersWidth = 5;
             dataGridViewGlobale.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Refresh();
-           
+
         }
 
         /// <summary>
@@ -288,24 +288,25 @@ namespace PT2
         /// </summary>
         private void listerAllées()
         {
-            listBoxAllée.Items.Clear();
+            comboAllée.Items.Clear();
             var allees = from a in musiqueSQL.ALBUMS group a by a.ALLÉE_ALBUM into intAllees orderby intAllees.Key select intAllees.Key;
             foreach (string s in allees)
             {
-                listBoxAllée.Items.Add(s.Trim());
+                comboAllée.Items.Add(s.Trim());
             }
         }
 
         /// <summary>
-        /// Rend invisible l'ensemble des éléments liés à l'allée et au casier des disques.
+        /// Rend visible ou invisible (toggle) l'ensemble des éléments liés à l'allée et au casier des disques.
         /// </summary>
-        public void desactiverCasier()
+        public void toggleCasiers()
         {
-            listBoxAllée.Visible = false;
-            listBoxCasier.Visible = false;
-            labelAllée.Visible = false;
-            labelCasier.Visible = false;
-            buttonCasier.Visible = false;
+            bool afficher = !comboAllée.Visible;
+            comboAllée.Visible = afficher;
+            comboCasier.Visible = afficher;
+            labelAllée.Visible = afficher;
+            labelCasier.Visible = afficher;
+            buttonCasier.Visible = afficher;
         }
 
         private void Pluspopulairebutton_Click(object sender, EventArgs e)
@@ -313,7 +314,7 @@ namespace PT2
             remplir10pluspopulaires();
             purgeModeOn = false;
             Refresh();
-            desactiverCasier();
+            toggleCasiers();
             purgebutton.Enabled = false;
         }
 
@@ -322,7 +323,7 @@ namespace PT2
             remplirAlbumsPasEmpruntes1An();
             purgeModeOn = false;
             Refresh();
-            desactiverCasier();
+            toggleCasiers();
             purgebutton.Enabled = false;
         }
 
@@ -347,10 +348,10 @@ namespace PT2
             dataGridViewGlobale.DataSource = enRetard();
             dataGridViewGlobale.Columns["CODE_PAYS"].Visible = false;
             dataGridViewGlobale.Columns["CODE_ABONNÉ"].Visible = false;
-            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false; 
+            dataGridViewGlobale.Columns["PASSWORD_ABONNÉ"].Visible = false;
             purgeModeOn = false;
             purgebutton.Enabled = false;
-            desactiverCasier();
+            toggleCasiers();
             Refresh();
         }
 
@@ -359,7 +360,7 @@ namespace PT2
             remplirDataProlonge();
             purgeModeOn = false;
             purgebutton.Enabled = false;
-            desactiverCasier();
+            toggleCasiers();
             Refresh();
         }
 
@@ -384,20 +385,7 @@ namespace PT2
         private void buttonAllée_Click(object sender, EventArgs e)
         {
             listerAllées();
-        }
-
-        private void listBoxAllée_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var allée = listBoxAllée.SelectedItem;
-            if (allée != null)
-            {
-                listBoxCasier.Items.Clear();
-                var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée.ToString() group a by a.CASIER_ALBUM into casier select casier.Key;
-                foreach (int i in casiers)
-                {
-                    listBoxCasier.Items.Add(i);
-                }
-            }
+            toggleCasiers();
         }
 
         private void buttonCasier_Click(object sender, EventArgs e)
@@ -413,21 +401,16 @@ namespace PT2
         }
 
         /// <summary>
-        /// Liste les albums manquants d'un casier dans une ListBox
+        /// Liste les albums manquants d'un casier pour les afficher à l'écran
         /// </summary>
         /// <param name="allée">L'allée du casier</param>
         /// <param name="casier">Le numéro du casier</param>
         private void chargerAlbumsManquantsCasier(string allée, int casier)
         {
-            listBoxGlobale.Items.Clear();
-            var albums = from a in musiqueSQL.ALBUMS
-                         join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
-                         where a.ALLÉE_ALBUM == allée.ToString() && a.CASIER_ALBUM == casier && emp.DATE_RETOUR == null
-                         select a;
-            foreach (ALBUMS a in albums)
-            {
-                listBoxGlobale.Items.Add(a);
-            }
+            dataGridViewGlobale.DataSource = from a in musiqueSQL.ALBUMS
+                                             join emp in musiqueSQL.EMPRUNTER on a.CODE_ALBUM equals emp.CODE_ALBUM
+                                             where a.ALLÉE_ALBUM == allée.ToString() && a.CASIER_ALBUM == casier && emp.DATE_RETOUR == null
+                                             select a;
         }
 
         /// <summary>
@@ -435,8 +418,8 @@ namespace PT2
         /// </summary>
         private void declencherChargerAlbumsManquantsCasier()
         {
-            var allée = listBoxAllée.SelectedItem;
-            var casier = listBoxCasier.SelectedItem;
+            var allée = comboAllée.SelectedItem;
+            var casier = comboCasier.SelectedItem;
             if (allée != null && casier != null)
             {
                 chargerAlbumsManquantsCasier(allée.ToString(), Convert.ToInt32(casier));
@@ -452,6 +435,21 @@ namespace PT2
             if (purgeModeOn)
             {
                 purgebutton.Enabled = true;
+            }
+        }
+
+        private void comboAllée_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var allée = comboAllée.SelectedItem;
+            if (allée != null)
+            {
+                comboCasier.SelectedIndex = -1;
+                comboCasier.Items.Clear();
+                var casiers = from a in musiqueSQL.ALBUMS where a.ALLÉE_ALBUM == allée.ToString() group a by a.CASIER_ALBUM into casier select casier.Key;
+                foreach (int i in casiers)
+                {
+                    comboCasier.Items.Add(i);
+                }
             }
         }
     }
