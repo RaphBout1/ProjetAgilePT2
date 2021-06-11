@@ -155,9 +155,9 @@ namespace PT2
             retour.Visible = true;
             cancelButton.Visible = false;
             confirmationMdpBox.Visible = true;
-            afficherMdp.Visible = true;
+            afficherMdp.Visible = false;
             confirmerPicture.Visible = true;
-            affichemdp2.Visible = true;
+            affichemdp2.Visible = false;
             pasAfficher.Visible = true;
             pasAfficher2.Visible = true;
         }
@@ -190,7 +190,7 @@ namespace PT2
 
         private void afficherMdp_CheckedChanged(object sender, EventArgs e)
         {
-            passwordText.UseSystemPasswordChar = false;
+            passwordText.UseSystemPasswordChar = true;
             afficherMdp.Visible = false;
             pasAfficher.Visible = true;
 
@@ -198,14 +198,14 @@ namespace PT2
 
         private void affichemdp2_CheckedChanged(object sender, EventArgs e)
         {
-            confirmationMdpBox.UseSystemPasswordChar = false;
+            confirmationMdpBox.UseSystemPasswordChar = true;
             affichemdp2.Visible = false;
             pasAfficher2.Visible = true;
         }
 
         private void pasAfficher_CheckedChanged(object sender, EventArgs e)
         {
-            passwordText.UseSystemPasswordChar = true;
+            passwordText.UseSystemPasswordChar = false;
             afficherMdp.Visible = true;
             pasAfficher.Visible = false;
 
@@ -213,7 +213,7 @@ namespace PT2
 
         private void pasAfficher2_CheckedChanged(object sender, EventArgs e)
         {
-            confirmationMdpBox.UseSystemPasswordChar = true;
+            confirmationMdpBox.UseSystemPasswordChar = false;
             affichemdp2.Visible = true;
             pasAfficher2.Visible = false;
         }

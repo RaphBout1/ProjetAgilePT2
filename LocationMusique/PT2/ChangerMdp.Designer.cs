@@ -213,12 +213,11 @@ namespace PT2
             this.pasAfficher1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.pasAfficher1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.pasAfficher1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pasAfficher1.Location = new System.Drawing.Point(706, 68);
+            this.pasAfficher1.Location = new System.Drawing.Point(706, 66);
             this.pasAfficher1.Name = "pasAfficher1";
             this.pasAfficher1.Size = new System.Drawing.Size(43, 43);
             this.pasAfficher1.TabIndex = 23;
             this.pasAfficher1.UseVisualStyleBackColor = false;
-            this.pasAfficher1.Visible = false;
             this.pasAfficher1.CheckedChanged += new System.EventHandler(this.pasAfficher1_CheckedChanged);
             // 
             // pasAfficher2
@@ -238,7 +237,6 @@ namespace PT2
             this.pasAfficher2.Size = new System.Drawing.Size(43, 43);
             this.pasAfficher2.TabIndex = 24;
             this.pasAfficher2.UseVisualStyleBackColor = false;
-            this.pasAfficher2.Visible = false;
             this.pasAfficher2.CheckedChanged += new System.EventHandler(this.pasAfficher2_CheckedChanged);
             // 
             // pasAfficher3
@@ -259,7 +257,6 @@ namespace PT2
             this.pasAfficher3.Size = new System.Drawing.Size(43, 43);
             this.pasAfficher3.TabIndex = 25;
             this.pasAfficher3.UseVisualStyleBackColor = false;
-            this.pasAfficher3.Visible = false;
             this.pasAfficher3.CheckedChanged += new System.EventHandler(this.pasAfficher3_CheckedChanged);
             // 
             // ChangerMdp

@@ -82,14 +82,14 @@ namespace PT2
         /// <param name="e"></param>
         private void afficherMdp_CheckedChanged(object sender, EventArgs e)
         {
-            mdp.UseSystemPasswordChar = false;
+            mdp.UseSystemPasswordChar = true;
             afficherMdp.Visible = false;
             pasAfficher.Visible = true;
         }
 
         private void pasAfficher_CheckedChanged(object sender, EventArgs e)
         {
-            mdp.UseSystemPasswordChar = true;
+            mdp.UseSystemPasswordChar = false;
             afficherMdp.Visible = true;
             pasAfficher.Visible = false;
         }

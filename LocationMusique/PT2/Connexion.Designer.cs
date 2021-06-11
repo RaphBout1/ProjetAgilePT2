@@ -107,6 +107,7 @@ namespace PT2
             this.afficherMdp.Size = new System.Drawing.Size(43, 43);
             this.afficherMdp.TabIndex = 19;
             this.afficherMdp.UseVisualStyleBackColor = false;
+            this.afficherMdp.Visible = false;
             this.afficherMdp.CheckedChanged += new System.EventHandler(this.afficherMdp_CheckedChanged);
             // 
             // pasAfficher
@@ -127,7 +128,6 @@ namespace PT2
             this.pasAfficher.Size = new System.Drawing.Size(43, 43);
             this.pasAfficher.TabIndex = 26;
             this.pasAfficher.UseVisualStyleBackColor = false;
-            this.pasAfficher.Visible = false;
             this.pasAfficher.CheckedChanged += new System.EventHandler(this.pasAfficher_CheckedChanged);
             // 
             // Connexion

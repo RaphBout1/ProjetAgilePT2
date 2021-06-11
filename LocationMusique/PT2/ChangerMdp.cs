@@ -99,14 +99,14 @@ namespace PT2
         private void affichermdp2_CheckedChanged(object sender, EventArgs e)
         {
             pasAfficher2.Visible = true;
-            textBoxMdp.UseSystemPasswordChar = !textBoxMdp.UseSystemPasswordChar;
+            textBoxMdp.UseSystemPasswordChar = true;
             affichermdp2.Visible = false;
         }
 
         private void affichermdp3_CheckedChanged(object sender, EventArgs e)
         {
             pasAfficher3.Visible = true;
-            textBoxMdpConfirm.UseSystemPasswordChar = !textBoxMdpConfirm.UseSystemPasswordChar;
+            textBoxMdpConfirm.UseSystemPasswordChar = true;
             affichermdp3.Visible = false;
         }
 
