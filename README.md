@@ -1,6 +1,8 @@
 <!--> Ceci doit être le fichier README.md à la racine de votre dépôt <-->
 
 # Informations générales
+Projet effectué à la fin de la première année de l'iut avec la méthode agile. Nous devions réaliser en équipe un logiciel de location de vinyle avec sa base de donnée.
+![image](https://user-images.githubusercontent.com/91502674/137997503-76785716-eb7e-4490-b0e9-91c7c5f5fedc.png)
 
 ## Equipe
 
