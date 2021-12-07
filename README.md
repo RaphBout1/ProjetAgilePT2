@@ -8,6 +8,9 @@ Projet effectué à la fin de la première année de l'iut avec la méthode agil
 ![Sans titre](https://user-images.githubusercontent.com/91502674/145110551-7ebcde04-e62c-4529-9a93-01a1cae6d016.png)
 *visuel de la page création de compte*
 
+![debut emprunt](https://user-images.githubusercontent.com/91502674/145112310-8bbc81ea-3f48-4f37-94b3-cf4b43f4d932.png)
+*visuel de la maquette de la page d'emprunt*
+
 ## Equipe
 
 - Numéro d'équipe : [2].[1]
