@@ -4,6 +4,10 @@
 Projet effectué à la fin de la première année de l'iut avec la méthode agile. Nous devions réaliser en équipe un logiciel de location de vinyle avec sa base de donnée.
 ![image](https://user-images.githubusercontent.com/91502674/137997503-76785716-eb7e-4490-b0e9-91c7c5f5fedc.png)
 *visuel de la page de connexion*
+
+![Sans titre](https://user-images.githubusercontent.com/91502674/145110551-7ebcde04-e62c-4529-9a93-01a1cae6d016.png)
+*visuel de la page création de compte*
+
 ## Equipe
 
 - Numéro d'équipe : [2].[1]
